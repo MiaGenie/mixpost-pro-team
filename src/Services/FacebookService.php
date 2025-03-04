@@ -42,6 +42,6 @@ class FacebookService extends Service
 
     public static function versions(): array
     {
-        return ['v21.0', 'v20.0', 'v19.0', 'v18.0', 'v17.0', 'v16.0'];
+        return ['v22.0', 'v21.0', 'v20.0', 'v19.0', 'v18.0', 'v17.0', 'v16.0'];
     }
 }

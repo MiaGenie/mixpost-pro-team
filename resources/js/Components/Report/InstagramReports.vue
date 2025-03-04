@@ -31,7 +31,7 @@ const chartData = computed(() => {
 </script>
 <template>
     <div class="row-px mt-2xl">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sm">
             <Panel>
                 <template #title><span v-tooltip="$t('report.posts_liked')">
                     {{ $t('report.likes') }}</span>
@@ -53,12 +53,6 @@ const chartData = computed(() => {
                     }} </span>
                 </template>
                 <div class="font-bold text-primary-500 text-2xl">{{ getMetricCount('follower_count') }}</div>
-            </Panel>
-
-            <Panel>
-                <template #title><span v-tooltip="$t('report.impressions_posts')">{{ $t('report.impressions') }}</span>
-                </template>
-                <div class="font-bold text-primary-500 text-2xl">{{ getMetricCount('impressions') }}</div>
             </Panel>
 
             <Panel>

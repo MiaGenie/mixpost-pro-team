@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.3.5 - 2025-01-20
+
+**Fixes**
+
+- Fixed style of media file name
+
 ## 3.3.4 - 2025-01-20
 
 **Fixes**

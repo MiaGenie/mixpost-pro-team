@@ -306,7 +306,7 @@ trait ManagesInstagramResources
     {
         $data = [
             'access_token' => $this->getAccessToken()['access_token'],
-            'metric' => 'follower_count,impressions,reach',
+            'metric' => 'follower_count,reach',
             'period' => 'day',
             'since' => Carbon::now('UTC')->subDays(30)->toDateString(),
             'until' => Carbon::today('UTC')->toDateString(),
@@ -321,7 +321,7 @@ trait ManagesInstagramResources
     {
         $data = [
             'access_token' => $this->getAccessToken()['access_token'],
-            'metric' => 'total_interactions,accounts_engaged,likes,comments,shares,replies,profile_links_taps',
+            'metric' => 'total_interactions,accounts_engaged,likes,comments,shares,replies,views,profile_links_taps',
             'period' => 'day',
             'metric_type' => 'total_value',
             'since' => Carbon::now('UTC')->subDays(30)->toDateString(),
