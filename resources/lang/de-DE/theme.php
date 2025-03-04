@@ -1,12 +1,12 @@
 <?php
 
 return [
-  'customization' => 'Personalisierung',
-  'change_logo_favicon' => 'Ändern Sie das Logo und das Favicon Ihres Unternehmens.',
-  'change_theme_color' => 'Farbe des Themas ändern',
+  'customization' => 'Anpassung',
+  'change_logo_favicon' => 'Ändere das Logo und das Favicon deines Unternehmens.',
+  'change_theme_color' => 'Themenfarbe ändern',
   'upload_logo' => 'Logo hochladen',
   'remove_favicon' => 'Favicon entfernen',
   'upload_favicon' => 'Favicon hochladen',
-  'theme_color' => 'Thema Farbe',
-  'rebrand_company' => 'Rebranding Ihres Unternehmens',
+  'theme_color' => 'Themenfarbe',
+  'rebrand_company' => 'Rebrande dein Unternehmen',
 ];

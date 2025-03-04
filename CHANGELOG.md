@@ -2,6 +2,15 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.1.0 - 2024-11-16
+
+**Changes**
+
+- Added functionality to enable/disable automatic subscription to post activities
+- Implemented a preloader to display while emojis are loading.
+- Improved post filter component when the list of accounts or tags is empty
+- Updated translations
+
 ## 3.0.1 - 2024-11-01
 
 **Fixes**

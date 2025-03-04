@@ -815,7 +815,7 @@
         "add_user_workspace": "Přidání nového uživatele do tohoto pracovního prostoru",
         "edit_role_for": "Upravit roli pro",
         "change_role": "Změna role",
-        "can_edit_everything": "Uživatel může přistupovat a upravovat vše na pracovním prostoru",
+        "can_edit_everything": "Může přistupovat a upravovat vše.",
         "edit_exceptions": "Může přistupovat a upravovat vše kromě sekce konfigurace.",
         "user_attached": "Uživatel připojen",
         "attach_user": "Připojit uživatele",

@@ -6,7 +6,7 @@ return [
   'add_user_workspace' => 'Gehitu erabiltzaile berria lan-eremu honetara',
   'edit_role_for' => 'Editatu rola',
   'change_role' => 'Rola aldatu',
-  'can_edit_everything' => 'Laneko eremuan dena atzitu eta edita dezakezu',
+  'can_edit_everything' => 'Guztia atzitu eta edita dezake.',
   'edit_exceptions' => 'Guztia atzitu eta edita dezake konfigurazio atala izan ezik.',
   'user_attached' => 'Erabiltzailea erantsita',
   'attach_user' => 'Erantsi erabiltzailea',

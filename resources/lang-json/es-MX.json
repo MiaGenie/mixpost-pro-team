@@ -815,7 +815,7 @@
         "add_user_workspace": "Añadir un nuevo usuario a este espacio de trabajo",
         "edit_role_for": "Editar rol para",
         "change_role": "Cambiar rol",
-        "can_edit_everything": "Puede acceder a todo el espacio de trabajo y editarlo",
+        "can_edit_everything": "Puede acceder a todo y editarlo.",
         "edit_exceptions": "Puede acceder y editar todo excepto la sección de configuración.",
         "user_attached": "Usuario adjunto",
         "attach_user": "Adjuntar usuario",

@@ -6,7 +6,7 @@ return [
   'add_user_workspace' => 'Pridanie nového používateľa do tohto pracovného priestoru',
   'edit_role_for' => 'Upraviť úlohu pre',
   'change_role' => 'Zmena úlohy',
-  'can_edit_everything' => 'Prístup a úprava všetkého na pracovnom priestore',
+  'can_edit_everything' => 'Môžete pristupovať a upravovať všetko.',
   'edit_exceptions' => 'Môžete pristupovať a upravovať všetko okrem sekcie konfigurácie.',
   'user_attached' => 'Pripojený používateľ',
   'attach_user' => 'Pripojiť používateľa',

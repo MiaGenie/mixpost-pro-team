@@ -1,5 +1,5 @@
 <?php
 
 return [
-  'trouble_clicking_btn' => 'Wenn Sie Probleme haben, auf die Schaltfläche ":actionText" zu klicken, kopieren Sie die folgende URL und fügen Sie sie in Ihren Webbrowser ein:',
+  'trouble_clicking_btn' => 'Wenn du Probleme hast, auf die Schaltfläche ":actionText" zu klicken, kopiere die folgende URL und füge sie in deinen Webbrowser ein:',
 ];

@@ -815,7 +815,7 @@
         "add_user_workspace": "Adăugați un utilizator nou în acest spațiu de lucru",
         "edit_role_for": "Editați rolul pentru",
         "change_role": "Schimbați rolul",
-        "can_edit_everything": "Poate accesa și edita totul din spațiul de lucru",
+        "can_edit_everything": "Poate accesa și edita totul.",
         "edit_exceptions": "Poate accesa și edita totul, cu excepția secțiunii de configurare.",
         "user_attached": "Utilizator atașat",
         "attach_user": "Atașați utilizatorul",

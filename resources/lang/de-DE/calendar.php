@@ -46,7 +46,7 @@ return [
     'saturday' => 
     [
       'full' => 'Samstag',
-      'short' => 'Sa',
+      'short' => 'Sat',
       'shortest' => 'S',
     ],
   ],
@@ -55,22 +55,22 @@ return [
     'january' => 
     [
       'full' => 'Januar',
-      'short' => 'Jan.',
+      'short' => 'Jan',
     ],
     'february' => 
     [
       'full' => 'Februar',
-      'short' => 'Feb.',
+      'short' => 'Feb',
     ],
     'march' => 
     [
       'full' => 'März',
-      'short' => 'Mär.',
+      'short' => 'Mar',
     ],
     'april' => 
     [
       'full' => 'April',
-      'short' => 'Apr.',
+      'short' => 'Apr',
     ],
     'may' => 
     [
@@ -80,37 +80,37 @@ return [
     'june' => 
     [
       'full' => 'Juni',
-      'short' => 'Jun.',
+      'short' => 'Jun',
     ],
     'july' => 
     [
       'full' => 'Juli',
-      'short' => 'Jul.',
+      'short' => 'Jul',
     ],
     'august' => 
     [
       'full' => 'August',
-      'short' => 'Aug.',
+      'short' => 'Aug',
     ],
     'september' => 
     [
       'full' => 'September',
-      'short' => 'Sept.',
+      'short' => 'Sep',
     ],
     'october' => 
     [
       'full' => 'Oktober',
-      'short' => 'Okt.',
+      'short' => 'Okt',
     ],
     'november' => 
     [
       'full' => 'November',
-      'short' => 'Nov.',
+      'short' => 'Nov',
     ],
     'december' => 
     [
       'full' => 'Dezember',
-      'short' => 'Dez.',
+      'short' => 'Dez',
     ],
   ],
   'dayperiod' => 

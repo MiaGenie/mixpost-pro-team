@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'installation' => 'Einrichtung',
-  'create_admin' => 'Bitte erstellen Sie den ersten Administrator-Benutzer.',
-  'select_timezone' => 'Bitte wählen Sie Ihre Zeitzone.',
+  'installation' => 'Installation',
+  'create_admin' => 'Bitte erstelle den ersten Administrator-Benutzer.',
+  'select_timezone' => 'Bitte wähle deine Zeitzone aus.',
 ];

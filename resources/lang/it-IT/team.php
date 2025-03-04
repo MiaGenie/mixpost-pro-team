@@ -6,7 +6,7 @@ return [
   'add_user_workspace' => 'Aggiungere un nuovo utente a questo spazio di lavoro',
   'edit_role_for' => 'Modificare il ruolo per',
   'change_role' => 'Cambiare ruolo',
-  'can_edit_everything' => 'Può accedere e modificare tutto ciò che è presente nell\'area di lavoro',
+  'can_edit_everything' => 'Può accedere e modificare tutto.',
   'edit_exceptions' => 'Può accedere e modificare tutto, tranne la sezione di configurazione.',
   'user_attached' => 'Utente collegato',
   'attach_user' => 'Collegare l\'utente',

@@ -1,1 +1,0 @@
-import{D as r}from"./Admin-DtCSYUZU.js";import{o as a,c as n,e,a as o}from"./app-Cur301Rn.js";const c={class:"flex items-center"},l=["innerHTML"],m={__name:"ReadDocHelp",props:{href:{type:String,default:"#"}},setup(s){return(t,i)=>(a(),n("div",c,[e("span",null,[o(r,{class:"!w-4 !h-4 mr-xs"})]),e("span",{innerHTML:t.$t("util.read_doc",{href:s.href})},null,8,l)]))}};export{m as _};

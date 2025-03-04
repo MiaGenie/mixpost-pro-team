@@ -6,7 +6,7 @@ return [
   'add_user_workspace' => 'Add new user to this workspace',
   'edit_role_for' => 'Edit role for',
   'change_role' => 'Change role',
-  'can_edit_everything' => 'Can access and edit everything on workspace',
+  'can_edit_everything' => 'Can access and edit everything.',
   'edit_exceptions' => 'Can access and edit everything except configuration section.',
   'user_attached' => 'User attached',
   'attach_user' => 'Attach user',
