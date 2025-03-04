@@ -38,7 +38,8 @@
         "choose": "Alegeți",
         "access_token_expired": "Indicatorul de acces a expirat. Reconectați-vă contul.",
         "unauthorized": "Neautorizat",
-        "add_social_account": "Nu aveți un cont social, vă rugăm să adăugați cel puțin unul."
+        "add_social_account": "Nu aveți un cont social, vă rugăm să adăugați cel puțin unul.",
+        "no_accounts_found": "Nu s-au găsit conturi"
     },
     "ai": {
         "tell_ai": "Spuneți-i IA despre ce să scrie",
@@ -805,7 +806,8 @@
         "label_deleted": "Eticheta a fost ștearsă",
         "confirm_label_delete": "Sigur doriți să ștergeți eticheta {name} de oriunde?",
         "create_new_label": "Apăsați Enter pentru a crea o nouă etichetă",
-        "search_create_post": "Căutați sau Creați nou"
+        "search_create_post": "Căutați sau Creați nou",
+        "no_labels_found": "Nu s-au găsit etichete"
     },
     "team": {
         "add_user": "Adăugați utilizator",

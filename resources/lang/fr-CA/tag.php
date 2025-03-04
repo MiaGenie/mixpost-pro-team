@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => 'Êtes-vous sûr de vouloir supprimer le label :name de partout?',
   'create_new_label' => 'Appuyez sur Entrée pour créer une nouvelle étiquette',
   'search_create_post' => 'Rechercher ou créer un nouveau',
+  'no_labels_found' => 'Aucune étiquette trouvée',
 ];

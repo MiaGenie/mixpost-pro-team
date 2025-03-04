@@ -38,7 +38,8 @@
         "choose": "Tria",
         "access_token_expired": "El testimoni d'accés ha caducat. Torneu a connectar el vostre compte.",
         "unauthorized": "No autoritzat",
-        "add_social_account": "No teniu cap compte social, afegiu-ne almenys un."
+        "add_social_account": "No teniu cap compte social, afegiu-ne almenys un.",
+        "no_accounts_found": "No s'han trobat comptes"
     },
     "ai": {
         "tell_ai": "Digues a AI què ha d'escriure",
@@ -805,7 +806,8 @@
         "label_deleted": "S'ha suprimit l'etiqueta",
         "confirm_label_delete": "Esteu segur que voleu suprimir l'etiqueta {name} de tot arreu?",
         "create_new_label": "Premeu Intro per crear una etiqueta nova",
-        "search_create_post": "Cerca o crea nou"
+        "search_create_post": "Cerca o crea nou",
+        "no_labels_found": "No s'han trobat etiquetes"
     },
     "team": {
         "add_user": "Afegeix usuari",

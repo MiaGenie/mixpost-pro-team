@@ -2,8 +2,12 @@
 import {defineAsyncComponent} from "vue";
 import Dropdown from "@/Components/Dropdown/Dropdown.vue"
 import EmojiIcon from "@/Icons/Emoji.vue"
+import EmojiPreloader from "../Util/EmojiPreloader.vue";
 
-const EmojiMart = defineAsyncComponent(() => import("@/Components/Package/EmojiMart.vue"));
+const EmojiMart = defineAsyncComponent({
+    loader: () => import("@/Components/Package/EmojiMart.vue"),
+    loadingComponent: EmojiPreloader,
+});
 
 defineProps({
     closeOnSelect: {

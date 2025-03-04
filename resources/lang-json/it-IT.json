@@ -38,7 +38,8 @@
         "choose": "Scegli",
         "access_token_expired": "Il token di accesso è scaduto. Ricollega il tuo account.",
         "unauthorized": "Non autorizzato",
-        "add_social_account": "Non hai un account social, aggiungine almeno uno."
+        "add_social_account": "Non hai un account social, aggiungine almeno uno.",
+        "no_accounts_found": "Nessun conto trovato"
     },
     "ai": {
         "tell_ai": "Dite all'intelligenza artificiale di cosa scrivere",
@@ -805,7 +806,8 @@
         "label_deleted": "Etichetta cancellata",
         "confirm_label_delete": "Sicuri di voler eliminare l'etichetta {name} ovunque?",
         "create_new_label": "Premere Invio per creare una nuova etichetta",
-        "search_create_post": "Cerca o Crea nuovo"
+        "search_create_post": "Cerca o Crea nuovo",
+        "no_labels_found": "Nessuna etichetta trovata"
     },
     "team": {
         "add_user": "Aggiungi utente",

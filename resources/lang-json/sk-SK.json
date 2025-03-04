@@ -38,7 +38,8 @@
         "choose": "Vyberte si",
         "access_token_expired": "Platnosť prístupového tokenu vypršala. Znova pripojte svoj účet.",
         "unauthorized": "Neoprávnené",
-        "add_social_account": "Nemáte účet na sociálnej sieti, pridajte si aspoň jeden."
+        "add_social_account": "Nemáte účet na sociálnej sieti, pridajte si aspoň jeden.",
+        "no_accounts_found": "Nenašli sa žiadne účty"
     },
     "ai": {
         "tell_ai": "Povedzte AI, o čom má písať",
@@ -805,7 +806,8 @@
         "label_deleted": "Štítok odstránený",
         "confirm_label_delete": "Ste si istí, že chcete odstrániť označenie {name} z každého miesta?",
         "create_new_label": "Stlačením klávesu Enter vytvoríte nový štítok",
-        "search_create_post": "Vyhľadávanie alebo vytvorenie nového"
+        "search_create_post": "Vyhľadávanie alebo vytvorenie nového",
+        "no_labels_found": "Nenašli sa žiadne štítky"
     },
     "team": {
         "add_user": "Pridať používateľa",

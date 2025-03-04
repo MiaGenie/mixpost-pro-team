@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.0.1 - 2024-11-01
+
+**Fixes**
+
+- Fixed translations for post-activity subscription buttons
+
 ## 3.0.0 - 2024-10-31
 
 **Fixes**

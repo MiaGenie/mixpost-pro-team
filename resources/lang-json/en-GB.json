@@ -38,7 +38,8 @@
         "choose": "Choose",
         "access_token_expired": "Access token has expired. Reconnect your account.",
         "unauthorized": "Unauthorized",
-        "add_social_account": "You don't have a social account, please add at least one."
+        "add_social_account": "You don't have a social account, please add at least one.",
+        "no_accounts_found": "No accounts found"
     },
     "ai": {
         "tell_ai": "Tell AI what to write about",
@@ -802,7 +803,8 @@
         "label_deleted": "Label deleted",
         "confirm_label_delete": "Are you sure you want to delete the {name} label from everywhere?",
         "create_new_label": "Press Enter to create a new label",
-        "search_create_post": "Search or Create New"
+        "search_create_post": "Search or Create New",
+        "no_labels_found": "No labels found"
     },
     "team": {
         "add_user": "Add user",

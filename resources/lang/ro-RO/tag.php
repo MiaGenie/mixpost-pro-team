@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => 'Sigur doriți să ștergeți eticheta :name de oriunde?',
   'create_new_label' => 'Apăsați Enter pentru a crea o nouă etichetă',
   'search_create_post' => 'Căutați sau Creați nou',
+  'no_labels_found' => 'Nu s-au găsit etichete',
 ];

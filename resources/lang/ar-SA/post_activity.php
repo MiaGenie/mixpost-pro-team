@@ -23,8 +23,8 @@ return [
   'user_set_drafts' => ':user نقل هذا المنشور إلى المسودات',
   'set_drafts' => 'لقد تم نقل المنشور إلى المسودات.',
   'update_scheduled_at' => 'قام :user بتحديث وقت الجدول الزمني من :old_datetime إلى :new_datetime',
-  'watch' => 'يشاهد',
-  'notify_all_activity' => 'أعلمني بجميع الأنشطة الخاصة بهذه المهمة.',
-  'unwatch' => 'إلغاء المشاهدة',
-  'notify_mentions_only' => 'أعلمني فقط عند الإشارة.',
+  'watch' => 'فعل التنبيهات',
+  'notify_all_activity' => 'ابلغني بجميع الأنشطة الخاصة بهذه المهمة.',
+  'unwatch' => 'إلغاء التنبيهات',
+  'notify_mentions_only' => 'ابلغني فقط اذا شخص ما اشار لي في المهمة.',
 ];

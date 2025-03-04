@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => 'Ziur :name etiketa behin-betiko ezabatu nahi duzula?',
   'create_new_label' => 'Sakatu Enter etiketa berri bat sortzeko',
   'search_create_post' => 'Bilatu edo Sortu berria',
+  'no_labels_found' => 'Ez da etiketarik aurkitu',
 ];

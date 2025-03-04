@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => 'Ste si istí, že chcete odstrániť označenie :name z každého miesta?',
   'create_new_label' => 'Stlačením klávesu Enter vytvoríte nový štítok',
   'search_create_post' => 'Vyhľadávanie alebo vytvorenie nového',
+  'no_labels_found' => 'Nenašli sa žiadne štítky',
 ];

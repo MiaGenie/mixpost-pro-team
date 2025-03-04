@@ -19,6 +19,11 @@ class Features
         return self::enabled('api_access_tokens');
     }
 
+    public static function isAutoSubscribePostActivitiesEnabled(): bool
+    {
+        return self::enabled('auto_subscribe_post_activities');
+    }
+
     public static function isDeleteAccountEnabled()
     {
         $config = Mixpost::getEnterpriseConfig()['onboarding'] ?? null;

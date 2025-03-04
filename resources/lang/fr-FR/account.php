@@ -43,4 +43,5 @@ return [
       ],
     ],
   ],
+  'no_accounts_found' => 'Aucun compte trouvé',
 ];

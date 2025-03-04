@@ -38,7 +38,8 @@
         "choose": "Elija",
         "access_token_expired": "El token de acceso ha caducado. Vuelva a conectar su cuenta.",
         "unauthorized": "Sin autorización",
-        "add_social_account": "Si no tienes una cuenta social, añade al menos una."
+        "add_social_account": "Si no tienes una cuenta social, añade al menos una.",
+        "no_accounts_found": "No se han encontrado cuentas"
     },
     "ai": {
         "tell_ai": "Dile a la IA sobre qué escribir",
@@ -805,7 +806,8 @@
         "label_deleted": "Etiqueta eliminada",
         "confirm_label_delete": "¿Estás seguro de que quieres borrar la etiqueta {name} de todas partes?",
         "create_new_label": "Pulse Intro para crear una nueva etiqueta",
-        "search_create_post": "Buscar o crear nuevo"
+        "search_create_post": "Buscar o crear nuevo",
+        "no_labels_found": "No se han encontrado etiquetas"
     },
     "team": {
         "add_user": "Añadir usuario",

@@ -36,4 +36,5 @@ return [
       ],
     ],
   ],
+  'no_accounts_found' => 'No s\'han trobat comptes',
 ];

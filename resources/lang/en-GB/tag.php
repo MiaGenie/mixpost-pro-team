@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => 'Are you sure you want to delete the :name label from everywhere?',
   'create_new_label' => 'Press Enter to create a new label',
   'search_create_post' => 'Search or Create New',
+  'no_labels_found' => 'No labels found',
 ];

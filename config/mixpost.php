@@ -74,6 +74,7 @@ return [
         'forgot_password' => env('MIXPOST_FORGOT_PASSWORD', true),
         'two_factor_auth' => env('MIXPOST_TWO_FACTOR_AUTH', true),
         'api_access_tokens' => env('MIXPOST_API_ACCESS_TOKENS', true),
+        'auto_subscribe_post_activities' => env('MIXPOST_AUTO_SUBSCRIBE_POST_ACTIVITIES', false),
     ],
 
     /*

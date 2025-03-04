@@ -11,6 +11,7 @@ import VerticallyScrollableContent from "@/Components/Surface/VerticallyScrollab
 import FunnelIcon from "@/Icons/Funnel.vue";
 import Checkbox from "@/Components//Form/Checkbox.vue";
 import SearchInput from "../Util/SearchInput.vue";
+import NoResult from "../Util/NoResult.vue";
 
 const props = defineProps({
     modelValue: {
@@ -61,9 +62,9 @@ const clear = () => {
 
             <template #content>
                 <VerticallyScrollableContent>
-                    <div v-if="tags.length" class="p-sm">
+                    <div class="p-sm">
                         <div class="font-semibold">{{ $t('post.labels') }}</div>
-                        <div class="mt-sm flex flex-wrap items-center gap-xs">
+                        <div v-if="tags.length" class="mt-sm flex flex-wrap items-center gap-xs">
                             <template v-for="tag in tags" :key="tag.id">
                                 <label class="flex items-center cursor-pointer">
                                     <Checkbox v-model:checked="modelValue.tags" :value="tag.id" number class="mr-1"/>
@@ -71,11 +72,14 @@ const clear = () => {
                                 </label>
                             </template>
                         </div>
+                        <div v-else>
+                            <NoResult class="mt-xs">{{ $t('tag.no_labels_found') }}</NoResult>
+                        </div>
                     </div>
 
                     <div class="p-sm mt-sm">
                         <div class="font-semibold">{{ $t('account.accounts') }}</div>
-                        <div class="mt-sm flex flex-wrap items-center gap-xs">
+                        <div v-if="accounts.length" class="mt-sm flex flex-wrap items-center gap-xs">
                             <template v-for="account in accounts" :key="account.id">
                                 <label class="flex items-center cursor-pointer">
                                     <Checkbox v-model:checked="modelValue.accounts" :value="account.id" number
@@ -86,6 +90,9 @@ const clear = () => {
                                     </Badge>
                                 </label>
                             </template>
+                        </div>
+                        <div v-else>
+                            <NoResult class="mt-xs">{{ $t('account.no_accounts_found') }}</NoResult>
                         </div>
                     </div>
                 </VerticallyScrollableContent>

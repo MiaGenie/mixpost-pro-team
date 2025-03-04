@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => 'Sind Sie sicher, dass Sie die Bezeichnung :name überall löschen wollen?',
   'create_new_label' => 'Drücken Sie die Eingabetaste, um ein neues Etikett zu erstellen.',
   'search_create_post' => 'Suchen oder neu erstellen',
+  'no_labels_found' => 'Keine Etiketten gefunden',
 ];

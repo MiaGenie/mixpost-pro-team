@@ -38,7 +38,8 @@
         "choose": "Aukeratu",
         "access_token_expired": "Sarbide-tokena iraungi da. Konektatu berriro zure kontua.",
         "unauthorized": "Baimenik gabe",
-        "add_social_account": "Ez duzu kontu sozialik, gehitu gutxienez bat."
+        "add_social_account": "Ez duzu kontu sozialik, gehitu gutxienez bat.",
+        "no_accounts_found": "Ez da konturik aurkitu"
     },
     "ai": {
         "tell_ai": "Esan AA-ri zertaz idatzi behar duen",
@@ -805,7 +806,8 @@
         "label_deleted": "Etiketa ezabatu da",
         "confirm_label_delete": "Ziur {name} etiketa behin-betiko ezabatu nahi duzula?",
         "create_new_label": "Sakatu Enter etiketa berri bat sortzeko",
-        "search_create_post": "Bilatu edo Sortu berria"
+        "search_create_post": "Bilatu edo Sortu berria",
+        "no_labels_found": "Ez da etiketarik aurkitu"
     },
     "team": {
         "add_user": "Gehitu erabiltzailea",

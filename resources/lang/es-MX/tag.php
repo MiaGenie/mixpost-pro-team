@@ -8,4 +8,5 @@ return [
   'confirm_label_delete' => '¿Estás seguro de que quieres borrar la etiqueta :name de todas partes?',
   'create_new_label' => 'Pulse Intro para crear una nueva etiqueta',
   'search_create_post' => 'Buscar o crear nuevo',
+  'no_labels_found' => 'No se han encontrado etiquetas',
 ];
