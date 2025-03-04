@@ -2,6 +2,17 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.3.3 - 2025-01-11
+
+**Fixes**
+
+- Fixed Mastodon manage rate limits across all servers
+- Fixed Mastodon to get account username when the name is empty
+
+**Changes**
+
+- Added support for Mastodon media uploading v2
+
 ## 3.3.2 - 2025-01-09
 
 **Fixed**

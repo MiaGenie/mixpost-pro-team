@@ -109,7 +109,7 @@ const {enterpriseConsole} = useEnterpriseConsole()
                         {{ $t('webhook.webhooks') }}
                     </MenuItem>
                 </template>
-                <MenuItem :url="`/${$page.props.app.horizon_path}`" :external="true" externalTarget="_blank">
+                <MenuItem :url="`/${$page.props.app.horizon_path}/dashboard`" :external="true" externalTarget="_blank">
                     <template #icon>
                         <QueueList/>
                     </template>

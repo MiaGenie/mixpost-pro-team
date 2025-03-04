@@ -19,7 +19,7 @@ trait ManagesResources
 
         return $this->buildResponse($response, function () use ($response) {
             $data = $response->json();
-            ds($data);
+
             return [
                 'id' => $data['id'],
                 'name' => $data['display_name'] ?: $data['username'],
