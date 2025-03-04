@@ -109,7 +109,9 @@ trait FacebookPostPublication
                     fclose($readStream['stream']);
                 }
 
-                $readStream['temporaryDirectory']?->delete();
+                if (isset($readStream['temporaryDirectory'])) {
+                    $readStream['temporaryDirectory']->delete();
+                }
 
                 return $chunkResponse;
             }

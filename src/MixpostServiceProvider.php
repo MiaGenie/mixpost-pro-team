@@ -15,6 +15,7 @@ use Inovector\Mixpost\Commands\ConvertLangJson;
 use Inovector\Mixpost\Commands\CreateAdmin;
 use Inovector\Mixpost\Commands\CreateMastodonApp;
 use Inovector\Mixpost\Commands\GeneratePageSamples;
+use Inovector\Mixpost\Commands\PruneTemporaryDirectory;
 use Inovector\Mixpost\Commands\PublishAssetsCommand;
 use Inovector\Mixpost\Commands\RunWorkspaceCommand;
 use Inovector\Mixpost\Commands\Workspace\CheckAndRefreshAccountToken;
@@ -86,9 +87,10 @@ class MixpostServiceProvider extends PackageServiceProvider
                 CheckAndRefreshAccountToken::class,
                 ProcessMetrics::class,
                 PruneTrashedPosts::class,
+                PruneTemporaryDirectory::class,
                 CreateAdmin::class,
                 GeneratePageSamples::class,
-                ConvertLangJson::class
+                ConvertLangJson::class,
             ])->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->startWith(function (InstallCommand $command) {

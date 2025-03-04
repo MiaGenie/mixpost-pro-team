@@ -16,6 +16,8 @@ class Schedule
             '--model' => [WebhookDelivery::class],
         ])->monthly();
 
+        $schedule->command('mixpost:prune-temporary-directory')->hourly();
+
         $query = $query ?? Workspace::query()->select(['id', 'name']);
 
         $query

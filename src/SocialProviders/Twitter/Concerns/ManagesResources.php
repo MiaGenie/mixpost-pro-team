@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Support\SocialProviderResponse;
+use Spatie\TemporaryDirectory\TemporaryDirectory;
 
 trait ManagesResources
 {
@@ -62,12 +63,21 @@ trait ManagesResources
             }
 
             if ($chunkUpload) {
+                /** @var string|array $mediaFilePath * */
+                $mediaFilePath = $item->isLocalAdapter() ?
+                    $item->getFullPath() :
+                    $item->downloadToTemp();
+
                 $result = $this->connection->upload('media/upload', [
-                    'media' => $item->isLocalAdapter() ? $item->getFullPath() : $item->getUrl(),
+                    'media' => $mediaFilePath['fullPath'] ?? $mediaFilePath,
                     'media_type' => $item->mime_type,
                     'media_category' => $item->isImageGif() ? 'tweet_gif' : 'tweet_video',
                     'total_bytes' => $item->size,
                 ], ['chunkedUpload' => true]);
+
+                if (isset($mediaFilePath['temporaryDirectory'])) {
+                    $mediaFilePath['temporaryDirectory']->delete();
+                }
             }
 
             if (!$result) {

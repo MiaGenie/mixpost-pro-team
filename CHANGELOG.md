@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.1.1 - 2024-12-07
+
+**Changes**
+
+- Enhanced translations
+
 ## 3.1.0 - 2024-11-16
 
 **Changes**
