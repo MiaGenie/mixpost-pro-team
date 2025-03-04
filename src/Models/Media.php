@@ -15,7 +15,6 @@ use Inovector\Mixpost\Support\MediaTemporaryDirectory;
 use League\Flysystem\FilesystemAdapter;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use Exception;
-use Spatie\TemporaryDirectory\TemporaryDirectory;
 
 class Media extends Model
 {

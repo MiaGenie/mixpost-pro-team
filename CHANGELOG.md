@@ -2,6 +2,16 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.3.2 - 2025-01-09
+
+**Fixed**
+
+- Fixed TikTok options responsive layout.
+
+**Changes**
+
+- Increased page size for Pinterest list boards endpoint
+
 ## 3.3.1 - 2024-12-31
 
 **Fixes**

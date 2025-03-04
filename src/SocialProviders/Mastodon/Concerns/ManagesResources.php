@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Support\SocialProviderResponse;
+use Inovector\Mixpost\Util;
 
 trait ManagesResources
 {
@@ -18,10 +19,10 @@ trait ManagesResources
 
         return $this->buildResponse($response, function () use ($response) {
             $data = $response->json();
-
+            ds($data);
             return [
                 'id' => $data['id'],
-                'name' => $data['display_name'],
+                'name' => $data['display_name'] ?: $data['username'],
                 'username' => $data['username'],
                 'image' => $data['avatar'],
                 'data' => [
@@ -72,20 +73,16 @@ trait ManagesResources
         $ids = [];
 
         foreach ($media->slice(0, 4) as $item) {
-            $readStream = $item->readStream();
+            $stream = $item->readStream();
 
             $response = $this->buildResponse(
                 $this->getHttpClient()::timeout(60 * 10)
-                    ->attach('file', $readStream['stream'])
                     ->withToken($this->getAccessToken()['access_token'])
-                    ->post("$this->serverUrl/api/$this->apiVersion/media")
+                    ->attach('file', $stream['stream'])
+                    ->post("$this->serverUrl/api/v2/media")
             );
 
-            if (is_resource($readStream['stream'])) {
-                fclose($readStream['stream']);
-            }
-
-            $readStream['temporaryDirectory']?->delete();
+            Util::closeAndDeleteStreamResource($stream);
 
             if ($response->hasExceededRateLimit()) {
                 return $response;
@@ -97,16 +94,38 @@ trait ManagesResources
                 ]);
             }
 
-            if ($id = $response->id) {
-                $ids[] = $id;
-            } else {
+            if (!$response->id()) {
                 return $this->response(SocialProviderResponseStatus::ERROR, ['upload_failed']);
             }
+
+            if (!$response->url) {
+                // Asynchronous processing
+                Util::performTaskWithDelay(function () use ($response) {
+                    $media = $this->getMedia($response->id());
+
+                    if (!$media->url) {
+                        // Return null to continue checking
+                        return null;
+                    }
+
+                    return $media;
+                }, 30);
+            }
+
+            $ids[] = $response->id();
         }
 
         return $this->response(SocialProviderResponseStatus::OK, [
             'ids' => $ids
         ]);
+    }
+
+    public function getMedia(string $id): SocialProviderResponse
+    {
+        return $this->buildResponse(
+            $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
+                ->get("$this->serverUrl/api/$this->apiVersion/media/$id")
+        );
     }
 
     public function getAccountMetrics(): SocialProviderResponse
