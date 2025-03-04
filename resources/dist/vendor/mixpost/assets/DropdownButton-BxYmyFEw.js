@@ -1,1 +1,0 @@
-import{o as a,g as t,w as s,a as o,I as e}from"./app-D4ap1Rv0.js";import{E as r}from"./EllipsisVertical-GzXmE04y.js";const m={__name:"DropdownButton",setup(c){return(_,n)=>(a(),t(e,{class:"mt-1"},{default:s(()=>[o(r)]),_:1}))}};export{m as _};

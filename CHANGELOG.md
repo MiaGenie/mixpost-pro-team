@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.5.2 - 2025-02-21
+
+**Fixes**
+
+- Fixed video thumbnail generation when no keyframe is available at the requested time.
+
 ## 3.5.1 - 2025-02-12
 
 **Fixed**
