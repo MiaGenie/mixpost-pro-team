@@ -2,6 +2,13 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.3.4 - 2025-01-20
+
+**Fixes**
+
+- Fixed Mastodon get account function
+- Fixed Horizon URL in admin console
+
 ## 3.3.3 - 2025-01-11
 
 **Fixes**
