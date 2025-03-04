@@ -24,7 +24,7 @@ trait ManagesResources
 
             return [
                 'id' => $data['id'],
-                'name' => $data['name'],
+                'name' => $data['name'] ?? $data['username'],
                 'username' => $data['username'],
                 'image' => $data['threads_profile_picture_url'] ?? '',
             ];

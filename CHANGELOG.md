@@ -2,6 +2,21 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.3.0 - 2024-12-31
+
+**New features**
+
+- Integrated Threads platform
+- Begin processing analytics immediately after connecting a social account.
+
+**Fixes**
+
+- Fixed incorrect year display on the `Pick time` component
+
+**Changes**
+
+- Updated translations
+
 ## 3.2.0 - 2024-12-17
 
 **Fixes**
