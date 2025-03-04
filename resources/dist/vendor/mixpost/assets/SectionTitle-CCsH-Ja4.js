@@ -1,0 +1,1 @@
+import{A as t,o,c as s,z as c}from"./app-CSVNpRmm.js";const n={},r={class:"text-lg font-medium"};function a(e,l){return o(),s("div",r,[c(e.$slots,"default")])}const i=t(n,[["render",a]]);export{i as S};

@@ -9,6 +9,7 @@ import YoutubeIcon from "@/Icons/Youtube.vue";
 import PinterestIcon from "@/Icons/Pinterest.vue";
 import LinkedinIcon from "@/Icons/Linkedin.vue";
 import TikTokIcon from "@/Icons/TikTok.vue";
+import Threads from "../../Icons/Threads.vue";
 
 const props = defineProps({
     provider: {
@@ -23,6 +24,7 @@ const providers = {
     'facebook_page': FacebookIcon,
     'facebook_group': FacebookIcon,
     'instagram': InstagramIcon,
+    'threads': Threads,
     'mastodon': MastodonIcon,
     'youtube': YoutubeIcon,
     'pinterest': PinterestIcon,

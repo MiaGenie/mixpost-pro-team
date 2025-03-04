@@ -198,4 +198,8 @@ return [
   ],
   'provider_options' => ':provider možnosti',
   'services' => 'Služby',
+  'threads' => 
+  [
+    'connect' => 'Připojení nového profilu Threads',
+  ],
 ];

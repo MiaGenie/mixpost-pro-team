@@ -761,7 +761,10 @@
             }
         },
         "provider_options": "{provider} opcions",
-        "services": "Serveis"
+        "services": "Serveis",
+        "threads": {
+            "connect": "Connecteu un perfil nou de Threads"
+        }
     },
     "system": {
         "system": "Sistema",

@@ -248,7 +248,7 @@ const handleMediaMaxLimitError = ({used, limits, contentIndex, isThread, account
         }
     });
 
-    if (used.mixing && !limits.allow_mixing.count) {
+    if (used.mixing && !limits.allow_mixing.limit) {
         addAccountError({
             group: mediaErrorGroup,
             key: `c_${contentIndex}_mixing`,

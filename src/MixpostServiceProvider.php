@@ -26,6 +26,7 @@ use Inovector\Mixpost\Commands\Workspace\PruneTrashedPosts;
 use Inovector\Mixpost\Commands\Workspace\RunScheduledPosts;
 use Inovector\Mixpost\Concerns\UsesUserModel;
 use Inovector\Mixpost\Configs\ThemeConfig;
+use Inovector\Mixpost\Events\Account\AccountAdded;
 use Inovector\Mixpost\Events\Account\AccountUnauthorized;
 use Inovector\Mixpost\Events\Post\PostActivityCreated;
 use Inovector\Mixpost\Events\Post\PostCreated;
@@ -37,6 +38,7 @@ use Inovector\Mixpost\Events\Post\PostScheduleProcessing;
 use Inovector\Mixpost\Events\Post\PostSetDraft;
 use Inovector\Mixpost\Exceptions\MixpostExceptionHandler;
 use Inovector\Mixpost\Guards\AccessTokenGuard;
+use Inovector\Mixpost\Listeners\Account\HandleAccountImports;
 use Inovector\Mixpost\Listeners\Account\SendAccountUnauthorizedNotification;
 use Inovector\Mixpost\Listeners\HandleSystemWebhookEvent;
 use Inovector\Mixpost\Listeners\HandleWorkspaceWebhookEvent;
@@ -187,6 +189,7 @@ class MixpostServiceProvider extends PackageServiceProvider
         Event::listen(WebhookManager::systemEvents(), HandleSystemWebhookEvent::class);
         Event::listen(WebhookManager::workspaceEvents(), HandleWorkspaceWebhookEvent::class);
 
+        Event::listen(AccountAdded::class, HandleAccountImports::class);
         Event::listen(AccountUnauthorized::class, SendAccountUnauthorizedNotification::class);
         Event::listen(PostActivityCreated::class, HandlePostActivityCreatedEvent::class);
         Event::listen(PostCreated::class, SubscribePostToActivitiesNotification::class);

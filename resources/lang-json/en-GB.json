@@ -758,7 +758,10 @@
             }
         },
         "provider_options": "{provider} options",
-        "services": "Services"
+        "services": "Services",
+        "threads": {
+            "connect": "Connect a new Threads profile"
+        }
     },
     "system": {
         "system": "System",

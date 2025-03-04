@@ -20,7 +20,8 @@ class CheckAndRefreshAccountToken extends Command
             'youtube',
             'linkedin',
             'pinterest',
-            'tiktok'
+            'tiktok',
+            'threads',
         ];
     }
 

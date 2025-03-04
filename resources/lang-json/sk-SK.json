@@ -761,7 +761,10 @@
             }
         },
         "provider_options": "{provider} možnosti",
-        "services": "Služby"
+        "services": "Služby",
+        "threads": {
+            "connect": "Pripojenie nového profilu Threads"
+        }
     },
     "system": {
         "system": "Systém",

@@ -11,6 +11,7 @@ use Inovector\Mixpost\SocialProviders\Pinterest\Jobs\ImportPinterestFollowersJob
 use Inovector\Mixpost\SocialProviders\TikTok\Jobs\ImportTikTokFollowersJob;
 use Inovector\Mixpost\SocialProviders\Twitter\Jobs\ImportTwitterFollowersJob;
 use Inovector\Mixpost\SocialProviders\Linkedin\Jobs\ImportLinkedinPageFollowersJob;
+use Inovector\Mixpost\SocialProviders\Threads\Jobs\ImportAccountFollowersJob as ImportThreadsFollowersJob;
 
 class ImportAccountAudience extends Command
 {
@@ -27,6 +28,7 @@ class ImportAccountAudience extends Command
                 'twitter' => ImportTwitterFollowersJob::class,
                 'facebook_page' => ImportFacebookPageFollowersJob::class,
                 'instagram' => ImportInstagramFollowersJob::class,
+                'threads' => ImportThreadsFollowersJob::class,
                 'mastodon' => ImportMastodonFollowersJob::class,
                 'pinterest' => ImportPinterestFollowersJob::class,
                 'tiktok' => ImportTikTokFollowersJob::class,

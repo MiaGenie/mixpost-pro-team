@@ -761,7 +761,10 @@
             }
         },
         "provider_options": "{provider} aukerak",
-        "services": "Zerbitzuak"
+        "services": "Zerbitzuak",
+        "threads": {
+            "connect": "Konektatu Threads profil berri bat"
+        }
     },
     "system": {
         "system": "Sistema",

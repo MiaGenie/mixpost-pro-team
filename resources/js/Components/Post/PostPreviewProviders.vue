@@ -5,6 +5,7 @@ import PostPreviewTwitter from "@/Components/PostPreview/Twitter/PostPreviewTwit
 import PostPreviewFacebookPage from "@/Components/PostPreview/Facebook/PostPreviewFacebookPage.vue"
 import PostPreviewFacebookGroup from "@/Components/PostPreview/Facebook/PostPreviewFacebookGroup.vue"
 import PostPreviewInstagram from "@/Components/PostPreview/Instagram/PostPreviewInstagram.vue"
+import PostPreviewThreads from "@/Components/PostPreview/Threads/PostPreviewThreads.vue"
 import PostPreviewMastodon from "@/Components/PostPreview/PostPreviewMastodon.vue"
 import PostPreviewYoutube from "@/Components/PostPreview/PostPreviewYoutube.vue"
 import PostPreviewPinterest from "@/Components/PostPreview/PostPreviewPinterest.vue"
@@ -57,6 +58,7 @@ const previews = computed(() => {
                 'facebook_page': PostPreviewFacebookPage,
                 'facebook_group': PostPreviewFacebookGroup,
                 'instagram': PostPreviewInstagram,
+                'threads': PostPreviewThreads,
                 'mastodon': PostPreviewMastodon,
                 'youtube': PostPreviewYoutube,
                 'pinterest': PostPreviewPinterest,

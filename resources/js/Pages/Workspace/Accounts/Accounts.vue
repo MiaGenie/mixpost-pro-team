@@ -14,6 +14,7 @@ import AddTwitterAccount from "@/Components/Account/AddTwitterAccount.vue";
 import AddFacebookPage from "@/Components/Account/AddFacebookPage.vue";
 import AddMastodonAccount from "@/Components/Account/AddMastodonAccount.vue";
 import AddInstagramAccount from "@/Components/Account/AddInstagramAccount.vue";
+import AddThreadsAccount from "@/Components/Account/AddThreadsAccount.vue";
 import AddYoutubeAccount from "@/Components/Account/AddYoutubeAccount.vue";
 import AddPinterestAccount from "@/Components/Account/AddPinterestAccount.vue";
 import AddLinkedinProfile from "@/Components/Account/AddLinkedinProfile.vue";
@@ -338,6 +339,9 @@ watch(
             />
             <AddInstagramAccount
                 v-if="$page.props.is_service_active.facebook"
+            />
+            <AddThreadsAccount
+                v-if="$page.props.is_service_active.threads"
             />
             <AddMastodonAccount/>
             <AddYoutubeAccount

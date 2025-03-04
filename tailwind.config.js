@@ -80,9 +80,10 @@ module.exports = {
                     "900": "#064047"
                 },
                 facebook: '#1877f2',
+                instagram: '#E4405F',
+                threads: '#000000',
                 twitter: '#000000',
                 mastodon: '#6364FF',
-                instagram: '#E4405F',
                 google: '#4285F4',
                 youtube: '#FF0000',
                 pinterest: '#BD081C',

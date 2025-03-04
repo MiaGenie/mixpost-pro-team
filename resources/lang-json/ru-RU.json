@@ -761,7 +761,10 @@
             }
         },
         "provider_options": "{provider} опции",
-        "services": "Услуги"
+        "services": "Услуги",
+        "threads": {
+            "connect": "Подключите новый профиль Threads"
+        }
     },
     "system": {
         "system": "Система",

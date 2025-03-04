@@ -13,6 +13,7 @@ import OpenAI from "../../../Icons/OpenAI.vue";
 import Tenor from "../../../Icons/Tenor.vue";
 
 const FacebookServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/FacebookServiceForm.vue"));
+const ThreadsServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/ThreadsServiceForm.vue"));
 const GoogleServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/GoogleServiceForm.vue"));
 const PinterestServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/PinterestServiceForm.vue"));
 const LinkedInServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/LinkedInServiceForm.vue"));
@@ -24,9 +25,7 @@ const OpenAIServiceForm = defineAsyncComponent(() => import("@/Components/Servic
 
 defineOptions({layout: AdminLayout});
 
-const { t: $t } = useI18n()
-
-const pageTitle = $t("service.third_party_services");
+const { t: $t } = useI18n();
 
 const props = defineProps(['services'])
 
@@ -52,6 +51,14 @@ const tab = ref('facebook');
                     </template>
 
                     Facebook
+                </Tab>
+
+                <Tab @click="tab = 'threads'" :active="tab === 'threads'">
+                    <template #icon>
+                        <ProviderIcon provider="threads"/>
+                    </template>
+
+                    Threads
                 </Tab>
 
                 <Tab @click="tab = 'google'" :active="tab === 'google'">
@@ -115,6 +122,10 @@ const tab = ref('facebook');
         <div class="row-px">
             <template v-if="tab === 'facebook'">
                 <FacebookServiceForm :form="form.facebook"/>
+            </template>
+
+            <template v-if="tab === 'threads'">
+                <ThreadsServiceForm :form="form.threads"/>
             </template>
 
             <template v-if="tab === 'google'">

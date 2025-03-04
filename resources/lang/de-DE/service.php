@@ -198,4 +198,8 @@ return [
   ],
   'provider_options' => ':provider Optionen',
   'services' => 'Dienstleistungen',
+  'threads' => 
+  [
+    'connect' => 'Ein neues Threads-Profil verbinden',
+  ],
 ];

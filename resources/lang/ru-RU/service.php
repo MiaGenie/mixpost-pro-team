@@ -198,4 +198,8 @@ return [
   ],
   'provider_options' => ':provider опции',
   'services' => 'Услуги',
+  'threads' => 
+  [
+    'connect' => 'Подключите новый профиль Threads',
+  ],
 ];

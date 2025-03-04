@@ -2,6 +2,17 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.2.0 - 2024-12-17
+
+**Fixes**
+
+- Fixed issue with X video/GIF media uploads.
+- Fixed issue with deleting temporarily downloaded media for the Facebook platform.
+
+**Miscellaneous**
+
+- New command and schedule for pruning the temporary media directory.
+
 ## 3.1.1 - 2024-12-07
 
 **Changes**

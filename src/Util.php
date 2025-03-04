@@ -135,7 +135,9 @@ class Util
             fclose($stream['stream']);
         }
 
-        $stream['temporaryDirectory']?->delete();
+        if (isset($stream['temporaryDirectory'])) {
+            $stream['temporaryDirectory']->delete();
+        }
     }
 
     public static function performHttpRequestWithTimeoutRetries(callable $httpRequestFunction, int $timeout = 30, int $maxAttempts = 3)

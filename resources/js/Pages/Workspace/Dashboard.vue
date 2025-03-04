@@ -14,6 +14,7 @@ import TwitterReports from "@/Components/Report/TwitterReports.vue"
 import FacebookPageReports from "@/Components/Report/FacebookPageReports.vue"
 import FacebookGroupReports from "@/Components/Report/FacebookGroupReports.vue"
 import InstagramReports from "@/Components/Report/InstagramReports.vue"
+import ThreadsReports from "@/Components/Report/ThreadsReports.vue"
 import MastodonReports from "@/Components/Report/MastodonReports.vue"
 import PinterestReports from "@/Components/Report/PinterestReports.vue"
 import LinkedinReports from "@/Components/Report/LinkedinReports.vue"
@@ -79,6 +80,7 @@ const providers = {
     'facebook_page': FacebookPageReports,
     'facebook_group': FacebookGroupReports,
     'instagram': InstagramReports,
+    'threads': ThreadsReports,
     'mastodon': MastodonReports,
     'pinterest': PinterestReports,
     'linkedin': LinkedinReports,

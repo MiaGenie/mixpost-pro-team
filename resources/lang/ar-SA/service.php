@@ -199,4 +199,8 @@ return [
   ],
   'provider_options' => 'خيارات :provider.',
   'services' => 'خدمات',
+  'threads' => 
+  [
+    'connect' => 'ربط ملف تعريف Threads جديد',
+  ],
 ];

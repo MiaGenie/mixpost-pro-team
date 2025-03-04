@@ -14,6 +14,7 @@ use Inovector\Mixpost\Reports\LinkedinPageReports;
 use Inovector\Mixpost\Reports\LinkedinReports;
 use Inovector\Mixpost\Reports\MastodonReports;
 use Inovector\Mixpost\Reports\PinterestReports;
+use Inovector\Mixpost\Reports\ThreadsReports;
 use Inovector\Mixpost\Reports\TikTokReports;
 use Inovector\Mixpost\Reports\TwitterReports;
 use Inovector\Mixpost\Reports\YoutubeReports;
@@ -37,6 +38,7 @@ class Reports extends FormRequest
             'facebook_page' => FacebookPageReports::class,
             'facebook_group' => FacebookGroupReports::class,
             'instagram' => InstagramReports::class,
+            'threads' => ThreadsReports::class,
             'mastodon' => MastodonReports::class,
             'pinterest' => PinterestReports::class,
             'linkedin' => LinkedinReports::class,

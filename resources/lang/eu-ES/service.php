@@ -198,4 +198,8 @@ return [
   ],
   'provider_options' => ':provider aukerak',
   'services' => 'Zerbitzuak',
+  'threads' => 
+  [
+    'connect' => 'Konektatu Threads profil berri bat',
+  ],
 ];

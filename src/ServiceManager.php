@@ -17,6 +17,7 @@ use Inovector\Mixpost\Services\LinkedInService;
 use Inovector\Mixpost\Services\OpenAIService;
 use Inovector\Mixpost\Services\PinterestService;
 use Inovector\Mixpost\Services\TenorService;
+use Inovector\Mixpost\Services\ThreadsService;
 use Inovector\Mixpost\Services\TikTokService;
 use Inovector\Mixpost\Services\TwitterService;
 use Inovector\Mixpost\Services\UnsplashService;
@@ -38,6 +39,7 @@ class ServiceManager
     {
         return [
             FacebookService::class,
+            ThreadsService::class,
             GoogleService::class,
             TwitterService::class,
             LinkedInService::class,

@@ -198,4 +198,8 @@ return [
   ],
   'provider_options' => ':provider opțiuni',
   'services' => 'Servicii',
+  'threads' => 
+  [
+    'connect' => 'Conectați un nou profil Threads',
+  ],
 ];

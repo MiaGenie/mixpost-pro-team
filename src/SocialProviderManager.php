@@ -11,6 +11,7 @@ use Inovector\Mixpost\SocialProviders\Mastodon\MastodonProvider;
 use Inovector\Mixpost\SocialProviders\Meta\FacebookPageProvider;
 use Inovector\Mixpost\SocialProviders\Meta\InstagramProvider;
 use Inovector\Mixpost\SocialProviders\Pinterest\PinterestProvider;
+use Inovector\Mixpost\SocialProviders\Threads\ThreadsProvider;
 use Inovector\Mixpost\SocialProviders\TikTok\TikTokProvider;
 use Inovector\Mixpost\SocialProviders\Twitter\TwitterProvider;
 
@@ -28,6 +29,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
             'twitter' => TwitterProvider::class,
             'facebook_page' => FacebookPageProvider::class,
             'instagram' => InstagramProvider::class,
+            'threads' => ThreadsProvider::class,
             'mastodon' => MastodonProvider::class,
             'youtube' => YoutubeProvider::class,
             'pinterest' => PinterestProvider::class,
@@ -55,17 +57,6 @@ class SocialProviderManager extends SocialProviderManagerAbstract
         return $this->buildConnectionProvider(FacebookPageProvider::class, $config);
     }
 
-// @deprecated
-// We will remove this feature soon
-//    protected function connectFacebookGroupProvider()
-//    {
-//        $config = ServiceManager::get('facebook', 'configuration');
-//
-//        $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'facebook_group']);
-//
-//        return $this->buildConnectionProvider(FacebookGroupProvider::class, $config);
-//    }
-
     protected function connectInstagramProvider()
     {
         $config = ServiceManager::get('facebook', 'configuration');
@@ -73,6 +64,15 @@ class SocialProviderManager extends SocialProviderManagerAbstract
         $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'instagram']);
 
         return $this->buildConnectionProvider(InstagramProvider::class, $config);
+    }
+
+    protected function connectThreadsProvider()
+    {
+        $config = ServiceManager::get('threads', 'configuration');
+
+        $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'threads']);
+
+        return $this->buildConnectionProvider(ThreadsProvider::class, $config);
     }
 
     protected function connectYoutubeProvider()
