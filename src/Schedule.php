@@ -49,7 +49,7 @@ class Schedule
                 $schedule
                     ->job(new WorkspaceArtisanJob($workspace, 'mixpost:check-and-refresh-account-token'))
                     ->name("$workspace->name - mixpost:check-and-refresh-account-token")
-                    ->everyFifteenMinutes();
+                    ->everyTenMinutes();
 
                 $schedule
                     ->job(new WorkspaceArtisanJob($workspace, 'mixpost:prune-trashed-posts'))

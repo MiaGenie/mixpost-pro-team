@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Neznáma chyba',
   'service_auth_failed' => 'Autentifikácia zlyhala! Overte prosím svoje poverenia služby :service.',
   'page_expired' => 'Platnosť stránky vypršala, skúste to prosím znova.',
+  'backend' => 
+  [
+    'missing_code' => 'Neplatná požiadavka. Chýba parameter kódu.',
+  ],
+  'invalid_grant' => 'Neplatné poverenia alebo vypršala platnosť oprávnenia.',
 ];

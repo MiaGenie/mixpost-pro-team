@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use Inovector\Mixpost\Contracts\ProviderReports;
 use Inovector\Mixpost\Facades\WorkspaceManager;
 use Inovector\Mixpost\Models\Account;
+use Inovector\Mixpost\Reports\BlueskyReports;
 use Inovector\Mixpost\Reports\FacebookGroupReports;
 use Inovector\Mixpost\Reports\FacebookPageReports;
 use Inovector\Mixpost\Reports\InstagramReports;
@@ -45,6 +46,7 @@ class Reports extends FormRequest
             'linkedin_page' => LinkedinPageReports::class,
             'tiktok' => TikTokReports::class,
             'youtube' => YoutubeReports::class,
+            'bluesky' => BlueskyReports::class,
             default => null
         };
 

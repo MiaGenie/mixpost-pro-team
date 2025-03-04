@@ -22,10 +22,10 @@ abstract class SocialProvider implements SocialProviderContract
 {
     use UsesSocialProviderResponse;
 
-    // For some social service providers, it is enough that the user himself can manage the content.
-    // But some providers, such as Facebook, require a user account to select some entities to manage (pages or groups).
-    // When you need to change this value, just overwrite it in the provider class that extends this class.
-    // In case of `false` value, `getEntities()` method is required.
+    /**
+     * Some providers support one account (e.g., X, TikTok).
+     * Others, like Facebook, need a user account to manage entities.
+     */
     public bool $onlyUserAccount = true;
 
     public array $callbackResponseKeys = [];
@@ -38,7 +38,7 @@ abstract class SocialProvider implements SocialProviderContract
 
     protected array $values = [];
 
-    const ACCESS_TOKEN_SESSION_NAME = 'mixpost_provider_access_token';
+    const ACCESS_TOKEN_SESSION_NAME = 'mixpost_provider_access_token'; // TODO: remove this line?
 
     public function __construct(Request $request, string $clientId, string $clientSecret, string $redirectUrl, array $values = [])
     {
@@ -73,12 +73,11 @@ abstract class SocialProvider implements SocialProviderContract
         return $this->request->only($this->callbackResponseKeys);
     }
 
-    // Use this method into web app. For example, in Controllers..etc.
     public function setAccessToken(array $token = []): void
     {
         $this->accessToken = $token;
 
-        $this->request->session()->put(self::ACCESS_TOKEN_SESSION_NAME, $token);
+        $this->request->session()->put(self::ACCESS_TOKEN_SESSION_NAME, $token); // TODO: remove this line?
     }
 
     public function getAccessToken()
@@ -87,7 +86,7 @@ abstract class SocialProvider implements SocialProviderContract
             return $this->accessToken;
         }
 
-        $token = $this->request->session()->get(self::ACCESS_TOKEN_SESSION_NAME);
+        $token = $this->request->session()->get(self::ACCESS_TOKEN_SESSION_NAME); // TODO: remove this line?
 
         if (!$token) {
             throw new Exception('Missing Access Token.');
@@ -107,7 +106,7 @@ abstract class SocialProvider implements SocialProviderContract
     public function forgetAccessToken(): void
     {
         $this->accessToken = [];
-        $this->request->session()->forget(self::ACCESS_TOKEN_SESSION_NAME);
+        $this->request->session()->forget(self::ACCESS_TOKEN_SESSION_NAME); // TODO: remove this line?
     }
 
     public function hasRefreshToken(): bool
@@ -122,7 +121,7 @@ abstract class SocialProvider implements SocialProviderContract
         $expires_in = $this->getAccessToken()['expires_in'];
 
         $expiresAt = Carbon::createFromTimestamp($expires_in, 'UTC');
-        $minutesAhead = Carbon::now('UTC')->addMinutes(10);
+        $minutesAhead = Carbon::now('UTC')->addMinutes(12);
 
         return $expiresAt->lte($minutesAhead);
     }

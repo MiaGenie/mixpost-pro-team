@@ -2,25 +2,26 @@
 
 namespace Inovector\Mixpost\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Exception;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inovector\Mixpost\Concerns\Model\HasUuid;
+use Inovector\Mixpost\Concerns\Model\Media\HasImageData;
 use Inovector\Mixpost\Concerns\OwnedByWorkspace;
-use Inovector\Mixpost\Support\MediaFilesystem;
-use Inovector\Mixpost\Support\MediaTemporaryDirectory;
+use Inovector\Mixpost\Support\TemporaryFile;
 use League\Flysystem\FilesystemAdapter;
 use League\Flysystem\Local\LocalFilesystemAdapter;
-use Exception;
 
 class Media extends Model
 {
     use HasFactory;
     use HasUuid;
     use OwnedByWorkspace;
+    use HasImageData;
 
     public $table = 'mixpost_media';
 
@@ -114,13 +115,14 @@ class Media extends Model
 
         // Download from external adapter (s3...etc.) and read the stream
         if (!$this->isLocalAdapter()) {
-            $temporaryDirectory = MediaTemporaryDirectory::create();
-            $tempFilePath = $temporaryDirectory->path($path);
-            MediaFilesystem::copyFromDisk($path, $disk, $tempFilePath);
+            $temporaryFile = TemporaryFile::make()->fromDisk(
+                sourceDisk: $disk,
+                sourceFilepath: $path
+            );
 
             return [
-                'stream' => fopen($tempFilePath, 'r'),
-                'temporaryDirectory' => $temporaryDirectory,
+                'stream' => $temporaryFile->readStream(),
+                'temporaryDirectory' => $temporaryFile->directory(),
             ];
         }
 
@@ -139,13 +141,14 @@ class Media extends Model
         $disk = $this->disk;
         $path = $this->path;
 
-        $temporaryDirectory = MediaTemporaryDirectory::create();
-        $tempFilePath = $temporaryDirectory->path($path);
-        MediaFilesystem::copyFromDisk($path, $disk, $tempFilePath);
+        $temporaryFile = TemporaryFile::make()->fromDisk(
+            sourceDisk: $disk,
+            sourceFilepath: $path
+        );
 
         return [
-            'temporaryDirectory' => $temporaryDirectory,
-            'fullPath' => $tempFilePath,
+            'temporaryDirectory' => $temporaryFile->directory(),
+            'fullPath' => $temporaryFile->path(),
         ];
     }
 

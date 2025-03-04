@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Erreur inconnue',
   'service_auth_failed' => 'L\'authentification a échoué ! Veuillez vérifier vos informations d\'identification pour le service :service.',
   'page_expired' => 'La page a expiré, veuillez réessayer.',
+  'backend' => 
+  [
+    'missing_code' => 'Requête invalide. Paramètre de code manquant.',
+  ],
+  'invalid_grant' => 'Informations d\'identification non valides ou autorisation expirée.',
 ];

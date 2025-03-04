@@ -2,6 +2,7 @@
 import {computed, inject, ref} from "vue";
 import {Head} from '@inertiajs/vue3';
 import {router} from "@inertiajs/vue3";
+import emitter from "@/Services/emitter";
 import usePostVersions from "@/Composables/usePostVersions";
 import useMedia from "@/Composables/useMedia";
 import PageHeader from '@/Components/DataDisplay/PageHeader.vue';
@@ -86,6 +87,7 @@ const deleteSelectedItems = () => {
     deletePermanently(items, () => {
         deselectAll();
         sourceProperties.value.removeItems(items);
+        emitter.emit('mediaDelete', items);
         confirmationDeletion.value = false;
     })
 }

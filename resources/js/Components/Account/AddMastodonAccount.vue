@@ -73,9 +73,12 @@ const connect = async () => {
             </HorizontalGroup>
 
             <PrimaryButton @click="connect" :disabled="!server || isLoading" :isLoading="isLoading"
-                           class="mt-xs md:mt-0">
-                <span class="mr-xs">{{ $t("general.next") }}</span>
-                <span><ArrowRightIcon class="!w-5 !h-5"/></span>
+                           size="md"
+                           class="mt-lg">
+                <template #icon>
+                    <ArrowRightIcon/>
+                </template>
+                {{ $t("general.next") }}
             </PrimaryButton>
         </div>
     </div>

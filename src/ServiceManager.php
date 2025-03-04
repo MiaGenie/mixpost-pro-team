@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Inovector\Mixpost\Collection\ServiceCollection;
 use Inovector\Mixpost\Exceptions\ServiceNotRegistered;
 use Inovector\Mixpost\Models\Service as ServiceModel;
+use Inovector\Mixpost\Services\Bluesky\BlueskyService;
 use Inovector\Mixpost\Services\FacebookService;
 use Inovector\Mixpost\Services\GoogleService;
 use Inovector\Mixpost\Services\LinkedInService;
@@ -40,6 +41,7 @@ class ServiceManager
         return [
             FacebookService::class,
             ThreadsService::class,
+            BlueskyService::class,
             GoogleService::class,
             TwitterService::class,
             LinkedInService::class,

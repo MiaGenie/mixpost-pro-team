@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Platnosť tohto odkazu na obnovenie hesla vyprší za :count minút.',
       'no_password_reset_required' => 'Ak ste nepožiadali o obnovenie hesla, nie sú potrebné žiadne ďalšie kroky.',
     ],
+    'failed' => 'Autentifikácia zlyhala.',
   ],
 ];

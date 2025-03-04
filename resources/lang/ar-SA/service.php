@@ -203,4 +203,10 @@ return [
   [
     'connect' => 'ربط ملف تعريف Threads جديد',
   ],
+  'bluesky' => 
+  [
+    'connect_profile' => 'ربط ملف تعريفي جديد على Bluesky',
+    'service' => 'خدمة',
+    'server_address' => 'عنوان الخادم',
+  ],
 ];

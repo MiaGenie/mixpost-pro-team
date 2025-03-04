@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Errore ezezaguna',
   'service_auth_failed' => 'Autentifikazioak huts egin du! Egiaztatu zure :service zerbitzuaren kredentzialak.',
   'page_expired' => 'Orrialdea iraungi da, saiatu berriro.',
+  'backend' => 
+  [
+    'missing_code' => 'Eskaera baliogabea. Kode parametroa falta da.',
+  ],
+  'invalid_grant' => 'Kredentzialak baliogabeak edo iraungitako baimena.',
 ];

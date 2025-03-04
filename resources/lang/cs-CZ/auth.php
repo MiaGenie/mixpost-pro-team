@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Platnost tohoto odkazu pro obnovu hesla vyprší za :count minut.',
       'no_password_reset_required' => 'Pokud jste o obnovu hesla nepožádali vy, není potřeba podnikat žádné další kroky.',
     ],
+    'failed' => 'Ověření se nezdařilo.',
   ],
 ];

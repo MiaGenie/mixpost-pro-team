@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Errore sconosciuto',
   'service_auth_failed' => 'Autenticazione fallita! Verificare le credenziali del servizio :service.',
   'page_expired' => 'La pagina è scaduta, riprovare.',
+  'backend' => 
+  [
+    'missing_code' => 'Richiesta non valida. Parametro codice mancante.',
+  ],
+  'invalid_grant' => 'Credenziali non valide o autorizzazione scaduta.',
 ];

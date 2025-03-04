@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Acest link de resetare a parolei va expira în :count minute.',
       'no_password_reset_required' => 'Dacă nu ați solicitat o resetare a parolei, nu este necesară nicio altă acțiune.',
     ],
+    'failed' => 'Autentificarea a eșuat.',
   ],
 ];

@@ -47,5 +47,6 @@ return [
       'password_reset_link_expiry' => 'Ce lien de réinitialisation du mot de passe expirera dans :count minutes.',
       'no_password_reset_required' => 'Si vous n\'avez pas demandé la réinitialisation de votre mot de passe, aucune autre action n\'est requise.',
     ],
+    'failed' => 'L\'authentification a échoué.',
   ],
 ];

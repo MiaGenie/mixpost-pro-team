@@ -239,7 +239,8 @@
         "request_timeout": "معذرة انتهى وقت الطلب. حاول مره اخرى.",
         "unknown_error": "خطأ غير معروف",
         "service_auth_failed": "المصادقة فشلت! يرجى التحقق من بيانات اعتماد خدمة {service}.",
-        "page_expired": "انتهت صلاحية الصفحة، يرجى المحاولة مرة أخرى."
+        "page_expired": "انتهت صلاحية الصفحة، يرجى المحاولة مرة أخرى.",
+        "invalid_grant": "بيانات اعتماد غير صالحة أو ترخيص منتهي الصلاحية."
     },
     "finance": {
         "billing": "الفواتير"
@@ -764,6 +765,11 @@
         "services": "خدمات",
         "threads": {
             "connect": "ربط ملف تعريف Threads جديد"
+        },
+        "bluesky": {
+            "connect_profile": "ربط ملف تعريفي جديد على Bluesky",
+            "service": "خدمة",
+            "server_address": "عنوان الخادم"
         }
     },
     "system": {

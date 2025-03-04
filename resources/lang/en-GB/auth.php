@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'This password reset link will expire in :count minutes.',
       'no_password_reset_required' => 'If you did not request a password reset, no further action is required.',
     ],
+    'failed' => 'Authentication failed.',
   ],
 ];

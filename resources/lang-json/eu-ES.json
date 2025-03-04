@@ -239,7 +239,8 @@
         "request_timeout": "Eskaerak denbora-muga gainditu du. Saiatu berriro.",
         "unknown_error": "Errore ezezaguna",
         "service_auth_failed": "Autentifikazioak huts egin du! Egiaztatu zure {service} zerbitzuaren kredentzialak.",
-        "page_expired": "Orrialdea iraungi da, saiatu berriro."
+        "page_expired": "Orrialdea iraungi da, saiatu berriro.",
+        "invalid_grant": "Kredentzialak baliogabeak edo iraungitako baimena."
     },
     "finance": {
         "billing": "Fakturazioa"
@@ -764,6 +765,11 @@
         "services": "Zerbitzuak",
         "threads": {
             "connect": "Konektatu Threads profil berri bat"
+        },
+        "bluesky": {
+            "connect_profile": "Konektatu Bluesky profil berri bat",
+            "service": "Zerbitzua",
+            "server_address": "Zerbitzariaren helbidea"
         }
     },
     "system": {

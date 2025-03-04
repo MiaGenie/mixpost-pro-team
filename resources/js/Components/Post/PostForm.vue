@@ -478,10 +478,10 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
 
                                         <TemplateManager
                                             :postContent="content"
-                                            @insert="(event)=> {
-                                        updateContent(index, 'media', event.content[index].media);
-                                        insertContent({editorId: `postEditor-${index}`, text: event.content[index].body})
-                                    }"
+                                            @insert="($event)=> {
+                                                updateContent(index, 'media', $event.content[0].media);
+                                                insertContent({editorId: `postEditor-${index}`, text: $event.content[0].body})
+                                            }"
                                         />
 
                                         <template v-if="$page.props.ai_is_ready_to_use">
@@ -514,11 +514,13 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                             </template>
                         </Editor>
 
-                        <PostContentValidator
-                            :selectedAccounts="selectedAccounts"
-                            :activeVersion="activeVersion"
-                            :activeContent="index"
-                            :versions="form.versions"/>
+                        <template v-if="selectedAccounts.length">
+                            <PostContentValidator
+                                :selectedAccounts="selectedAccounts"
+                                :activeVersion="activeVersion"
+                                :activeContent="index"
+                                :versions="form.versions"/>
+                        </template>
                     </template>
 
                     <template v-if="!item.opened">

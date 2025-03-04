@@ -1,7 +1,8 @@
 <script setup>
-import {computed, inject, ref, watch} from "vue";
+import {computed, inject, onMounted, onUnmounted, ref, watch} from "vue";
 import {usePage} from "@inertiajs/vue3";
 import {nanoid} from 'nanoid'
+import emitter from "@/Services/emitter";
 import Masonry from "@/Components/Layout/Masonry.vue";
 import MediaFile from "@/Components/Media/MediaFile.vue";
 import MediaSelectable from "@/Components/Media/MediaSelectable.vue";
@@ -163,7 +164,17 @@ const completedJobs = computed(() => {
     return completed.value.filter(() => true).reverse();
 });
 
-const selected = ref([]);
+onMounted(() => {
+    emitter.on('mediaDelete', ids => {
+        completed.value = completed.value.filter((job) => {
+            return !ids.includes(job.media.id);
+        });
+    });
+});
+
+onUnmounted(() => {
+    emitter.off('mediaDelete');
+})
 </script>
 <template>
     <div @dragenter.prevent="dragEnter = !isLoading"

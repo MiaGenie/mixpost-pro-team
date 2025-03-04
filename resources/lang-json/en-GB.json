@@ -239,7 +239,8 @@
         "request_timeout": "Request timeout. Try again.",
         "unknown_error": "Unknown error",
         "service_auth_failed": "Authentication failed! Please verify your {service} service credentials.",
-        "page_expired": "The page expired, please try again."
+        "page_expired": "The page expired, please try again.",
+        "invalid_grant": "Invalid credentials or expired authorization."
     },
     "finance": {
         "billing": "Billing"
@@ -761,6 +762,11 @@
         "services": "Services",
         "threads": {
             "connect": "Connect a new Threads profile"
+        },
+        "bluesky": {
+            "connect_profile": "Connect a new Bluesky profile",
+            "service": "Service",
+            "server_address": "Server Address"
         }
     },
     "system": {

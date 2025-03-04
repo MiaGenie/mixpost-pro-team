@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Error desconocido',
   'service_auth_failed' => 'Error de autenticación. Por favor, verifique sus credenciales de servicio :service.',
   'page_expired' => 'La página ha caducado, inténtelo de nuevo.',
+  'backend' => 
+  [
+    'missing_code' => 'Solicitud no válida. Falta parámetro de código.',
+  ],
+  'invalid_grant' => 'Credenciales no válidas o autorización caducada.',
 ];

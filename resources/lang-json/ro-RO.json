@@ -239,7 +239,8 @@
         "request_timeout": "Timpul de așteptare a cererii a expirat. Încercați din nou.",
         "unknown_error": "Eroare necunoscută",
         "service_auth_failed": "Autentificarea a eșuat! Vă rugăm să verificați acreditările de serviciu {service}.",
-        "page_expired": "Pagina a expirat, vă rugăm să încercați din nou."
+        "page_expired": "Pagina a expirat, vă rugăm să încercați din nou.",
+        "invalid_grant": "Acreditări invalide sau autorizație expirată."
     },
     "finance": {
         "billing": "Facturare"
@@ -764,6 +765,11 @@
         "services": "Servicii",
         "threads": {
             "connect": "Conectați un nou profil Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Conectați un nou profil Bluesky",
+            "service": "Service",
+            "server_address": "Adresa serverului"
         }
     },
     "system": {

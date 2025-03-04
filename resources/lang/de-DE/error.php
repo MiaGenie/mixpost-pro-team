@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Unbekannter Fehler',
   'service_auth_failed' => 'Authentifizierung fehlgeschlagen! Bitte überprüfe deine :service-Anmeldedaten.',
   'page_expired' => 'Die Seite ist abgelaufen, bitte versuche es erneut.',
+  'backend' => 
+  [
+    'missing_code' => 'Ungültige Anfrage. Fehlender Code-Parameter.',
+  ],
+  'invalid_grant' => 'Ungültige Anmeldedaten oder abgelaufene Berechtigung.',
 ];

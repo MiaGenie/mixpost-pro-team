@@ -26,7 +26,7 @@ const props = defineProps({
                 <div class="flex flex-wrap gap-xs mt-xs">
                     <template v-for="itemMedia in template.content[0].media">
                         <div>
-                            <MediaFile :media="itemMedia" img-height="sm"/>
+                            <MediaFile :media="itemMedia" img-height="sm" :imgWidthFull="false" :showCaption="false"/>
                         </div>
                     </template>
                 </div>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Arr;
 use Inovector\Mixpost\Actions\Account\UpdateOrCreateAccount;
+use Inovector\Mixpost\Exceptions\OAuthInvalidGrant;
+use Inovector\Mixpost\Exceptions\OAuthSessionExpired;
 use Inovector\Mixpost\Facades\SocialProviderManager;
 use Inovector\Mixpost\Facades\WorkspaceManager;
 
@@ -14,15 +16,20 @@ class CallbackSocialProviderController extends Controller
 {
     public function __invoke(Request $request, UpdateOrCreateAccount $updateOrCreateAccount, string $providerName): RedirectResponse
     {
-        $provider = SocialProviderManager::connect($providerName);
+        try {
+            $provider = SocialProviderManager::connect($providerName);
+        } catch (OAuthSessionExpired $e) {
+            return $this->redirectToAccounts()->with('error', __('mixpost::error.page_expired'));
+        } catch (OAuthInvalidGrant $e) {
+            return $this->redirectToAccounts()->with('error', __('mixpost::error.invalid_grant'));
+        }
 
         if (empty($provider->getCallbackResponse())) {
-            return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid]);
+            return $this->redirectToAccounts();
         }
 
         if ($error = $request->get('error')) {
-            return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid])
-                ->with('error', $error);
+            return $this->redirectToAccounts()->with('error', $error);
         }
 
         if (!$provider->isOnlyUserAccount()) {
@@ -33,8 +40,7 @@ class CallbackSocialProviderController extends Controller
         $accessToken = $provider->requestAccessToken($provider->getCallbackResponse());
 
         if ($error = Arr::get($accessToken, 'error')) {
-            return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid])
-                ->with('error', $error);
+            return $this->redirectToAccounts()->with('error', $error);
         }
 
         $provider->setAccessToken($accessToken);
@@ -44,12 +50,16 @@ class CallbackSocialProviderController extends Controller
         if ($account->hasError()) {
             $message = $account->hasExceededRateLimit() ? $account->message : __('mixpost::error.try_again');
 
-            return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid])
-                ->with('error', $message);
+            return $this->redirectToAccounts()->with('error', $message);
         }
 
         $updateOrCreateAccount($providerName, $account->context(), $accessToken);
 
+        return $this->redirectToAccounts();
+    }
+
+    protected function redirectToAccounts(): RedirectResponse
+    {
         return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid]);
     }
 }

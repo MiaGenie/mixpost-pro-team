@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Error desconegut',
   'service_auth_failed' => 'L\'autenticació ha fallat! Verifiqueu les vostres credencials de servei :service.',
   'page_expired' => 'La pàgina ha caducat, torna-ho a provar.',
+  'backend' => 
+  [
+    'missing_code' => 'Sol·licitud no vàlida. Falta el paràmetre del codi.',
+  ],
+  'invalid_grant' => 'Credencials no vàlides o autorització caducada.',
 ];

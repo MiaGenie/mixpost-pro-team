@@ -5,9 +5,10 @@ namespace Inovector\Mixpost\Http\Base\Requests\Workspace;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\File;
+use Inovector\Mixpost\Abstracts\Image;
+use Inovector\Mixpost\Concerns\UsesMediaPath;
 use Inovector\Mixpost\Events\Media\UploadingMediaFile;
-use Inovector\Mixpost\Facades\WorkspaceManager;
-use Inovector\Mixpost\MediaConversions\MediaImageResizeConversion;
+use Inovector\Mixpost\MediaConversions\MediaImageResizerConversion;
 use Inovector\Mixpost\MediaConversions\MediaVideoThumbConversion;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Support\MediaUploader;
@@ -15,6 +16,8 @@ use Inovector\Mixpost\Util;
 
 class MediaUploadFile extends FormRequest
 {
+    use UsesMediaPath;
+
     public function rules(): array
     {
         return [
@@ -69,13 +72,10 @@ class MediaUploadFile extends FormRequest
     {
         UploadingMediaFile::dispatch($this->file('file'));
 
-        $prefix = WorkspaceManager::current()->uuid;
-        $date = now()->format('m-Y');
-
         return MediaUploader::fromFile($this->file('file'))
-            ->path("$prefix/uploads/$date")
+            ->path(self::mediaWorkspacePathWithDateSubpath())
             ->conversions([
-                MediaImageResizeConversion::name('thumb')->width(430),
+                MediaImageResizerConversion::name('thumb')->width(Image::MEDIUM_WIDTH)->height(Image::MEDIUM_HEIGHT),
                 MediaVideoThumbConversion::name('thumb')->atSecond(5)
             ])
             ->uploadAndInsert();

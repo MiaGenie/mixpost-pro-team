@@ -239,7 +239,8 @@
         "request_timeout": "Časový limit požiadavky. Skúste to znova.",
         "unknown_error": "Neznáma chyba",
         "service_auth_failed": "Autentifikácia zlyhala! Overte prosím svoje poverenia služby {service}.",
-        "page_expired": "Platnosť stránky vypršala, skúste to prosím znova."
+        "page_expired": "Platnosť stránky vypršala, skúste to prosím znova.",
+        "invalid_grant": "Neplatné poverenia alebo vypršala platnosť oprávnenia."
     },
     "finance": {
         "billing": "Fakturácia"
@@ -764,6 +765,11 @@
         "services": "Služby",
         "threads": {
             "connect": "Pripojenie nového profilu Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Pripojenie nového profilu Bluesky",
+            "service": "Služba",
+            "server_address": "Adresa servera"
         }
     },
     "system": {

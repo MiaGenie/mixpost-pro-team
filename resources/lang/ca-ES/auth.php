@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Aquest enllaç de restabliment de la contrasenya caducarà d\'aquí a :count minuts.',
       'no_password_reset_required' => 'Si no heu sol·licitat un restabliment de la contrasenya, no cal fer cap altra acció.',
     ],
+    'failed' => 'L\'autenticació ha fallat.',
   ],
 ];

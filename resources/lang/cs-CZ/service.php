@@ -202,4 +202,10 @@ return [
   [
     'connect' => 'Připojení nového profilu Threads',
   ],
+  'bluesky' => 
+  [
+    'connect_profile' => 'Připojení nového profilu Bluesky',
+    'service' => 'Služba',
+    'server_address' => 'Adresa serveru',
+  ],
 ];

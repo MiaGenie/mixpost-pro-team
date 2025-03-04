@@ -5,18 +5,20 @@ namespace Inovector\Mixpost\Http\Base\Requests\Workspace;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Inovector\Mixpost\Abstracts\Image;
+use Inovector\Mixpost\Concerns\UsesMediaPath;
 use Inovector\Mixpost\Events\Media\UploadingMediaFile;
-use Inovector\Mixpost\Facades\WorkspaceManager;
 use Inovector\Mixpost\Integrations\Unsplash\Jobs\TriggerDownloadJob;
-use Inovector\Mixpost\MediaConversions\MediaImageResizeConversion;
+use Inovector\Mixpost\MediaConversions\MediaImageResizerConversion;
 use Inovector\Mixpost\Support\File;
 use Inovector\Mixpost\Support\MediaUploader;
 use Inovector\Mixpost\Util;
 
 class MediaDownloadExternal extends FormRequest
 {
+    use UsesMediaPath;
+
     public function rules(): array
     {
         return [
@@ -54,18 +56,22 @@ class MediaDownloadExternal extends FormRequest
     public function handle(): Collection
     {
         return collect($this->input('items'))->map(function ($item) {
-            $result = Http::get($item['url']);
+            $response = File::fetchUrl($item['url']);
 
-            $file = File::fromBase64(base64_encode($result->body()));
+            if (!$response->successful()) {
+                return null;
+            }
+
+            $file = File::fromBase64(
+                base64File: base64_encode($response->body()),
+                filename: File::getFilenameFromHttpResponse($response)
+            );
 
             UploadingMediaFile::dispatch($file);
 
-            $prefix = WorkspaceManager::current()->uuid;
-            $date = now()->format('m-Y');
-
-            $media = MediaUploader::fromFile($file)->path("$prefix/uploads/$date")
+            $media = MediaUploader::fromFile($file)->path(self::mediaWorkspacePathWithDateSubpath())
                 ->conversions([
-                    MediaImageResizeConversion::name('thumb')->width(430),
+                    MediaImageResizerConversion::name('thumb')->width(Image::MEDIUM_WIDTH)->height(Image::MEDIUM_HEIGHT),
                 ])
                 ->data($this->getData($item))
                 ->uploadAndInsert();
@@ -75,7 +81,7 @@ class MediaDownloadExternal extends FormRequest
             $this->$method($item);
 
             return $media;
-        });
+        })->filter();
     }
 
     protected function getData(array $item): array

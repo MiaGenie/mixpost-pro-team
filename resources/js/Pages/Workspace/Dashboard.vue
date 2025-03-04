@@ -21,6 +21,7 @@ import LinkedinReports from "@/Components/Report/LinkedinReports.vue"
 import LinkedinPageReports from "@/Components/Report/LinkedinPageReports.vue"
 import TikTokReports from "@/Components/Report/TikTokReports.vue"
 import YoutubeReports from "@/Components/Report/YoutubeReports.vue"
+import BlueskyReports from "@/Components/Report/BlueskyReports.vue"
 import useWorkspace from "../../Composables/useWorkspace.js";
 
 const {t: $t} = useI18n()
@@ -86,7 +87,8 @@ const providers = {
     'linkedin': LinkedinReports,
     'linkedin_page': LinkedinPageReports,
     'tiktok': TikTokReports,
-    'youtube': YoutubeReports
+    'youtube': YoutubeReports,
+    'bluesky': BlueskyReports,
 };
 
 const component = computed(() => {

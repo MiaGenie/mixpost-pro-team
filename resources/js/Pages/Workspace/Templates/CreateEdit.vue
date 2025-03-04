@@ -1,6 +1,6 @@
 <script setup>
 import {cloneDeep} from "lodash";
-import {computed, inject, provide, ref} from "vue";
+import {computed, defineAsyncComponent, inject, provide, ref} from "vue";
 import {Head, router, useForm, Link} from "@inertiajs/vue3";
 import NProgress from "nprogress";
 import {useI18n} from "vue-i18n";
@@ -10,7 +10,6 @@ import useNotifications from "@/Composables/useNotifications";
 import useTemplate from "../../../Composables/useTemplate";
 import PageHeader from "../../../Components/DataDisplay/PageHeader.vue";
 import Panel from "../../../Components/Surface/Panel.vue";
-import Label from "../../../Components/Form/Label.vue";
 import Input from "../../../Components/Form/Input.vue";
 import LabelSuffix from "../../../Components/Form/LabelSuffix.vue";
 import VerticalGroup from "../../../Components/Layout/VerticalGroup.vue";
@@ -25,6 +24,7 @@ import SecondaryButton from "../../../Components/Button/SecondaryButton.vue";
 import Trash from "../../../Icons/Trash.vue";
 import DangerButton from "../../../Components/Button/DangerButton.vue";
 import Flex from "../../../Components/Layout/Flex.vue";
+const AIAssist = defineAsyncComponent(() => import("@/Components/AI/Text/AIAssist.vue"));
 
 const {t: $t} = useI18n()
 
@@ -37,7 +37,7 @@ const workspaceCtx = inject('workspaceCtx');
 
 const {notify} = useNotifications();
 const {versionContentObject} = usePostVersions();
-const {insertEmoji, insertContent, focusEditor} = useEditor();
+const {insertEmoji, insertContent, replaceContent, updateContent, focusEditor} = useEditor();
 const {createPost, formatTemplateContent, deleteTemplate} = useTemplate();
 
 const isLoading = ref(false);
@@ -101,7 +101,7 @@ const update = (data) => {
         .then(() => {
             notify('success', $t('template.template_updated'));
         }).catch((error) => {
-            notify('error', error);
+        notify('error', error);
     }).finally(() => {
         NProgress.done();
         isLoading.value = false;
@@ -137,7 +137,7 @@ const update = (data) => {
         <div class="mt-lg row-px w-full">
             <form @submit.prevent="save">
                 <Panel>
-                    <template #title>{{ $t('general.details')}}</template>
+                    <template #title>{{ $t('general.details') }}</template>
                     <VerticalGroup class="mb-lg !max-w-full">
                         <template #title>
                             <label for="template_name">{{ $t('template.template_name') }}
@@ -150,13 +150,16 @@ const update = (data) => {
 
                     <div class="form-field">
                         <template v-for="(item, index) in form.content" :key="index">
-                            <Editor id="templateEditor" :value="item.body" :editable="true" @update="item.body = $event">
+                            <Editor id="templateEditor"
+                                    :value="item.body"
+                                    :editable="true"
+                                    @update="item.body = $event">
                                 <template #default="props">
-                                    <PostMedia :media="item.media"/>
+                                    <PostMedia :media="item.media" @updated="item.media = $event"/>
 
-                                    <div
-                                        class="relative flex items-center justify-between border-t border-gray-200 pt-md mt-md">
-                                        <div class="flex items-center space-x-xs">
+                                    <Flex :responsive="false"
+                                          class="relative justify-between border-t border-gray-200 pt-md mt-md">
+                                        <Flex :responsive="false">
                                             <EmojiPicker
                                                 @selected="insertEmoji({ editorId: 'templateEditor', emoji: $event })"
                                                 @close="focusEditor({ editorId: 'templateEditor' })"/>
@@ -167,17 +170,23 @@ const update = (data) => {
                                                 if($event.crediting) {
                                                     insertContent({editorId: 'templateEditor', text: $event.crediting})
                                                 }
-                                            }"
-                                                          :selectedAccounts="[]" :activeVersion="0" :versions="[]"
-                                                          :media="item.media"/>
+                                            }"/>
 
                                             <HashtagManager :editAllowed="true"
                                                             @insert="insertContent({ editorId: 'templateEditor', text: $event })"/>
 
                                             <VariableManager :editAllowed="true"
                                                              @insert="insertContent({ editorId: 'templateEditor', text: $event })"/>
-                                        </div>
-                                    </div>
+
+                                            <template v-if="$page.props.ai_is_ready_to_use">
+                                                <AIAssist
+                                                    @insert="insertContent({editorId: `templateEditor`, text: $event})"
+                                                    @replace="replaceContent({editorId: `templateEditor`, text: $event})"
+                                                    :text="item.body"
+                                                />
+                                            </template>
+                                        </Flex>
+                                    </Flex>
                                 </template>
                             </Editor>
                         </template>

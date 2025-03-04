@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Dieser Link zum Zurücksetzen des Passworts wird in :count Minuten ablaufen.',
       'no_password_reset_required' => 'Wenn du kein neues Passwort angefordert hast, sind keine weiteren Schritte erforderlich.',
     ],
+    'failed' => 'Authentifizierung fehlgeschlagen.',
   ],
 ];

@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Questo link per la reimpostazione della password scadrà tra :count minuti.',
       'no_password_reset_required' => 'Se non è stata richiesta la reimpostazione della password, non sono necessarie ulteriori azioni.',
     ],
+    'failed' => 'Autenticazione fallita.',
   ],
 ];

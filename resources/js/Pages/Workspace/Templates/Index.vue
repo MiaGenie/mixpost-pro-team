@@ -1,7 +1,6 @@
 <script setup>
 import {inject} from "vue";
-import {Head, Link, router} from "@inertiajs/vue3";
-import NProgress from "nprogress";
+import {Head, Link} from "@inertiajs/vue3";
 import useTemplate from "../../../Composables/useTemplate";
 import PageHeader from "../../../Components/DataDisplay/PageHeader.vue";
 import Panel from "../../../Components/Surface/Panel.vue";

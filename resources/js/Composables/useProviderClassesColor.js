@@ -15,6 +15,7 @@ const useProviderClassesColor = (provider) => {
             'linkedin': 'text-linkedin',
             'linkedin_page': 'text-linkedin',
             'tiktok': 'text-tiktok',
+            'bluesky': 'text-bluesky',
         }[provider];
     });
 
@@ -32,6 +33,7 @@ const useProviderClassesColor = (provider) => {
             'linkedin': 'border-linkedin',
             'linkedin_page': 'border-linkedin',
             'tiktok': 'border-tiktok',
+            'bluesky': 'border-bluesky',
         }[provider];
     });
 
@@ -49,6 +51,7 @@ const useProviderClassesColor = (provider) => {
             'linkedin': 'bg-linkedin',
             'linkedin_page': 'bg-linkedin',
             'tiktok': 'bg-tiktok',
+            'bluesky': 'bg-bluesky',
         }[provider];
     });
 

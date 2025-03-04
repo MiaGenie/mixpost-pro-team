@@ -38,8 +38,6 @@ const props = defineProps({
     }
 });
 
-const confirmation = inject('confirmation');
-
 const {postId, editAllowed, needsApproval, userCanApprove} = usePost();
 const {validationPassed} = usePostValidator();
 const {translatedFormat} = useDateLocalize();

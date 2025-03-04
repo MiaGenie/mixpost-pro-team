@@ -10,6 +10,7 @@ use Inovector\Mixpost\Http\Base\Controllers\Admin\DeleteUsersController;
 use Inovector\Mixpost\Http\Base\Controllers\Admin\DeleteWorkspacesController;
 use Inovector\Mixpost\Http\Base\Controllers\Admin\GeneratePageSamplesController;
 use Inovector\Mixpost\Http\Base\Controllers\Admin\PagesController;
+use Inovector\Mixpost\Http\Base\Controllers\Admin\Services\Bluesky\GenerateBlueskyPrivateKeyController;
 use Inovector\Mixpost\Http\Base\Controllers\Admin\ServicesController;
 use Inovector\Mixpost\Http\Base\Controllers\Admin\SystemLogsController;
 use Inovector\Mixpost\Http\Base\Controllers\Admin\SystemStatusController;
@@ -75,6 +76,9 @@ Route::prefix('admin')->middleware([Admin::class])->group(function () {
     Route::prefix('services')->name('services.')->group(function () {
         Route::get('/', [ServicesController::class, 'index'])->name('index');
         Route::put('{service}', [ServicesController::class, 'update'])->name('update');
+
+        Route::post('generate-bluesky-private-key', GenerateBlueskyPrivateKeyController::class)
+            ->name('generateBlueskyPrivateKey');
 
         // TODO: move this to the workspace routes
         Route::post('create-mastodon-app', CreateMastodonAppController::class)

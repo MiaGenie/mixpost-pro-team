@@ -6,22 +6,39 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use Inovector\Mixpost\Abstracts\Image;
+use Inovector\Mixpost\Concerns\UsesMimeType;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Contracts\MediaConversion;
+use Inovector\Mixpost\Util;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 
 class MediaUploader
 {
+    use UsesMimeType;
+
     protected UploadedFile $file;
+
     protected string $disk;
+
     protected string $path = '';
+
     protected ?array $data = null;
+
+    protected int $width;
+
+    protected int $height;
+
     protected array $conversions;
 
     public function __construct(UploadedFile $file)
     {
         $this->setFile($file);
-        $this->disk(config('mixpost.disk'));
+
+        $this->disk(Util::config('disk'));
+
+        $this->width = Image::LARGE_WIDTH;
+        $this->height = Image::LARGE_HEIGHT;
     }
 
     public static function fromFile(UploadedFile $file): static
@@ -50,13 +67,6 @@ class MediaUploader
         return $this;
     }
 
-    public function conversions(array $array): static
-    {
-        $this->conversions = $array;
-
-        return $this;
-    }
-
     public function data(array $array): static
     {
         $this->data = !empty($array) ? $array : null;
@@ -64,28 +74,56 @@ class MediaUploader
         return $this;
     }
 
+    public function width(int $width): static
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    public function height(int $height): static
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function conversions(array $array): static
+    {
+        $this->conversions = $array;
+
+        return $this;
+    }
+
     public function upload(): array
     {
-        $path = $this->filesystem()->putFile($this->path, $this->file, 'public');
+        $mimeType = $this->file->getMimeType();
+        $filesystem = $this->filesystem();
 
-        if (!$path) {
+        // Determine upload path
+        $filePath = $this->isImage($mimeType) && !$this->isGifImage($mimeType)
+            ? $this->uploadImage()
+            : $filesystem->putFile($this->path, $this->file, 'public');
+
+        if (!$filePath) {
             throw new \Exception("The file was not uploaded. Check your $this->disk driver configuration.");
         }
 
-        $conversions = $this->performConversions($path);
-        $conversionsSize = collect($conversions)->sum('size');
+        $size = $filesystem->size($filePath);
+        $conversions = $this->performConversions($filePath);
+        $totalSize = $size + collect($conversions)->sum('size');
 
         return [
             'name' => $this->file->getClientOriginalName(),
-            'mime_type' => $this->file->getMimeType(),
-            'size' => $this->file->getSize(),
-            'size_total' => $this->file->getSize() + $conversionsSize,
+            'mime_type' => $mimeType,
+            'size' => $size,
+            'size_total' => $totalSize,
             'disk' => $this->disk,
-            'is_local_driver' => $this->filesystem()->getAdapter() instanceof LocalFilesystemAdapter,
-            'path' => $path,
-            'url' => $this->filesystem()->url($path),
+            'is_local_driver' => $filesystem->getAdapter() instanceof LocalFilesystemAdapter,
+            'path' => $filePath,
+            'url' => $filesystem->url($filePath),
             'conversions' => $conversions,
-            'data' => !empty($this->data) ? $this->data : null,
+            'data' => $this->data ?: null,
         ];
     }
 
@@ -115,6 +153,17 @@ class MediaUploader
 
             return $perform->get();
         })->filter()->values()->toArray();
+    }
+
+    protected function uploadImage(): string
+    {
+        $image = ImageResizer::make($this->file);
+
+        $image->disk($this->disk)
+            ->path($this->path)
+            ->resize(Image::LARGE_WIDTH, Image::LARGE_HEIGHT);
+
+        return $image->getDestinationFilePath();
     }
 
     protected function filesystem(): Filesystem

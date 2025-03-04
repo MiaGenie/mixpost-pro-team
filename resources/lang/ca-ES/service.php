@@ -202,4 +202,10 @@ return [
   [
     'connect' => 'Connecteu un perfil nou de Threads',
   ],
+  'bluesky' => 
+  [
+    'connect_profile' => 'Connecteu un nou perfil de Bluesky',
+    'service' => 'Servei',
+    'server_address' => 'Adreça del servidor',
+  ],
 ];

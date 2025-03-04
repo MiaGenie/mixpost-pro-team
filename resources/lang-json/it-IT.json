@@ -239,7 +239,8 @@
         "request_timeout": "Richiesta in timeout. Riprova.",
         "unknown_error": "Errore sconosciuto",
         "service_auth_failed": "Autenticazione fallita! Verificare le credenziali del servizio {service}.",
-        "page_expired": "La pagina è scaduta, riprovare."
+        "page_expired": "La pagina è scaduta, riprovare.",
+        "invalid_grant": "Credenziali non valide o autorizzazione scaduta."
     },
     "finance": {
         "billing": "Fatturazione"
@@ -764,6 +765,11 @@
         "services": "Servizi",
         "threads": {
             "connect": "Collegare un nuovo profilo Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Collegare un nuovo profilo Bluesky",
+            "service": "Servizio",
+            "server_address": "Indirizzo del server"
         }
     },
     "system": {

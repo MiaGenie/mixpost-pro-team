@@ -11,7 +11,7 @@ Join our community:
 
 ## Installation
 
-Read our [documentation](https://docs.mixpost.app) on how to get started.
+Read our [documentation](https://docs.mixpost.app/pro/) on how to get started.
 
 ## Testing
 

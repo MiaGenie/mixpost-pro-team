@@ -11,6 +11,7 @@ import PostPreviewYoutube from "@/Components/PostPreview/PostPreviewYoutube.vue"
 import PostPreviewPinterest from "@/Components/PostPreview/PostPreviewPinterest.vue"
 import PostPreviewLinkedIn from "@/Components/PostPreview/LinkedIn/PostPreviewLinkedIn.vue"
 import PostPreviewTikTok from "@/Components/PostPreview/PostPreviewTikTok.vue"
+import PostPreviewBluesky from "@/Components/PostPreview/Bluesky/PostPreviewBluesky.vue"
 import Panel from "@/Components/Surface/Panel.vue";
 import Alert from "@/Components/Util/Alert.vue";
 import ProviderIcon from "../Account/ProviderIcon.vue";
@@ -64,7 +65,8 @@ const previews = computed(() => {
                 'pinterest': PostPreviewPinterest,
                 'linkedin': PostPreviewLinkedIn,
                 'linkedin_page': PostPreviewLinkedIn,
-                'tiktok': PostPreviewTikTok
+                'tiktok': PostPreviewTikTok,
+                'bluesky': PostPreviewBluesky,
             }[account.provider]
         }
     }).filter((preview) => {

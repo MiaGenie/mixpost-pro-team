@@ -239,7 +239,8 @@
         "request_timeout": "Solicitud agotada. Inténtelo de nuevo.",
         "unknown_error": "Error desconocido",
         "service_auth_failed": "Error de autenticación. Por favor, verifique sus credenciales de servicio {service}.",
-        "page_expired": "La página ha caducado, inténtelo de nuevo."
+        "page_expired": "La página ha caducado, inténtelo de nuevo.",
+        "invalid_grant": "Credenciales no válidas o autorización caducada."
     },
     "finance": {
         "billing": "Facturación"
@@ -764,6 +765,11 @@
         "services": "Servicios",
         "threads": {
             "connect": "Conectar un nuevo perfil de Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Conectar un nuevo perfil Bluesky",
+            "service": "Servicio",
+            "server_address": "Dirección del servidor"
         }
     },
     "system": {

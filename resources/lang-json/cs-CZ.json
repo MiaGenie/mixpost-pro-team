@@ -239,7 +239,8 @@
         "request_timeout": "Časový limit požadavku vypršel. Zkuste to znovu.",
         "unknown_error": "Neznámá chyba",
         "service_auth_failed": "Ověření se nezdařilo! Ověřte prosím své pověření ke službě {service}.",
-        "page_expired": "Platnost stránky vypršela, zkuste to prosím znovu."
+        "page_expired": "Platnost stránky vypršela, zkuste to prosím znovu.",
+        "invalid_grant": "Neplatné pověření nebo vypršení platnosti autorizace."
     },
     "finance": {
         "billing": "Fakturace"
@@ -764,6 +765,11 @@
         "services": "Služby",
         "threads": {
             "connect": "Připojení nového profilu Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Připojení nového profilu Bluesky",
+            "service": "Služba",
+            "server_address": "Adresa serveru"
         }
     },
     "system": {

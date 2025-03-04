@@ -78,5 +78,5 @@ return [
   'approval_required' => 'La publication doit être approuvée avant d\'être publiée.',
   'needs_approval' => 'Doit être approuvé',
   'approve' => 'Approuver',
-  'view' => 'Voir l\'article',
+  'view' => 'Voir la publication',
 ];

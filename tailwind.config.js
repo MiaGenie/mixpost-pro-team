@@ -90,6 +90,7 @@ module.exports = {
                 linkedin: '#0A66C2',
                 tiktok: '#000000',
                 openai: '#1a7f64',
+                bluesky: '#0285FF',
             },
             boxShadow: {
                 'mix': '0 5px 10px rgb(55 55 89 / 8%)',

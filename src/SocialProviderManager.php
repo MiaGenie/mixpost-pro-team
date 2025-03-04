@@ -2,8 +2,14 @@
 
 namespace Inovector\Mixpost;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Inovector\Mixpost\Abstracts\SocialProviderManager as SocialProviderManagerAbstract;
+use Inovector\Mixpost\Concerns\OAuth\UsesOAuthCodeChallenge;
+use Inovector\Mixpost\Concerns\UsesCacheKey;
+use Inovector\Mixpost\Exceptions\OAuthSessionExpired;
 use Inovector\Mixpost\Facades\ServiceManager;
+use Inovector\Mixpost\SocialProviders\Bluesky\BlueskyProvider;
 use Inovector\Mixpost\SocialProviders\Google\YoutubeProvider;
 use Inovector\Mixpost\SocialProviders\Linkedin\LinkedinPageProvider;
 use Inovector\Mixpost\SocialProviders\Linkedin\LinkedinProvider;
@@ -14,9 +20,13 @@ use Inovector\Mixpost\SocialProviders\Pinterest\PinterestProvider;
 use Inovector\Mixpost\SocialProviders\Threads\ThreadsProvider;
 use Inovector\Mixpost\SocialProviders\TikTok\TikTokProvider;
 use Inovector\Mixpost\SocialProviders\Twitter\TwitterProvider;
+use Exception;
 
 class SocialProviderManager extends SocialProviderManagerAbstract
 {
+    use UsesOAuthCodeChallenge;
+    use UsesCacheKey;
+
     protected array $providers = [];
 
     public function providers(): array
@@ -36,6 +46,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
             'linkedin' => LinkedinProvider::class,
             'linkedin_page' => LinkedinPageProvider::class,
             'tiktok' => TikTokProvider::class,
+            'bluesky' => BlueskyProvider::class,
         ];
     }
 
@@ -149,5 +160,57 @@ class SocialProviderManager extends SocialProviderManagerAbstract
         ];
 
         return $this->buildConnectionProvider(MastodonProvider::class, $config);
+    }
+
+    protected function connectBlueskyProvider()
+    {
+        /* @var \Illuminate\Http\Request $request */
+        $request = $this->container->request;
+
+        $values = [
+            'data' => [
+                'server' => $this->values['data']['server'] ?? BlueskyProvider::DEFAULT_SERVER
+            ],
+        ];
+
+        $sessionServerKey = $this->resolveCacheKey('bluesky_server');
+
+        // Handle form submission when adding a new BlueSky account
+        if ($request->routeIs('mixpost.accounts.add')) {
+            $input = array_filter([
+                'service' => $request->input('service'),
+                'server' => $request->input('server'),
+            ]);
+
+            Validator::make($input, [
+                'service' => ['required', 'string', Rule::in(['bluesky', 'custom'])],
+                'server' => ['sometimes', 'required_if:service,custom', 'string', 'url'],
+            ])->validate();
+
+            $values['data']['server'] = $input['service'] === 'custom' ? $input['server'] : BlueskyProvider::DEFAULT_SERVER;
+            $request->session()->put($sessionServerKey, $values['data']['server']);
+
+            $this->setCodeVerifierSession($request, $this->getCodeVerifier());
+        }
+
+        // Handle the callback after the user authorizes the BlueSky account
+        if ($request->routeIs('mixpost.callbackSocialProvider')) {
+            $values['data']['server'] = $request->session()->get($sessionServerKey);
+
+            if (!$values['data']['server']) {
+                throw new OAuthSessionExpired('Bluesky server name is missing. Possible reasons: the server name was not set in the session, or the session has expired.');
+            }
+
+            $request->session()->forget($sessionServerKey);
+        }
+
+        $config = [
+            'client_id' => route('mixpost.blueskyOauth.clientMeta'),
+            'client_secret' => '',  // No client secret is required for Bluesky
+            'redirect' => route('mixpost.callbackSocialProvider', ['provider' => 'bluesky']),
+            'values' => $values,
+        ];
+
+        return $this->buildConnectionProvider(BlueskyProvider::class, $config);
     }
 }

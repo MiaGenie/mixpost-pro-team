@@ -14,6 +14,7 @@ import Tenor from "../../../Icons/Tenor.vue";
 
 const FacebookServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/FacebookServiceForm.vue"));
 const ThreadsServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/ThreadsServiceForm.vue"));
+const BlueskyServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/BlueskyServiceForm.vue"));
 const GoogleServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/GoogleServiceForm.vue"));
 const PinterestServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/PinterestServiceForm.vue"));
 const LinkedInServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/LinkedInServiceForm.vue"));
@@ -59,6 +60,14 @@ const tab = ref('facebook');
                     </template>
 
                     Threads
+                </Tab>
+
+                <Tab @click="tab = 'bluesky'" :active="tab === 'bluesky'">
+                    <template #icon>
+                        <ProviderIcon provider="bluesky"/>
+                    </template>
+
+                    Bluesky
                 </Tab>
 
                 <Tab @click="tab = 'google'" :active="tab === 'google'">
@@ -126,6 +135,10 @@ const tab = ref('facebook');
 
             <template v-if="tab === 'threads'">
                 <ThreadsServiceForm :form="form.threads"/>
+            </template>
+
+            <template v-if="tab === 'bluesky'">
+                <BlueskyServiceForm :form="form.bluesky"/>
             </template>
 
             <template v-if="tab === 'google'">

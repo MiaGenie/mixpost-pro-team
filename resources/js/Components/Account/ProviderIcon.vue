@@ -10,6 +10,7 @@ import PinterestIcon from "@/Icons/Pinterest.vue";
 import LinkedinIcon from "@/Icons/Linkedin.vue";
 import TikTokIcon from "@/Icons/TikTok.vue";
 import Threads from "../../Icons/Threads.vue";
+import Bluesky from "../../Icons/Bluesky.vue";
 
 const props = defineProps({
     provider: {
@@ -30,7 +31,8 @@ const providers = {
     'pinterest': PinterestIcon,
     'linkedin': LinkedinIcon,
     'linkedin_page': LinkedinIcon,
-    'tiktok': TikTokIcon
+    'tiktok': TikTokIcon,
+    'bluesky': Bluesky,
 };
 
 const component = computed(() => {

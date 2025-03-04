@@ -239,7 +239,8 @@
         "request_timeout": "Requête expirée. Veuillez réessayer.",
         "unknown_error": "Erreur inconnue",
         "service_auth_failed": "L'authentification a échoué ! Veuillez vérifier vos informations d'identification du service {service}.",
-        "page_expired": "La page a expiré, veuillez réessayer."
+        "page_expired": "La page a expiré, veuillez réessayer.",
+        "invalid_grant": "Informations d'identification non valides ou autorisation expirée."
     },
     "finance": {
         "billing": "Facturation"
@@ -764,6 +765,11 @@
         "services": "Services",
         "threads": {
             "connect": "Connecter un nouveau profil Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Connecter un nouveau profil Bluesky",
+            "service": "Service",
+            "server_address": "Adresse du serveur"
         }
     },
     "system": {

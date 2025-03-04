@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Este enlace de restablecimiento de contraseña caducará en :count minutos.',
       'no_password_reset_required' => 'Si no ha solicitado el restablecimiento de la contraseña, no es necesario realizar ninguna acción.',
     ],
+    'failed' => 'Autenticación fallida.',
   ],
 ];

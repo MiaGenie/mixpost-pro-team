@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.4.0 - 2025-01-29
+
+**Changes**
+
+- Added support for Facebook API `v22.0`
+
 ## 3.3.5 - 2025-01-20
 
 **Fixes**

@@ -202,4 +202,10 @@ return [
   [
     'connect' => 'Konektatu Threads profil berri bat',
   ],
+  'bluesky' => 
+  [
+    'connect_profile' => 'Konektatu Bluesky profil berri bat',
+    'service' => 'Zerbitzua',
+    'server_address' => 'Zerbitzariaren helbidea',
+  ],
 ];

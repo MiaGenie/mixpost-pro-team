@@ -43,6 +43,8 @@ class AccountPublishPost
             ])
         );
 
+        $firstResponse = $lastResponse;
+
         if ($lastResponse->hasError()) {
             $post->insertErrors($account, $lastResponse->context());
 
@@ -78,6 +80,8 @@ class AccountPublishPost
                     media: $parser->formatMedia($contentItem['media']),
                     params: array_merge($options, [
                         'url' => $contentItem['url'] ?? '',
+                        'first_response' => $firstResponse,
+                        'last_response' => $lastResponse,
                         'last_id' => $lastResponse->id(),
                     ])
                 );

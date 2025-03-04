@@ -20,6 +20,7 @@ import AddPinterestAccount from "@/Components/Account/AddPinterestAccount.vue";
 import AddLinkedinProfile from "@/Components/Account/AddLinkedinProfile.vue";
 import AddLinkedinPage from "@/Components/Account/AddLinkedinPage.vue";
 import AddTikTokAccount from "@/Components/Account/AddTikTokAccount.vue";
+import AddBlueskyAccount from "@/Components/Account/AddBlueskyAccount.vue";
 import SecondaryButton from "@/Components/Button/SecondaryButton.vue";
 import DangerButton from "@/Components/Button/DangerButton.vue";
 import Dropdown from "@/Components/Dropdown/Dropdown.vue";
@@ -167,7 +168,8 @@ watch(
                     </Alert>
 
                     <Flex>
-                        <a :href="`/${$page.props.mixpost.core_path}/${workspaceCtx.id}/workspace-services?redirect-to-accounts=true`" class="mt-md block">
+                        <a :href="`/${$page.props.mixpost.core_path}/${workspaceCtx.id}/workspace-services?redirect-to-accounts=true`"
+                           class="mt-md block">
                             <PrimaryButton>{{ $t('service.configure_services') }}</PrimaryButton>
                         </a>
                     </Flex>
@@ -344,6 +346,8 @@ watch(
                 v-if="$page.props.is_service_active.threads"
             />
             <AddMastodonAccount/>
+            <AddBlueskyAccount
+                v-if="$page.props.is_service_active.bluesky"/>
             <AddYoutubeAccount
                 v-if="$page.props.is_service_active.google"
             />

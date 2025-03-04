@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Eroare necunoscută',
   'service_auth_failed' => 'Autentificarea a eșuat! Vă rugăm să verificați acreditările de serviciu :service.',
   'page_expired' => 'Pagina a expirat, vă rugăm să încercați din nou.',
+  'backend' => 
+  [
+    'missing_code' => 'Cerere invalidă. Lipsește parametrul de cod.',
+  ],
+  'invalid_grant' => 'Acreditări invalide sau autorizație expirată.',
 ];

@@ -239,7 +239,8 @@
         "request_timeout": "Temps d'espera esgotat. Torna-ho a provar.",
         "unknown_error": "Error desconegut",
         "service_auth_failed": "L'autenticació ha fallat! Verifiqueu les vostres credencials de servei {service}.",
-        "page_expired": "La pàgina ha caducat, torna-ho a provar."
+        "page_expired": "La pàgina ha caducat, torna-ho a provar.",
+        "invalid_grant": "Credencials no vàlides o autorització caducada."
     },
     "finance": {
         "billing": "Facturació"
@@ -764,6 +765,11 @@
         "services": "Serveis",
         "threads": {
             "connect": "Connecteu un perfil nou de Threads"
+        },
+        "bluesky": {
+            "connect_profile": "Connecteu un nou perfil de Bluesky",
+            "service": "Servei",
+            "server_address": "Adreça del servidor"
         }
     },
     "system": {

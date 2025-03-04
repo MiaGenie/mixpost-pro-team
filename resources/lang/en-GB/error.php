@@ -11,4 +11,9 @@ return [
   'unknown_error' => 'Unknown error',
   'service_auth_failed' => 'Authentication failed! Please verify your :service service credentials.',
   'page_expired' => 'The page expired, please try again.',
+  'backend' => 
+  [
+    'missing_code' => 'Invalid request. Missing code parameter.',
+  ],
+  'invalid_grant' => 'Invalid credentials or expired authorization.',
 ];

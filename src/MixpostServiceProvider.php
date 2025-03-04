@@ -15,6 +15,7 @@ use Inovector\Mixpost\Commands\ConvertLangJson;
 use Inovector\Mixpost\Commands\CreateAdmin;
 use Inovector\Mixpost\Commands\CreateMastodonApp;
 use Inovector\Mixpost\Commands\GeneratePageSamples;
+use Inovector\Mixpost\Commands\GenerateBlueskyPrivateKey;
 use Inovector\Mixpost\Commands\PruneTemporaryDirectory;
 use Inovector\Mixpost\Commands\PublishAssetsCommand;
 use Inovector\Mixpost\Commands\RunWorkspaceCommand;
@@ -32,8 +33,8 @@ use Inovector\Mixpost\Events\Post\PostActivityCreated;
 use Inovector\Mixpost\Events\Post\PostCreated;
 use Inovector\Mixpost\Events\Post\PostPublished;
 use Inovector\Mixpost\Events\Post\PostPublishedFailed;
-use Inovector\Mixpost\Events\Post\PostScheduled;
 use Inovector\Mixpost\Events\Post\PostScheduleAtUpdated;
+use Inovector\Mixpost\Events\Post\PostScheduled;
 use Inovector\Mixpost\Events\Post\PostScheduleProcessing;
 use Inovector\Mixpost\Events\Post\PostSetDraft;
 use Inovector\Mixpost\Exceptions\MixpostExceptionHandler;
@@ -93,6 +94,7 @@ class MixpostServiceProvider extends PackageServiceProvider
                 CreateAdmin::class,
                 GeneratePageSamples::class,
                 ConvertLangJson::class,
+                GenerateBlueskyPrivateKey::class,
             ])->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->startWith(function (InstallCommand $command) {

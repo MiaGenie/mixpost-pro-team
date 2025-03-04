@@ -22,6 +22,7 @@ class CheckAndRefreshAccountToken extends Command
             'pinterest',
             'tiktok',
             'threads',
+            'bluesky',
         ];
     }
 

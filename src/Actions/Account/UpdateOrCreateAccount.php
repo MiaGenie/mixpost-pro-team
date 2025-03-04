@@ -2,24 +2,27 @@
 
 namespace Inovector\Mixpost\Actions\Account;
 
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Inovector\Mixpost\Abstracts\Image;
+use Inovector\Mixpost\Concerns\UsesMediaPath;
 use Inovector\Mixpost\Events\Account\AccountAdded;
 use Inovector\Mixpost\Events\Account\AccountUpdated;
-use Inovector\Mixpost\Facades\WorkspaceManager;
 use Inovector\Mixpost\Models\Account;
 use Inovector\Mixpost\Support\AccountSuffix;
-use Inovector\Mixpost\Support\MediaUploader;
+use Inovector\Mixpost\Support\ImageResizer;
+use Inovector\Mixpost\Support\TemporaryFile;
 
 class UpdateOrCreateAccount
 {
+    use UsesMediaPath;
+
     public function __invoke(string $providerName, array $account, array $accessToken): void
     {
         $params = [
             'name' => $account['name'],
             'username' => $account['username'] ?? null,
-            'media' => $this->media($account['image'], $providerName),
+            'media' => $this->downloadAvatar($account['image']),
             'data' => $account['data'] ?? null,
             'access_token' => $accessToken,
         ];
@@ -58,26 +61,28 @@ class UpdateOrCreateAccount
         AccountUpdated::dispatch($record);
     }
 
-    protected function media(string|null $imageUrl, string $providerName): array|null
+    protected function downloadAvatar(?string $imageUrl): ?array
     {
         if (!$imageUrl) {
             return null;
         }
 
-        $info = pathinfo($imageUrl);
-        $contents = file_get_contents($imageUrl);
-        $file = '/tmp/' . Str::random(32);
-        file_put_contents($file, $contents);
+        $temporaryFile = null;
 
-        $file = new UploadedFile($file, $info['basename']);
-        $prefix = WorkspaceManager::current()->uuid;
-        $path = "$prefix/avatars/$providerName";
+        try {
+            $temporaryFile = TemporaryFile::make()->fromUrl($imageUrl, Str::random(40));
 
-        $upload = MediaUploader::fromFile($file)->path($path)->upload();
+            $image = ImageResizer::make($temporaryFile->path())
+                ->path(self::mediaWorkspacePathWithAvatarsSubpath());
 
-        return [
-            'disk' => $upload['disk'],
-            'path' => $upload['path']
-        ];
+            $image->resize(Image::THUMBNAIL_WIDTH, Image::THUMBNAIL_HEIGHT);
+
+            return [
+                'disk' => $image->getDisk(),
+                'path' => $image->getDestinationFilePath(),
+            ];
+        } finally {
+            $temporaryFile?->directory()->delete();
+        }
     }
 }

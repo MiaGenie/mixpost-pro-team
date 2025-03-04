@@ -239,7 +239,8 @@
         "request_timeout": "Zeitüberschreitung der Anfrage. Versuche es erneut.",
         "unknown_error": "Unbekannter Fehler",
         "service_auth_failed": "Authentifizierung fehlgeschlagen! Bitte überprüfe deine {service}-Anmeldedaten.",
-        "page_expired": "Die Seite ist abgelaufen, bitte versuche es erneut."
+        "page_expired": "Die Seite ist abgelaufen, bitte versuche es erneut.",
+        "invalid_grant": "Ungültige Anmeldedaten oder abgelaufene Berechtigung."
     },
     "finance": {
         "billing": "Abrechnung"
@@ -764,6 +765,11 @@
         "services": "Dienstleistungen",
         "threads": {
             "connect": "Ein neues Threads-Profil verbinden"
+        },
+        "bluesky": {
+            "connect_profile": "Verbinde ein neues Bluesky-Profil",
+            "service": "Service",
+            "server_address": "Server Adresse"
         }
     },
     "system": {

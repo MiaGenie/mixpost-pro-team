@@ -41,5 +41,6 @@ return [
       'password_reset_link_expiry' => 'Pasahitza berrezartzeko esteka :count minutu barru iraungiko da.',
       'no_password_reset_required' => 'Pasahitzaren berrezarpena eskatu ez baduzu, ez da behar ekintza gehiagorik.',
     ],
+    'failed' => 'Autentifikazioak huts egin du.',
   ],
 ];
