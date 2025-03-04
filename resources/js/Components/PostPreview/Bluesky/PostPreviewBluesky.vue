@@ -49,9 +49,9 @@ const {isDocEmpty} = useEditor();
                 </div>
                 <div class="w-full">
                   <div>
-                      <div class="flex flex-grow-0 space-x-1 overflow-hidden">
-                          <div class="font-medium mr-xs truncate overflow-hidden w-1/2">{{ name }}</div>
-                          <div class="text-gray-400 truncate overflow-hidden w-1/2">@{{ username }}</div>
+                      <div class="flex flex-wrap flex-grow-0 space-x-1 overflow-hidden">
+                          <div class="font-medium mr-xs">{{ name }}</div>
+                          <div class="text-gray-400">@{{ username }}</div>
                       </div>
                   </div>
 

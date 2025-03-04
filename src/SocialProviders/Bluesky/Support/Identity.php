@@ -35,8 +35,8 @@ class Identity
         }
 
         $url = match (true) {
-            Str::startsWith($did, 'did:plc:') => Str::rtrim(self::PLC_DIRECTORY, '/') . '/' . $did,
-            Str::startsWith($did, 'did:web:') => 'https://' . Str::remove('did:web:', $did) . '/.well-known/did.json',
+            Str::startsWith($did, 'did:plc:') => Str::of(self::PLC_DIRECTORY)->rtrim('/')->__toString() . '/' . $did,
+            Str::startsWith($did, 'did:web:') => 'https://' . Str::of($did)->remove('did:web:')->__toString() . '/.well-known/did.json',
             default => throw new InvalidArgumentException('Unsupported DID type'),
         };
 

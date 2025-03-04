@@ -10,9 +10,9 @@ class Helpers
     {
         $facets = [];
 
-        foreach (self::parseMentions($text) as $m) {
+        foreach (self::parseMentions($text) as $mention) {
             $response = Http::timeout(5)->get("$server/xrpc/com.atproto.identity.resolveHandle", [
-                'handle' => $m['handle'],
+                'handle' => $mention['handle'],
             ]);
 
             if (!$response->successful()) {
@@ -25,22 +25,35 @@ class Helpers
 
             $facets[] = [
                 'index' => [
-                    'byteStart' => $m['start'],
-                    'byteEnd' => $m['end'],
+                    'byteStart' => $mention['start'],
+                    'byteEnd' => $mention['end'],
                 ],
                 'features' => [['$type' => 'app.bsky.richtext.facet#mention', 'did' => $did]],
             ];
         }
 
-        foreach (self::parseUrls($text) as $u) {
+        foreach (self::parseUrls($text) as $url) {
             $facets[] = [
                 'index' => [
-                    'byteStart' => $u['start'],
-                    'byteEnd' => $u['end'],
+                    'byteStart' => $url['start'],
+                    'byteEnd' => $url['end'],
                 ],
                 'features' => [[
                     '$type' => 'app.bsky.richtext.facet#link',
-                    'uri' => $u['url'],
+                    'uri' => $url['url'],
+                ]],
+            ];
+        }
+
+        foreach (self::parseHashtags($text) as $hashtag) {
+            $facets[] = [
+                'index' => [
+                    'byteStart' => $hashtag['start'],
+                    'byteEnd' => $hashtag['end'],
+                ],
+                'features' => [[
+                    '$type' => 'app.bsky.richtext.facet#tag',
+                    'tag' => $hashtag['tag'],
                 ]],
             ];
         }
@@ -77,6 +90,31 @@ class Helpers
                     'start' => $match[1],
                     'end' => $match[1] + strlen($match[0]),
                     'url' => $match[0],
+                ];
+            }
+        }
+
+        return $spans;
+    }
+
+    public static function parseHashtags(string $text): array
+    {
+        $spans = [];
+        $hashtagRegex = '/(?:^|\s)(#[^\d\s]\S*)(?=\s|$)/u';
+
+        if (preg_match_all($hashtagRegex, $text, $matches, PREG_OFFSET_CAPTURE)) {
+            foreach ($matches[1] as $match) {
+                $tag = trim($match[0]);
+                $tag = preg_replace('/\p{P}+$/u', '', $tag); // Strip trailing punctuation
+
+                if (mb_strlen($tag) > 66) {
+                    continue; // Max length check (inclusive of #, max 64 chars)
+                }
+
+                $spans[] = [
+                    'start' => $match[1],
+                    'end' => $match[1] + mb_strlen($tag, 'UTF-8'),
+                    'tag' => ltrim($tag, '#'),
                 ];
             }
         }

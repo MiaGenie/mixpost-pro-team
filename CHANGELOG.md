@@ -2,6 +2,30 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.5.0 - 2025-02-10
+
+**New Features**
+
+- **Integrated Bluesky** – You can now connect and manage your Bluesky account directly from Mixpost.
+- **AI Assist for Templates** – Create content faster with AI-powered assistance on the template creation page.
+
+**Fixes**
+
+- Resolved an issue when adding templates to comments and thread posts.
+- Fixed a bug preventing media items from being deleted from the recently uploaded section.
+- Corrected image name retrieval from external sources like Unsplash.
+- Fixed image rendering issues in template items.
+
+**Changes**
+
+- Adjusted the schedule frequency for social account token refresh.
+- Updated buffer time for the `tokenIsAboutToExpire` function to improve reliability.
+
+**Miscellaneous**
+
+- Optimized image resizing during uploads for better performance.
+- Improved thumbnail resizing for videos.
+
 ## 3.4.0 - 2025-01-29
 
 **Changes**
