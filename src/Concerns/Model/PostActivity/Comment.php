@@ -61,7 +61,7 @@ trait Comment
             ->map(function ($reactions, $reaction) {
                 return [
                     'reaction' => $reaction,
-                    'users' => $reactions->pluck('user')->map(fn($user) => $user->only('id', 'name')),
+                    'users' => $reactions->pluck('user')->map(fn($user) => $user->only('id', 'name')), // TODO: fix this when the user has been deleted from db
                     'count' => $reactions->count(),
                 ];
             })

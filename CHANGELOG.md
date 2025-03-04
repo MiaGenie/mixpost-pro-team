@@ -2,6 +2,18 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.5.1 - 2025-02-12
+
+**Fixed**
+
+- Fixed URL weight in the post text for Mastodon
+- Fixed text character counting for links in Bluesky posts
+- Made `Str::rtrim` and `Str::remove` compatible with Laravel 10 and 11 (Bluesky)
+
+**Miscellaneous**
+
+- Added hashtag support for Bluesky facets
+
 ## 3.5.0 - 2025-02-10
 
 **New Features**

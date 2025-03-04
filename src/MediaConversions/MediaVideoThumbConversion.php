@@ -4,6 +4,7 @@ namespace Inovector\Mixpost\MediaConversions;
 
 use FFMpeg\Coordinate\TimeCode;
 use FFMpeg\FFMpeg;
+use Illuminate\Support\Facades\File;
 use Inovector\Mixpost\Abstracts\Image;
 use Inovector\Mixpost\Abstracts\MediaConversion;
 use Inovector\Mixpost\Support\ImageResizer;
@@ -54,10 +55,19 @@ class MediaVideoThumbConversion extends MediaConversion
 
         $video = $ffmpeg->open($temporaryFile->path());
         $duration = $ffmpeg->getFFProbe()->format($temporaryFile->path())->get('duration');
-        $seconds = (int)$duration <= $this->atSecond ? 0 : $this->atSecond;
+
+        // Ensure $seconds is within valid bounds
+        $seconds = ($duration > 0 && $this->atSecond > 0) ? min($this->atSecond, floor($duration)) : 0;
 
         $frame = $video->frame(TimeCode::fromSeconds($seconds));
         $frame->save($thumbFilepath);
+
+        // Sometimes the frame is not saved, so we save it again with the first frame
+        // This is a workaround for the issue
+        if ($this->atSecond !== 0 && !File::exists($thumbFilepath)) {
+            $frame = $video->frame(TimeCode::fromSeconds(0));
+            $frame->save($thumbFilepath);
+        }
 
         // Resize the thumbnail and save it to the destination disk
         ImageResizer::make($thumbFilepath)
