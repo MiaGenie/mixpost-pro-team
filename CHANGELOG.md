@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.3.1 - 2024-12-31
+
+**Fixes**
+
+- Fixed OAuth threads when the profile name is empty
+
 ## 3.3.0 - 2024-12-31
 
 **New features**

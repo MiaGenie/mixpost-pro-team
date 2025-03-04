@@ -68,7 +68,9 @@ trait ManagesResources
 
         $token = $this->getAccessToken()['access_token'];
 
-        $response = $this->getHttpClient()::withToken($token)->get("{$this->getApiUrl()}/$this->apiVersion/boards");
+        $response = $this->getHttpClient()::withToken($token)->get("{$this->getApiUrl()}/$this->apiVersion/boards", [
+            'page_size' => 200,
+        ]);
 
         return $this->buildResponse($response);
     }

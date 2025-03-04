@@ -221,7 +221,7 @@ onBeforeUnmount(() => {
                 <VerticalGroup class="mt-md">
                     <template #title>{{ $t('service.tiktok.allow_users') }}</template>
 
-                    <Flex gap="gap-md" class="items-center">
+                    <Flex gap="gap-md" class="md:items-center">
                         <Label :for="`allow_comments-${account.id}`" class="!mb-0">
                             <Checkbox v-model:checked="options.allow_comments[`account-${account.id}`]"
                                       :disabled="account.data.comment_disabled"
