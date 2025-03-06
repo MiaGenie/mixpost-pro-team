@@ -15,6 +15,8 @@ export default defineConfig(({command, mode}) => {
     let homeDir = homedir()
     let serverConfig = {}
 
+    let ziggyPath = resolve('../../../vendor/tightenco/ziggy/dist/vue.m');
+
     if (host && homeDir) {
         const certificatesPath = env.CERTIFICATES_PATH !== undefined ? env.CERTIFICATES_PATH : `.config/valet/Certificates/${host}`;
 
@@ -31,6 +33,10 @@ export default defineConfig(({command, mode}) => {
                 host
             },
             host
+        }
+    } else {
+        serverConfig = {
+            port: 5174,
         }
     }
 
@@ -55,6 +61,7 @@ export default defineConfig(({command, mode}) => {
         ],
         resolve: {
             alias: {
+                'ziggy': ziggyPath,
                 '@css': '/resources/css',
                 '@img': '/resources/img'
             },
