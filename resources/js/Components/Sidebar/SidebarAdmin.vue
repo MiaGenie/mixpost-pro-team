@@ -7,6 +7,7 @@ import MenuDelimiter from "@/Components/Sidebar/MenuDelimiter.vue"
 import MenuGroupHeader from "@/Components/Sidebar/MenuGroupHeader.vue"
 import MenuGroupBody from "@/Components/Sidebar/MenuGroupBody.vue"
 import UserMenu from "@/Components/Navigation/UserMenu.vue";
+import GenieAdminMenu from "@/Components/Navigation/Genie/GenieAdminMenu.vue";
 import DashboardIcon from "@/Icons/Dashboard.vue";
 import GridIcon from "@/Icons/Grid.vue"
 import UsersIcon from "@/Icons/Users.vue"
@@ -70,6 +71,9 @@ const {enterpriseConsole} = useEnterpriseConsole()
                 </template>
             </MenuGroupBody>
             <MenuDelimiter/>
+
+            <GenieAdminMenu />
+
             <MenuGroupHeader>
                 {{ $t('post.configuration') }}
             </MenuGroupHeader>
