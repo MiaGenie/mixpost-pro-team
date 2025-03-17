@@ -125,4 +125,14 @@ return [
     'competitor_deleted' => 'Competitor deleted successfully',
     'competitor_created' => 'Competitor created successfully',
 
+    'briefings' => 'Briefings',
+    'briefings_desc' => 'Your direct briefings. This information is important to help improve your strategy',
+    'create_briefing' => 'Create Briefing',
+    'edit_briefing' => 'Edit briefing',
+    'create_new_briefing' => 'Create new briefing',
+    'delete_briefings' => 'Delete briefings',
+    'delete_briefings_confirm' => 'Are you sure you want to delete selected briefings?',
+    'briefing_deleted' => 'Briefing deleted successfully',
+    'briefing_created' => 'Briefing created successfully',
+
 ];
