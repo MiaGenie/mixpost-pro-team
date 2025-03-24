@@ -148,4 +148,14 @@ return [
     'briefing_deleted' => 'Briefing deleted successfully',
     'briefing_created' => 'Briefing created successfully',
 
+    'strategies' => 'Strategies',
+    'strategies_desc' => 'Your direct strategies. This information is important to help improve your strategy',
+    'create_strategy' => 'Create Strategy',
+    'edit_strategy' => 'Edit strategy',
+    'create_new_strategy' => 'Create new strategy',
+    'delete_strategies' => 'Delete strategies',
+    'delete_strategies_confirm' => 'Are you sure you want to delete selected strategies?',
+    'strategy_deleted' => 'Strategy deleted successfully',
+    'strategy_created' => 'Strategy created successfully',
+
 ];
