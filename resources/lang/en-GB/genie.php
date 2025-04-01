@@ -138,4 +138,24 @@ return [
     'competitor_created' => 'Competitor created successfully',
     'delete_competitor_confirm' => 'Are you sure you want to delete this competitor?',
 
+    'briefings' => 'Briefings',
+    'briefings_desc' => 'Your direct briefings. This information is important to help improve your strategy',
+    'create_briefing' => 'Create Briefing',
+    'edit_briefing' => 'Edit briefing',
+    'create_new_briefing' => 'Create new briefing',
+    'delete_briefings' => 'Delete briefings',
+    'delete_briefings_confirm' => 'Are you sure you want to delete selected briefings?',
+    'briefing_deleted' => 'Briefing deleted successfully',
+    'briefing_created' => 'Briefing created successfully',
+
+    'strategies' => 'Strategies',
+    'strategies_desc' => 'Your direct strategies. This information is important to help improve your strategy',
+    'create_strategy' => 'Create Strategy',
+    'edit_strategy' => 'Edit strategy',
+    'create_new_strategy' => 'Create new strategy',
+    'delete_strategies' => 'Delete strategies',
+    'delete_strategies_confirm' => 'Are you sure you want to delete selected strategies?',
+    'strategy_deleted' => 'Strategy deleted successfully',
+    'strategy_created' => 'Strategy created successfully',
+
 ];
