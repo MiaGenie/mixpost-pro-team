@@ -30,7 +30,7 @@
         "inovector/twitteroauth": "^7.0",
         "intervention/image": "^2.7",
         "laravel/horizon": "^5.0",
-        "openai-php/client": "^0.10.3",
+        "openai-php/client": "^0.14",
         "php-ffmpeg/php-ffmpeg": "^1.0",
         "phpseclib/phpseclib": "^3.0",
         "pragmarx/google2fa": "^8.0",
