@@ -48,6 +48,14 @@ import AssistantIcon from "@/Icons/Genie/Assistant.vue";
             {{ $t('genie.versions') }}
         </MenuItem>
 
+        <MenuItem :url="route('genie.admin.runs.index')"
+                  :active="$page.component === 'Genie/Admin/Runs/Index'">
+            <template #icon>
+                <VersionIcon/>
+            </template>
+            {{ $t('genie.runs') }}
+        </MenuItem>
+
         <MenuDelimiter/>
 
         <MenuItem :url="route('genie.admin.configs.form')"

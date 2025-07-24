@@ -71,6 +71,7 @@ return [
     'version_group_type_competitors' => 'Competitors',
     'version_group_type_strategies' => 'Strategies',
 
+    'runs' => 'Runs',
 
     'groups' => 'Groups',
 
