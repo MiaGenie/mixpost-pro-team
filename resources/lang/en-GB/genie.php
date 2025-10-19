@@ -4,6 +4,7 @@ return [
     'name' => 'Name',
     'progression' => 'Progression',
     'status' => 'Status',
+    'language' => 'Language',
 
     'genie' => 'Genie',
     'ai_provider' => 'AI Provider',
@@ -26,6 +27,8 @@ return [
     'update' => 'Update',
     'reorder' => 'Reorder',
     'reordering' => 'Reordering',
+
+    'translations' => 'Translations',
 
     'are_you_sure' => 'Are you sure?',
     'unsaved_will_lost' => 'Unsaved changes will be lost.',
@@ -52,6 +55,7 @@ return [
 
     'steps' => 'Steps',
     'create_step' => 'Create Step',
+    'translate_step' => 'Translate Step',
     'edit_step' => 'Edit Step',
     'delete_step' => 'Delete Step',
     'step_updated' => 'Step Updated',
@@ -186,6 +190,7 @@ return [
     'fields' => 'Fields',
     'fields_desc' => 'MiaGenie Fields',
     'create_field' => 'Create Field',
+    'translate_field' => 'Translate Field',
     'field_created' => 'Field Created',
     'edit_field' => 'Edit Field',
     'field_updated' => 'Field Updated',
@@ -198,6 +203,7 @@ return [
 
     'field_option_name' => 'Name',
     'field_option_code_name' => 'Code',
+    'translate_field_options' => 'Translate Field Options',
     'add_field_option' => 'Add Option',
     'add_field_options_group' => 'Add Group',
     'delete_field_option' => 'Delete Option',
