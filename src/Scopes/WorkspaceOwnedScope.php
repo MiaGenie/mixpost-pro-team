@@ -14,7 +14,7 @@ class WorkspaceOwnedScope implements Scope
     {
         /** Ignore this scope on Horizon request **/
         if (!Util::isHorizonRequest()) {
-            $builder->where('workspace_id', '=', WorkspaceManager::current()->id);
+            $builder->where($model->getTable() . '.workspace_id', '=', WorkspaceManager::current()->id);
         }
     }
 
