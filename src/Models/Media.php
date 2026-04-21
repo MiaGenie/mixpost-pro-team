@@ -64,6 +64,11 @@ class Media extends Model
         );
     }
 
+    public function mimeType(): string
+    {
+        return $this->mime_type;
+    }
+
     public function getFullPath(): string
     {
         if ($this->disk === 'external_media') {

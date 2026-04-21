@@ -80,9 +80,10 @@ class LinkedinProvider extends SocialProvider
             ->minVideos(1)
             ->minGifs(1)
             ->maxPhotos(Util::config('social_provider_options.linkedin.media_limit.photos'))
-            ->maxVideos(Util::config('social_provider_options.linkedin.media_limit.videos'))
+            ->maxVideos(1)
             ->maxGifs(Util::config('social_provider_options.linkedin.media_limit.gifs'))
-            ->allowMixingMediaTypes(Util::config('social_provider_options.linkedin.allow_mixing'));
+            ->allowMixingMediaTypes(Util::config('social_provider_options.linkedin.allow_mixing'))
+            ->enableVideoThumb(true);
     }
 
     public static function postOptions(): SocialProviderPostOptionsContract

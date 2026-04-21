@@ -560,7 +560,7 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                         <div @click="openContentItem(index)" role="button"
                              class="relative border border-gray-200 rounded-md p-md">
                             <div
-                                class="top-0 left-0 absolute w-full h-full z-10 bg-white bg-opacity-50 hover:bg-opacity-30 transition ease-in-out duration-200"></div>
+                                class="top-0 left-0 absolute w-full h-full z-10 bg-white/50 hover:bg-white/30 transition ease-in-out duration-200"></div>
                             <EditorReadOnly :value="item.body"/>
                             <PostMedia :media="item.media"
                                        :videoThumbs="item.video_thumbs"

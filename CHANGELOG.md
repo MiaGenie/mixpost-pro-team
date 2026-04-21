@@ -2,6 +2,23 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.6.0 - 2025-05-19
+
+**New features**
+
+- Custom video thumbnail
+- Image supports alt text
+
+**Changes**
+
+- Show the status of FFmpeg on the status page.
+
+**Miscellaneous**
+
+- Upload video without FFmpeg
+- Support Laravel 12
+- Upgraded to Tailwind CSS 4
+
 ## 3.5.4 - 2025-03-08
 
 **Fixes**

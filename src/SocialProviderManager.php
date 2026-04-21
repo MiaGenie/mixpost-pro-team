@@ -20,7 +20,6 @@ use Inovector\Mixpost\SocialProviders\Pinterest\PinterestProvider;
 use Inovector\Mixpost\SocialProviders\Threads\ThreadsProvider;
 use Inovector\Mixpost\SocialProviders\TikTok\TikTokProvider;
 use Inovector\Mixpost\SocialProviders\Twitter\TwitterProvider;
-use Exception;
 
 class SocialProviderManager extends SocialProviderManagerAbstract
 {
@@ -119,10 +118,6 @@ class SocialProviderManager extends SocialProviderManagerAbstract
     protected function connectLinkedinPageProvider()
     {
         $config = ServiceManager::get('linkedin', 'configuration');
-
-        if (!LinkedinProvider::hasCommunityManagementProduct()) {
-            abort(403);
-        }
 
         $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'linkedin_page']);
 

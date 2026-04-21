@@ -17,6 +17,7 @@ trait ManagesRateLimit
     public function buildResponse($response, Closure $okResult = null): SocialProviderResponse
     {
         $usage = $this->getRateLimitUsage($response);
+        $data = Arr::wrap($response->json());
 
         if ($response->status() === 429 || $usage['exceeded']) {
             return $this->response(
@@ -35,13 +36,13 @@ trait ManagesRateLimit
             );
         }
 
-        if (in_array($response->status(), [200, 201])) {
-            return $this->response(SocialProviderResponseStatus::OK, $okResult ? $okResult() : $response->json());
+        if (in_array($response->status(), [200, 201, 204])) {
+            return $this->response(SocialProviderResponseStatus::OK, $okResult ? $okResult($data) : $data);
         }
 
         return $this->response(
             SocialProviderResponseStatus::ERROR,
-            $response->json()
+            $data
         );
     }
 
