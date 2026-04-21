@@ -2,6 +2,19 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.8.0 - 2025-06-06
+
+**New Features**
+
+- Added support for adding Alt text when uploading an image through API
+- Implemented custom video thumbnail in the post preview
+- Added link to the account page on the social platform
+
+**Miscellaneous**
+
+- Added support for Facebook Graph API v23.0
+- Added environment variables to configure maximum file size
+
 ## 3.7.0 - 2025-05-24
 
 **Fixes**

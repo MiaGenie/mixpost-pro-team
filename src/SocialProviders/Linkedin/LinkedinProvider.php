@@ -66,7 +66,7 @@ class LinkedinProvider extends SocialProvider
     public function httpHeadersNext(): array
     {
         return [
-            'Linkedin-Version' => '202407'
+            'Linkedin-Version' => '202507'
         ];
     }
 
