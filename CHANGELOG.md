@@ -2,6 +2,24 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 4.1.0 - 2025-08-15
+
+**Fixes**
+
+- Fixed delete post handling errors for Threads and Facebook
+- Fixed selected media not clearing after attaching to a post
+- Fixed Adobe Express SDK loading issues on slow internet connections
+
+**Changes**
+
+- Replaced /me/ with connected account ID for Threads
+- Aligned Adobe Express integration with their guidelines
+- Added /ping endpoint for the API
+- Added items limit per page for post and media pagination
+- Added ability to copy ID & UUID for accounts, tags, and posts for API use
+- Installed code quality tools: ESLint, Prettier, Pinia, and Larastan
+- Reformatted all files after installing code quality tools
+
 ## 4.0.0 - 2025-08-03
 
 **New features**

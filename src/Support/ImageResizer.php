@@ -48,9 +48,11 @@ final class ImageResizer extends Image
             throw new Exception('The destination path is not set. Possible reason: you are using the contents of the file. Specify the path where the file will be saved.');
         }
 
+        $encoded = $image->encodeByMediaType(quality: 90);
+
         return Storage::disk($this->getDisk())->put(
             path: $path,
-            contents: $image->encode()->__toString(),
+            contents: $encoded->__toString(),
             options: 'public'
         );
     }
