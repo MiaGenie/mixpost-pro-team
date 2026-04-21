@@ -2,6 +2,7 @@
 
 namespace Inovector\Mixpost\Support;
 
+use Exception;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
@@ -11,7 +12,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use RuntimeException;
-use Exception;
 
 class File
 {
@@ -25,14 +25,15 @@ class File
 
     public static function fromURL(string $url, ?string $filename = null): UploadedFile
     {
-        if(filter_var($url, FILTER_VALIDATE_URL)){
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
             try {
                 $response = self::fetchUrl($url);
             } catch (RequestException $e) {
                 throw new RuntimeException($e->getMessage());
-            } catch (Exception $e){
+            } catch (Exception $e) {
                 throw new Exception($e->getMessage());
             }
+
             return self::fromFileData($response->body(), $filename);
         } else {
             throw new Exception('Failed to download file: URL is not valid');

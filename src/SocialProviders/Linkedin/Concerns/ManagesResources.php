@@ -33,7 +33,7 @@ trait ManagesResources
                     'id' => $data['sub'],
                     'name' => $data['name'],
                     'username' => '',
-                    'image' => $data['picture'] ?? ''
+                    'image' => $data['picture'] ?? '',
                 ];
             });
         }
@@ -41,7 +41,7 @@ trait ManagesResources
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->withHeaders($this->httpHeaders())
             ->get("$this->apiUrl/$this->apiVersion/me", [
-                'projection' => '(id,localizedFirstName,localizedLastName,vanityName,profilePicture(displayImage~:playableStreams))'
+                'projection' => '(id,localizedFirstName,localizedLastName,vanityName,profilePicture(displayImage~:playableStreams))',
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -51,7 +51,7 @@ trait ManagesResources
                 'id' => $data['id'],
                 'name' => "{$data['localizedFirstName']} {$data['localizedLastName']}",
                 'username' => $data['vanityName'] ?? '',
-                'image' => Arr::get($data, 'profilePicture.displayImage~.elements.0.identifiers.0.identifier')
+                'image' => Arr::get($data, 'profilePicture.displayImage~.elements.0.identifiers.0.identifier'),
             ];
         });
     }

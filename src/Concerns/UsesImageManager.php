@@ -9,6 +9,6 @@ trait UsesImageManager
 {
     public function imageManager(): ImageManager
     {
-        return new ImageManager(new Driver());
+        return new ImageManager(new Driver);
     }
 }

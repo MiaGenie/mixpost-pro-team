@@ -40,7 +40,8 @@
         "add_social_account": "Non hai un account social, aggiungine almeno uno.",
         "no_accounts_found": "Nessun conto trovato",
         "finish_connection": "Connessione di finitura",
-        "open_account_page": "Pagina di apertura del conto"
+        "open_account_page": "Pagina di apertura del conto",
+        "view_profile": "Visualizza il profilo"
     },
     "ai": {
         "tell_ai": "Dite all'intelligenza artificiale di cosa scrivere",
@@ -391,7 +392,7 @@
         "inch": "pollici",
         "mm": "millimetri",
         "create_design": "Creare il design",
-        "edit_adobe_express": "Modifica in Adobe Express",
+        "create_adobe_express": "Creare con Adobe Express",
         "new_design": "Nuovo design",
         "saved": "I media sono stati salvati con successo.",
         "fb_post": "Post su Facebook",
@@ -402,7 +403,8 @@
         "linkedin_post": "Messaggio su LinkedIn",
         "x_post": "X post",
         "pinterest_post": "Post su Pinterest",
-        "media": "Media"
+        "media": "Media",
+        "create_for_adobe_express": "Creare per Adobe Express"
     },
     "page": {
         "pages": "Pagine",
@@ -706,7 +708,6 @@
             "visibility": "Visibilità",
             "public": "Pubblico",
             "connections": "Connessioni",
-            "not_support_accounts": "Purtroppo, l'API di LinkedIn non supporta la visualizzazione delle analisi per gli account LinkedIn personali.",
             "insights": "Approfondimenti",
             "job_title": "Il tuo titolo di lavoro",
             "send": "Inviare"
@@ -785,7 +786,6 @@
             "public": "Pubblico",
             "private": "Privato",
             "unlisted": "Non quotato",
-            "analytics_under_development": "L'analisi di YouTube è in fase di sviluppo.",
             "select_video": "Selezionare un video per questo account YouTube.",
             "privacy_config": "Configurazione della privacy",
             "title": "Video o titolo breve"
@@ -889,7 +889,9 @@
         "copied_clipboard": "Copiato negli appunti!",
         "failed_copied_clipboard": "Impossibile copiare negli appunti!",
         "usage_api": "Utilizzo in API",
-        "stored_safely": "L'ho conservato al sicuro"
+        "stored_safely": "L'ho conservato al sicuro",
+        "copy_id": "Copia ID",
+        "copy_uuid": "Copia UUID"
     },
     "tag": {
         "change_label_color": "Cambiare il colore dell'etichetta",

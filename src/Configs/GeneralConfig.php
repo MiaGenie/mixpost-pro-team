@@ -16,7 +16,7 @@ class GeneralConfig extends Config
     public function form(): array
     {
         return [
-            'url_shortener_provider' => 'disabled'
+            'url_shortener_provider' => 'disabled',
         ];
     }
 
@@ -27,8 +27,8 @@ class GeneralConfig extends Config
                 'sometimes',
                 'nullable',
                 'string',
-                Rule::in(array_merge(UrlShortenerManager::getProviderSelectionOptionKeys(), ['disabled']))
-            ]
+                Rule::in(array_merge(UrlShortenerManager::getProviderSelectionOptionKeys(), ['disabled'])),
+            ],
         ];
     }
 

@@ -33,7 +33,6 @@ use Inovector\Mixpost\Http\Base\Middleware\EnsurePasswordConfirmed;
 use Inovector\Mixpost\Http\Base\Middleware\EnterpriseConsoleRedirects;
 use Inovector\Mixpost\Http\Base\Middleware\HandleInertiaRequests;
 use Inovector\Mixpost\Http\Base\Middleware\SystemWebhook;
-use Inovector\Mixpost\Mixpost;
 
 Route::prefix('admin')->middleware([Admin::class])->group(function () {
     Route::get('/', DashboardController::class)->name('dashboardAdmin');

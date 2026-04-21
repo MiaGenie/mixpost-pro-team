@@ -16,7 +16,7 @@ class ShortenedUrl extends Model
     protected $fillable = [
         'provider',
         'original_url',
-        'short_url'
+        'short_url',
     ];
 
     const UPDATED_AT = null;

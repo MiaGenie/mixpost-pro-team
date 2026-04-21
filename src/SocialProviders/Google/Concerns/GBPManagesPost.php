@@ -38,7 +38,7 @@ trait GBPManagesPost
             return [
                 'id' => Str::afterLast($data['name'], '/'),
                 'data' => [
-                    'url' => $data['searchUrl']
+                    'url' => $data['searchUrl'],
                 ],
             ];
         });
@@ -112,8 +112,8 @@ trait GBPManagesPost
                         'year' => Carbon::parse($params['end_date'] ?? 'now')->year,
                         'month' => Carbon::parse($params['end_date'] ?? 'now')->month,
                         'day' => Carbon::parse($params['end_date'] ?? 'now')->day,
-                    ]
-                ]
+                    ],
+                ],
             ];
         }
 
@@ -132,10 +132,10 @@ trait GBPManagesPost
                         'month' => Carbon::parse($params['end_date'] ?? 'now')->month,
                         'day' => Carbon::parse($params['end_date'] ?? 'now')->day,
                     ],
-                ]
+                ],
             ];
 
-            if (!empty($params['start_time'])) {
+            if (! empty($params['start_time'])) {
                 $data['event']['schedule']['startTime'] = [
                     'hours' => Carbon::parse($params['start_time'])->hour,
                     'minutes' => Carbon::parse($params['start_time'])->minute,
@@ -144,7 +144,7 @@ trait GBPManagesPost
                 ];
             }
 
-            if (!empty($params['end_time'])) {
+            if (! empty($params['end_time'])) {
                 $data['event']['schedule']['endTime'] = [
                     'hours' => Carbon::parse($params['end_time'])->hour,
                     'minutes' => Carbon::parse($params['end_time'])->minute,
@@ -154,8 +154,8 @@ trait GBPManagesPost
             }
         }
 
-        if ($media->filter(fn(Media $item) => $item->isImage())->count()) {
-            $data['media'] = $media->filter(fn(Media $item) => $item->isImage())->map(function (Media $mediaItem) {
+        if ($media->filter(fn (Media $item) => $item->isImage())->count()) {
+            $data['media'] = $media->filter(fn (Media $item) => $item->isImage())->map(function (Media $mediaItem) {
                 return [
                     'mediaFormat' => 'PHOTO',
                     'sourceUrl' => $mediaItem->getUrl(),

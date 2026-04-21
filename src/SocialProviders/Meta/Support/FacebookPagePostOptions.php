@@ -11,14 +11,14 @@ class FacebookPagePostOptions extends SocialProviderPostOptions
     public function rules(FormRequest $request): array
     {
         return [
-            'type' => ['sometimes', 'string', 'in:post,reel,story']
+            'type' => ['sometimes', 'string', 'in:post,reel,story'],
         ];
     }
 
     public function map(array $options = []): array
     {
         return [
-            'type' => Arr::get($options, 'type', 'post')
+            'type' => Arr::get($options, 'type', 'post'),
         ];
     }
 }

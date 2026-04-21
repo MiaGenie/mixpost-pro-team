@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Inovector\Mixpost\Enums\PostDeleteMode;
 use Inovector\Mixpost\Facades\WorkspaceManager;
+
 class DeletePost extends FormRequest
 {
     public function rules(): array

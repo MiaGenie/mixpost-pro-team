@@ -5,9 +5,9 @@ namespace Inovector\Mixpost\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Inovector\Mixpost\Util;
-use Illuminate\Support\Facades\File;
 
 class ConvertLangJson extends Command
 {
@@ -16,6 +16,7 @@ class ConvertLangJson extends Command
     protected $description = 'Convert language files to json files';
 
     protected array $skipFiles = ['backend.php', 'mail.php', 'rules.php'];
+
     protected array $skipKeys = ['backend'];
 
     protected array $jsonArray = [];
@@ -25,8 +26,9 @@ class ConvertLangJson extends Command
         if (App::environment('production')) {
             $this->warn('The application is in production environment.');
 
-            if (!$this->confirm('Do you wish to continue?')) {
+            if (! $this->confirm('Do you wish to continue?')) {
                 $this->error('Conversion has been cancelled.');
+
                 return;
             }
         }
@@ -41,7 +43,7 @@ class ConvertLangJson extends Command
     {
         $files = array_values(
             Arr::where(File::files("{$this->langFolderPath()}/$locale"), function ($file) {
-                return !in_array($file->getFilename(), $this->skipFiles);
+                return ! in_array($file->getFilename(), $this->skipFiles);
             })
         );
 
@@ -49,10 +51,10 @@ class ConvertLangJson extends Command
 
         foreach ($files as $file) {
             $jsons = collect(Util::config('locales'))->map(function ($lang) {
-                return $lang['long'] . '.json';
+                return $lang['long'].'.json';
             })->toArray();
 
-            if (!in_array($file->getFilename(), $jsons)) {
+            if (! in_array($file->getFilename(), $jsons)) {
                 $array[] = Str::before($file->getFilename(), '.php');
             }
         }
@@ -71,7 +73,7 @@ class ConvertLangJson extends Command
                 })->toArray();
 
                 if (count($onlyFilledKeys)) {
-                    if (!Str::endsWith($group, '_back')) {
+                    if (! Str::endsWith($group, '_back')) {
                         $this->jsonArray[$locale['long']][$group] = $onlyFilledKeys;
                     }
                 }
@@ -87,7 +89,7 @@ class ConvertLangJson extends Command
             return require $file;
         }
 
-        return (object)[];
+        return (object) [];
     }
 
     protected function createJsonFiles(): void
@@ -95,7 +97,7 @@ class ConvertLangJson extends Command
         foreach ($this->jsonArray as $language => $contain) {
             $path = "{$this->langFolderJsonPath()}/$language.json";
 
-            if (!file_exists(dirname($path))) {
+            if (! file_exists(dirname($path))) {
                 mkdir(dirname($path), 0775, true);
             }
 
@@ -137,7 +139,7 @@ class ConvertLangJson extends Command
 
     protected function adjustString($s): string
     {
-        if (!is_string($s)) {
+        if (! is_string($s)) {
             return $s;
         }
 
@@ -146,7 +148,7 @@ class ConvertLangJson extends Command
         return preg_replace_callback(
             "/(?<!mailto|tel|{$escaped_escape_char}):\w+/",
             function ($matches) {
-                return '{' . mb_substr($matches[0], 1) . '}';
+                return '{'.mb_substr($matches[0], 1).'}';
             },
             $s
         );
@@ -168,11 +170,11 @@ class ConvertLangJson extends Command
 
     protected function langFolderPath(): string
     {
-        return __DIR__ . '/../../resources/lang';
+        return __DIR__.'/../../resources/lang';
     }
 
     protected function langFolderJsonPath(): string
     {
-        return __DIR__ . '/../../resources/lang-json';
+        return __DIR__.'/../../resources/lang-json';
     }
 }

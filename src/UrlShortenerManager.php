@@ -16,13 +16,13 @@ class UrlShortenerManager extends UrlShortenerManagerAbstract
         return [
             YourlsProvider::class,
             ShlinkProvider::class,
-            BitlyProvider::class
+            BitlyProvider::class,
         ];
     }
 
     public function providers(): array
     {
-        if (!empty($this->cacheProviders)) {
+        if (! empty($this->cacheProviders)) {
             return $this->cacheProviders;
         }
 

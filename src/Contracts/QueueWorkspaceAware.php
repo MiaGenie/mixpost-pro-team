@@ -2,7 +2,4 @@
 
 namespace Inovector\Mixpost\Contracts;
 
-interface QueueWorkspaceAware
-{
-
-}
+interface QueueWorkspaceAware {}

@@ -24,7 +24,7 @@ trait HasExternalUrls
         $uri = Arr::get($data, 'uri', '');
         $slug = Str::afterLast($uri, '/');
 
-        if (!$slug) {
+        if (! $slug) {
             return '';
         }
 

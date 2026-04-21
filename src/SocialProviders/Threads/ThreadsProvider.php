@@ -6,22 +6,24 @@ use Illuminate\Support\Arr;
 use Inovector\Mixpost\Abstracts\SocialProvider;
 use Inovector\Mixpost\Contracts\AccountResource;
 use Inovector\Mixpost\Services\ThreadsService;
+use Inovector\Mixpost\SocialProviders\Threads\Concerns\ManagesCallbacks;
 use Inovector\Mixpost\SocialProviders\Threads\Concerns\ManagesConfig;
 use Inovector\Mixpost\SocialProviders\Threads\Concerns\ManagesOAuth;
-use Inovector\Mixpost\SocialProviders\Threads\Concerns\ManagesCallbacks;
-use Inovector\Mixpost\SocialProviders\Threads\Concerns\UsesResponseBuilder;
 use Inovector\Mixpost\SocialProviders\Threads\Concerns\ManagesResources;
+use Inovector\Mixpost\SocialProviders\Threads\Concerns\UsesResponseBuilder;
 
 class ThreadsProvider extends SocialProvider
 {
+    use ManagesCallbacks;
     use ManagesConfig;
-    use UsesResponseBuilder;
     use ManagesOAuth;
     use ManagesResources;
-    use ManagesCallbacks;
+    use UsesResponseBuilder;
 
     public array $callbackResponseKeys = ['code'];
+
     public string $graphUrl = 'https://graph.threads.net';
+
     public string $graphVersion = 'v1.0';
 
     public static function service(): string

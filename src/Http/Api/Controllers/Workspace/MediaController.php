@@ -13,10 +13,12 @@ use Inovector\Mixpost\Models\Media;
 
 class MediaController extends Controller
 {
-    public function index(): AnonymousResourceCollection
+    public function index(Request $request): AnonymousResourceCollection
     {
         return MediaResource::collection(
-            Media::latest('created_at')->paginate(20)
+            Media::latest('created_at')->paginate(
+                (int) min($request->get('limit', 50), 100)
+            )
         );
     }
 
@@ -30,7 +32,7 @@ class MediaController extends Controller
     public function update(UpdateMedia $updateMedia): JsonResponse
     {
         return response()->json([
-            'success' => (bool)$updateMedia->handle(),
+            'success' => (bool) $updateMedia->handle(),
         ]);
     }
 
@@ -39,7 +41,7 @@ class MediaController extends Controller
         $deleteMediaFiles->handle();
 
         return response()->json([
-            'success' => true
+            'success' => true,
         ]);
     }
 }

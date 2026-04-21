@@ -11,7 +11,7 @@ Route::prefix(Util::corePath())
     ->group(function () {
         // Auth routes
         Route::middleware(HandleInertiaRequests::class)->group(function () {
-            require __DIR__ . '/includes/auth.php';
+            require __DIR__.'/includes/auth.php';
         });
 
         // Dashboard routes
@@ -19,14 +19,14 @@ Route::prefix(Util::corePath())
             Mixpost::getWebDashboardMiddlewares(),
             [HandleInertiaRequests::class]
         ))->group(function () {
-            require __DIR__ . '/includes/main.php';
+            require __DIR__.'/includes/main.php';
 
-            require __DIR__ . '/includes/admin.php';
+            require __DIR__.'/includes/admin.php';
 
-            require __DIR__ . '/includes/workspace.php';
+            require __DIR__.'/includes/workspace.php';
         });
     });
 
-require __DIR__ . '/includes/callback.php';
+require __DIR__.'/includes/callback.php';
 
-require __DIR__ . '/includes/public.php';
+require __DIR__.'/includes/public.php';

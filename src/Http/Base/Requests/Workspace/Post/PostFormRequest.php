@@ -23,7 +23,7 @@ abstract class PostFormRequest extends FormRequest
             'versions' => ['required', 'array', 'min:1'],
             'versions.*.account_id' => ['required', 'int', function ($attribute, $value, $fail) {
                 if ($value != 0 &&
-                    !WorkspaceManager::existsRule('mixpost_accounts', 'id')->unless($value, function ($val) {
+                    ! WorkspaceManager::existsRule('mixpost_accounts', 'id')->unless($value, function ($val) {
                         return $val != 0;
                     })) {
                     $fail('The selected account id is invalid.');
@@ -38,13 +38,13 @@ abstract class PostFormRequest extends FormRequest
             'versions.*.content.*.video_thumbs' => ['array'],
             'versions.*.content.*.video_thumbs.*.media_id' => [
                 'integer',
-                Rule::requiredIf( !empty($this->input('versions.*.content.*.video_thumbs.*'))),
-                WorkspaceManager::existsRule('mixpost_media', 'id')->whereIn('mime_type', ['video/mp4', 'video/x-m4v'])
+                Rule::requiredIf(! empty($this->input('versions.*.content.*.video_thumbs.*'))),
+                WorkspaceManager::existsRule('mixpost_media', 'id')->whereIn('mime_type', ['video/mp4', 'video/x-m4v']),
             ],
             'versions.*.content.*.video_thumbs.*.thumb_id' => [
                 'integer',
-                Rule::requiredIf(!empty($this->input('versions.*.content.*.video_thumbs.*'))),
-                WorkspaceManager::existsRule('mixpost_media', 'id')->whereIn('mime_type', ['image/jpg', 'image/jpeg', 'image/png'])
+                Rule::requiredIf(! empty($this->input('versions.*.content.*.video_thumbs.*'))),
+                WorkspaceManager::existsRule('mixpost_media', 'id')->whereIn('mime_type', ['image/jpg', 'image/jpeg', 'image/png']),
             ],
             'versions.*.options' => ['sometimes', 'array'],
         ];
@@ -62,7 +62,7 @@ abstract class PostFormRequest extends FormRequest
                 /** @var SocialProvider $provider */
                 $provider = $providers[$key] ?? null;
 
-                if (!$provider) {
+                if (! $provider) {
                     continue;
                 }
 
@@ -93,14 +93,14 @@ abstract class PostFormRequest extends FormRequest
                         'body' => $content['body'] ?? '',
                         'media' => $content['media'] ?? [],
                         'url' => $content['url'] ?? null,
-                        'video_thumbs' => $content['video_thumbs'] ?? []
+                        'video_thumbs' => $content['video_thumbs'] ?? [],
                     ];
                 }),
                 'options' => Arr::map(Arr::only($version['options'] ?? [], array_keys($providers)), function ($options, $keyProvider) use ($providers) {
                     /** @var SocialProvider $provider */
                     $provider = $providers[$keyProvider] ?? null;
 
-                    if (!$provider) {
+                    if (! $provider) {
                         return [];
                     }
 

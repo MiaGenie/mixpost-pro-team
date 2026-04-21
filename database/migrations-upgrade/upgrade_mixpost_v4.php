@@ -4,10 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up()
     {
-        if (!Schema::hasTable('mixpost_shortened_urls')) {
+        if (! Schema::hasTable('mixpost_shortened_urls')) {
             Schema::create('mixpost_shortened_urls', function (Blueprint $table) {
                 $table->id();
                 $table->bigInteger('workspace_id')->unsigned()->index();

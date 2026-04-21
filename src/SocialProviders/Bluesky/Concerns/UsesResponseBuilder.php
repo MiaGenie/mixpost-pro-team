@@ -2,19 +2,19 @@
 
 namespace Inovector\Mixpost\SocialProviders\Bluesky\Concerns;
 
-use Illuminate\Support\Carbon;
+use Closure;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Support\SocialProviderResponse;
-use Closure;
 
 trait UsesResponseBuilder
 {
     /**
-     * @param $response Response
+     * @param  $response  Response
      */
-    public function buildResponse($response, Closure $okResult = null): SocialProviderResponse
+    public function buildResponse($response, ?Closure $okResult = null): SocialProviderResponse
     {
         $usage = $this->getRateLimitUsage($response->headers());
 
@@ -73,12 +73,12 @@ trait UsesResponseBuilder
     public function getRateLimitUsage(array $headers): array
     {
         $headers = array_change_key_case($headers, CASE_LOWER);
-        $timestampToRegainAccess = Carbon::parse((int)Arr::get($headers, 'ratelimit-reset.0'));
+        $timestampToRegainAccess = Carbon::parse((int) Arr::get($headers, 'ratelimit-reset.0'));
 
         return [
-            'limit' => (int)Arr::get($headers, 'ratelimit-limit.0'),
-            'remaining' => (int)Arr::get($headers, 'ratelimit-remaining.0'),
-            'retry_after' => (int)Carbon::now('UTC')->diffInSeconds($timestampToRegainAccess),
+            'limit' => (int) Arr::get($headers, 'ratelimit-limit.0'),
+            'remaining' => (int) Arr::get($headers, 'ratelimit-remaining.0'),
+            'retry_after' => (int) Carbon::now('UTC')->diffInSeconds($timestampToRegainAccess),
         ];
     }
 }

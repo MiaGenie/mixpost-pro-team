@@ -18,7 +18,7 @@ trait UsesUploads
                 ->post("$this->apiUrl/rest/images?action=initializeUpload", [
                     'initializeUploadRequest' => [
                         'owner' => "urn:li:{$this->author()}:{$this->values['provider_id']}",
-                    ]
+                    ],
                 ])
         );
 
@@ -46,7 +46,7 @@ trait UsesUploads
     public function uploadVideo(Media $media, array $params = []): SocialProviderResponse
     {
         if (isset($params['video_thumbs']) && is_array($params['video_thumbs'])) {
-            $thumb = PostVersionHelpers::getThumbForMediaId($media->id, $params['video_thumbs']);
+            $thumb = PostVersionHelpers::getThumbForMediaId((int) $media->id, $params['video_thumbs']);
         }
 
         $initializeResponse = $this->buildResponse(
@@ -57,7 +57,7 @@ trait UsesUploads
                         'owner' => "urn:li:{$this->author()}:{$this->values['provider_id']}",
                         'fileSizeBytes' => $media->size,
                         'uploadThumbnail' => isset($thumb),
-                    ]
+                    ],
                 ])
         );
 
@@ -91,6 +91,7 @@ trait UsesUploads
             // If one of the upload responses has an error, stop the script, close and delete the stream resource
             if ($uploadResponse->hasError()) {
                 Util::closeAndDeleteStreamResource($readStream);
+
                 return $uploadResponse;
             }
 
@@ -116,8 +117,8 @@ trait UsesUploads
                 'finalizeUploadRequest' => [
                     'video' => $initializeResponse->value['video'],
                     'uploadToken' => $initializeResponse->value['uploadToken'],
-                    'uploadedPartIds' => $uploadedPartIds
-                ]
+                    'uploadedPartIds' => $uploadedPartIds,
+                ],
             ]);
 
         return $this->buildResponse($finalizeUploadResponse)->useContext([

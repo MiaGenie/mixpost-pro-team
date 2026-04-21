@@ -13,12 +13,12 @@ use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\ManagesPost;
 
 class BlueskyProvider extends SocialProvider
 {
-    use ManagesConfig;
     use HasExternalUrls;
-    use ManagesOAuth;
     use ManagesAccount;
-    use ManagesPost;
+    use ManagesConfig;
     use ManagesMetrics;
+    use ManagesOAuth;
+    use ManagesPost;
 
     public const DEFAULT_SERVER = 'https://bsky.social';
 

@@ -10,12 +10,12 @@ class ExtractUrlMeta extends FormRequest
     public function rules(): array
     {
         return [
-            'url' => ['required', 'url']
+            'url' => ['required', 'url'],
         ];
     }
 
     public function handle(): array
     {
-        return (new FetchUrlCard())($this->get('url'));
+        return (new FetchUrlCard)($this->get('url'));
     }
 }

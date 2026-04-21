@@ -8,8 +8,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Inovector\Mixpost\Abstracts\Image;
 use Inovector\Mixpost\Concerns\UsesMimeType;
-use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Contracts\MediaConversion;
+use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Util;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 
@@ -69,7 +69,7 @@ class MediaUploader
 
     public function data(array $array): static
     {
-        $this->data = !empty($array) ? $array : null;
+        $this->data = ! empty($array) ? $array : null;
 
         return $this;
     }
@@ -101,11 +101,11 @@ class MediaUploader
         $filesystem = $this->filesystem();
 
         // Determine upload path
-        $filePath = $this->isImage($mimeType) && !$this->isGifImage($mimeType)
+        $filePath = $this->isImage($mimeType) && ! $this->isGifImage($mimeType)
             ? $this->uploadImage()
             : $filesystem->putFile($this->path, $this->file, 'public');
 
-        if (!$filePath) {
+        if (! $filePath) {
             throw new \Exception("The file was not uploaded. Check your $this->disk driver configuration.");
         }
 
@@ -131,7 +131,7 @@ class MediaUploader
     {
         $data = Arr::only($this->upload(), ['name', 'mime_type', 'size', 'size_total', 'disk', 'path', 'conversions', 'data']);
 
-        if (!(  isset($this->data['adobe_express_doc_id'])
+        if (! (isset($this->data['adobe_express_doc_id'])
                 &&
                 $media = Media::whereJsonContains('data->adobe_express_doc_id', $this->data['adobe_express_doc_id'])->first())) {
             return Media::create($data);
@@ -150,13 +150,13 @@ class MediaUploader
         }
 
         return collect($this->conversions)->map(function ($conversion) use ($filepath) {
-            if (!$conversion instanceof MediaConversion) {
+            if (! $conversion instanceof MediaConversion) {
                 throw new \Exception('The conversion must be an instance of MediaConversion');
             }
 
             $perform = $conversion->filepath($filepath)->fromDisk($this->disk)->perform();
 
-            if (!$perform) {
+            if (! $perform) {
                 return null;
             }
 

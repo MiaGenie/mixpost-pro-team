@@ -6,12 +6,12 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 
 trait ManagesAccount
 {
-    use UsesValues;
     use UsesResponseBuilder;
+    use UsesValues;
 
     public function getAccount(): SocialProviderResponse
     {
-        $response = $this->http()->get("app.bsky.actor.getProfile", [
+        $response = $this->http()->get('app.bsky.actor.getProfile', [
             'actor' => $this->getDid(),
         ]);
 
@@ -23,7 +23,7 @@ trait ManagesAccount
                 'image' => $data['avatar'] ?? '',
                 'data' => [
                     'server' => $this->getServer(),
-                ]
+                ],
             ];
         });
     }

@@ -9,9 +9,7 @@ class Theme
 {
     public array $customColors = [];
 
-    public function __construct(public readonly ThemeConfig $config)
-    {
-    }
+    public function __construct(public readonly ThemeConfig $config) {}
 
     public function config(): ThemeConfig
     {
@@ -25,7 +23,7 @@ class Theme
 
     public function colors(): array
     {
-        if (!empty($this->customColors)) {
+        if (! empty($this->customColors)) {
             return $this->customColors;
         }
 

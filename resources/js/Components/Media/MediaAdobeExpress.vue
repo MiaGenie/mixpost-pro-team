@@ -1,20 +1,21 @@
 <script setup>
-import {onMounted, ref} from 'vue'
-import SecondaryButton from "../Button/SecondaryButton.vue";
-import AdjustmentsHorizontal from "../../Icons/AdjustmentsHorizontal.vue";
-import AdobeExpress from "../../Icons/AdobeExpress.vue";
-import Select from "../Form/Select.vue";
-import DialogModal from "../Modal/DialogModal.vue";
-import PrimaryButton from "../Button/PrimaryButton.vue";
-import Input from "../Form/Input.vue";
-import VerticalGroup from "../Layout/VerticalGroup.vue";
-import useAdobeExpress from "../../Composables/useAdobeExpress.js";
-import {toRawIfProxy} from "@/helpers.js";
+import { onMounted, ref } from 'vue'
+import SecondaryButton from '../Button/SecondaryButton.vue'
+import AdjustmentsHorizontal from '../../Icons/AdjustmentsHorizontal.vue'
+import Select from '../Form/Select.vue'
+import DialogModal from '../Modal/DialogModal.vue'
+import PrimaryButton from '../Button/PrimaryButton.vue'
+import Input from '../Form/Input.vue'
+import VerticalGroup from '../Layout/VerticalGroup.vue'
+import useAdobeExpress from '../../Composables/useAdobeExpress.js'
+import { toRawIfProxy } from '@/helpers.js'
+import Preloader from '@/Components/Util/Preloader.vue'
+import Logo from '@/Components/DataDisplay/Logo.vue'
 
-const emit = defineEmits(['close', 'insert', 'selectMediaInMediaLibrary']);
-const showCustomSizeModal = ref(false);
+const emit = defineEmits(['close', 'insert', 'selectMediaInMediaLibrary'])
+const showCustomSizeModal = ref(false)
 
-const allowOnlyDigits = (e) => {
+const allowOnlyDigits = e => {
   if (!/\d/.test(e.key)) {
     e.preventDefault()
   }
@@ -25,39 +26,47 @@ const {
   customSize,
   loadAdobeSdk,
   openAdobeExpressEditor,
-  selected
-} = useAdobeExpress(emit);
+  selected,
+  initialized
+} = useAdobeExpress(emit)
 
 onMounted(async () => {
-  await loadAdobeSdk();
-});
+  await loadAdobeSdk()
+})
 
-defineExpose({selected})
+defineExpose({ selected })
 </script>
 <template>
-  <div class="p-md bg-stone-500 w-auto h-auto rounded-lg ">
+  <div class="p-md bg-stone-500 w-auto h-auto rounded-lg">
     <div class="flex items-center mb-sm">
-      <AdobeExpress class="size-9 m-1 mr-xs"/>
-      <span>Adobe Express</span>
+      <Logo class="mr-xs" />
+      <span>{{ $t('media.create_for_adobe_express') }}</span>
     </div>
-    <div class="flex flex-wrap">
-      <SecondaryButton @click="showCustomSizeModal = true" class="m-1 !py-xs">
+    <div class="flex flex-wrap relative" :aria-busy="!initialized">
+      <SecondaryButton class="m-1 !py-xs" @click="showCustomSizeModal = true">
         <template #icon>
-          <AdjustmentsHorizontal/>
+          <AdjustmentsHorizontal />
         </template>
         <span class="pl-1">{{ $t('media.custom_size') }}</span>
       </SecondaryButton>
-      <SecondaryButton v-for="size in socialMediaSizes" @click="openAdobeExpressEditor({ canvasSize: size.value})"
-                       class="m-1">
+      <SecondaryButton
+        v-for="size in socialMediaSizes"
+        :key="size.value"
+        class="m-1"
+        @click="openAdobeExpressEditor({ canvasSize: size.value })"
+      >
         {{ size.name }}
       </SecondaryButton>
+      <Preloader v-if="!initialized" :opacity="75" role="progressbar" aria-label="Loading" />
     </div>
   </div>
 
-  <DialogModal :show="showCustomSizeModal"
-               max-width="sm"
-               :closeable="true"
-               @close="showCustomSizeModal = false">
+  <DialogModal
+    :show="showCustomSizeModal"
+    max-width="sm"
+    :closeable="true"
+    @close="showCustomSizeModal = false"
+  >
     <template #header>
       {{ $t('media.custom_size') }}
     </template>
@@ -66,27 +75,24 @@ defineExpose({selected})
         <template #title>
           <label for="cs_width">{{ $t('media.width') }}</label>
         </template>
-        <Input type="number"
-               v-model="customSize.width"
-               id="cs_width"
-               @keypress="allowOnlyDigits"
-        />
+        <Input id="cs_width" v-model="customSize.width" type="number" @keypress="allowOnlyDigits" />
       </VerticalGroup>
       <VerticalGroup class="mt-sm">
         <template #title>
           <label for="cs_height">{{ $t('media.height') }}</label>
         </template>
-        <Input type="number"
-               v-model="customSize.height"
-               id="cs_height"
-               @keypress="allowOnlyDigits"
+        <Input
+          id="cs_height"
+          v-model="customSize.height"
+          type="number"
+          @keypress="allowOnlyDigits"
         />
       </VerticalGroup>
       <VerticalGroup class="mt-sm">
         <template #title>
           <label for="cs_unit">{{ $t('media.unit') }}</label>
         </template>
-        <Select v-model="customSize.unit" id="unit">
+        <Select id="unit" v-model="customSize.unit">
           <option value="px">{{ $t('media.px') }}</option>
           <option value="in">{{ $t('media.inch') }}</option>
           <option value="mm">{{ $t('media.mm') }}</option>
@@ -94,11 +100,17 @@ defineExpose({selected})
       </VerticalGroup>
     </template>
     <template #footer>
-      <SecondaryButton @click="showCustomSizeModal = false" class="mr-xs rtl:mr-0 rtl:ml-xs">
+      <SecondaryButton class="mr-xs rtl:mr-0 rtl:ml-xs" @click="showCustomSizeModal = false">
         {{ $t('general.cancel') }}
       </SecondaryButton>
       <PrimaryButton
-          @click="() => { showCustomSizeModal = false; openAdobeExpressEditor({ canvasSize: toRawIfProxy(customSize)}); }">
+        @click="
+          () => {
+            showCustomSizeModal = false
+            openAdobeExpressEditor({ canvasSize: toRawIfProxy(customSize) })
+          }
+        "
+      >
         {{ $t('media.create_design') }}
       </PrimaryButton>
     </template>

@@ -21,7 +21,7 @@ class PostVersionResource extends JsonResource
             'account_id' => $this->account_id,
             'is_original' => $this->is_original,
             'content' => $this->content(),
-            'options' => $this->options()
+            'options' => $this->options(),
         ];
     }
 
@@ -41,18 +41,20 @@ class PostVersionResource extends JsonResource
 
         return collect($items)->map(function ($item, $index) {
             $data = [
-                'body' => (string)$item['body'],
+                'body' => (string) $item['body'],
                 'media' => Arr::map($item['media'], function ($mediaItem) use ($item) {
                     if ($mediaItem instanceof Media) {
                         $mediaResource = new MediaResource($mediaItem);
 
-                        if(isset($item['video_thumb_media']) && $videoThumbMedia = $item['video_thumb_media'][$mediaItem->id] ?? NULL){
+                        if (isset($item['video_thumb_media']) && $videoThumbMedia = $item['video_thumb_media'][$mediaItem->id] ?? null) {
                             return $mediaResource->additionalFields([
-                                'video_custom_thumb_url' => $videoThumbMedia->getUrl()
+                                'video_custom_thumb_url' => $videoThumbMedia->getUrl(),
                             ]);
                         }
+
                         return $mediaResource;
                     }
+
                     return $mediaItem;
                 }),
                 'video_thumbs' => $item['video_thumbs'] ?? [],

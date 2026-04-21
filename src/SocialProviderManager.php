@@ -24,14 +24,14 @@ use Inovector\Mixpost\SocialProviders\Twitter\TwitterProvider;
 
 class SocialProviderManager extends SocialProviderManagerAbstract
 {
-    use UsesOAuthCodeChallenge;
     use UsesCacheKey;
+    use UsesOAuthCodeChallenge;
 
     protected array $providers = [];
 
     public function providers(): array
     {
-        if (!empty($this->providers)) {
+        if (! empty($this->providers)) {
             return $this->providers;
         }
 
@@ -111,7 +111,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
 
         $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'pinterest']);
         $config['values'] = [
-            'environment' => $config['environment'] ?? 'sandbox'
+            'environment' => $config['environment'] ?? 'sandbox',
         ];
 
         return $this->buildConnectionProvider(PinterestProvider::class, $config);
@@ -152,7 +152,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
         if ($request->route() && $request->route()->getName() === 'mixpost.accounts.add') {
             $serverName = $this->container->request->input('server');
             $request->session()->put($sessionServerKey, $serverName); // We keep the server name in the session. We'll need it in the callback
-        } else if ($request->route() && $request->route()->getName() === 'mixpost.callbackSocialProvider') {
+        } elseif ($request->route() && $request->route()->getName() === 'mixpost.callbackSocialProvider') {
             $serverName = $request->session()->get($sessionServerKey);
         } else {
             $serverName = $this->values['data']['server']; // Get the server value that have been set on SocialProviderManager::connect($provider, array $values = [])
@@ -162,7 +162,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
 
         $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'mastodon']);
         $config['values'] = [
-            'data' => ['server' => $serverName]
+            'data' => ['server' => $serverName],
         ];
 
         return $this->buildConnectionProvider(MastodonProvider::class, $config);
@@ -175,7 +175,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
 
         $values = [
             'data' => [
-                'server' => $this->values['data']['server'] ?? BlueskyProvider::DEFAULT_SERVER
+                'server' => $this->values['data']['server'] ?? BlueskyProvider::DEFAULT_SERVER,
             ],
         ];
 
@@ -203,7 +203,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
         if ($request->routeIs('mixpost.callbackSocialProvider')) {
             $values['data']['server'] = $request->session()->get($sessionServerKey);
 
-            if (!$values['data']['server']) {
+            if (! $values['data']['server']) {
                 throw new OAuthSessionExpired('Bluesky server name is missing. Possible reasons: the server name was not set in the session, or the session has expired.');
             }
 

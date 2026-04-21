@@ -2,14 +2,15 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Inovector\Mixpost\Models\Account;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
-        if (Schema::hasTable('mixpost_accounts') && !Schema::hasColumn('mixpost_accounts', 'authorized')) {
+        if (Schema::hasTable('mixpost_accounts') && ! Schema::hasColumn('mixpost_accounts', 'authorized')) {
             Schema::table('mixpost_accounts', function (Blueprint $table) {
                 $table->boolean('authorized')->default(false)->after('data');
             });
@@ -17,13 +18,13 @@ return new class extends Migration {
             Account::withoutWorkspace()->update(['authorized' => true]);
         }
 
-        if (Schema::hasTable('mixpost_settings') && !$this->uniqueConstraintExistsInSettingsTable()) {
+        if (Schema::hasTable('mixpost_settings') && ! $this->uniqueConstraintExistsInSettingsTable()) {
             Schema::table('mixpost_settings', function (Blueprint $table) {
                 $table->unique(['user_id', 'name']);
             });
         }
 
-        if (!Schema::hasTable('mixpost_user_two_factor_auth')) {
+        if (! Schema::hasTable('mixpost_user_two_factor_auth')) {
             Schema::create('mixpost_user_two_factor_auth', function (Blueprint $table) {
                 $table->id();
                 $table->bigInteger('user_id')->unsigned()->index();
@@ -35,7 +36,7 @@ return new class extends Migration {
             });
         }
 
-        if (!Schema::hasTable('mixpost_pages')) {
+        if (! Schema::hasTable('mixpost_pages')) {
             Schema::create('mixpost_pages', function (Blueprint $table) {
                 $table->id();
                 $table->uuid('uuid')->unique();
@@ -49,7 +50,7 @@ return new class extends Migration {
             });
         }
 
-        if (!Schema::hasTable('mixpost_blocks')) {
+        if (! Schema::hasTable('mixpost_blocks')) {
             Schema::create('mixpost_blocks', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
@@ -60,7 +61,7 @@ return new class extends Migration {
             });
         }
 
-        if (!Schema::hasTable('mixpost_page_block')) {
+        if (! Schema::hasTable('mixpost_page_block')) {
             Schema::create('mixpost_page_block', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('page_id')->constrained('mixpost_pages')->onDelete('cascade');
@@ -70,7 +71,7 @@ return new class extends Migration {
             });
         }
 
-        if (!Schema::hasTable('mixpost_configs')) {
+        if (! Schema::hasTable('mixpost_configs')) {
             Schema::create('mixpost_configs', function (Blueprint $table) {
                 $table->id();
                 $table->string('group');
@@ -95,6 +96,7 @@ return new class extends Migration {
                 return true;
             }
         }
+
         return false;
     }
 };

@@ -12,7 +12,7 @@ class YoutubePostOptions extends SocialProviderPostOptions
     {
         return [
             'title' => ['sometimes', 'nullable', 'string', 'max:256'],
-            'status' => ['sometimes', 'string', 'in:public,private,unlisted']
+            'status' => ['sometimes', 'string', 'in:public,private,unlisted'],
         ];
     }
 
@@ -20,7 +20,7 @@ class YoutubePostOptions extends SocialProviderPostOptions
     {
         return [
             'title' => Arr::get($options, 'title', ''),
-            'status' => Arr::get($options, 'status', 'public')
+            'status' => Arr::get($options, 'status', 'public'),
         ];
     }
 }

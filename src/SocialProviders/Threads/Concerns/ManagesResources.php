@@ -9,14 +9,14 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 
 trait ManagesResources
 {
-    use SinglePost;
     use CarouselPost;
+    use SinglePost;
 
     public function getAccount(): SocialProviderResponse
     {
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->get("$this->graphUrl/$this->graphVersion/me", [
-                'fields' => 'id,username,name,threads_profile_picture_url'
+                'fields' => 'id,username,name,threads_profile_picture_url',
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -66,11 +66,11 @@ trait ManagesResources
 
     public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        $response = $this->getHttpClient()::delete("$this->graphUrl/$this->graphVersion/{$id}", [
-            'access_token' => $this->accessToken()
+        $response = $this->getHttpClient()::delete("$this->graphUrl/$this->graphVersion/$id", [
+            'access_token' => $this->accessToken(),
         ]);
 
-        if ($response->json()['error']['code'] === 100) {
+        if ($response->json('error.code') === 100) {
             /**
              * Handle 100 error codes when attempting to delete a post that no longer exists on the platform.
              * This occurs when we have a stored post_provider_id but the post has already been deleted directly on the platform.

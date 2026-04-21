@@ -7,8 +7,6 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 use Inovector\Mixpost\Builders\Media\MediaQuery;
 use Inovector\Mixpost\Http\Base\Resources\MediaResource;
-use Inovector\Mixpost\Models\Media;
-use Inovector\Mixpost\Util;
 
 class MediaFetchUploadsController extends Controller
 {

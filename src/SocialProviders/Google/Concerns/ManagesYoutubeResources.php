@@ -13,7 +13,9 @@ use Inovector\Mixpost\Util;
 trait ManagesYoutubeResources
 {
     protected string $apiVersion = 'v3';
+
     protected string $apiUrl = 'https://www.googleapis.com/youtube';
+
     protected string $apiUploadUrl = 'https://www.googleapis.com/upload/youtube';
 
     public function getAccount(): SocialProviderResponse
@@ -47,7 +49,7 @@ trait ManagesYoutubeResources
             ->get("$this->apiUrl/$this->apiVersion/channels", [
                 'part' => 'snippet',
                 'maxResults' => 50,
-                'mine' => true
+                'mine' => true,
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -56,7 +58,7 @@ trait ManagesYoutubeResources
                     'id' => Arr::get($item, 'id'),
                     'name' => Arr::get($item, 'snippet.title'),
                     'username' => Str::of(Arr::get($item, 'snippet.customUrl', ''))->replace('@', ''),
-                    'image' => Arr::get($item, 'snippet.thumbnails.medium.url')
+                    'image' => Arr::get($item, 'snippet.thumbnails.medium.url'),
                 ];
             })->toArray();
         });
@@ -77,7 +79,7 @@ trait ManagesYoutubeResources
         /** @var $mediaItem Media * */
         $mediaItem = $media->first();
 
-        if (!$mediaItem?->isVideo()) {
+        if (! $mediaItem?->isVideo()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['video_not_selected']);
         }
 
@@ -88,7 +90,7 @@ trait ManagesYoutubeResources
             ],
             'status' => [
                 'privacyStatus' => $params['status'] ?? 'public',
-            ]
+            ],
         ]);
 
         $session = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
@@ -109,7 +111,7 @@ trait ManagesYoutubeResources
         $upload = function ($timeout) use ($uploadUrl, $stream) {
             return $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
                 ->timeout($timeout)
-                ->withBody($stream['stream'], "video/*")
+                ->withBody($stream['stream'], 'video/*')
                 ->put($uploadUrl);
         };
 
@@ -137,7 +139,7 @@ trait ManagesYoutubeResources
             $data = $result->json();
 
             return [
-                'id' => $data['id']
+                'id' => $data['id'],
             ];
         });
     }

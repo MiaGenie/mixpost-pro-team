@@ -16,13 +16,11 @@ abstract class Keypair
 
     protected PrivateKey $key;
 
-    final public function __construct()
-    {
-    }
+    final public function __construct() {}
 
     public static function load(string $key): static
     {
-        $self = new static();
+        $self = new static;
 
         /** @var \Inovector\Mixpost\Services\Bluesky\Crypt\PrivateKey $sk */
         $sk = EC::loadPrivateKey(JWT::urlsafeB64Decode($key));
@@ -34,7 +32,7 @@ abstract class Keypair
 
     public static function create(): static
     {
-        $self = new static();
+        $self = new static;
 
         $self->key = EC::createKey(static::CURVE);
 

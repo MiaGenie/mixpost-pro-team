@@ -9,11 +9,12 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Inovector\Mixpost\Contracts\QueueWorkspaceAware;
 
-class PostCommentDeleted implements ShouldBroadcastNow, QueueWorkspaceAware
+class PostCommentDeleted implements QueueWorkspaceAware, ShouldBroadcastNow
 {
-    use Dispatchable, SerializesModels, InteractsWithSockets;
+    use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public string $postUuid;
+
     public string $activityUuid;
 
     public function __construct(string $postUuid, string $activityUuid)
@@ -24,7 +25,7 @@ class PostCommentDeleted implements ShouldBroadcastNow, QueueWorkspaceAware
 
     public function broadcastOn(): PrivateChannel
     {
-        return new PrivateChannel('mixpost_posts.' . $this->postUuid);
+        return new PrivateChannel('mixpost_posts.'.$this->postUuid);
     }
 
     public function broadcastWith(): array

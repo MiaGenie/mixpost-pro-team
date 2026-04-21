@@ -4,8 +4,8 @@ namespace Inovector\Mixpost\SocialProviders\Linkedin;
 
 use Illuminate\Http\Request;
 use Inovector\Mixpost\Abstracts\SocialProvider;
-use Inovector\Mixpost\Contracts\SocialProviderPostOptions as SocialProviderPostOptionsContract;
 use Inovector\Mixpost\Contracts\AccountResource;
+use Inovector\Mixpost\Contracts\SocialProviderPostOptions as SocialProviderPostOptionsContract;
 use Inovector\Mixpost\Services\LinkedInService;
 use Inovector\Mixpost\SocialProviders\Linkedin\Concerns\ManagesConfig;
 use Inovector\Mixpost\SocialProviders\Linkedin\Concerns\ManagesOAuth;
@@ -18,8 +18,8 @@ use Inovector\Mixpost\Util;
 class LinkedinProvider extends SocialProvider
 {
     use ManagesConfig;
-    use ManagesRateLimit;
     use ManagesOAuth;
+    use ManagesRateLimit;
     use ManagesResources;
 
     public array $callbackResponseKeys = ['code'];
@@ -27,6 +27,7 @@ class LinkedinProvider extends SocialProvider
     protected array $scope;
 
     public string $apiVersion = 'v2';
+
     public string $apiUrl = 'https://api.linkedin.com';
 
     public function __construct(Request $request, string $clientId, string $clientSecret, string $redirectUrl, array $values = [])
@@ -59,14 +60,14 @@ class LinkedinProvider extends SocialProvider
     public function httpHeaders(): array
     {
         return [
-            'X-Restli-Protocol-Version' => '2.0.0'
+            'X-Restli-Protocol-Version' => '2.0.0',
         ];
     }
 
     public function httpHeadersNext(): array
     {
         return [
-            'Linkedin-Version' => '202507'
+            'Linkedin-Version' => '202507',
         ];
     }
 
@@ -88,7 +89,7 @@ class LinkedinProvider extends SocialProvider
 
     public static function postOptions(): SocialProviderPostOptionsContract
     {
-        return new LinkedinPostOptions();
+        return new LinkedinPostOptions;
     }
 
     public static function externalPostUrl(AccountResource $accountResource): string

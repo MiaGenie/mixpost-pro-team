@@ -11,9 +11,9 @@ use Psr\Http\Message\ResponseInterface;
 
 trait UsesOAuthAgent
 {
-    use UsesValues;
     use UsesAccessToken;
     use UsesOAuthSession;
+    use UsesValues;
 
     public function http(): PendingRequest
     {
@@ -29,7 +29,7 @@ trait UsesOAuthAgent
         $dpopProof = DPoP::apiProof(
             jwk: DPoP::load($this->getDPoPKey()),
             iss: self::DEFAULT_SERVER,
-            url: (string)$request->getUri(),
+            url: (string) $request->getUri(),
             token: $this->getToken(),
             nonce: $this->getOAuthSession()->get(DPoP::API_NONCE, ''),
             method: $request->getMethod(),
@@ -40,7 +40,7 @@ trait UsesOAuthAgent
 
     private function apiResponseMiddleware(ResponseInterface $response): ResponseInterface
     {
-        $dpopNonce = (string)collect($response->getHeader('DPoP-Nonce'))->first();
+        $dpopNonce = (string) collect($response->getHeader('DPoP-Nonce'))->first();
 
         $this->getOAuthSession()->put(DPoP::API_NONCE, $dpopNonce);
 
@@ -63,6 +63,6 @@ trait UsesOAuthAgent
     {
         $endpoint = $this->didDoc()->pdsServiceEndpoint(self::DEFAULT_SERVER);
 
-        return $endpoint . '/xrpc/';
+        return $endpoint.'/xrpc/';
     }
 }

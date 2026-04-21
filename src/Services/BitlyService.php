@@ -7,30 +7,29 @@ use Inovector\Mixpost\Enums\ServiceGroup;
 
 class BitlyService extends Service
 {
-
     public static function group(): ServiceGroup
     {
         return ServiceGroup::URL_SHORTENER;
     }
 
-    static function form(): array
+    public static function form(): array
     {
         return [
-            'token' => ''
+            'token' => '',
         ];
     }
 
     public static function formRules(): array
     {
         return [
-            'token' => ['required']
+            'token' => ['required'],
         ];
     }
 
     public static function formMessages(): array
     {
         return [
-            'token' => __('validation.required', ['attribute' => 'Token'])
+            'token' => __('validation.required', ['attribute' => 'Token']),
         ];
     }
 }

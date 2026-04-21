@@ -40,7 +40,8 @@
         "add_social_account": "Nu aveți un cont social, vă rugăm să adăugați cel puțin unul.",
         "no_accounts_found": "Nu s-au găsit conturi",
         "finish_connection": "Terminare conexiune",
-        "open_account_page": "Pagina de deschidere a contului"
+        "open_account_page": "Pagina de deschidere a contului",
+        "view_profile": "Vezi profilul"
     },
     "ai": {
         "tell_ai": "Spuneți-i IA despre ce să scrie",
@@ -391,7 +392,7 @@
         "inch": "centimetri",
         "mm": "milimetri",
         "create_design": "Crearea designului",
-        "edit_adobe_express": "Editați în Adobe Express",
+        "create_adobe_express": "Creați cu Adobe Express",
         "new_design": "Design nou",
         "saved": "Media salvată cu succes.",
         "fb_post": "Mesaj pe Facebook",
@@ -402,7 +403,8 @@
         "linkedin_post": "Post pe LinkedIn",
         "x_post": "X post",
         "pinterest_post": "Pinterest post",
-        "media": "Media"
+        "media": "Media",
+        "create_for_adobe_express": "Creați pentru Adobe Express"
     },
     "page": {
         "pages": "Pagini",
@@ -706,7 +708,6 @@
             "visibility": "Vizibilitate",
             "public": "Public",
             "connections": "Conexiuni",
-            "not_support_accounts": "Din păcate, API-ul LinkedIn nu acceptă afișarea analizelor pentru conturile personale LinkedIn.",
             "insights": "Perspective",
             "job_title": "Titlul postului tău",
             "send": "Trimite"
@@ -785,7 +786,6 @@
             "public": "Public",
             "private": "Privat",
             "unlisted": "Nelistate",
-            "analytics_under_development": "Analizele YouTube sunt în curs de dezvoltare.",
             "select_video": "Selectați un videoclip pentru acest cont YouTube.",
             "privacy_config": "Configurație de confidențialitate",
             "title": "Video sau titlu scurt"
@@ -889,7 +889,9 @@
         "copied_clipboard": "Copiat în clipboard!",
         "failed_copied_clipboard": "Nu s-a reușit copierea în clipboard!",
         "usage_api": "Utilizare în API",
-        "stored_safely": "Am păstrat-o în siguranță."
+        "stored_safely": "Am păstrat-o în siguranță.",
+        "copy_id": "Copiere ID",
+        "copy_uuid": "Copiere UUID"
     },
     "tag": {
         "change_label_color": "Schimbați culoarea etichetei",

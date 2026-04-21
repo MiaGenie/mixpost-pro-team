@@ -2,13 +2,13 @@
 
 namespace Inovector\Mixpost\Support;
 
+use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Inovector\Mixpost\Abstracts\Image;
 use Inovector\Mixpost\Concerns\UsesImageManager;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Util;
-use Exception;
 
 final class ImageResizer extends Image
 {
@@ -44,8 +44,8 @@ final class ImageResizer extends Image
     {
         $image = $this->imageManager()->read($this->getFileData())->scaleDown($width, $height);
 
-        if (!$path = $this->getDestinationFilePath()) {
-            throw new Exception("The destination path is not set. Possible reason: you are using the contents of the file. Specify the path where the file will be saved.");
+        if (! $path = $this->getDestinationFilePath()) {
+            throw new Exception('The destination path is not set. Possible reason: you are using the contents of the file. Specify the path where the file will be saved.');
         }
 
         return Storage::disk($this->getDisk())->put(
@@ -63,23 +63,23 @@ final class ImageResizer extends Image
     public function getDestinationFilePath(): string
     {
         if ($this->file instanceof UploadedFile) {
-            return $this->resolvePath() . $this->file->hashName();
+            return $this->resolvePath().$this->file->hashName();
         }
 
         if ($this->isFilePath($this->resolvePath())) {
             return $this->resolvePath();
         }
 
-        return $this->resolvePath() . $this->getFileName();
+        return $this->resolvePath().$this->getFileName();
     }
 
     private function resolvePath(): string
     {
-        if (!$this->path && $this->file instanceof Media) {
+        if (! $this->path && $this->file instanceof Media) {
             return $this->file->path;
         }
 
-        return $this->path ? rtrim($this->path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR : '';
+        return $this->path ? rtrim($this->path, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR : '';
     }
 
     private function isFilePath(string $path): bool

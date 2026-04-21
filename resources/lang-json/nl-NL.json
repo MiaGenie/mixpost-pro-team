@@ -41,7 +41,8 @@
         "no_accounts_found": "Geen accounts gevonden",
         "finish_connection": "Connectie afronden",
         "open_account_page": "Accountpagina openen",
-        "choose": "Kies"
+        "choose": "Kies",
+        "view_profile": "Bekijk profiel"
     },
     "ai": {
         "tell_ai": "Vertel AI waar je over wilt schrijven",
@@ -389,7 +390,7 @@
         "inch": "inch",
         "mm": "millimeters",
         "create_design": "Ontwerp maken",
-        "edit_adobe_express": "Bewerk in Adobe Express",
+        "create_adobe_express": "Creëer met Adobe Express",
         "new_design": "Nieuw ontwerp",
         "saved": "Media succesvol opgeslagen.",
         "fb_post": "Facebook bericht",
@@ -400,7 +401,8 @@
         "linkedin_post": "LinkedIn bericht",
         "x_post": "X bericht",
         "pinterest_post": "Pinterest bericht",
-        "media": "Media"
+        "media": "Media",
+        "create_for_adobe_express": "Maken voor Adobe Express"
     },
     "page": {
         "pages": "Pagina's",
@@ -704,7 +706,6 @@
             "visibility": "Zichtbaarheid",
             "public": "Openbaar",
             "connections": "Verbindingen",
-            "not_support_accounts": "Helaas ondersteunt de API van LinkedIn niet het tonen van analyses voor persoonlijke LinkedIn -accounts.",
             "insights": "Inzichten",
             "job_title": "Uw functietitel",
             "send": "Versturen"
@@ -783,7 +784,6 @@
             "public": "Openbaar",
             "private": "Privé",
             "unlisted": "Niet vermeld",
-            "analytics_under_development": "YouTube Analytics is in ontwikkeling.",
             "select_video": "Selecteer een video voor dit YouTube -account.",
             "privacy_config": "Privacyconfiguratie",
             "title": "Video of korte titel"
@@ -887,7 +887,9 @@
         "copied_clipboard": "Gekopieerd naar klembord!",
         "failed_copied_clipboard": "Kan niet kopiëren naar klembord!",
         "usage_api": "Gebruik van API",
-        "stored_safely": "Ik heb het veilig opgeslagen"
+        "stored_safely": "Ik heb het veilig opgeslagen",
+        "copy_id": "ID kopiëren",
+        "copy_uuid": "UUID kopiëren"
     },
     "tag": {
         "change_label_color": "Verander de labelkleur",

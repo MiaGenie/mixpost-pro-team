@@ -40,7 +40,8 @@
         "add_social_account": "You don't have a social account, please add at least one.",
         "no_accounts_found": "No accounts found",
         "finish_connection": "Finish Connection",
-        "open_account_page": "Open account page"
+        "open_account_page": "Open account page",
+        "view_profile": "View profile"
     },
     "ai": {
         "tell_ai": "Tell AI what to write about",
@@ -388,7 +389,7 @@
         "inch": "inches",
         "mm": "millimeters",
         "create_design": "Create design",
-        "edit_adobe_express": "Edit in Adobe Express",
+        "create_adobe_express": "Create with Adobe Express",
         "new_design": "New design",
         "saved": "Media saved successfully.",
         "fb_post": "Facebook post",
@@ -399,7 +400,8 @@
         "linkedin_post": "LinkedIn post",
         "x_post": "X post",
         "pinterest_post": "Pinterest post",
-        "media": "Media"
+        "media": "Media",
+        "create_for_adobe_express": "Create for Adobe Express"
     },
     "page": {
         "pages": "Pages",
@@ -703,7 +705,6 @@
             "visibility": "Visibility",
             "public": "Public",
             "connections": "Connections",
-            "not_support_accounts": "Unfortunately, LinkedIn's API does not support showing analytics for personal LinkedIn accounts.",
             "insights": "Insights",
             "job_title": "Your job title",
             "send": "Send"
@@ -782,7 +783,6 @@
             "public": "Public",
             "private": "Private",
             "unlisted": "Unlisted",
-            "analytics_under_development": "YouTube analytics is under development.",
             "select_video": "Select a video for this YouTube account.",
             "privacy_config": "Privacy configuration",
             "title": "Video or short title"
@@ -886,7 +886,9 @@
         "copied_clipboard": "Copied to clipboard!",
         "failed_copied_clipboard": "Failed to copy to clipboard!",
         "usage_api": "Usage in API",
-        "stored_safely": "I've stored it safely"
+        "stored_safely": "I've stored it safely",
+        "copy_id": "Copy ID",
+        "copy_uuid": "Copy UUID"
     },
     "tag": {
         "change_label_color": "Change label color",

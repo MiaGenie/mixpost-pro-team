@@ -10,16 +10,16 @@ class UpdateMedia extends FormRequest
     public function rules(): array
     {
         return [
-            'alt_text' => ['string', 'max:500', 'nullable']
+            'alt_text' => ['string', 'max:500', 'nullable'],
         ];
     }
 
     public function handle(): int
     {
-        $media = Media::where('id', $this->route('id'))->firstOrFail();
+        $media = Media::where('uuid', $this->route('item'))->firstOrFail();
 
         return $media->update([
-            'data->alt_text' => $this->input('alt_text')
+            'data->alt_text' => $this->input('alt_text'),
         ]);
     }
 }

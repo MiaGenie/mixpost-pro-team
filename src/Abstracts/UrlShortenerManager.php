@@ -2,12 +2,12 @@
 
 namespace Inovector\Mixpost\Abstracts;
 
+use Exception;
 use Illuminate\Support\Arr;
 use Inovector\Mixpost\Configs\GeneralConfig;
+use Inovector\Mixpost\Contracts\UrlShortenerProvider as UrlShortenerContract;
 use Inovector\Mixpost\Enums\ServiceGroup;
 use Inovector\Mixpost\Facades\ServiceManager;
-use Inovector\Mixpost\Contracts\UrlShortenerProvider as UrlShortenerContract;
-use Exception;
 
 abstract class UrlShortenerManager
 {
@@ -41,7 +41,7 @@ abstract class UrlShortenerManager
     {
         $defaultProvider = $this->getDefaultProviderName();
 
-        if (!$defaultProvider) {
+        if (! $defaultProvider) {
             return false;
         }
 
@@ -57,6 +57,7 @@ abstract class UrlShortenerManager
     {
         return array_reduce($this->providers(), function ($array, $provider) {
             $array[$provider::name()] = $provider::nameLocalized();
+
             return $array;
         }, []);
     }
@@ -72,13 +73,13 @@ abstract class UrlShortenerManager
             return $provider::name() === $name;
         });
 
-        if (!$provider) {
+        if (! $provider) {
             throw new Exception("URL Shortener Provider [$name] is not registered.");
         }
 
-        $connection = (new $provider());
+        $connection = (new $provider);
 
-        if (!$connection instanceof UrlShortenerContract) {
+        if (! $connection instanceof UrlShortenerContract) {
             throw new Exception('The provider must be an instance of Inovector\Mixpost\Contracts\UrlShortenerProvider.');
         }
 

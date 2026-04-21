@@ -5,7 +5,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -13,7 +14,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('users') && !$this->defaultUsersMigrationFileExists()) {
+        if (! Schema::hasTable('users') && ! $this->defaultUsersMigrationFileExists()) {
             Schema::create('users', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
@@ -25,7 +26,7 @@ return new class extends Migration {
             });
         }
 
-        if (!Schema::hasTable($this->passwordResetTableName()) && !$this->defaultPasswordResetTokensMigrationFileExists()) {
+        if (! Schema::hasTable($this->passwordResetTableName()) && ! $this->defaultPasswordResetTokensMigrationFileExists()) {
             Schema::create($this->passwordResetTableName(), function (Blueprint $table) {
                 $table->string('email')->primary();
                 $table->string('token');
@@ -460,11 +461,11 @@ return new class extends Migration {
 
         Schema::dropIfExists('mixpost_user_two_factor_auth');
 
-        if (!$this->defaultPasswordResetTokensMigrationFileExists()) {
+        if (! $this->defaultPasswordResetTokensMigrationFileExists()) {
             Schema::dropIfExists($this->passwordResetTableName());
         }
 
-        if (!$this->defaultUsersMigrationFileExists()) {
+        if (! $this->defaultUsersMigrationFileExists()) {
             Schema::dropIfExists('users');
         }
     }

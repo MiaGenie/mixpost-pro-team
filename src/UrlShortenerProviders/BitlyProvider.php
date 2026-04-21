@@ -19,7 +19,7 @@ class BitlyProvider implements UrlShortenerProvider
     {
         $token = BitlyService::getConfiguration('token');
 
-        if (!$token) {
+        if (! $token) {
             throw new Exception('Bitly is not configured.');
         }
 
@@ -47,13 +47,13 @@ class BitlyProvider implements UrlShortenerProvider
         if (in_array($response->status(), [200, 201])) {
             return [
                 'status' => 'OK',
-                'short_url' => $response->json('link')
+                'short_url' => $response->json('link'),
             ];
         }
 
         return [
             'status' => $response->status(),
-            'response' => $response->json()
+            'response' => $response->json(),
         ];
     }
 }

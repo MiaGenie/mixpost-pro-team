@@ -40,7 +40,8 @@
         "add_social_account": "У вас нет учетной записи в социальной сети, добавьте хотя бы одну.",
         "no_accounts_found": "Счета не найдены",
         "finish_connection": "Финишное соединение",
-        "open_account_page": "Страница открытия счета"
+        "open_account_page": "Страница открытия счета",
+        "view_profile": "Просмотр профиля"
     },
     "ai": {
         "tell_ai": "Подскажите ИИ, о чем писать",
@@ -391,7 +392,7 @@
         "inch": "дюймы",
         "mm": "миллиметры",
         "create_design": "Создайте дизайн",
-        "edit_adobe_express": "Редактирование в Adobe Express",
+        "create_adobe_express": "Создание с помощью Adobe Express",
         "new_design": "Новый дизайн",
         "saved": "Носитель успешно сохранен.",
         "fb_post": "Сообщение на Facebook",
@@ -402,7 +403,8 @@
         "linkedin_post": "Сообщение LinkedIn",
         "x_post": "X пост",
         "pinterest_post": "Пост в Pinterest",
-        "media": "СМИ"
+        "media": "СМИ",
+        "create_for_adobe_express": "Создание для Adobe Express"
     },
     "page": {
         "pages": "Страницы",
@@ -706,7 +708,6 @@
             "visibility": "Видимость",
             "public": "Общественность",
             "connections": "Соединения",
-            "not_support_accounts": "К сожалению, API LinkedIn не поддерживает отображение аналитики для личных аккаунтов LinkedIn.",
             "insights": "Insights",
             "job_title": "Ваша должность",
             "send": "Отправить"
@@ -785,7 +786,6 @@
             "public": "Общественность",
             "private": "Частный",
             "unlisted": "Без списка",
-            "analytics_under_development": "Аналитика YouTube находится в стадии разработки.",
             "select_video": "Выберите видео для этой учетной записи YouTube.",
             "privacy_config": "Конфигурация конфиденциальности",
             "title": "Видео или короткое название"
@@ -889,7 +889,9 @@
         "copied_clipboard": "Скопировано в буфер обмена!",
         "failed_copied_clipboard": "Не удалось скопировать в буфер обмена!",
         "usage_api": "Использование в API",
-        "stored_safely": "Я хранил его в надежном месте."
+        "stored_safely": "Я хранил его в надежном месте.",
+        "copy_id": "Идентификатор копии",
+        "copy_uuid": "Копирование UUID"
     },
     "tag": {
         "change_label_color": "Изменить цвет этикетки",

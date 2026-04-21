@@ -19,7 +19,7 @@ trait ManagesResources
                 'id' => $response->data->id,
                 'name' => $response->data->name,
                 'username' => $response->data->username,
-                'image' => str_replace('normal', '400x400', $response->data->profile_image_url)
+                'image' => str_replace('normal', '400x400', $response->data->profile_image_url),
             ];
         });
     }
@@ -32,7 +32,7 @@ trait ManagesResources
             return $this->response(SocialProviderResponseStatus::ERROR, [$exception->getMessage()]);
         }
 
-        if (!empty($mediaResult['errors'])) {
+        if (! empty($mediaResult['errors'])) {
             return $this->response(SocialProviderResponseStatus::ERROR, $mediaResult['errors']);
         }
 
@@ -52,7 +52,7 @@ trait ManagesResources
         foreach ($media as $item) {
             $chunkUpload = $item->isVideo() || $item->isImageGif();
 
-            if (!$chunkUpload) {
+            if (! $chunkUpload) {
                 $result = $this->connection->upload('media/upload', [
                     'media' => $item->isLocalAdapter() ? $item->getFullPath() : $item->getUrl(),
                     'media_type' => $item->mime_type,
@@ -79,8 +79,9 @@ trait ManagesResources
                 }
             }
 
-            if (!$result) {
+            if (! $result) {
                 $errors[] = $result;
+
                 continue;
             }
 
@@ -101,6 +102,7 @@ trait ManagesResources
 
                 if ($state === 'failed') {
                     $errors[] = 'upload_failed';
+
                     continue;
                 }
             }
@@ -108,7 +110,7 @@ trait ManagesResources
             if ($item->alt_text) {
                 $this->connection->mediaMetadataCreate(
                     media_id: $result->media_id_string,
-                    alt_text:  $item->alt_text
+                    alt_text: $item->alt_text
                 );
             }
 
@@ -117,7 +119,7 @@ trait ManagesResources
 
         return [
             'ids' => $ids,
-            'errors' => $errors
+            'errors' => $errors,
         ];
     }
 
@@ -131,7 +133,7 @@ trait ManagesResources
             $postParameters['in_reply_to_status_id'] = $lastId;
         }
 
-        if (!empty($mediaResult['ids'])) {
+        if (! empty($mediaResult['ids'])) {
             $postParameters['media_ids'] = implode(',', $mediaResult['ids']);
         }
 
@@ -139,14 +141,14 @@ trait ManagesResources
 
         return $this->buildResponse($postResult, function () use ($postResult) {
             return [
-                'id' => $postResult->id
+                'id' => $postResult->id,
             ];
         });
     }
 
     protected function storePostWithApiV2(string $text, array $mediaResult, array $params): SocialProviderResponse
     {
-        $this->connection->setApiVersion(2);
+        $this->connection->setApiVersion('2');
 
         $postParameters = ['text' => $text];
 
@@ -154,7 +156,7 @@ trait ManagesResources
             $postParameters['reply']['in_reply_to_tweet_id'] = $lastId;
         }
 
-        if (!empty($mediaResult['ids'])) {
+        if (! empty($mediaResult['ids'])) {
             $postParameters['media']['media_ids'] = $mediaResult['ids'];
         }
 
@@ -162,7 +164,7 @@ trait ManagesResources
 
         return $this->buildResponse($postResult, function () use ($postResult) {
             return [
-                'id' => $postResult->data->id
+                'id' => $postResult->data->id,
             ];
         });
     }
@@ -187,7 +189,7 @@ trait ManagesResources
             'tweet.fields' => 'public_metrics,created_at,in_reply_to_user_id',
             'start_time' => Carbon::now('UTC')->subMonths(3)->startOfDay()->toRfc3339String(),
             'exclude' => 'retweets,replies',
-            'max_results' => 100
+            'max_results' => 100,
         ];
 
         if ($paginationToken) {
@@ -206,7 +208,7 @@ trait ManagesResources
 
     public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        $this->connection->setApiVersion(2);
+        $this->connection->setApiVersion('2');
 
         $response = $this->connection->delete("tweets/$id");
 

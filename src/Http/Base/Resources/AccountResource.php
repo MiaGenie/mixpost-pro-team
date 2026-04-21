@@ -16,7 +16,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
         return [
             'id' => $this->id,
             'uuid' => $this->uuid,
-            'name' => $this->name . ($this->suffix() ? " ({$this->suffix()})" : ''),
+            'name' => $this->name.($this->suffix() ? " ({$this->suffix()})" : ''),
             'suffix' => $this->suffix(),
             'username' => $this->username,
             'image' => $this->image(),
@@ -30,7 +30,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
             'content_type' => $this->contentType(),
             'external_account_url' => $this->getExternalAccountUrl(),
             'external_url' => $this->whenPivotLoaded('mixpost_post_accounts', function () {
-                if (!$this->pivot->provider_post_id) {
+                if (! $this->pivot->provider_post_id) {
                     return null;
                 }
 
@@ -39,7 +39,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
             'support_analytics' => $this->supportAnalytics(),
             'errors' => $this->whenPivotLoaded('mixpost_post_accounts', function () {
                 return $this->errors();
-            })
+            }),
         ];
     }
 
@@ -62,6 +62,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
                 return $error;
             }, $errors);
         }
+
         return [];
     }
 
@@ -69,7 +70,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
     {
         $provider = $this->resource->getProviderClass();
 
-        if (!($provider && method_exists($provider, 'externalPostUrl'))) {
+        if (! ($provider && method_exists($provider, 'externalPostUrl'))) {
             return '';
         }
 
@@ -80,7 +81,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
     {
         $provider = $this->resource->getProviderClass();
 
-        if (!($provider && method_exists($provider, 'externalAccountUrl'))) {
+        if (! ($provider && method_exists($provider, 'externalAccountUrl'))) {
             return '';
         }
 

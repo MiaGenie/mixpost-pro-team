@@ -1,6 +1,6 @@
 <?php
 
 return [
-  'on' => 'URL-Verkürzung: Auf',
-  'off' => 'URL-Verkürzung: Aus',
+    'on' => 'URL-Verkürzung: Auf',
+    'off' => 'URL-Verkürzung: Aus',
 ];

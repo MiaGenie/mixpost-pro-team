@@ -12,17 +12,17 @@ class BlueskyService extends Service
         return ServiceGroup::SOCIAL;
     }
 
-    static function form(): array
+    public static function form(): array
     {
         return [
-            'private_key' => ''
+            'private_key' => '',
         ];
     }
 
     public static function formRules(): array
     {
         return [
-            "private_key" => ['required']
+            'private_key' => ['required'],
         ];
     }
 

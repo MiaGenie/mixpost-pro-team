@@ -40,7 +40,8 @@
         "add_social_account": "Nemáte účet na sociální síti, přidejte si alespoň jeden.",
         "no_accounts_found": "Nebyly nalezeny žádné účty",
         "finish_connection": "Dokončení připojení",
-        "open_account_page": "Stránka s otevřeným účtem"
+        "open_account_page": "Stránka s otevřeným účtem",
+        "view_profile": "Zobrazit profil"
     },
     "ai": {
         "tell_ai": "Řekněte AI, o čem má psát",
@@ -391,7 +392,7 @@
         "inch": "palce",
         "mm": "milimetry",
         "create_design": "Vytvořit design",
-        "edit_adobe_express": "Úpravy v aplikaci Adobe Express",
+        "create_adobe_express": "Vytváření pomocí aplikace Adobe Express",
         "new_design": "Nový design",
         "saved": "Média byla úspěšně uložena.",
         "fb_post": "Příspěvek na Facebooku",
@@ -402,7 +403,8 @@
         "linkedin_post": "Příspěvek na LinkedIn",
         "x_post": "X příspěvek",
         "pinterest_post": "Příspěvek na Pinterestu",
-        "media": "Média"
+        "media": "Média",
+        "create_for_adobe_express": "Vytvořit pro Adobe Express"
     },
     "page": {
         "pages": "Stránky",
@@ -706,7 +708,6 @@
             "visibility": "Viditelnost",
             "public": "Veřejnost",
             "connections": "Spojení",
-            "not_support_accounts": "Rozhraní API služby LinkedIn bohužel nepodporuje zobrazování analytických údajů pro osobní účty LinkedIn.",
             "insights": "Insights",
             "job_title": "Vaše pracovní pozice",
             "send": "Odeslat"
@@ -785,7 +786,6 @@
             "public": "Veřejné",
             "private": "Soukromé",
             "unlisted": "Neuvedeno",
-            "analytics_under_development": "Analytika YouTube je ve vývoji.",
             "select_video": "Vyberte video pro tento účet YouTube.",
             "privacy_config": "Konfigurace ochrany osobních údajů",
             "title": "Video nebo krátký název"
@@ -889,7 +889,9 @@
         "copied_clipboard": "Zkopírováno do schránky!",
         "failed_copied_clipboard": "Nepodařilo se zkopírovat do schránky!",
         "usage_api": "Použití v rozhraní API",
-        "stored_safely": "Bezpečně uloženo"
+        "stored_safely": "Bezpečně uloženo",
+        "copy_id": "Kopírovat ID",
+        "copy_uuid": "Kopírování UUID"
     },
     "tag": {
         "change_label_color": "Změna barvy štítku",

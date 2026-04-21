@@ -14,13 +14,13 @@ class ShortenUrls extends FormRequest
         return [
             'urls' => ['required', 'array'],
             'urls.*' => ['required', 'string'],
-            'url_shortener_active' => ['required', 'boolean']
+            'url_shortener_active' => ['required', 'boolean'],
         ];
     }
 
     public function handle(): array
     {
-        $incomingUrls = collect($this->input('urls'))->filter(fn($url) => strlen($url) <= 256)->toArray();
+        $incomingUrls = collect($this->input('urls'))->filter(fn ($url) => strlen($url) <= 256)->toArray();
         // TODO: Warn user about URLs longer than 256 characters - Maybe on frontend validation?
         $outgoingUrls = [];
 
@@ -31,10 +31,10 @@ class ShortenUrls extends FormRequest
             ->get();
 
         foreach ($savedUrls as $savedUrl) {
-            $incomingUrls = array_filter($incomingUrls, fn($incomingUrl) => $incomingUrl !== $savedUrl[$targetUrlColumn]);
+            $incomingUrls = array_filter($incomingUrls, fn ($incomingUrl) => $incomingUrl !== $savedUrl[$targetUrlColumn]);
             $outgoingUrls[] = [
                 'original_url' => $savedUrl->original_url,
-                'short_url' => $savedUrl->short_url
+                'short_url' => $savedUrl->short_url,
             ];
         }
 
@@ -44,7 +44,7 @@ class ShortenUrls extends FormRequest
             } catch (Exception $e) {
                 return [
                     'status' => 'ERROR',
-                    'message' => $e->getMessage()
+                    'message' => $e->getMessage(),
                 ];
             }
 
@@ -54,14 +54,14 @@ class ShortenUrls extends FormRequest
                 } catch (Exception $e) {
                     return [
                         'status' => 'ERROR',
-                        'message' => __('mixpost::error.cannot_connect_service', ['service' => $connection->nameLocalized()])
+                        'message' => __('mixpost::error.cannot_connect_service', ['service' => $connection->nameLocalized()]),
                     ];
                 }
 
                 if ($response['status'] === 'OK') {
                     $outgoingUrls[] = $shortenedUrl = [
                         'original_url' => $incomingUrl,
-                        'short_url' => $response['short_url']
+                        'short_url' => $response['short_url'],
                     ];
 
                     ShortenedUrl::create(array_merge($shortenedUrl, ['provider' => $connection->name()]));
@@ -71,7 +71,7 @@ class ShortenUrls extends FormRequest
 
         return [
             'status' => 'OK',
-            'urls' => $outgoingUrls
+            'urls' => $outgoingUrls,
         ];
     }
 }

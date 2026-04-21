@@ -17,8 +17,8 @@ use Inovector\Mixpost\Util;
 class TwitterProvider extends SocialProvider
 {
     use ManagesConfig;
-    use ManagesRateLimit;
     use ManagesOAuth;
+    use ManagesRateLimit;
     use ManagesResources;
 
     public array $callbackResponseKeys = ['oauth_token', 'oauth_verifier'];

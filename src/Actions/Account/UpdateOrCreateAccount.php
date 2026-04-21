@@ -29,7 +29,7 @@ class UpdateOrCreateAccount
 
         $record = Account::where('provider', $providerName)->where('provider_id', $account['id'])->first();
 
-        if (!$record) {
+        if (! $record) {
             $account = Account::create(array_merge(
                 [
                     'provider' => $providerName,
@@ -63,7 +63,7 @@ class UpdateOrCreateAccount
 
     protected function downloadAvatar(?string $imageUrl): ?array
     {
-        if (!$imageUrl) {
+        if (! $imageUrl) {
             return null;
         }
 

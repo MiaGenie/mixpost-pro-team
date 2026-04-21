@@ -12,7 +12,7 @@ use Inovector\Mixpost\Contracts\WebhookEvent;
 use Inovector\Mixpost\Facades\WorkspaceManager;
 use Inovector\Mixpost\Models\Webhook;
 
-class ProcessWorkspaceWebhooksJob implements ShouldQueue, QueueWorkspaceAware
+class ProcessWorkspaceWebhooksJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

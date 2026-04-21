@@ -8,13 +8,13 @@ use Inovector\Mixpost\Enums\WorkspaceUserRole;
 use Inovector\Mixpost\Events\Account\AccountUnauthorized as AccountUnauthorizedEvent;
 use Inovector\Mixpost\Notifications\AccountUnauthorized as AccountUnauthorizedNotification;
 
-class SendAccountUnauthorizedNotification implements ShouldQueue, QueueWorkspaceAware
+class SendAccountUnauthorizedNotification implements QueueWorkspaceAware, ShouldQueue
 {
     public function handle(AccountUnauthorizedEvent $event): void
     {
         $workspace = $event->account->workspace;
 
-        if (!$workspace) {
+        if (! $workspace) {
             return;
         }
 

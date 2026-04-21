@@ -34,10 +34,10 @@ trait ManagesFacebookGroupResources
             ->get("$this->apiUrl/$this->apiVersion/me/groups", [
                 'fields' => 'id,name,cover{source}',
                 'admin_only' => true,
-                'limit' => 200
+                'limit' => 200,
             ]);
 
-        $defaultImage = Image::make(__DIR__ . '/../../../../resources/img/facebook-group.jpeg')->encode('data-url')->getEncoded();;
+        $defaultImage = Image::make(__DIR__.'/../../../../resources/img/facebook-group.jpeg')->encode('data-url')->getEncoded();
 
         return $this->buildResponse($response, function () use ($response, $defaultImage) {
             return $response->collect('data')->map(function ($item) use ($defaultImage) {
@@ -45,7 +45,7 @@ trait ManagesFacebookGroupResources
                     'id' => $item['id'],
                     'name' => $item['name'],
                     'username' => '',
-                    'image' => Arr::get($item, 'cover.source', $defaultImage)
+                    'image' => Arr::get($item, 'cover.source', $defaultImage),
                 ];
             })->toArray();
         });
@@ -60,7 +60,7 @@ trait ManagesFacebookGroupResources
     {
         $response = $this->getHttpClient()::get("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}", [
             'fields' => 'member_count',
-            'access_token' => $this->accessToken()
+            'access_token' => $this->accessToken(),
         ]);
 
         return $this->buildResponse($response);

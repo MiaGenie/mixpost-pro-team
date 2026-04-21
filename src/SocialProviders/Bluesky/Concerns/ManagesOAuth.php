@@ -15,13 +15,13 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 
 trait ManagesOAuth
 {
-    use UsesAuthServer;
-    use UsesPAR;
-    use UsesClientAssertion;
-    use UsesTokenRequest;
     use UsesAccessToken;
+    use UsesAuthServer;
     use UsesCacheKey;
+    use UsesClientAssertion;
     use UsesOAuthDPoPSession;
+    use UsesPAR;
+    use UsesTokenRequest;
 
     protected ?string $service = null;
 
@@ -41,7 +41,7 @@ trait ManagesOAuth
 
     public function requestAccessToken(array $params = []): array
     {
-        if (!Arr::has($params, 'code')) {
+        if (! Arr::has($params, 'code')) {
             return [
                 'error' => __('mixpost::error.backend.missing_code'),
             ];
@@ -62,7 +62,7 @@ trait ManagesOAuth
                 'access_token' => $response['access_token'],
                 'expires_in' => Carbon::now('UTC')->addSeconds($response['expires_in'])->timestamp,
                 'refresh_token' => $response['refresh_token'],
-                'dpop_key' => $dPoPKey
+                'dpop_key' => $dPoPKey,
             ];
         } catch (AuthenticationException $e) {
             return [
@@ -70,7 +70,7 @@ trait ManagesOAuth
             ];
         } catch (Exception $e) {
             return [
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ];
         }
     }

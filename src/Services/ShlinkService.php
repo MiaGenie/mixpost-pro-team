@@ -8,17 +8,16 @@ use Inovector\Mixpost\Rules\DomainURLRule;
 
 class ShlinkService extends Service
 {
-
     public static function group(): ServiceGroup
     {
         return ServiceGroup::URL_SHORTENER;
     }
 
-    static function form(): array
+    public static function form(): array
     {
         return [
             'api_key' => '',
-            'domain_url' => ''
+            'domain_url' => '',
         ];
     }
 
@@ -26,14 +25,14 @@ class ShlinkService extends Service
     {
         return [
             'api_key' => ['required'],
-            'domain_url' => ['required', new DomainURLRule()]
+            'domain_url' => ['required', new DomainURLRule],
         ];
     }
 
     public static function formMessages(): array
     {
         return [
-            'api_key' => __('validation.required', ['attribute' => 'API Key'])
+            'api_key' => __('validation.required', ['attribute' => 'API Key']),
         ];
     }
 }

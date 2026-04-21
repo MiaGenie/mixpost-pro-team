@@ -13,16 +13,16 @@ class DeletePostsController extends Controller
 {
     public function __invoke(DeletePost $request): JsonResponse
     {
-        $result = (new DeletePostAction())(
+        $result = (new DeletePostAction)(
             uuids: $request->input('posts'),
             mode: PostDeleteMode::from(
                 $request->input('delete_mode', PostDeleteMode::APP_ONLY->value)
             ),
-            toTrash: $toTrash = (bool)$request->get('trash'),
+            toTrash: $toTrash = (bool) $request->get('trash'),
             userId: Auth::id()
         );
 
-        if(!$toTrash) {
+        if (! $toTrash) {
             return response()->json(array_merge($result, [
                 'deleted' => $result['deleted_from_app'] ?? 0,
             ]));

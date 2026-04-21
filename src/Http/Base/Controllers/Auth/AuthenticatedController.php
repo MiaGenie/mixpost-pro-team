@@ -25,13 +25,13 @@ class AuthenticatedController extends Controller
 
     public function create(): Response|RedirectResponse
     {
-        if (!self::getUserClass()::exists()) {
+        if (! self::getUserClass()::exists()) {
             return redirect()->route('mixpost.installation');
         }
 
         return Inertia::render('Auth/Login', [
             'locales' => Util::config('locales'),
-            'is_forgot_password_enabled' => Features::isForgotPasswordEnabled()
+            'isForgotPasswordEnabled' => Features::isForgotPasswordEnabled(),
         ]);
     }
 

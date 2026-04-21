@@ -8,6 +8,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Inovector\Mixpost\Actions\Post\DeletePost as DeletePostAction;
 use Inovector\Mixpost\Builders\Post\PostQuery;
 use Inovector\Mixpost\Enums\PostDeleteMode;
 use Inovector\Mixpost\Http\Api\Requests\Workspace\Post\StorePost;
@@ -15,7 +16,6 @@ use Inovector\Mixpost\Http\Api\Requests\Workspace\Post\UpdatePost;
 use Inovector\Mixpost\Http\Api\Resources\PostResource;
 use Inovector\Mixpost\Models\Post;
 use Inovector\Mixpost\Support\EagerLoadPostVersionsMedia;
-use Inovector\Mixpost\Actions\Post\DeletePost as DeletePostAction;
 
 class PostsController extends Controller
 {
@@ -24,7 +24,9 @@ class PostsController extends Controller
         $posts = PostQuery::apply($request)
             ->latest()
             ->latest('id')
-            ->paginate(20);
+            ->paginate(
+                (int) min($request->get('limit', 50), 100)
+            );
 
         EagerLoadPostVersionsMedia::apply($posts);
 
@@ -58,22 +60,22 @@ class PostsController extends Controller
     public function update(UpdatePost $updatePost): JsonResponse
     {
         return response()->json([
-            'success' => (bool)$updatePost->handle(),
+            'success' => (bool) $updatePost->handle(),
         ]);
     }
 
     public function destroy(Request $request): JsonResponse
     {
-        $result = (new DeletePostAction())(
+        $result = (new DeletePostAction)(
             uuids: Arr::wrap($request->route('post')),
             mode: PostDeleteMode::from(
                 $request->input('delete_mode', PostDeleteMode::APP_ONLY->value)
             ),
-            toTrash: $toTrash = (bool)$request->get('trash'),
+            toTrash: $toTrash = (bool) $request->get('trash'),
             userId: Auth::id()
         );
 
-        if(!$toTrash) {
+        if (! $toTrash) {
             return response()->json(array_merge($result, [
                 'deleted' => $result['deleted_from_app'] ?? 0, // TODO: remove this on the v4
             ]));

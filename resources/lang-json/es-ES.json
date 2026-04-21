@@ -40,7 +40,8 @@
         "add_social_account": "Si no tienes una cuenta social, añade al menos una.",
         "no_accounts_found": "No se han encontrado cuentas",
         "finish_connection": "Conexión de acabado",
-        "open_account_page": "Abrir cuenta"
+        "open_account_page": "Abrir cuenta",
+        "view_profile": "Ver perfil"
     },
     "ai": {
         "tell_ai": "Dile a la IA sobre qué escribir",
@@ -391,7 +392,7 @@
         "inch": "pulgadas",
         "mm": "milímetros",
         "create_design": "Crear diseño",
-        "edit_adobe_express": "Editar en Adobe Express",
+        "create_adobe_express": "Crear con Adobe Express",
         "new_design": "Nuevo diseño",
         "saved": "Medios guardados correctamente.",
         "fb_post": "Publicación en Facebook",
@@ -402,7 +403,8 @@
         "linkedin_post": "LinkedIn post",
         "x_post": "X puesto",
         "pinterest_post": "Pinterest post",
-        "media": "Medios de comunicación"
+        "media": "Medios de comunicación",
+        "create_for_adobe_express": "Crear para Adobe Express"
     },
     "page": {
         "pages": "Páginas",
@@ -706,7 +708,6 @@
             "visibility": "Visibilidad",
             "public": "Público",
             "connections": "Conexiones",
-            "not_support_accounts": "Lamentablemente, la API de LinkedIn no permite mostrar análisis de cuentas personales de LinkedIn.",
             "insights": "Perspectivas",
             "job_title": "Su cargo",
             "send": "Enviar"
@@ -785,7 +786,6 @@
             "public": "Público",
             "private": "Privado",
             "unlisted": "Sin clasificar",
-            "analytics_under_development": "El análisis de YouTube está en fase de desarrollo.",
             "select_video": "Selecciona un vídeo para esta cuenta de YouTube.",
             "privacy_config": "Configuración de privacidad",
             "title": "Vídeo o título corto"
@@ -889,7 +889,9 @@
         "copied_clipboard": "Copiado al portapapeles.",
         "failed_copied_clipboard": "No se ha podido copiar en el portapapeles.",
         "usage_api": "Uso en API",
-        "stored_safely": "Lo he guardado a buen recaudo"
+        "stored_safely": "Lo he guardado a buen recaudo",
+        "copy_id": "Copiar ID",
+        "copy_uuid": "Copiar UUID"
     },
     "tag": {
         "change_label_color": "Cambiar el color de la etiqueta",

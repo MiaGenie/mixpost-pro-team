@@ -18,7 +18,7 @@ class YourlsProvider implements UrlShortenerProvider
         $domainUrl = YourlsService::getConfiguration('domain_url');
         $signature = YourlsService::getConfiguration('signature');
 
-        if (!$domainUrl || !$signature) {
+        if (! $domainUrl || ! $signature) {
             throw new Exception('Yourls is not configured.');
         }
 
@@ -42,22 +42,22 @@ class YourlsProvider implements UrlShortenerProvider
             'signature' => $this->signature,
             'action' => 'shorturl',
             'url' => $originalUrl,
-            'format' => 'json'
+            'format' => 'json',
         ]);
 
         // TODO: Handle unauthorized access
         //  Should have its unhappy path first and its happy path last.
 
-        if ($response['statusCode'] === 200 || !empty($response['shorturl'])) { //also handles the case when short_url exists in yourls db, but not in mixpost's db
+        if ($response['statusCode'] === 200 || ! empty($response['shorturl'])) { // also handles the case when short_url exists in yourls db, but not in mixpost's db
             return [
                 'status' => 'OK',
-                'short_url' => $response['shorturl']
+                'short_url' => $response['shorturl'],
             ];
         }
 
         return [
             'status' => $response->status(),
-            'response' => $response->json()
+            'response' => $response->json(),
         ];
     }
 }

@@ -7,8 +7,8 @@ use Inovector\Mixpost\Contracts\AccountResource;
 use Inovector\Mixpost\Contracts\SocialProviderPostOptions;
 use Inovector\Mixpost\Services\GoogleService;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\ManagesOAuth;
-use Inovector\Mixpost\SocialProviders\Google\Concerns\UsesResponseBuilder;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\ManagesYoutubeResources;
+use Inovector\Mixpost\SocialProviders\Google\Concerns\UsesResponseBuilder;
 use Inovector\Mixpost\SocialProviders\Google\Support\YoutubePostOptions;
 use Inovector\Mixpost\Support\SocialProviderPostConfigs;
 use Inovector\Mixpost\Util;
@@ -16,11 +16,12 @@ use Inovector\Mixpost\Util;
 class YoutubeProvider extends SocialProvider
 {
     public bool $onlyUserAccount = false;
+
     public array $callbackResponseKeys = ['code'];
 
-    use UsesResponseBuilder;
     use ManagesOAuth;
     use ManagesYoutubeResources;
+    use UsesResponseBuilder;
 
     public static function name(): string
     {
@@ -35,7 +36,7 @@ class YoutubeProvider extends SocialProvider
     protected function getScopes(): array
     {
         return [
-            'https://www.googleapis.com/auth/youtube'
+            'https://www.googleapis.com/auth/youtube',
         ];
     }
 

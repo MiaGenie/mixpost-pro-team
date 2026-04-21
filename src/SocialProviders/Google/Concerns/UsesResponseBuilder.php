@@ -12,9 +12,9 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 trait UsesResponseBuilder
 {
     /**
-     * @param $response Response
+     * @param  $response  Response
      */
-    public function buildResponse($response, Closure $okResult = null): SocialProviderResponse
+    public function buildResponse($response, ?Closure $okResult = null): SocialProviderResponse
     {
         if (in_array($response->status(), [200, 201, 204])) {
             return $this->response(SocialProviderResponseStatus::OK, $okResult ? $okResult(Arr::wrap($response->json())) : Arr::wrap($response->json()));
@@ -27,7 +27,7 @@ trait UsesResponseBuilder
         if ($response->status() === 403) {
             $now = Carbon::now('UTC');
             $nextMidnight = Carbon::tomorrow('UTC');
-            $retryAfter = (int)$now->diffInSeconds($nextMidnight);
+            $retryAfter = (int) $now->diffInSeconds($nextMidnight);
 
             return $this->response(
                 SocialProviderResponseStatus::EXCEEDED_RATE_LIMIT,
@@ -46,7 +46,7 @@ trait UsesResponseBuilder
      *
      * @see https://developers.google.com/youtube/v3/determine_quota_cost
      */
-    public function getQuotaUsage(array $headers): array|null
+    public function getQuotaUsage(array $headers): ?array
     {
         return null;
     }

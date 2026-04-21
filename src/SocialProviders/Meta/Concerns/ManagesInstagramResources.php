@@ -25,7 +25,7 @@ trait ManagesInstagramResources
         $response = Http::withToken($this->getAccessToken()['access_token'])
             ->get("$this->apiUrl/$this->apiVersion/me/accounts", [
                 'fields' => 'id,name,username,picture{url},instagram_business_account',
-                'limit' => 200
+                'limit' => 200,
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -41,7 +41,7 @@ trait ManagesInstagramResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/$id", [
             'fields' => 'id,name,username,profile_picture_url',
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -58,7 +58,7 @@ trait ManagesInstagramResources
 
     public function publishPost(string $text, Collection $media, array $params = []): SocialProviderResponse
     {
-        if (!$media->count()) {
+        if (! $media->count()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['no_media_selected']);
         }
 
@@ -87,8 +87,8 @@ trait ManagesInstagramResources
             return $response->useContext([
                 'id' => $response->id,
                 'data' => [
-                    'story' => true
-                ]
+                    'story' => true,
+                ],
             ]);
         }
 
@@ -96,11 +96,11 @@ trait ManagesInstagramResources
             $response = $this->response(SocialProviderResponseStatus::ERROR, ['story_single_media_limit']);
         }
 
-        if (!$isReel && !$isStory && $media->count() === 1) {
+        if (! $isReel && ! $isStory && $media->count() === 1) {
             $response = $this->publishSingleMediaPost($text, $media->first());
         }
 
-        if (!$isReel && !$isStory && $media->count() > 1) {
+        if (! $isReel && ! $isStory && $media->count() > 1) {
             $response = $this->publishCarouselPost($text, $media);
         }
 
@@ -121,7 +121,7 @@ trait ManagesInstagramResources
 
         return $response->useContext([
             'id' => $response->id,
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
@@ -156,7 +156,7 @@ trait ManagesInstagramResources
 
     public function publishInstagramReel(string $text, Media $mediaItem, ?Media $thumb = null): SocialProviderResponse
     {
-        if (!$mediaItem->isVideo()) {
+        if (! $mediaItem->isVideo()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['reel_only_video_allowed']);
         }
 
@@ -168,7 +168,7 @@ trait ManagesInstagramResources
             'alt_text' => $mediaItem->alt_text,
         ];
 
-        if($thumb){
+        if ($thumb) {
             $data['cover_url'] = $thumb->getUrl();
         }
 
@@ -206,7 +206,7 @@ trait ManagesInstagramResources
             'access_token' => $this->getAccessToken()['access_token'],
             'media_type' => 'CAROUSEL',
             'children' => $mediaContainerIds,
-            'caption' => $text
+            'caption' => $text,
         ]));
 
         if ($carouselContainer->hasError()) {
@@ -259,7 +259,7 @@ trait ManagesInstagramResources
             }
         } while ($inProgress === true);
 
-        if (!$responseContainer->status_code) {
+        if (! $responseContainer->status_code) {
             return $this->response(SocialProviderResponseStatus::ERROR, $responseContainer->context());
         }
 
@@ -278,7 +278,7 @@ trait ManagesInstagramResources
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media_publish", [
-                'creation_id' => $itemContainerId
+                'creation_id' => $itemContainerId,
             ]);
 
         return $this->buildResponse($response);
@@ -288,7 +288,7 @@ trait ManagesInstagramResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/$containerId", [
             'access_token' => $this->getAccessToken()['access_token'],
-            'fields' => 'status,status_code'
+            'fields' => 'status,status_code',
         ]);
 
         return $this->buildResponse($response);
@@ -297,7 +297,7 @@ trait ManagesInstagramResources
     public function getContentPublishLimit(): SocialProviderResponse
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/content_publishing_limit", [
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response);
@@ -307,7 +307,7 @@ trait ManagesInstagramResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}", [
             'fields' => 'followers_count,follows_count,media_count',
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response);
@@ -348,7 +348,7 @@ trait ManagesInstagramResources
     {
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->get("$this->apiUrl/$this->apiVersion/$mediaId", [
-                'fields' => $fields
+                'fields' => $fields,
             ]);
 
         return $this->buildResponse($response);
@@ -361,7 +361,7 @@ trait ManagesInstagramResources
             'since' => Carbon::now('UTC')->subYear()->toDateString(),
             'until' => Carbon::today('UTC')->toDateString(),
             'limit' => 100,
-            'fields' => 'id,caption,comments_count,is_comment_enabled,is_shared_to_feed,like_count,media_product_type,media_type,media_url,permalink,shortcode,thumbnail_url,timestamp,username'
+            'fields' => 'id,caption,comments_count,is_comment_enabled,is_shared_to_feed,like_count,media_product_type,media_type,media_url,permalink,shortcode,thumbnail_url,timestamp,username',
         ];
 
         if ($paginationAfter) {

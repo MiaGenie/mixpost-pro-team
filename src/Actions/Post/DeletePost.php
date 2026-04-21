@@ -9,7 +9,7 @@ use Inovector\Mixpost\Models\Post;
 
 class DeletePost
 {
-    public function __invoke(array $uuids, PostDeleteMode $mode = PostDeleteMode::APP_ONLY, bool $toTrash = true, $userId): array
+    public function __invoke(array $uuids, PostDeleteMode $mode, bool $toTrash, $userId): array
     {
         // It's important to trigger the `PostDeleteFromSocialPlatforms` event before the `PostDeleted` event,
         // so it can still access the post data in the database before it's removed.

@@ -12,9 +12,9 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 trait ManagesRateLimit
 {
     /**
-     * @param $response Response
+     * @param  $response  Response
      */
-    public function buildResponse($response, Closure $okResult = null): SocialProviderResponse
+    public function buildResponse($response, ?Closure $okResult = null): SocialProviderResponse
     {
         $usage = $this->getRateLimitUsage($response);
         $data = Arr::wrap($response->json());
@@ -55,7 +55,7 @@ trait ManagesRateLimit
     {
         $now = Carbon::now()->utc();
         $nextMidnight = Carbon::tomorrow('UTC');
-        $retryAfter = (int)$now->diffInSeconds($nextMidnight);
+        $retryAfter = (int) $now->diffInSeconds($nextMidnight);
 
         return [
             'retry_after' => $retryAfter,

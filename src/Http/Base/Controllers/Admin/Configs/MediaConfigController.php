@@ -14,8 +14,8 @@ class MediaConfigController extends Controller
     public function form(): Response
     {
         return Inertia::render('Admin/Configs/MediaConfig', [
-            'configs' => (new MediaConfig())->all(),
-            'stock_photo_providers' => ['unsplash', 'pexels']
+            'configs' => (new MediaConfig)->all(),
+            'stockPhotoProviders' => ['unsplash', 'pexels'],
         ]);
     }
 

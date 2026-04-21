@@ -1,6 +1,6 @@
 <?php
 
 return [
-  'on' => 'Accorciamento degli URL: Su',
-  'off' => 'Accorciamento URL: Off',
+    'on' => 'Accorciamento degli URL: Su',
+    'off' => 'Accorciamento URL: Off',
 ];

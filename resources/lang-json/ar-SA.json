@@ -40,7 +40,8 @@
         "add_social_account": "ليس لديك حساب تواصل اجتماعي، يرجى إضافة حساب واحد على الأقل لتستمتع بتجربة المنصة والاستفادة من المميزات",
         "no_accounts_found": "لم يتم العثور على حسابات اجتماعية",
         "finish_connection": "إنهاء الاتصال",
-        "open_account_page": "افتح صفحة الحساب"
+        "open_account_page": "افتح صفحة الحساب",
+        "view_profile": "افتح صفحة الحساب"
     },
     "ai": {
         "tell_ai": "أخبر الذكاء الاصطناعي عما يكتب عنه",
@@ -391,7 +392,7 @@
         "inch": "بوصة",
         "mm": "ملليمترات",
         "create_design": "إنشاء تصميم",
-        "edit_adobe_express": "تحرير في Adobe Express",
+        "create_adobe_express": "إنشاء باستخدام Adobe Express",
         "new_design": "تصميم جديد",
         "saved": "تم حفظ الوسائط بنجاح.",
         "fb_post": "منشور على الفيسبوك",
@@ -402,7 +403,8 @@
         "linkedin_post": "منشور على LinkedIn",
         "x_post": "منشور لمنصة X",
         "pinterest_post": "منشور على بينتريست",
-        "media": "الوسائط المتعددة"
+        "media": "الوسائط المتعددة",
+        "create_for_adobe_express": "إنشاء لبرنامج Adobe Express"
     },
     "page": {
         "pages": "الصفحات",
@@ -706,7 +708,6 @@
             "visibility": "الرؤية",
             "public": "عام",
             "connections": "الزملاء",
-            "not_support_accounts": "لسوء الحظ، لا تدعم واجهة برمجة تطبيقات LinkedIn عرض التحليلات الخاصة بحسابات LinkedIn الشخصية.",
             "insights": "الأفكار",
             "job_title": "المسمى الوظيفي",
             "send": "ارسل"
@@ -785,7 +786,6 @@
             "public": "عام",
             "private": "خاص",
             "unlisted": "غير مدرج",
-            "analytics_under_development": "تحليلات اليوتيوب قيد التطوير.",
             "select_video": "حدد مقطع فيديو لحساب اليوتيوب هذا.",
             "privacy_config": "تنصيب الخصوصية",
             "title": "فيديو أو عنوان قصير"
@@ -889,7 +889,9 @@
         "copied_clipboard": "نسخ إلى الحافظة!",
         "failed_copied_clipboard": "فشل النسخ إلى الحافظة!",
         "usage_api": "الاستخدام في API",
-        "stored_safely": "لقد قمت بتخزينها بأمان"
+        "stored_safely": "لقد قمت بتخزينها بأمان",
+        "copy_id": "نسخ الهوية",
+        "copy_uuid": "نسخ UUID"
     },
     "tag": {
         "change_label_color": "تغيير لون التصنيف",

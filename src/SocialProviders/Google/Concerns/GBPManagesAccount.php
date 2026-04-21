@@ -45,7 +45,7 @@ trait GBPManagesAccount
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->get("https://mybusinessbusinessinformation.googleapis.com/v1/{$firstAccount['name']}/locations", [
-                'readMask' => 'title,name'
+                'readMask' => 'title,name',
             ]);
 
         return $this->buildResponse($response, function () use ($response, $firstAccount) {
@@ -74,7 +74,7 @@ trait GBPManagesAccount
         }
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
-            ->get("https://mybusinessaccountmanagement.googleapis.com/v1/accounts");
+            ->get('https://mybusinessaccountmanagement.googleapis.com/v1/accounts');
 
         return $this->buildResponse($response, function () use ($response) {
             return $response->collect('accounts')->map(function ($item) {

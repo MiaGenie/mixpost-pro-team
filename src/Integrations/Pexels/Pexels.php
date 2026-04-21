@@ -19,7 +19,7 @@ class Pexels
     {
         $clientId = PexelsService::getConfiguration('client_id');
 
-        if (!$clientId) {
+        if (! $clientId) {
             throw new \Exception('Pexels is not configured.');
         }
 
@@ -28,11 +28,11 @@ class Pexels
 
     public function photos(string $query = '', int $page = 1): array
     {
-         return Http::withHeaders([ 'Authorization' => $this->clientId])
-                    ->get("$this->endpointUrl/$this->version/search", [
-                        'query' => $query ?: Arr::random(Util::config('external_media_terms')),
-                        'page' => $page,
-                        'per_page' => 30,
-                    ])->json('photos', []);
+        return Http::withHeaders(['Authorization' => $this->clientId])
+            ->get("$this->endpointUrl/$this->version/search", [
+                'query' => $query ?: Arr::random(Util::config('external_media_terms')),
+                'page' => $page,
+                'per_page' => 30,
+            ])->json('photos', []);
     }
 }

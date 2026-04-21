@@ -40,7 +40,8 @@
         "add_social_account": "No teniu cap compte social, afegiu-ne almenys un.",
         "no_accounts_found": "No s'han trobat comptes",
         "finish_connection": "Acabar la connexió",
-        "open_account_page": "Obre la pàgina del compte"
+        "open_account_page": "Obre la pàgina del compte",
+        "view_profile": "Veure perfil"
     },
     "ai": {
         "tell_ai": "Digues a AI què ha d'escriure",
@@ -391,7 +392,7 @@
         "inch": "polzades",
         "mm": "mil·límetres",
         "create_design": "Crea un disseny",
-        "edit_adobe_express": "Edita a Adobe Express",
+        "create_adobe_express": "Crea amb Adobe Express",
         "new_design": "Nou disseny",
         "saved": "El contingut multimèdia s'ha desat correctament.",
         "fb_post": "Publicació de Facebook",
@@ -402,7 +403,8 @@
         "linkedin_post": "Publicació de LinkedIn",
         "x_post": "Publicació X",
         "pinterest_post": "Publicació de Pinterest",
-        "media": "Mitjans de comunicació"
+        "media": "Mitjans de comunicació",
+        "create_for_adobe_express": "Crea per a Adobe Express"
     },
     "page": {
         "pages": "Pàgines",
@@ -706,7 +708,6 @@
             "visibility": "Visibilitat",
             "public": "Públic",
             "connections": "Connexions",
-            "not_support_accounts": "Malauradament, l'API de LinkedIn no admet mostrar analítiques per als comptes personals de LinkedIn.",
             "insights": "Insights",
             "job_title": "El teu títol de treball",
             "send": "Enviar"
@@ -785,7 +786,6 @@
             "public": "Públic",
             "private": "Privat",
             "unlisted": "No cotitzades",
-            "analytics_under_development": "L'anàlisi de YouTube està en desenvolupament.",
             "select_video": "Seleccioneu un vídeo per a aquest compte de YouTube.",
             "privacy_config": "Configuració de privadesa",
             "title": "Vídeo o títol breu"
@@ -889,7 +889,9 @@
         "copied_clipboard": "S'ha copiat al porta-retalls!",
         "failed_copied_clipboard": "No s'ha pogut copiar al porta-retalls!",
         "usage_api": "Ús a l'API",
-        "stored_safely": "L'he guardat amb seguretat"
+        "stored_safely": "L'he guardat amb seguretat",
+        "copy_id": "Còpia del document d'identitat",
+        "copy_uuid": "Copia l'UUID"
     },
     "tag": {
         "change_label_color": "Canvia el color de l'etiqueta",

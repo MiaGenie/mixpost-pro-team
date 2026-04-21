@@ -31,7 +31,6 @@ class HandleInertiaRequests extends Middleware
     /**
      * Determine the current asset version.
      *
-     * @param \Illuminate\Http\Request $request
      * @return string|null
      */
     public function version(Request $request)
@@ -46,7 +45,6 @@ class HandleInertiaRequests extends Middleware
     /**
      * Define the props that are shared by default.
      *
-     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function share(Request $request)
@@ -58,7 +56,7 @@ class HandleInertiaRequests extends Middleware
                 // Mixpost::getEnterpriseRoutes()
                 return array_merge((new Ziggy)->filter(['mixpost.*'])->toArray(), [
                     'location' => $request->url(),
-                    'workspace_id' => $this->getWorkspaceId($request)
+                    'workspace_id' => $this->getWorkspaceId($request),
                 ]);
             },
             'broadcast' => Broadcast::echoOptions(),
@@ -87,10 +85,10 @@ class HandleInertiaRequests extends Middleware
                 ],
                 'theme' => [
                     'logo' => Theme::config()->get('logo_url'),
-                    'colors' => Theme::colors()
+                    'colors' => Theme::colors(),
                 ],
                 'features' => [
-                    'api_access_tokens' => Features::isApiAccessTokenEnabled()
+                    'api_access_tokens' => Features::isApiAccessTokenEnabled(),
                 ],
                 'enterpriseConsole' => [
                     'url' => Mixpost::getEnterpriseConsoleUrl(),
@@ -104,13 +102,13 @@ class HandleInertiaRequests extends Middleware
                     'multiple_workspace_enabled' => Mixpost::getMultipleWorkspaceEnabled(),
                     'is_system_webhook_enabled' => Mixpost::isSystemWebhookEnabled(),
                 ],
-            ]
+            ],
         ]);
     }
 
     protected function auth(): array
     {
-        if (!self::getAuthGuard()->check()) {
+        if (! self::getAuthGuard()->check()) {
             return [
                 'user' => null,
                 'workspaces' => [],
@@ -122,7 +120,7 @@ class HandleInertiaRequests extends Middleware
 
         // If `Auth Middleware` was not resolved first
         // return empty auth
-        if (!$user instanceof User) {
+        if (! $user instanceof User) {
             return [];
         }
 

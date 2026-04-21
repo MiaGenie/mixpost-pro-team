@@ -24,7 +24,7 @@ trait ManagesPageResources
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->withHeaders($this->httpHeaders())
             ->get("$this->apiUrl/$this->apiVersion/organizations/{$this->values['provider_id']}", [
-                'projection' => '(id,localizedName,vanityName,primaryOrganizationType,logoV2(original~:playableStreams))'
+                'projection' => '(id,localizedName,vanityName,primaryOrganizationType,logoV2(original~:playableStreams))',
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -37,8 +37,8 @@ trait ManagesPageResources
                 'image' => Arr::get($data, 'logoV2.original~.elements.0.identifiers.0.identifier'),
                 'data' => array_merge(
                     AccountSuffix::schema('Page'),
-                    ['page_type' => $this->getPageType( $data['primaryOrganizationType'] ?? null)]
-                )
+                    ['page_type' => $this->getPageType($data['primaryOrganizationType'] ?? null)]
+                ),
             ];
         });
     }
@@ -59,7 +59,7 @@ trait ManagesPageResources
             ->withHeaders($this->httpHeaders())
             ->get("$this->apiUrl/$this->apiVersion/organizationalEntityAcls", [
                 'q' => 'roleAssignee',
-                'projection' => '(elements*(organizationalTarget~(id,vanityName,primaryOrganizationType,localizedName,logoV2(original~:playableStreams))))'
+                'projection' => '(elements*(organizationalTarget~(id,vanityName,primaryOrganizationType,localizedName,logoV2(original~:playableStreams))))',
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -71,8 +71,8 @@ trait ManagesPageResources
                     'image' => Arr::get($item, 'organizationalTarget~.logoV2.original~.elements.0.identifiers.0.identifier'),
                     'data' => array_merge(
                         AccountSuffix::schema('Page'),
-                        ['page_type' => $this->getPageType( $data['primaryOrganizationType'] ?? null)]
-                    )
+                        ['page_type' => $this->getPageType($data['primaryOrganizationType'] ?? null)]
+                    ),
                 ];
             })->toArray();
         });
@@ -92,12 +92,12 @@ trait ManagesPageResources
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->get("$this->apiUrl/$this->apiVersion/networkSizes/urn:li:organization:{$this->values['provider_id']}", [
-                'edgeType' => 'CompanyFollowedByMember'
+                'edgeType' => 'CompanyFollowedByMember',
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
             return [
-                'count' => $response->json('firstDegreeSize')
+                'count' => $response->json('firstDegreeSize'),
             ];
         });
     }
@@ -121,7 +121,7 @@ trait ManagesPageResources
                     'owners' => "urn:li:organization:{$this->values['provider_id']}",
                     'sharesPerOwner' => 1000,
                     'count' => $count,
-                    'start' => $start
+                    'start' => $start,
                 ])
         );
     }

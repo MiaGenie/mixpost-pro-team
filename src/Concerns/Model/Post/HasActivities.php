@@ -3,7 +3,6 @@
 namespace Inovector\Mixpost\Concerns\Model\Post;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Auth;
 use Inovector\Mixpost\Abstracts\User;
 use Inovector\Mixpost\Enums\PostActivityType;
 use Inovector\Mixpost\Events\Post\PostActivityCreated;

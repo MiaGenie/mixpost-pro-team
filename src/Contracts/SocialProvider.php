@@ -3,7 +3,6 @@
 namespace Inovector\Mixpost\Contracts;
 
 use Closure;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Inovector\Mixpost\Http\Base\Resources\AccountResource;
@@ -26,7 +25,7 @@ interface SocialProvider
 
     public function useAccessToken(array $token = []): static;
 
-    public function buildResponse($response, Closure $okResult = null): SocialProviderResponse;
+    public function buildResponse($response, ?Closure $okResult = null): SocialProviderResponse;
 
     public function getAccount(): SocialProviderResponse;
 

@@ -36,18 +36,18 @@ class Account extends Model
         'provider_id',
         'data',
         'authorized',
-        'access_token'
+        'access_token',
     ];
 
     protected $casts = [
         'media' => AccountMediaCast::class,
         'data' => 'array',
         'authorized' => 'boolean',
-        'access_token' => EncryptArrayObject::class
+        'access_token' => EncryptArrayObject::class,
     ];
 
     protected $hidden = [
-        'access_token'
+        'access_token',
     ];
 
     protected ?string $providerClass = null;
@@ -99,7 +99,7 @@ class Account extends Model
             'provider' => $this->provider,
             'name' => $this->name,
             'username' => $this->username,
-            'data' => $this->data
+            'data' => $this->data,
         ];
     }
 
@@ -119,7 +119,7 @@ class Account extends Model
 
     public function providerName(): string
     {
-        if (!$provider = $this->getProviderClass()) {
+        if (! $provider = $this->getProviderClass()) {
             return $this->provider;
         }
 
@@ -128,7 +128,7 @@ class Account extends Model
 
     public function postConfigs(): array
     {
-        if (!$provider = $this->getProviderClass()) {
+        if (! $provider = $this->getProviderClass()) {
             return SocialProviderPostConfigs::make()->jsonSerialize();
         }
 
@@ -137,7 +137,7 @@ class Account extends Model
 
     public function isServiceActive(): bool
     {
-        if (!$this->getProviderClass()) {
+        if (! $this->getProviderClass()) {
             return false;
         }
 
@@ -155,7 +155,7 @@ class Account extends Model
 
     public function isUnauthorized(): bool
     {
-        return !$this->authorized;
+        return ! $this->authorized;
     }
 
     public function setUnauthorized(bool $dispatchEvent = true): void

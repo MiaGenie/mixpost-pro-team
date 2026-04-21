@@ -14,7 +14,7 @@ class PinterestPostOptions extends SocialProviderPostOptions
             'title' => ['sometimes', 'nullable', 'string'],
             'link' => ['sometimes', 'nullable', 'url'],
             'boards' => ['sometimes', 'array'],
-            'boards.*' => ['sometimes', 'string', 'nullable']
+            'boards.*' => ['sometimes', 'string', 'nullable'],
         ];
     }
 
@@ -23,7 +23,7 @@ class PinterestPostOptions extends SocialProviderPostOptions
         return [
             'title' => Arr::get($options, 'title', ''),
             'link' => Arr::get($options, 'link', ''),
-            'boards' => Arr::get($options, 'boards', ['account-0' => null])
+            'boards' => Arr::get($options, 'boards', ['account-0' => null]),
         ];
     }
 }

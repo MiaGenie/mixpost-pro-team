@@ -3,8 +3,8 @@
 namespace Inovector\Mixpost\SocialProviders\Pinterest;
 
 use Inovector\Mixpost\Abstracts\SocialProvider;
-use Inovector\Mixpost\Contracts\SocialProviderPostOptions as SocialProviderPostOptionsContract;
 use Inovector\Mixpost\Contracts\AccountResource;
+use Inovector\Mixpost\Contracts\SocialProviderPostOptions as SocialProviderPostOptionsContract;
 use Inovector\Mixpost\Services\PinterestService;
 use Inovector\Mixpost\SocialProviders\Pinterest\Concerns\ManagesConfig;
 use Inovector\Mixpost\SocialProviders\Pinterest\Concerns\ManagesOAuth;
@@ -19,12 +19,14 @@ class PinterestProvider extends SocialProvider
     public array $callbackResponseKeys = ['code'];
 
     public string $apiVersion = 'v5';
+
     public string $apiUrlProduction = 'https://api.pinterest.com';
+
     public string $apiUrlSandbox = 'https://api-sandbox.pinterest.com';
 
     use ManagesConfig;
-    use ManagesRateLimit;
     use ManagesOAuth;
+    use ManagesRateLimit;
     use ManagesResources;
 
     public static function service(): string
@@ -55,7 +57,7 @@ class PinterestProvider extends SocialProvider
 
     public static function postOptions(): SocialProviderPostOptionsContract
     {
-        return new PinterestPostOptions();
+        return new PinterestPostOptions;
     }
 
     public static function externalPostUrl(AccountResource $accountResource): string

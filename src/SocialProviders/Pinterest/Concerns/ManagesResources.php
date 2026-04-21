@@ -34,11 +34,11 @@ trait ManagesResources
 
         $relationships = [];
 
-        if (!$boards->hasError()) {
+        if (! $boards->hasError()) {
             $relationships['boards'] = Arr::map($boards->items ?? [], function ($item) {
                 return [
                     'id' => $item['id'],
-                    'name' => $item['name']
+                    'name' => $item['name'],
                 ];
             });
         }
@@ -49,8 +49,8 @@ trait ManagesResources
             'username' => $response->username,
             'image' => $response->profile_image,
             'data' => [
-                'relationships' => $relationships
-            ]
+                'relationships' => $relationships,
+            ],
         ]);
     }
 
@@ -105,7 +105,7 @@ trait ManagesResources
             $this->updateToken($newAccessToken->context());
         }
 
-        if (!$media->count()) {
+        if (! $media->count()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['no_media_selected']);
         }
 
@@ -114,13 +114,13 @@ trait ManagesResources
 
         $isVideo = $media->count() === 1 && $media->first()->isVideo();
 
-        if (!$isVideo) {
+        if (! $isVideo) {
             $mediaData = [
                 'media_source' => [
                     'source_type' => 'image_base64',
                     'content_type' => 'image/jpeg',
-                    'data' => base64_encode($media->first()->contents())
-                ]
+                    'data' => base64_encode($media->first()->contents()),
+                ],
             ];
         }
 
@@ -128,15 +128,15 @@ trait ManagesResources
             // TODO: pinterest upload video
             return $this->response(SocialProviderResponseStatus::ERROR, ['not_support_video']);
 
-//            $uploadVideoResponse = $this->uploadVideo($media[0]);
-//
-//            if ($uploadVideoResponse->hasError()) {
-//                return $uploadVideoResponse;
-//            }
-//
-//            $mediaData = [
-//                'media_upload_id' => $uploadVideoResponse->id
-//            ];
+            //            $uploadVideoResponse = $this->uploadVideo($media[0]);
+            //
+            //            if ($uploadVideoResponse->hasError()) {
+            //                return $uploadVideoResponse;
+            //            }
+            //
+            //            $mediaData = [
+            //                'media_upload_id' => $uploadVideoResponse->id
+            //            ];
         }
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
@@ -152,7 +152,7 @@ trait ManagesResources
             $data = $response->json();
 
             return [
-                'id' => $data['id']
+                'id' => $data['id'],
             ];
         });
     }
@@ -182,7 +182,7 @@ trait ManagesResources
 
         $stream = fopen($media['path'], 'r');
         $uploadSpeed = 2 * 1024 * 1024; // 2MB/s
-//        $estimatedUploadTime = filesize($media['path']) / $uploadSpeed;
+        //        $estimatedUploadTime = filesize($media['path']) / $uploadSpeed;
 
         $responseUpload = $this->getHttpClient()::timeout(100)
             ->attach('file', $stream)

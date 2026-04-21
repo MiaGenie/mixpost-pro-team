@@ -17,41 +17,41 @@ class MediaFetchStockController extends Controller
 {
     public function __invoke(Request $request): AnonymousResourceCollection
     {
-        $method = 'fetch' . Str::studly(app(MediaConfig::class)->get('stock_photo_provider')) . 'Media';
+        $method = 'fetch'.Str::studly(app(MediaConfig::class)->get('stock_photo_provider')).'Media';
 
         if (method_exists($this, $method)) {
             return $this->$method($request);
         }
 
-        throw new \InvalidArgumentException("Invalid photo stock config");
+        throw new \InvalidArgumentException('Invalid photo stock config');
     }
 
     private function fetchPexelsMedia(Request $request): AnonymousResourceCollection
     {
-        $pexels = new Pexels();
+        $pexels = new Pexels;
 
         $items = $pexels->photos($request->query('keyword', ''), $request->query('page', 1));
 
-        $media = collect($items)->map(function ($item) use ($pexels) {
-                $media = new Media([
-                    'name' => $item['photographer'],
-                    'mime_type' => 'image/jpeg',
-                    'disk' => 'external_media',
-                    'path' => $item['src']['original'],
-                    'conversions' => [
-                        [
-                            'disk' => 'stock',
-                            'name' => 'thumb',
-                            'path' => $item['src']['large']
-                    ]
-                ]
+        $media = collect($items)->map(function ($item) {
+            $media = new Media([
+                'name' => $item['photographer'],
+                'mime_type' => 'image/jpeg',
+                'disk' => 'external_media',
+                'path' => $item['src']['original'],
+                'conversions' => [
+                    [
+                        'disk' => 'stock',
+                        'name' => 'thumb',
+                        'path' => $item['src']['large'],
+                    ],
+                ],
             ]);
 
             $media->setAttribute('id', $item['id']);
             $media->setAttribute('source_url', 'https://pexels.com');
             $media->setAttribute('credit_url', $item['url']);
             $media->setAttribute('download_data', [
-                'download_location' => ''
+                'download_location' => '',
             ]);
             $media->setAttribute('data', [
                 'source' => 'Pexels',
@@ -65,14 +65,14 @@ class MediaFetchStockController extends Controller
 
         return MediaResource::collection($media)->additional([
             'links' => [
-                'next' => "?page=$nextPage"
-            ]
+                'next' => "?page=$nextPage",
+            ],
         ]);
     }
 
     private function fetchUnsplashMedia(Request $request): AnonymousResourceCollection
     {
-        $unsplash = new Unsplash();
+        $unsplash = new Unsplash;
 
         $items = $unsplash->photos($request->query('keyword', ''), $request->query('page', 1));
 
@@ -86,9 +86,9 @@ class MediaFetchStockController extends Controller
                     [
                         'disk' => 'stock',
                         'name' => 'thumb',
-                        'path' => $item['urls']['thumb']
-                    ]
-                ]
+                        'path' => $item['urls']['thumb'],
+                    ],
+                ],
             ]);
 
             $utmParams = http_build_query([
@@ -97,10 +97,10 @@ class MediaFetchStockController extends Controller
             ], '', '&');
 
             $media->setAttribute('id', $item['id']);
-            $media->setAttribute('source_url', 'https://unsplash.com/' . '?' . $utmParams);
-            $media->setAttribute('credit_url', $item['user']['links']['html'] . '?' . $utmParams);
+            $media->setAttribute('source_url', 'https://unsplash.com/'.'?'.$utmParams);
+            $media->setAttribute('credit_url', $item['user']['links']['html'].'?'.$utmParams);
             $media->setAttribute('download_data', [
-                'download_location' => $item['links']['download_location']
+                'download_location' => $item['links']['download_location'],
             ]);
             $media->setAttribute('data', [
                 'source' => 'Unsplash',
@@ -114,8 +114,8 @@ class MediaFetchStockController extends Controller
 
         return MediaResource::collection($media)->additional([
             'links' => [
-                'next' => "?page=$nextPage"
-            ]
+                'next' => "?page=$nextPage",
+            ],
         ]);
     }
 }

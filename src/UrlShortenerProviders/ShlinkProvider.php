@@ -19,7 +19,7 @@ class ShlinkProvider implements UrlShortenerProvider
         $domainUrl = ShlinkService::getConfiguration('domain_url');
         $apiKey = ShlinkService::getConfiguration('api_key');
 
-        if (!$domainUrl || !$apiKey) {
+        if (! $domainUrl || ! $apiKey) {
             throw new \Exception('Shlink is not configured.');
         }
 
@@ -41,7 +41,7 @@ class ShlinkProvider implements UrlShortenerProvider
     {
         $response = Http::withHeader('X-Api-Key', $this->apiKey)
             ->post("$this->domainUrl/rest/$this->apiVersion/short-urls", [
-                'longUrl' => $originalUrl
+                'longUrl' => $originalUrl,
             ]);
 
         // TODO: Handle unauthorized access
@@ -50,13 +50,13 @@ class ShlinkProvider implements UrlShortenerProvider
         if ($response->status() === 200) {
             return [
                 'status' => 'OK',
-                'short_url' => $response['shortUrl']
+                'short_url' => $response['shortUrl'],
             ];
         }
 
         return [
             'status' => $response->status(),
-            'response' => $response->json()
+            'response' => $response->json(),
         ];
     }
 }

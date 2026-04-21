@@ -15,10 +15,10 @@ use RuntimeException;
 
 trait ManagesPost
 {
-    use UsesValues;
-    use UsesOAuthAgent;
     use UsesAuthServer;
+    use UsesOAuthAgent;
     use UsesUploads;
+    use UsesValues;
 
     public function publishPost(string $text, Collection $media, array $params = []): SocialProviderResponse
     {
@@ -34,19 +34,19 @@ trait ManagesPost
 
             $this->embedUrlCard($media, $params, $postParams);
 
-            if ($video = $media->first(fn($media) => $media->isVideo())) {
+            if ($video = $media->first(fn ($media) => $media->isVideo())) {
                 $this->embedVideo($video, $postParams);
             } else {
-                $this->embedImages($media->filter(fn($media) => $media->isImage()), $postParams);
+                $this->embedImages($media->filter(fn ($media) => $media->isImage()), $postParams);
             }
         } catch (RuntimeException $e) {
             return $this->response(SocialProviderResponseStatus::ERROR, json_decode($e->getMessage(), true));
         }
 
-        $response = $this->http()->post("com.atproto.repo.createRecord", [
+        $response = $this->http()->post('com.atproto.repo.createRecord', [
             'repo' => $this->getDid(),
             'collection' => 'app.bsky.feed.post',
-            'record' => $postParams
+            'record' => $postParams,
         ]);
 
         return $this->buildResponse($response, function ($data) {
@@ -54,17 +54,17 @@ trait ManagesPost
                 'id' => $data['cid'],
                 'data' => [
                     'uri' => $data['uri'],
-                ]
+                ],
             ];
         });
     }
 
     public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        $response = $this->http()->post("com.atproto.repo.deleteRecord", [
+        $response = $this->http()->post('com.atproto.repo.deleteRecord', [
             'repo' => $this->getDid(),
             'collection' => 'app.bsky.feed.post',
-            'rkey' => Str::afterLast($params['uri'], '/')
+            'rkey' => Str::afterLast($params['uri'], '/'),
         ]);
 
         return $this->buildResponse($response);
@@ -87,7 +87,7 @@ trait ManagesPost
                 'parent' => [
                     'uri' => $parent->data['uri'],
                     'cid' => $parent->id(),
-                ]
+                ],
             ];
         }
     }
@@ -101,7 +101,7 @@ trait ManagesPost
                 throw new RuntimeException(json_encode($response->context()));
             }
 
-            if (!$response->blob) {
+            if (! $response->blob) {
                 return null;
             }
 
@@ -141,11 +141,11 @@ trait ManagesPost
             return;
         }
 
-        if (!$url = $params['url'] ?? '') {
+        if (! $url = $params['url'] ?? '') {
             return;
         }
 
-        $card = (new FetchUrlCard())($url);
+        $card = (new FetchUrlCard)($url);
 
         $postParams['embed'] = [
             '$type' => 'app.bsky.embed.external',
@@ -153,7 +153,7 @@ trait ManagesPost
                 'uri' => $url,
                 'title' => $card['default']['title'],
                 'description' => $card['default']['description'],
-            ]
+            ],
         ];
 
         if ($card['default']['image']) {
@@ -163,7 +163,7 @@ trait ManagesPost
                 $file = TemporaryFile::make()->fromUrl($card['default']['image']);
                 $response = $this->uploadBlob($file);
 
-                if (!$response->hasError()) {
+                if (! $response->hasError()) {
                     $postParams['embed']['external']['thumb'] = $response->blob;
                 }
             } finally {

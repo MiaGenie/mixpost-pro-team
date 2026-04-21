@@ -7,16 +7,16 @@ use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
 use Inovector\Mixpost\Configs\GeneralConfig;
-use Inovector\Mixpost\Http\Base\Requests\Admin\Configs\SaveGeneralConfig;
 use Inovector\Mixpost\Facades\UrlShortenerManager;
+use Inovector\Mixpost\Http\Base\Requests\Admin\Configs\SaveGeneralConfig;
 
 class GeneralConfigController extends Controller
 {
     public function form(): Response
     {
         return Inertia::render('Admin/Configs/GeneralConfig', [
-            'configs' => (new GeneralConfig())->all(),
-            'url_shortener_providers' => UrlShortenerManager::getProviderSelectionOptionKeys()
+            'configs' => (new GeneralConfig)->all(),
+            'urlShortenerProviders' => UrlShortenerManager::getProviderSelectionOptionKeys(),
         ]);
     }
 

@@ -45,7 +45,7 @@ class OpenAIProvider extends AIProvider
 
     public function generateImage(): AIProviderResponse
     {
-        // TODO: Implement generateImage() method.
+        return AIProviderResponse::withStatus(AIProviderResponseStatus::OK);
     }
 
     protected function client(): OpenAIClient

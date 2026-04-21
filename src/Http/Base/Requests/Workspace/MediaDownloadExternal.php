@@ -32,20 +32,20 @@ class MediaDownloadExternal extends FormRequest
 
                         $extraKeys = array_diff(array_keys($item), $validKeys);
 
-                        if (!empty($extraKeys)) {
-                            $fail('The ' . $attribute . ' item contains invalid keys: ' . implode(', ', $extraKeys));
+                        if (! empty($extraKeys)) {
+                            $fail('The '.$attribute.' item contains invalid keys: '.implode(', ', $extraKeys));
                             break;
                         }
 
                         foreach (array_flip(Arr::except(array_flip($validKeys), ['source', 'author'])) as $key) {
                             if (empty($item[$key])) {
-                                $fail('The ' . $attribute . ' item must have a non-empty "' . $key . '" key.');
+                                $fail('The '.$attribute.' item must have a non-empty "'.$key.'" key.');
                                 break 2;
                             }
                         }
 
-                        if (!Util::isPublicDomainUrl($item['url'])) {
-                            $fail('The ' . $attribute . ' contains non-public domain URLs.');
+                        if (! Util::isPublicDomainUrl($item['url'])) {
+                            $fail('The '.$attribute.' contains non-public domain URLs.');
                         }
                     }
                 },
@@ -58,7 +58,7 @@ class MediaDownloadExternal extends FormRequest
         return collect($this->input('items'))->map(function ($item) {
             $response = File::fetchUrl($item['url']);
 
-            if (!$response->successful()) {
+            if (! $response->successful()) {
                 return null;
             }
 
@@ -76,7 +76,7 @@ class MediaDownloadExternal extends FormRequest
                 ->data($this->getData($item))
                 ->uploadAndInsert();
 
-            $method = 'downloadAction' . Str::studly($this->input('from'));
+            $method = 'downloadAction'.Str::studly($this->input('from'));
 
             $this->$method($item);
 
@@ -88,11 +88,11 @@ class MediaDownloadExternal extends FormRequest
     {
         $data = [];
 
-        if (!empty($item['source'])) {
+        if (! empty($item['source'])) {
             $data['source'] = $item['source'];
         }
 
-        if (!empty($item['author'])) {
+        if (! empty($item['author'])) {
             $data['author'] = $item['author'];
         }
 
@@ -108,8 +108,5 @@ class MediaDownloadExternal extends FormRequest
         TriggerDownloadJob::dispatch($item['download_data']['download_location']);
     }
 
-    protected function downloadActionGifs(array $item): void
-    {
-
-    }
+    protected function downloadActionGifs(array $item): void {}
 }

@@ -8,17 +8,16 @@ use Inovector\Mixpost\Rules\DomainURLRule;
 
 class YourlsService extends Service
 {
-
     public static function group(): ServiceGroup
     {
         return ServiceGroup::URL_SHORTENER;
     }
 
-    static function form(): array
+    public static function form(): array
     {
         return [
             'signature' => '',
-            'domain_url' => ''
+            'domain_url' => '',
         ];
     }
 
@@ -26,7 +25,7 @@ class YourlsService extends Service
     {
         return [
             'signature' => ['required'],
-            'domain_url' => ['required', new DomainURLRule()]
+            'domain_url' => ['required', new DomainURLRule],
         ];
     }
 
@@ -36,7 +35,7 @@ class YourlsService extends Service
             'signature' => __('validation.required', ['attribute' => 'Signature']),
             'domain_url' => [
                 'required' => __('validation.required', ['attribute' => 'Domain']),
-            ]
+            ],
         ];
     }
 }

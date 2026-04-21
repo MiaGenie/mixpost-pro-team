@@ -12,9 +12,9 @@ use Psr\Http\Message\ResponseInterface;
 
 trait UsesTokenRequest
 {
+    use UsesAccessToken;
     use UsesOAuthCodeChallenge;
     use UsesOAuthDPoPSession;
-    use UsesAccessToken;
 
     protected string $DPoPKeySource = 'session';
 
@@ -24,7 +24,7 @@ trait UsesTokenRequest
             ->withRequestMiddleware($this->tokenRequestMiddleware(...))
             ->withResponseMiddleware($this->tokenResponseMiddleware(...))
             ->post($token_url, $payload)
-            ->throwIf(fn(Response $response) => $response->serverError())
+            ->throwIf(fn (Response $response) => $response->serverError())
             ->json();
     }
 
@@ -34,7 +34,7 @@ trait UsesTokenRequest
 
         $dpopProof = DPoP::authProof(
             jwk: DPoP::load($this->_getDPoPKey()),
-            url: (string)$request->getUri(),
+            url: (string) $request->getUri(),
             nonce: $dpopNonce,
         );
 
@@ -46,7 +46,7 @@ trait UsesTokenRequest
         $res = new Response($response);
 
         if ($res->status() === 400 && $res->json('error') === 'invalid_grant') {
-            throw new OAuthInvalidGrant();
+            throw new OAuthInvalidGrant;
         }
 
         $dpopNonce = $res->header('DPoP-Nonce');
@@ -69,7 +69,7 @@ trait UsesTokenRequest
 
     protected function getTokenUrl(): string
     {
-        return (string)$this->authServerMeta('token_endpoint');
+        return (string) $this->authServerMeta('token_endpoint');
     }
 
     protected function getTokenFields(string $code): array

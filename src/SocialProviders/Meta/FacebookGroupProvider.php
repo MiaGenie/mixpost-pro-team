@@ -10,8 +10,8 @@ use Inovector\Mixpost\SocialProviders\Meta\Concerns\ManagesFacebookOAuth;
 // We will remove this feature soon
 class FacebookGroupProvider extends MetaProvider
 {
-    use ManagesFacebookOAuth;
     use ManagesFacebookGroupResources;
+    use ManagesFacebookOAuth;
 
     public bool $onlyUserAccount = false;
 

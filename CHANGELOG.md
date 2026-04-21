@@ -2,6 +2,21 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 4.0.0 - 2025-08-03
+
+**New features**
+
+- Integrated Pexels
+- Integrated Adobe Express
+- Shortener URL (Default Providers: Bitly, Yourls, Shlink)
+- Integrated Google Business Profile
+- Delete post from social platforms
+
+**Changes**
+
+- Added `nl-NL` language
+- Upgraded Intervention Image package from version `v2` to `v3`
+
 ## 3.8.1 - 2025-07-26
 
 **Changed**

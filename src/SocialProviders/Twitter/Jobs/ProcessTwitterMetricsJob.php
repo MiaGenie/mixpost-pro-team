@@ -15,7 +15,7 @@ use Inovector\Mixpost\Models\Account;
 use Inovector\Mixpost\Models\ImportedPost;
 use Inovector\Mixpost\Models\Metric;
 
-class ProcessTwitterMetricsJob implements ShouldQueue, QueueWorkspaceAware
+class ProcessTwitterMetricsJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -50,7 +50,7 @@ class ProcessTwitterMetricsJob implements ShouldQueue, QueueWorkspaceAware
                     'replies' => $item->replies,
                     'retweets' => $item->retweets,
                     'impressions' => $item->impressions,
-                ])
+                ]),
             ];
         });
 

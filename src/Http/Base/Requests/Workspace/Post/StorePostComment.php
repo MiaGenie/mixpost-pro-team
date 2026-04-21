@@ -12,6 +12,7 @@ class StorePostComment extends PostFormRequest
     use UsesPostActivities;
 
     public Post $post;
+
     public ?PostActivity $parentActivity = null;
 
     public function rules(): array
@@ -34,7 +35,7 @@ class StorePostComment extends PostFormRequest
             if ($this->input('parent_id')) {
                 $this->parentActivity = self::getActivity($this->post, $this->input('parent_id'));
 
-                if (!$this->parentActivity || !$this->parentActivity->isComment()) {
+                if (! $this->parentActivity || ! $this->parentActivity->isComment()) {
                     $validator->errors()->add('parent_id', 'Parent comment not found');
                 }
             }

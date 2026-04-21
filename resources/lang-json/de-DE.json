@@ -40,7 +40,8 @@
         "add_social_account": "Du hast noch kein Social-Media-Konto verknüpft. Bitte füge mindestens eines hinzu.",
         "no_accounts_found": "Keine Konten gefunden",
         "finish_connection": "Finish Verbindung",
-        "open_account_page": "Seite Konto eröffnen"
+        "open_account_page": "Seite Konto eröffnen",
+        "view_profile": "Profil ansehen"
     },
     "ai": {
         "tell_ai": "Beschreibe der KI, worüber sie schreiben soll",
@@ -391,7 +392,7 @@
         "inch": "Zoll",
         "mm": "Millimeter",
         "create_design": "Design erstellen",
-        "edit_adobe_express": "In Adobe Express bearbeiten",
+        "create_adobe_express": "Erstellen mit Adobe Express",
         "new_design": "Neues Design",
         "saved": "Medien erfolgreich gespeichert.",
         "fb_post": "Facebook-Post",
@@ -402,7 +403,8 @@
         "linkedin_post": "LinkedIn Beitrag",
         "x_post": "X-Posten",
         "pinterest_post": "Pinterest Beitrag",
-        "media": "Medien"
+        "media": "Medien",
+        "create_for_adobe_express": "Erstellen für Adobe Express"
     },
     "page": {
         "pages": "Seiten",
@@ -706,7 +708,6 @@
             "visibility": "Sichtbarkeit",
             "public": "Öffentlich",
             "connections": "Verbindungen",
-            "not_support_accounts": "Leider unterstützt die API von LinkedIn nicht die Anzeige von Analysen für persönliche LinkedIn-Konten.",
             "insights": "Einblicke",
             "job_title": "Deine Berufsbezeichnung",
             "send": "Senden"
@@ -785,7 +786,6 @@
             "public": "Öffentlich",
             "private": "Privat",
             "unlisted": "Ungelistet",
-            "analytics_under_development": "Die YouTube-Analytik ist in der Entwicklung.",
             "select_video": "Wähle ein Video für dieses YouTube-Konto aus.",
             "privacy_config": "Datenschutz-Konfiguration",
             "title": "Video oder Kurztitel"
@@ -889,7 +889,9 @@
         "copied_clipboard": "In die Zwischenablage kopiert!",
         "failed_copied_clipboard": "Das Kopieren in die Zwischenablage ist fehlgeschlagen!",
         "usage_api": "Verwendung in API",
-        "stored_safely": "Ich habe es sicher aufbewahrt"
+        "stored_safely": "Ich habe es sicher aufbewahrt",
+        "copy_id": "ID kopieren",
+        "copy_uuid": "UUID kopieren"
     },
     "tag": {
         "change_label_color": "Etikettenfarbe ändern",

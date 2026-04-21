@@ -31,7 +31,7 @@ trait GBPManagesConfig
 
     public static function postOptions(): SocialProviderPostOptions
     {
-        return new GBPPostOptions();
+        return new GBPPostOptions;
     }
 
     public static function externalPostUrl(AccountResource $accountResource): string

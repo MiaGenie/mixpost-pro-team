@@ -15,8 +15,8 @@ use RuntimeException;
 
 trait ManagesPost
 {
-    use UsesUploads;
     use ManageComments;
+    use UsesUploads;
 
     public function publishPost(string $text, Collection $media, array $params = []): SocialProviderResponse
     {
@@ -63,7 +63,7 @@ trait ManagesPost
 
             // Multiple images post
             if ($media->count() > 1) {
-                $this->handleImages($media->filter(fn($media) => $media->isImage()), $postParams);
+                $this->handleImages($media->filter(fn ($media) => $media->isImage()), $postParams);
             }
         } catch (RuntimeException $e) {
             return $this->response(SocialProviderResponseStatus::ERROR, json_decode($e->getMessage(), true));
@@ -75,7 +75,7 @@ trait ManagesPost
 
         return $this->buildResponse($response, function () use ($response) {
             return [
-                'id' => $response->header('x-linkedin-id')
+                'id' => $response->header('x-linkedin-id'),
             ];
         });
     }
@@ -113,18 +113,18 @@ trait ManagesPost
             return;
         }
 
-        if (!$url = $params['url'] ?? '') {
+        if (! $url = $params['url'] ?? '') {
             return;
         }
 
-        $card = (new FetchUrlCard())($url);
+        $card = (new FetchUrlCard)($url);
 
         $postParams['content'] = [
             'article' => [
                 'source' => $url,
                 'title' => $card['default']['title'],
                 'description' => $card['default']['description'],
-            ]
+            ],
         ];
 
         if ($card['default']['image']) {
@@ -134,7 +134,7 @@ trait ManagesPost
                 $file = TemporaryFile::make()->fromUrl($card['default']['image']);
                 $response = $this->uploadImage($file);
 
-                if (!$response->hasError()) {
+                if (! $response->hasError()) {
                     $postParams['content']['article']['thumbnail'] = $response->id();
                 }
             } finally {
@@ -194,10 +194,8 @@ trait ManagesPost
 
     /**
      * Escape reserved characters in the text to prevent issues with LinkedIn's API.
-     * @see https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/little-text-format?view=li-lms-2025-05&tabs=curl#text
      *
-     * @param string $text
-     * @return string
+     * @see https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/little-text-format?view=li-lms-2025-05&tabs=curl#text
      */
     private function escapeText(string $text): string
     {
@@ -217,7 +215,7 @@ trait ManagesPost
             '#' => '\\#',   // Hash symbol (used for hashtags)
             '*' => '\\*',   // Asterisk
             '_' => '\\_',   // Underscore
-            '~' => '\\~'    // Tilde
+            '~' => '\\~',    // Tilde
         ];
 
         // Apply escaping in the correct order (backslash first!)

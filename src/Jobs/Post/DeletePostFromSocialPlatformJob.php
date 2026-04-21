@@ -17,23 +17,20 @@ use Inovector\Mixpost\Models\Post;
 use Inovector\Mixpost\SocialProviders\Meta\InstagramProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
-class DeletePostFromSocialPlatformJob implements ShouldQueue, QueueWorkspaceAware
+class DeletePostFromSocialPlatformJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
 
     public function __construct(public readonly Account $account,
-                                public readonly string $providerPostId,
-                                public readonly array $data = [],
-                                public readonly Post $post,
-                                public readonly int $userId)
-    {
-    }
+        public readonly string $providerPostId,
+        public readonly array $data,
+        public readonly Post $post,
+        public readonly int $userId) {}
 
     public function handle(): void
     {
@@ -41,7 +38,7 @@ class DeletePostFromSocialPlatformJob implements ShouldQueue, QueueWorkspaceAwar
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             return;
         }
 
@@ -53,6 +50,7 @@ class DeletePostFromSocialPlatformJob implements ShouldQueue, QueueWorkspaceAwar
 
         /**
          * @see InstagramProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->deletePost($this->providerPostId, $this->data);
@@ -87,12 +85,12 @@ class DeletePostFromSocialPlatformJob implements ShouldQueue, QueueWorkspaceAwar
             ->where('provider_post_id', $this->providerPostId)
             ->update([
                 'provider_post_id' => null,
-                'data' => null
+                'data' => null,
             ]);
 
         $this->post->logDeletedFromSocialPlatformActivity($this->userId, [
             'provider' => $this->account->provider,
-            'provider_post_id' => $this->providerPostId
+            'provider_post_id' => $this->providerPostId,
         ]);
     }
 }

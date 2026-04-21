@@ -18,7 +18,7 @@ class MastodonPostOptions extends SocialProviderPostOptions
     public function map(array $options = []): array
     {
         return [
-            'sensitive' => (bool)Arr::get($options, 'sensitive', false)
+            'sensitive' => (bool) Arr::get($options, 'sensitive', false),
         ];
     }
 }

@@ -18,7 +18,7 @@ class AIGenerateText extends FormRequest
         return [
             'prompt' => ['required', 'string', 'max:1000'],
             'tone' => ['required', Rule::in(['neutral', 'friendly', 'formal', 'edgy', 'engaging'])],
-            'character_limit' => ['required', 'integer', 'min:1', 'max:1000']
+            'character_limit' => ['required', 'integer', 'min:1', 'max:1000'],
         ];
     }
 
@@ -42,7 +42,7 @@ class AIGenerateText extends FormRequest
     {
         $agentInstructions = app(AIConfig::class)->get('instructions');
         $characterLimit = "Ensure that the reply must not exceed the limit of {$this->input('character_limit')} characters.";
-        $languageOutputInstructions = "Ensure that the reply should be in user language.";
+        $languageOutputInstructions = 'Ensure that the reply should be in user language.';
 
         $this->response = AIManager::connect()->generateText(
             prompt: strip_tags($this->input('prompt')),

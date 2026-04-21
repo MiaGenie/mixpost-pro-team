@@ -41,7 +41,7 @@ class FacebookPageProvider extends MetaProvider
             return "$domain/stories/$path?view_single=1";
         }
 
-        if (Arr::get($data, 'story') && !Arr::get($data, 'path')) {
+        if (Arr::get($data, 'story') && ! Arr::get($data, 'path')) {
             return "$domain/$accountResource->provider_id";
         }
 
@@ -60,7 +60,7 @@ class FacebookPageProvider extends MetaProvider
         return [
             'post' => true,
             'reel' => true,
-            'story' => false
+            'story' => false,
         ];
     }
 }

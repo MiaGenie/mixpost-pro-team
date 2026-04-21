@@ -26,8 +26,8 @@ trait ManagesResources
                 'username' => $data['username'],
                 'image' => $data['avatar'],
                 'data' => [
-                    'server' => $this->values['data']['server']
-                ]
+                    'server' => $this->values['data']['server'],
+                ],
             ];
         });
     }
@@ -47,7 +47,7 @@ trait ManagesResources
         }
 
         $ids = $mediaResponse->ids;
-        if (!empty($ids)) {
+        if (! empty($ids)) {
             $postParameters['media_ids'] = $ids;
         }
 
@@ -57,13 +57,13 @@ trait ManagesResources
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->withHeaders([
-                'Idempotency-Key' => Str::uuid()->toString()
+                'Idempotency-Key' => Str::uuid()->toString(),
             ])
             ->post("$this->serverUrl/api/$this->apiVersion/statuses", $postParameters);
 
         return $this->buildResponse($response, function () use ($response) {
             return [
-                'id' => $response->json()['id']
+                'id' => $response->json()['id'],
             ];
         });
     }
@@ -80,7 +80,7 @@ trait ManagesResources
                     ->withToken($this->getAccessToken()['access_token'])
                     ->attach('file', $stream['stream'])
                     ->post("$this->serverUrl/api/v2/media", [
-                        'description' => $item->alt_text
+                        'description' => $item->alt_text,
                     ])
             );
 
@@ -92,20 +92,20 @@ trait ManagesResources
 
             if ($response->hasError()) {
                 return $response->useContext([
-                    "File {$item['name']}: $response->error"
+                    "File {$item['name']}: $response->error",
                 ]);
             }
 
-            if (!$response->id()) {
+            if (! $response->id()) {
                 return $this->response(SocialProviderResponseStatus::ERROR, ['upload_failed']);
             }
 
-            if (!$response->url) {
+            if (! $response->url) {
                 // Asynchronous processing
                 Util::performTaskWithDelay(function () use ($response) {
                     $media = $this->getMedia($response->id());
 
-                    if (!$media->url) {
+                    if (! $media->url) {
                         // Return null to continue checking
                         return null;
                     }
@@ -118,7 +118,7 @@ trait ManagesResources
         }
 
         return $this->response(SocialProviderResponseStatus::OK, [
-            'ids' => $ids
+            'ids' => $ids,
         ]);
     }
 
@@ -155,7 +155,7 @@ trait ManagesResources
 
         return $this->buildResponse($response, function () use ($response) {
             return [
-                'data' => $response->json()
+                'data' => $response->json(),
             ];
         });
     }

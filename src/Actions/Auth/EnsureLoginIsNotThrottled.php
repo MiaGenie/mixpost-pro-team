@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EnsureLoginIsNotThrottled
 {
-    public function __construct(protected readonly LoginRateLimiter $limiter)
-    {
-    }
+    public function __construct(protected readonly LoginRateLimiter $limiter) {}
 
     public function handle($request, $next)
     {
-        if (!$this->limiter->tooManyAttempts($request)) {
+        if (! $this->limiter->tooManyAttempts($request)) {
             return $next($request);
         }
 

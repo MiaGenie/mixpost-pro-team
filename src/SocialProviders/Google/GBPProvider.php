@@ -4,24 +4,26 @@ namespace Inovector\Mixpost\SocialProviders\Google;
 
 use Inovector\Mixpost\Abstracts\SocialProvider;
 use Inovector\Mixpost\Services\GoogleService;
-use Inovector\Mixpost\SocialProviders\Google\Concerns\GBPManagesConfig;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\GBPManagesAccount;
+use Inovector\Mixpost\SocialProviders\Google\Concerns\GBPManagesConfig;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\GBPManagesPost;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\ManagesOAuth;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\UsesResponseBuilder;
 
 class GBPProvider extends SocialProvider
 {
-    use GBPManagesConfig;
-    use UsesResponseBuilder;
-    use ManagesOAuth;
     use GBPManagesAccount;
+    use GBPManagesConfig;
     use GBPManagesPost;
+    use ManagesOAuth;
+    use UsesResponseBuilder;
 
     public bool $onlyUserAccount = false;
+
     public array $callbackResponseKeys = ['code'];
 
     protected string $apiVersion = 'v4';
+
     protected string $apiUrl = 'https://mybusiness.googleapis.com';
 
     public static function name(): string
@@ -37,7 +39,7 @@ class GBPProvider extends SocialProvider
     protected function getScopes(): array
     {
         return [
-            'https://www.googleapis.com/auth/business.manage'
+            'https://www.googleapis.com/auth/business.manage',
         ];
     }
 
