@@ -42,7 +42,7 @@ const connect = () => {
             </span>
 
             <span class="flex flex-col items-start">
-                <span class="font-semibold">Bluesky</span>
+                <span class="font-medium">Bluesky</span>
                 <span>{{ $t("service.bluesky.connect_profile") }}</span>
             </span>
         </div>

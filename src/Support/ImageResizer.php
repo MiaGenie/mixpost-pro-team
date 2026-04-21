@@ -5,13 +5,15 @@ namespace Inovector\Mixpost\Support;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Inovector\Mixpost\Abstracts\Image;
+use Inovector\Mixpost\Concerns\UsesImageManager;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Util;
-use Intervention\Image\Facades\Image as InterventionImage;
 use Exception;
 
 final class ImageResizer extends Image
 {
+    use UsesImageManager;
+
     protected string $disk;
 
     protected string $path;
@@ -38,26 +40,19 @@ final class ImageResizer extends Image
         return $this;
     }
 
-    public function resize(int $width, int $height): bool
+    public function resize(?int $width = null, ?int $height = null): bool
     {
-        $image = InterventionImage::make($this->getFileData())->resize($width, $height, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
+        $image = $this->imageManager()->read($this->getFileData())->scaleDown($width, $height);
 
         if (!$path = $this->getDestinationFilePath()) {
             throw new Exception("The destination path is not set. Possible reason: you are using the contents of the file. Specify the path where the file will be saved.");
         }
 
-        $result = Storage::disk($this->getDisk())->put(
+        return Storage::disk($this->getDisk())->put(
             path: $path,
-            contents: $image->stream()->__toString(),
+            contents: $image->encode()->__toString(),
             options: 'public'
         );
-
-        $image->destroy();
-
-        return $result;
     }
 
     public function getDisk(): string

@@ -15,7 +15,7 @@ return [
   'accounts' => 'الحسابات',
   'author' => 'الكاتب',
   'no_posts_found' => 'لم يتم العثور على أية منشورات أو مشاركات.',
-  'delete_posts' => 'حذف المنشورات',
+  'delete_posts' => 'حذف المنشورات | حذف المنشورات',
   'your_post' => 'منشوراتك أو مشاركاتك',
   'confirmation_delete_post' => 'هل أنت متأكد أنك تريد حذف المنشورات أو المشاركات المحددة؟',
   'posts_history_not_edited' => 'لا يمكن تعديل المنشورات في الماضي.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'يحتاج إلى موافقة',
   'approve' => 'موافقة على النشر',
   'view' => 'عرض المنشور',
+  'posts_deleted_from_social_platforms' => 'تم حذف المنشورات المختارة من منصات التواصل الاجتماعي',
+  'does_not_support_deleting' => ':provider لا يدعم حذف :types',
+  'confirmation_delete_posts_from' => 'من أين تريد حذف هذه المنشور؟ | من أين تريد حذف المنشورات المحددة؟',
+  'delete_post_from' => 
+  [
+    'app_only' => 'من التطبيق فقط',
+    'app_and_social' => 'كلاهما من التطبيق و المنصات الاجتماعية',
+    'social_only' => 'من منصات التواصل الاجتماعي فقط',
+  ],
+  'post_deleted_from_social_platforms' => 'تم حذف المنشور من منصات التواصل الاجتماعي',
 ];

@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <YoutubeIcon class="text-youtube"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">YouTube</span>
+            <span class="font-medium">YouTube</span>
             <span>{{ $t("service.youtube.connect_profile") }}</span>
         </span>
     </Link>

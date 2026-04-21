@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Neplatná požiadavka. Chýba parameter kódu.',
+    'missing_callback_response' => 'Chýbajúca odpoveď na spätné volanie.',
   ],
   'invalid_grant' => 'Neplatné poverenia alebo vypršala platnosť oprávnenia.',
 ];

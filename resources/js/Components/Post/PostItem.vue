@@ -28,6 +28,10 @@ const props = defineProps({
         default: {
             accounts: [],
         }
+    },
+    supportPostDeletion: {
+        type: Object,
+        default: {}
     }
 })
 
@@ -146,7 +150,10 @@ const closePreview = () => {
             </div>
         </TableCell>
         <TableCell align="right">
-            <PostItemActions :itemId="item.id" :trashed="item.trashed" class="flex justify-end"/>
+            <PostItemActions :item="item"
+                             :trashed="item.trashed"
+                             :supportPostDeletion="supportPostDeletion"
+                             class="flex justify-end"/>
         </TableCell>
 
         <DialogModal :show="preview" :scrollableBody="true" @close="closePreview">
@@ -161,7 +168,10 @@ const closePreview = () => {
             <template #footer>
                 <template v-if="preview">
                     <div class="mr-xs flex items-center">
-                        <PostItemActions :itemId="item.id" :trashed="item.trashed"/>
+                        <PostItemActions :item="item"
+                                         :trashed="item.trashed"
+                                         :supportPostDeletion="supportPostDeletion"
+                                         @onDelete="closePreview" />
                     </div>
                     <SecondaryButton @click="closePreview">{{ $t("general.close") }}</SecondaryButton>
                 </template>

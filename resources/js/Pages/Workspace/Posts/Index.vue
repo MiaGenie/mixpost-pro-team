@@ -5,7 +5,7 @@ import {Head} from '@inertiajs/vue3';
 import {router} from "@inertiajs/vue3";
 import emitter from "@/Services/emitter";
 import useNotifications from "@/Composables/useNotifications";
-import {cloneDeep, pickBy, throttle} from "lodash";
+import {cloneDeep, pickBy, throttle, uniq} from "lodash";
 import useSelectable from "@/Composables/useSelectable";
 import PageHeader from '@/Components/DataDisplay/PageHeader.vue';
 import PostsFilter from '@/Components/Post/PostsFilter.vue';
@@ -16,15 +16,13 @@ import Checkbox from "@/Components/Form/Checkbox.vue";
 import Table from "@/Components/DataDisplay/Table.vue";
 import TableRow from "@/Components/DataDisplay/TableRow.vue";
 import TableCell from "@/Components/DataDisplay/TableCell.vue";
-import SecondaryButton from "@/Components/Button/SecondaryButton.vue";
 import PureDangerButton from "@/Components/Button/PureDangerButton.vue";
-import DangerButton from "@/Components/Button/DangerButton.vue"
 import PostItem from "@/Components/Post/PostItem.vue";
 import SelectableBar from "@/Components/DataDisplay/SelectableBar.vue";
-import ConfirmationModal from "@/Components/Modal/ConfirmationModal.vue";
 import Pagination from "@/Components/Navigation/Pagination.vue";
 import NoResult from "@/Components/Util/NoResult.vue";
 import TrashIcon from "@/Icons/Trash.vue";
+import PostDeletionConfirmationModal from "@/Components/Post/PostDeletionConfirmationModal.vue";
 
 const {t: $t} = useI18n()
 
@@ -43,6 +41,9 @@ const props = defineProps({
     has_needs_approval_posts: {
         type: Boolean,
         default: false
+    },
+    support_post_deletion: {
+        type: Object
     }
 });
 
@@ -99,19 +100,30 @@ watch(() => props.posts.data, () => {
 const {notify} = useNotifications();
 const confirmationDeletion = ref(false);
 
-const deletePosts = () => {
-    router.delete(route('mixpost.posts.deleteMultiple', {workspace: workspaceCtx.id}), {
-        data: {
-            posts: selectedRecords.value,
-            status: filter.value.status
-        },
-        onSuccess() {
-            deselectAllRecords();
-            notify('success', props.filter.status === 'trash' ? $t("post.posts_deleted") : $t("post.posts_to_trash"))
-        },
-        onFinish() {
-            confirmationDeletion.value = false;
-        }
+const deletePosts = ({deleteMode}) => {
+    return new Promise((resolve, reject) => {
+        router.delete(route('mixpost.posts.delete', {workspace: workspaceCtx.id}), {
+            data: {
+                posts: selectedRecords.value,
+                status: filter.value.status,
+                delete_mode: deleteMode
+            },
+            onSuccess() {
+                deselectAllRecords();
+                if (['app_only', 'app_and_social'].includes(deleteMode)) {
+                    notify('success', props.filter.status === 'trash' ? $t("post.posts_deleted") : $t("post.posts_to_trash"))
+                }
+                if (['social_only'].includes(deleteMode)) {
+                    notify('success', $t("post.posts_deleted_from_social_platforms"))
+                }
+                confirmationDeletion.value = false;
+
+                resolve();
+            },
+            onError() {
+                reject();
+            }
+        });
     });
 }
 </script>
@@ -179,6 +191,7 @@ const deletePosts = () => {
                     <template #body>
                         <template v-for="item in posts.data" :key="item.id">
                             <PostItem :item="item" :filter="posts.filter"
+                                      :supportPostDeletion="support_post_deletion"
                                       @onDelete="()=> {deselectRecord(item.id)}">
                                 <template #checkbox>
                                     <Checkbox v-model:checked="selectedRecords" :value="item.id"/>
@@ -196,20 +209,11 @@ const deletePosts = () => {
             </div>
         </div>
     </div>
-
-    <ConfirmationModal :show="confirmationDeletion" variant="danger" @close="confirmationDeletion = false">
-        <template #header>
-            {{ $t("post.delete_posts") }}
-        </template>
-        <template #body>
-            {{ $t("post.confirmation_delete_post") }}
-        </template>
-        <template #footer>
-            <SecondaryButton @click="confirmationDeletion = false" class="mr-xs rtl:mr-0 rtl:ml-xs">{{
-                    $t("general.cancel")
-                }}
-            </SecondaryButton>
-            <DangerButton @click="deletePosts">{{ $t("general.delete") }}</DangerButton>
-        </template>
-    </ConfirmationModal>
+    <PostDeletionConfirmationModal
+        :posts="posts.data.filter(post => selectedRecords.includes(post.id))"
+        :supportPostDeletion="support_post_deletion"
+        :deleteHandler="deletePosts"
+        :show="confirmationDeletion"
+        @close="confirmationDeletion = false"
+    />
 </template>

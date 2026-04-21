@@ -156,3 +156,59 @@ export function extractFirstURL(text) {
     return match ? match[0] : null;
 }
 
+export function extractUrls (htmlString, shortened) {
+    let selector = 'a';
+
+    if (shortened === false) {
+        selector = 'a.non_editable';
+    }
+    if (shortened === true) {
+        selector = 'a:not(.non_editable)';
+    }
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+    const links = doc.querySelectorAll(selector);
+
+    return Array.from(links).filter(link => link.href && link.href.length <= 256)
+        .map(link => link.textContent.trim());
+}
+
+export function base64ToFile(base64, fileName = null) {
+    const arr = base64.split(',');
+    const mimeMatch = arr[0].match(/:(.*?);/);
+    const mime = mimeMatch ? mimeMatch[1] : 'application/octet-stream';
+    const extension = mime.split('/')[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    const filename = (fileName ?? `upload`) + `.${extension}`;
+    return new File([u8arr], filename, { type: mime });
+}
+
+export function applyLowZIndex({ classes, lowZ = 0 }) {
+    classes.forEach(className => {
+        document.querySelectorAll(`.${className}`).forEach(el => {
+            if (!el.hasAttribute('data-low-z')) {
+                el.setAttribute('data-low-z', 'true');
+                el.style.setProperty('z-index', lowZ, 'important');
+            }
+        });
+    });
+}
+
+export function removeLowZIndex({ classes }) {
+    classes.forEach(className => {
+        document.querySelectorAll(`.${className}`).forEach(el => {
+            if (el.hasAttribute('data-low-z')) {
+                el.removeAttribute('data-low-z');
+                el.style.removeProperty('z-index');
+            }
+        });
+    });
+}

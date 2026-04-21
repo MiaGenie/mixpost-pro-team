@@ -5,35 +5,36 @@ import {usePage} from "@inertiajs/vue3";
 import {router} from "@inertiajs/vue3";
 import emitter from "@/Services/emitter";
 import useNotifications from "@/Composables/useNotifications";
-import ConfirmationModal from "@/Components/Modal/ConfirmationModal.vue";
 import PureButtonLink from "@/Components/Button/PureButtonLink.vue";
 import PureButton from "@/Components/Button/PureButton.vue";
 import EllipsisVerticalIcon from "@/Icons/EllipsisVertical.vue"
 import Dropdown from "@/Components/Dropdown/Dropdown.vue"
 import DropdownItem from "@/Components/Dropdown/DropdownItem.vue"
-import SecondaryButton from "@/Components/Button/SecondaryButton.vue"
-import DangerButton from "@/Components/Button/DangerButton.vue"
 import PencilSquareIcon from "@/Icons/PencilSquare.vue";
 import DuplicateIcon from "@/Icons/Duplicate.vue";
 import TrashIcon from "@/Icons/Trash.vue";
 import ArrowUturnLeft from "../../Icons/ArrowUturnLeft.vue";
 import useWorkspace from "../../Composables/useWorkspace.js";
 import Eye from "../../Icons/Eye.vue";
+import PostDeletionConfirmationModal from "@/Components/Post/PostDeletionConfirmationModal.vue";
 
 const {t: $t} = useI18n()
 
 const workspaceCtx = inject('workspaceCtx');
 
 const props = defineProps({
-    itemId: {
-        type: String,
+    item: {
+        type: Object,
         required: true,
     },
     trashed: {
         type: Boolean,
         default: false
+    },
+    supportPostDeletion: {
+        type: Object
     }
-})
+});
 
 const emit = defineEmits(['onDelete'])
 
@@ -48,23 +49,36 @@ const filterStatus = computed(() => {
 const {notify} = useNotifications();
 const {isWorkspaceEditorRole} = useWorkspace();
 
-const deletePost = () => {
-    router.delete(route('mixpost.posts.delete', {
-        workspace: workspaceCtx.id,
-        post: props.itemId,
-        status: filterStatus.value
-    }), {
-        onSuccess() {
-            confirmationDeletion.value = false;
-            notify('success', filterStatus.value === 'trash' ? $t("post.post_deleted_permanently") : $t("post.post_moved_to_trash"))
-            emit('onDelete')
-            emitter.emit('postDelete', props.itemId);
-        }
-    })
+const deletePost = ({deleteMode}) => {
+    return new Promise((resolve, reject) => {
+        router.delete(route('mixpost.posts.delete', {workspace: workspaceCtx.id}), {
+            data: {
+                posts: [props.item.id],
+                status: filterStatus.value,
+                delete_mode: deleteMode
+            },
+            onSuccess() {
+                confirmationDeletion.value = false;
+                if (['app_only', 'app_and_social'].includes(deleteMode)) {
+                    notify('success', filterStatus.value === 'trash' ? $t("post.post_deleted_permanently") : $t("post.post_moved_to_trash"))
+                }
+                if (['social_only'].includes(deleteMode)) {
+                    notify('success', $t("post.post_deleted_from_social_platforms"))
+                }
+                emit('onDelete')
+                emitter.emit('postDelete', props.item.id);
+
+                resolve();
+            },
+            onError() {
+                reject();
+            }
+        })
+    });
 }
 
 const duplicate = () => {
-    router.post(route('mixpost.posts.duplicate', {workspace: workspaceCtx.id, post: props.itemId}), {}, {
+    router.post(route('mixpost.posts.duplicate', {workspace: workspaceCtx.id, post: props.item.id}), {}, {
         onSuccess() {
             notify('success', $t('post.post_duplicated'))
         }
@@ -72,17 +86,18 @@ const duplicate = () => {
 }
 
 const restore = () => {
-    router.post(route('mixpost.posts.restore', {workspace: workspaceCtx.id, post: props.itemId}), {}, {
+    router.post(route('mixpost.posts.restore', {workspace: workspaceCtx.id, post: props.item.id}), {}, {
         onSuccess() {
             notify('success', $t('post.post_restored'))
         }
     })
 }
+// console.log('single item', props.item);
 </script>
 <template>
     <div>
         <div class="flex flex-row items-center gap-xs">
-            <PureButtonLink :href="route('mixpost.posts.edit', { workspace: workspaceCtx.id, post: itemId })"
+            <PureButtonLink :href="route('mixpost.posts.edit', { workspace: workspaceCtx.id, post: item.id })"
                             v-tooltip="$t(!isWorkspaceEditorRole ? 'general.view' : 'general.edit')">
                 <template v-if="!isWorkspaceEditorRole">
                     <Eye/>
@@ -129,22 +144,12 @@ const restore = () => {
                 </Dropdown>
             </template>
         </div>
-
-        <ConfirmationModal :show="confirmationDeletion" variant="danger" @close="confirmationDeletion = false">
-            <template #header>
-                {{ $t("post.delete_post") }}
-            </template>
-            <template #body>
-                {{ $t("post.confirm_delete_post") }}
-            </template>
-            <template #footer>
-                <SecondaryButton @click="confirmationDeletion = false" class="mr-xs"> {{ $t("general.cancel") }}
-                </SecondaryButton>
-                <DangerButton @click="deletePost">{{
-                        trashed ? $t("general.delete_permanently") : $t("general.delete")
-                    }}
-                </DangerButton>
-            </template>
-        </ConfirmationModal>
+        <PostDeletionConfirmationModal
+            :posts="[item]"
+            :supportPostDeletion="supportPostDeletion"
+            :deleteHandler="deletePost"
+            :show="confirmationDeletion"
+            @close="confirmationDeletion = false"
+        />
     </div>
 </template>

@@ -20,10 +20,10 @@ trait ManagesRateLimit
         $rateLimitAboutToBeExceeded = $usage['remaining'] < 5;
         $isAppLevel = $this->getEnvironment() === 'sandbox';
 
-        if (in_array($response->status(), [200, 201])) {
+        if (in_array($response->status(), [200, 201, 204])) {
             return $this->response(
                 SocialProviderResponseStatus::OK,
-                $okResult ? $okResult() : $response->json(),
+                $okResult ? $okResult() : $response->json() ?? [],
                 $rateLimitAboutToBeExceeded,
                 $usage['retry_after'],
                 $isAppLevel

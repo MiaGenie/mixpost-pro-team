@@ -15,7 +15,7 @@ return [
   'accounts' => 'Comptes',
   'author' => 'Autor',
   'no_posts_found' => 'No s\'han trobat publicacions.',
-  'delete_posts' => 'Suprimeix les publicacions',
+  'delete_posts' => 'Suprimeix publicacions',
   'your_post' => 'La teva publicació',
   'confirmation_delete_post' => 'Esteu segur que voleu suprimir les publicacions seleccionades?',
   'posts_history_not_edited' => 'Les publicacions de l\'historial no es poden editar.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Necessita aprovació',
   'approve' => 'Aprovar',
   'view' => 'Veure publicació',
+  'posts_deleted_from_social_platforms' => 'Publicacions seleccionades eliminades de les plataformes socials',
+  'does_not_support_deleting' => ':provider no permet suprimir :types',
+  'confirmation_delete_posts_from' => 'D\'on vols suprimir aquesta publicació? | D\'on vols suprimir les publicacions seleccionades?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Només des de l\'aplicació',
+    'app_and_social' => 'Des de l\'aplicació i les plataformes socials',
+    'social_only' => 'Només des de plataformes socials',
+  ],
+  'post_deleted_from_social_platforms' => 'Publicació eliminada de les plataformes socials',
 ];

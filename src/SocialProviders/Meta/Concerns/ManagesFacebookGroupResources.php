@@ -6,7 +6,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Support\SocialProviderResponse;
-use Intervention\Image\Facades\Image;
 
 // @deprecated
 // We will remove this feature soon
@@ -67,7 +66,7 @@ trait ManagesFacebookGroupResources
         return $this->buildResponse($response);
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
         return $this->response(SocialProviderResponseStatus::OK, []);
     }

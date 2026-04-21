@@ -390,6 +390,19 @@ return new class extends Migration {
             $table->json('response')->nullable();
             $table->timestamp('created_at')->nullable();
         });
+
+        Schema::create('mixpost_shortened_urls', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('workspace_id')->unsigned()->index();
+            $table->foreign('workspace_id')->references('id')->on('mixpost_workspaces')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('provider');
+            $table->string('original_url');
+            $table->string('short_url');
+            $table->timestamp('created_at');
+
+            $table->index(['workspace_id', 'original_url']);
+            $table->index(['workspace_id', 'short_url']);
+        });
     }
 
     /**
@@ -399,6 +412,7 @@ return new class extends Migration {
      */
     public function down()
     {
+        Schema::dropIfExists('mixpost_shortened_urls');
         Schema::dropIfExists('mixpost_webhook_deliveries');
         Schema::dropIfExists('mixpost_webhooks');
 

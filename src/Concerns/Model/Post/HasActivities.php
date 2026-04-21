@@ -3,6 +3,7 @@
 namespace Inovector\Mixpost\Concerns\Model\Post;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
 use Inovector\Mixpost\Abstracts\User;
 use Inovector\Mixpost\Enums\PostActivityType;
 use Inovector\Mixpost\Events\Post\PostActivityCreated;
@@ -63,5 +64,10 @@ trait HasActivities
     public function logPublishedFailedActivity(): PostActivity
     {
         return $this->logActivity(0, PostActivityType::PUBLISHED_FAILED);
+    }
+
+    public function logDeletedFromSocialPlatformActivity(int|User $user, array $data): PostActivity
+    {
+        return $this->logActivity($user, PostActivityType::DELETED_FROM_SOCIAL_PLATFORMS, $data);
     }
 }

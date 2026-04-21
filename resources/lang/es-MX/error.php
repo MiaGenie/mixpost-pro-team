@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Solicitud no válida. Falta parámetro de código.',
+    'missing_callback_response' => 'Falta respuesta de devolución de llamada.',
   ],
   'invalid_grant' => 'Credenciales no válidas o autorización caducada.',
 ];

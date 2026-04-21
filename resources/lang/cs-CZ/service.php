@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Kliknutí na webové stránky',
     ],
     'select_video_image' => 'Vyberte video nebo obrázek pro tento účet Instagram.',
+    'post' => 'Příspěvek',
+    'reel' => 'Reel',
+    'story' => 'Story',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Služba',
     'server_address' => 'Adresa serveru',
   ],
+  'gbp' => 
+  [
+    'post' => 'Příspěvek',
+    'offer' => 'Nabídka',
+    'event' => 'Událost',
+    'event_title' => 'Název události',
+    'add_time' => 'Přidat čas',
+    'offer_title' => 'Název nabídky',
+    'start_date' => 'Datum zahájení',
+    'end_date' => 'Datum ukončení',
+    'button' => 'Tlačítko',
+    'none' => 'Žádné',
+    'book' => 'Kniha',
+    'order_online' => 'Objednat online',
+    'buy' => 'Koupit',
+    'learn_more' => 'Zjistěte více',
+    'sign_up' => 'Zaregistrujte se',
+    'button_link' => 'Odkaz na tlačítko',
+    'add_more_details' => 'Přidat další podrobnosti',
+    'coupon_code' => 'Kód kupónu',
+    'offer_link' => 'Odkaz na nabídku',
+    'tos' => 'Podmínky a pravidla',
+    'start_time' => 'Čas zahájení',
+    'end_time' => 'Čas konce',
+    'call_now' => 'Zavolejte nyní',
+    'redeem_online' => 'Uplatnit online',
+    'show_code' => 'Ukažte tento kód v obchodě',
+    'offer_valid' => 'Platí :start_date - :end_date',
+    'connect_profile' => 'Připojení nového firemního profilu Google',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Hledání :source',
+    'can_use_external_photos' => 'Pomocí :provider můžete používat externí fotografie přímo v aplikaci Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Příspěvek',
+    'reel' => 'Reel',
+    'story' => 'Story',
+  ],
+  'story' => 'Story',
+  'generate_api_key' => 'Generování klíče API',
 ];

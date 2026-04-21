@@ -9,6 +9,7 @@ import SecondaryButton from "@/Components/Button/SecondaryButton.vue"
 import MediaUploads from "@/Components/Media/MediaUploads.vue";
 import MediaStock from "@/Components/Media/MediaStock.vue";
 import MediaGifs from "@/Components/Media/MediaGifs.vue";
+import MediaNewDesign from "@/Components/Media/MediaNewDesign.vue";
 import Preloader from "@/Components/Util/Preloader.vue"
 import XIcon from "@/Icons/X.vue"
 
@@ -56,7 +57,8 @@ const {
 const sources = {
     'uploads': MediaUploads,
     'stock': MediaStock,
-    'gifs': MediaGifs
+    'gifs': MediaGifs,
+    'new_design': MediaNewDesign
 };
 
 const sourceProperties = ref();
@@ -69,18 +71,18 @@ const sourceParams = () => {
     const params = {
         maxSelectedItems: props.maxSelectedItems
     }
-    if(source.value === sources.uploads){
+    if([sources.uploads, sources.new_design].includes(source.value)){
         params.mimeTypes = props.mimeTypes
     }
     return params;
 }
 
 const selectedItems = computed(() => {
-    return sourceProperties.value ? sourceProperties.value.selected : [];
+    return sourceProperties?.value?.selected ?? [];
 })
 
 const deselectAll = () => {
-    sourceProperties.value.deselectAll()
+    sourceProperties?.value?.deselectAll?.();
 }
 
 const close = () => {
@@ -93,7 +95,7 @@ const close = () => {
 };
 
 const insert = () => {
-    const toDownload = activeTab.value !== 'uploads';
+    const toDownload = !['uploads', 'new_design'].includes(activeTab.value);
 
     if (toDownload) {
         // Download external media files
@@ -150,7 +152,9 @@ const insert = () => {
             <div class="mt-lg">
                 <component :is="source"
                            ref="sourceProperties"
-                           v-bind="sourceParams()"/>
+                           v-bind="sourceParams()"
+                           @close="close"
+                           @insert="insert" />
             </div>
         </template>
 

@@ -12,6 +12,7 @@ import MediaCredit from "@/Components/Media/MediaCredit.vue";
 import NoResult from "@/Components/Util/NoResult.vue";
 import Alert from "@/Components/Util/Alert.vue";
 import PrimaryButton from "@/Components/Button/PrimaryButton.vue";
+import {capitalize} from "lodash";
 
 const workspaceCtx = inject('workspaceCtx');
 
@@ -32,8 +33,12 @@ const appName = computed(() => {
     return snakeCase(usePage().props.app.name);
 })
 
+const stockPhotoProvider = computed(() => {
+    return usePage().props.stock_photo_provider;
+})
+
 const enabled = computed(() => {
-    return usePage().props.is_configured_service.unsplash;
+    return usePage().props.is_configured_service[stockPhotoProvider.value];
 })
 
 const {
@@ -58,7 +63,7 @@ defineExpose({selected, deselectAll})
 </script>
 <template>
     <div v-if="enabled">
-        <SearchInput v-model="keyword" :placeholder="$t('service.unsplash.search')"/>
+        <SearchInput v-model="keyword" :placeholder="$t(`service.stock_photo.search`, {provider: capitalize(stockPhotoProvider)})"/>
 
         <div v-if="items.length" class="mt-lg">
             <Masonry :items="items" :columns="columns">
@@ -67,11 +72,11 @@ defineExpose({selected, deselectAll})
                         <MediaFile :media="item">
                             <MediaCredit>
                                 <div>{{ $t('media.image_source') }}: <a
-                                    :href="`https://unsplash.com/?utm_source=${appName}&utm_medium=referral`"
-                                    target="_blank" class="link">Unsplash</a>
+                                    :href="item.source_url"
+                                    target="_blank" class="link">{{capitalize(stockPhotoProvider)}}</a>
                                 </div>
-                                <div>{{ $t('media.author') }}: <a :href="`${item.credit_url}?utm_source=${appName}&utm_medium=referral`"
-                                           target="_blank" class="link">{{ item.name }}</a>
+                                <div>{{ $t('media.author') }}: <a :href="item.credit_url"
+                                                                  target="_blank" class="link">{{ item.name }}</a>
                                 </div>
                             </MediaCredit>
                         </MediaFile>
@@ -87,7 +92,7 @@ defineExpose({selected, deselectAll})
 
     <template v-if="!enabled">
         <Alert variant="warning" :closeable="false">
-            {{ $t('service.not_configured_service', {service: 'Unsplash'}) }}
+            {{ $t('service.not_configured_service', {service: `${capitalize(stockPhotoProvider)}`}) }}
         </Alert>
 
         <template v-if="user.is_admin">

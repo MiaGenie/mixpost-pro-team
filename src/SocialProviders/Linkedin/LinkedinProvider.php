@@ -96,8 +96,18 @@ class LinkedinProvider extends SocialProvider
         return "https://linkedin.com/feed/update/{$accountResource->pivot->provider_post_id}";
     }
 
+    public static function supportAnalytics(): bool
+    {
+        return false;
+    }
+
     public static function externalAccountUrl(AccountResource $accountResource): string
     {
         return "https://www.linkedin.com/in/$accountResource->username";
+    }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
     }
 }

@@ -1,11 +1,7 @@
 <script setup>
-import {ref} from "vue";
-
 const props = defineProps(['modelValue']);
 
 const emit = defineEmits(['update:modelValue']);
-
-const state = ref(props.value);
 
 const apply = () => {
     let value = typeof props.modelValue === "boolean" ? !props.modelValue : props.modelValue ? 0 : 1;

@@ -3,11 +3,13 @@ import {computed, nextTick, ref, watch} from "vue";
 import {useI18n} from "vue-i18n";
 import {debounce} from "lodash";
 import useNotifications from "@/Composables/useNotifications";
+import {usePage} from "@inertiajs/vue3";
 
 const useMedia = (routeName = 'mixpost.media.fetchUploads',
                   routeParams = {},
                   maxSelectedItems = -1,
-                  mimeTypes = []) => {
+                  mimeTypes = [],
+                  selectedItems = []) => {
     const {t: $t} = useI18n();
     const {notify} = useNotifications();
 
@@ -15,8 +17,12 @@ const useMedia = (routeName = 'mixpost.media.fetchUploads',
 
     const tabs = computed(() => {
         const sources = ['uploads', 'stock'];
-        if(!mimeTypes.length || mimeTypes.length && mimeTypes.includes('image/gif'))
+        if(!mimeTypes.length || mimeTypes.length && mimeTypes.includes('image/gif')){
             sources.push('gifs');
+        }
+        if(usePage().props.is_configured_service.adobe_express){
+            sources.push('new_design');
+        }
         return sources;
     })
 
@@ -28,7 +34,7 @@ const useMedia = (routeName = 'mixpost.media.fetchUploads',
     const endlessPagination = ref(null);
     const keyword = ref('');
 
-    const selected = ref([]);
+    const selected = ref(selectedItems);
     const toggleSelect = (media) => {
         const index = selected.value.findIndex(item => item.id === media.id);
 
@@ -123,6 +129,9 @@ const useMedia = (routeName = 'mixpost.media.fetchUploads',
         mediaCollection.forEach((item) => {
             if (item.source === 'Unsplash') {
                 text += `\nPhoto by ${item.author} on Unsplash`;
+            }
+            if (item.source === 'Pexels') {
+                text += `\nPhoto by ${item.author} on Pexels`;
             }
         });
 

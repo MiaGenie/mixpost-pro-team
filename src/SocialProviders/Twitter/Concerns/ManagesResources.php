@@ -204,8 +204,12 @@ trait ManagesResources
         });
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        return $this->response(SocialProviderResponseStatus::OK, []);
+        $this->connection->setApiVersion(2);
+
+        $response = $this->connection->delete("tweets/$id");
+
+        return $this->buildResponse($response);
     }
 }

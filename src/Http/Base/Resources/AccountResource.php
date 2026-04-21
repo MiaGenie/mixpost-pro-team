@@ -36,6 +36,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
 
                 return $this->getExternalPostUrl();
             }),
+            'support_analytics' => $this->supportAnalytics(),
             'errors' => $this->whenPivotLoaded('mixpost_post_accounts', function () {
                 return $this->errors();
             })
@@ -93,6 +94,15 @@ class AccountResource extends JsonResource implements AccountResourceContract
         }
 
         return SocialProviderContentType::SINGLE;
+    }
+
+    protected function supportAnalytics()
+    {
+        if ($provider = $this->resource->getProviderClass()) {
+            return $provider::supportAnalytics();
+        }
+
+        return true;
     }
 
     protected function getErrorMessage(string $key): string

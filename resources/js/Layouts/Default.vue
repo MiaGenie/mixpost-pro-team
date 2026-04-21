@@ -9,6 +9,7 @@ import useBroadcast from "../Composables/useBroadcast";
 
 const context = reactive({
     showAside: false,
+    preloader: false
 });
 
 provide('appCtx', context);
@@ -36,9 +37,13 @@ onUnmounted(() => {
         </template>
 
         <template v-else>
+            <template v-if="context.preloader">
+                <Preloader :opacity="75" class="!z-20"/>
+            </template>
+
             <aside
                 :class="{'translate-x-0': context.showAside, '-translate-x-full xl:translate-x-0 rtl:translate-x-full xl:rtl:translate-x-0': !context.showAside}"
-                class="aside fixed xl:relative h-full z-20 xl:z-10 transition-transform ease-in-out duration-200">
+                class="default-sidebar aside fixed xl:relative h-full z-20 xl:z-10 transition-transform ease-in-out duration-200">
                 <slot name="sidebar"/>
             </aside>
 

@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Inovector\Mixpost\Contracts\SocialProvider;
 use Inovector\Mixpost\Facades\SocialProviderManager;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Util;
@@ -75,21 +74,10 @@ class PostVersionResource extends JsonResource
 
     protected function options(): array
     {
-        if (!$this->options) {
-            return [];
-        }
-
         $providers = SocialProviderManager::providers();
 
-        return Arr::map($this->options, function ($options, $keyProvider) use ($providers) {
-            /** @var SocialProvider $provider */
-            $provider = $providers[$keyProvider] ?? null;
-
-            if (!$provider) {
-                return [];
-            }
-
-            return $provider::postOptions()->map(Arr::wrap($options));
+        return Arr::map($providers, function ($provider, $keyProvider) {
+            return $provider::postOptions()->map(Arr::wrap($this->options[$keyProvider] ?? []));
         });
     }
 }

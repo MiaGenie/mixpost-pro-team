@@ -142,8 +142,30 @@ trait ManagesYoutubeResources
         });
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        return $this->response(SocialProviderResponseStatus::OK, []);
+        if ($this->tokenIsAboutToExpire()) {
+            $newAccessToken = $this->refreshToken();
+
+            if ($newAccessToken->hasError()) {
+                return $newAccessToken;
+            }
+
+            $this->updateToken($newAccessToken->context());
+        }
+
+        $token = $this->getAccessToken()['access_token'];
+
+        $response = $this->getHttpClient()::withToken($token)->delete("$this->apiUrl/$this->apiVersion/videos?id=$id");
+
+        if ($response->notFound()) {
+            /**
+             * Handle 404 response when attempting to delete a post that no longer exists on the platform.
+             * This occurs when we have a stored post_provider_id but the post has already been deleted directly on the platform.
+             */
+            return $this->response(SocialProviderResponseStatus::OK, []);
+        }
+
+        return $this->buildResponse($response);
     }
 }

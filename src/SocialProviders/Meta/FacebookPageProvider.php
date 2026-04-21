@@ -54,4 +54,13 @@ class FacebookPageProvider extends MetaProvider
 
         return "https://www.facebook.com/$identifier";
     }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return [
+            'post' => true,
+            'reel' => true,
+            'story' => false
+        ];
+    }
 }

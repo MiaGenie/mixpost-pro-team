@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Invalid request. Missing code parameter.',
+    'missing_callback_response' => 'Missing callback response.',
   ],
   'invalid_grant' => 'Invalid credentials or expired authorization.',
 ];

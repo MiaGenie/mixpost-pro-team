@@ -85,4 +85,5 @@ return [
   'search_jump' => 'Bilatu edo joan hara',
   'replace' => 'Ordezkatu',
   'retry' => 'Saiatu berriro',
+  'general' => 'Orokorra',
 ];

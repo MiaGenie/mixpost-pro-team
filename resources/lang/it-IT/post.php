@@ -15,7 +15,7 @@ return [
   'accounts' => 'Account',
   'author' => 'Autore',
   'no_posts_found' => 'Nessun post trovato.',
-  'delete_posts' => 'Cancellare i messaggi',
+  'delete_posts' => 'Cancellare i messaggi|Cancellare i messaggi',
   'your_post' => 'Il tuo messaggio',
   'confirmation_delete_post' => 'Sei sicuro di voler cancellare i messaggi selezionati?',
   'posts_history_not_edited' => 'I messaggi nella cronologia non possono essere modificati.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Necessita di approvazione',
   'approve' => 'Approvare',
   'view' => 'Visualizza il post',
+  'posts_deleted_from_social_platforms' => 'Messaggi selezionati cancellati dalle piattaforme sociali',
+  'does_not_support_deleting' => ':provider non supporta l\'eliminazione di :types',
+  'confirmation_delete_posts_from' => 'Da dove vuoi cancellare questo post? Da dove vuoi cancellare i post selezionati?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Solo per applicazione',
+    'app_and_social' => 'Da applicazioni e piattaforme sociali',
+    'social_only' => 'Solo da piattaforme sociali',
+  ],
+  'post_deleted_from_social_platforms' => 'Post cancellati dalle piattaforme sociali',
 ];

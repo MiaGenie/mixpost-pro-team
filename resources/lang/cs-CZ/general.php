@@ -85,4 +85,5 @@ return [
   'search_jump' => 'Vyhledat nebo přejít na',
   'replace' => 'Nahradit',
   'retry' => 'Opakovat',
+  'general' => 'Obecné',
 ];

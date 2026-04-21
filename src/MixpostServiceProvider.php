@@ -31,6 +31,7 @@ use Inovector\Mixpost\Events\Account\AccountAdded;
 use Inovector\Mixpost\Events\Account\AccountUnauthorized;
 use Inovector\Mixpost\Events\Post\PostActivityCreated;
 use Inovector\Mixpost\Events\Post\PostCreated;
+use Inovector\Mixpost\Events\Post\PostDeleteFromSocialPlatforms;
 use Inovector\Mixpost\Events\Post\PostPublished;
 use Inovector\Mixpost\Events\Post\PostPublishedFailed;
 use Inovector\Mixpost\Events\Post\PostScheduleAtUpdated;
@@ -44,6 +45,7 @@ use Inovector\Mixpost\Listeners\Account\SendAccountUnauthorizedNotification;
 use Inovector\Mixpost\Listeners\HandleSystemWebhookEvent;
 use Inovector\Mixpost\Listeners\HandleWorkspaceWebhookEvent;
 use Inovector\Mixpost\Listeners\Post\HandlePostActivityCreatedEvent;
+use Inovector\Mixpost\Listeners\Post\HandlePostDeleteFromSocialPlatformsEvent;
 use Inovector\Mixpost\Listeners\Post\LogPostCreatedActivity;
 use Inovector\Mixpost\Listeners\Post\LogPostPublishedActivity;
 use Inovector\Mixpost\Listeners\Post\LogPostPublishedFailedActivity;
@@ -154,6 +156,10 @@ class MixpostServiceProvider extends PackageServiceProvider
             return new AIManager();
         });
 
+        $this->app->singleton('MixpostUrlShortenerManager', function () {
+            return new UrlShortenerManager();
+        });
+
         $this->app->singleton('MixpostSettings', function ($app) {
             return new Settings($app);
         });
@@ -190,6 +196,8 @@ class MixpostServiceProvider extends PackageServiceProvider
     {
         Event::listen(WebhookManager::systemEvents(), HandleSystemWebhookEvent::class);
         Event::listen(WebhookManager::workspaceEvents(), HandleWorkspaceWebhookEvent::class);
+
+        Event::listen(PostDeleteFromSocialPlatforms::class, HandlePostDeleteFromSocialPlatformsEvent::class);
 
         Event::listen(AccountAdded::class, HandleAccountImports::class);
         Event::listen(AccountUnauthorized::class, SendAccountUnauthorizedNotification::class);

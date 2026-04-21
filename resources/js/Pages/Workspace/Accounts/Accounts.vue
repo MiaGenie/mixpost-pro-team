@@ -15,6 +15,7 @@ import AddMastodonAccount from "@/Components/Account/AddMastodonAccount.vue";
 import AddInstagramAccount from "@/Components/Account/AddInstagramAccount.vue";
 import AddThreadsAccount from "@/Components/Account/AddThreadsAccount.vue";
 import AddYoutubeAccount from "@/Components/Account/AddYoutubeAccount.vue";
+import AddGBPAccount from "@/Components/Account/AddGBPAccount.vue";
 import AddPinterestAccount from "@/Components/Account/AddPinterestAccount.vue";
 import AddLinkedinProfile from "@/Components/Account/AddLinkedinProfile.vue";
 import AddLinkedinPage from "@/Components/Account/AddLinkedinPage.vue";
@@ -199,7 +200,7 @@ useRequestErrorsHandler();
                             </div>
 
                             <div
-                                class="mt-sm font-semibold text-center break-words"
+                                class="mt-sm font-medium text-center break-words"
                             >
                                 {{ account.name }}
                             </div>
@@ -349,6 +350,9 @@ useRequestErrorsHandler();
             <AddBlueskyAccount
                 v-if="$page.props.is_service_active.bluesky"/>
             <AddYoutubeAccount
+                v-if="$page.props.is_service_active.google"
+            />
+            <AddGBPAccount
                 v-if="$page.props.is_service_active.google"
             />
             <AddPinterestAccount

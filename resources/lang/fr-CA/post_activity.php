@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Me notifier de toute activité pour cette tâche.',
   'unwatch' => 'Déclencher la surveillance',
   'notify_mentions_only' => 'Ne m\'informez que des mentions.',
+  'post_deleted_from_social_platforms' => 'Publication supprimée des plateformes sociales',
 ];

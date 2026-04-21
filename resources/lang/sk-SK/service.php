@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Kliknutia na webové stránky',
     ],
     'select_video_image' => 'Vyberte video alebo obrázok pre toto konto Instagram.',
+    'post' => 'Príspevok',
+    'reel' => 'Reel',
+    'story' => 'Príbeh',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Služba',
     'server_address' => 'Adresa servera',
   ],
+  'gbp' => 
+  [
+    'post' => 'Príspevok',
+    'offer' => 'Ponuka',
+    'event' => 'Udalosť',
+    'event_title' => 'Názov podujatia',
+    'add_time' => 'Pridať čas',
+    'offer_title' => 'Názov ponuky',
+    'start_date' => 'Dátum začiatku',
+    'end_date' => 'Dátum ukončenia',
+    'button' => 'Tlačidlo',
+    'none' => 'Žiadne',
+    'book' => 'Kniha',
+    'order_online' => 'Objednajte si online',
+    'buy' => 'Kúpiť',
+    'learn_more' => 'Zistite viac',
+    'sign_up' => 'Zaregistrujte sa',
+    'button_link' => 'Odkaz na tlačidlo',
+    'add_more_details' => 'Pridať ďalšie podrobnosti',
+    'coupon_code' => 'Kód kupónu',
+    'offer_link' => 'Odkaz na ponuku',
+    'tos' => 'Podmienky a pravidlá',
+    'start_time' => 'Čas začiatku',
+    'end_time' => 'Čas konca',
+    'call_now' => 'Zavolajte teraz',
+    'redeem_online' => 'Uplatniť online',
+    'show_code' => 'Ukážte tento kód v obchode',
+    'offer_valid' => 'Platné :start_date - :end_date',
+    'connect_profile' => 'Pripojenie nového firemného profilu Google',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Vyhľadávanie :source',
+    'can_use_external_photos' => 'Pomocou :provider môžete používať externé fotografie priamo v službe Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Príspevok',
+    'reel' => 'Reel',
+    'story' => 'Príbeh',
+  ],
+  'story' => 'Príbeh',
+  'generate_api_key' => 'Generovanie kľúča API',
 ];

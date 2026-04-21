@@ -7,7 +7,7 @@ use Inovector\Mixpost\Contracts\AccountResource;
 use Inovector\Mixpost\Contracts\SocialProviderPostOptions;
 use Inovector\Mixpost\Services\GoogleService;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\ManagesOAuth;
-use Inovector\Mixpost\SocialProviders\Google\Concerns\ManagesRateLimit;
+use Inovector\Mixpost\SocialProviders\Google\Concerns\UsesResponseBuilder;
 use Inovector\Mixpost\SocialProviders\Google\Concerns\ManagesYoutubeResources;
 use Inovector\Mixpost\SocialProviders\Google\Support\YoutubePostOptions;
 use Inovector\Mixpost\Support\SocialProviderPostConfigs;
@@ -18,7 +18,7 @@ class YoutubeProvider extends SocialProvider
     public bool $onlyUserAccount = false;
     public array $callbackResponseKeys = ['code'];
 
-    use ManagesRateLimit;
+    use UsesResponseBuilder;
     use ManagesOAuth;
     use ManagesYoutubeResources;
 
@@ -30,6 +30,13 @@ class YoutubeProvider extends SocialProvider
     public static function service(): string
     {
         return GoogleService::class;
+    }
+
+    protected function getScopes(): array
+    {
+        return [
+            'https://www.googleapis.com/auth/youtube'
+        ];
     }
 
     public static function postConfigs(): SocialProviderPostConfigs
@@ -71,5 +78,15 @@ class YoutubeProvider extends SocialProvider
             'video_not_selected' => __('mixpost::post.video_not_selected'),
             default => $key
         };
+    }
+
+    public static function supportAnalytics(): bool
+    {
+        return false;
+    }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
     }
 }

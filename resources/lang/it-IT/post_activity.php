@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Notificatemi tutte le attività per questa attività.',
   'unwatch' => 'Non guardare',
   'notify_mentions_only' => 'Notificatemi solo le menzioni.',
+  'post_deleted_from_social_platforms' => 'Post cancellati dalle piattaforme sociali',
 ];

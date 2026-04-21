@@ -330,7 +330,8 @@
         "generate_new": "Generar nuevo",
         "search_jump": "Buscar o saltar a",
         "replace": "Sustituir",
-        "retry": "Reintentar"
+        "retry": "Reintentar",
+        "general": "General"
     },
     "hashtag": {
         "hashtag_name": "Nombre del grupo de hashtags",
@@ -381,7 +382,27 @@
         "change_video_thumb": "Cambiar la miniatura del vídeo",
         "view_video_thumb": "Ver vídeo en miniatura",
         "video_thumb": "Miniatura del vídeo",
-        "video_thumb_providers": "La miniatura del vídeo está disponible a través de: {providers}."
+        "video_thumb_providers": "La miniatura del vídeo está disponible a través de: {providers}.",
+        "custom_size": "Tamaño personalizado",
+        "width": "Anchura",
+        "height": "Altura",
+        "unit": "Unidad",
+        "px": "píxeles",
+        "inch": "pulgadas",
+        "mm": "milímetros",
+        "create_design": "Crear diseño",
+        "edit_adobe_express": "Editar en Adobe Express",
+        "new_design": "Nuevo diseño",
+        "saved": "Medios guardados correctamente.",
+        "fb_post": "Publicación en Facebook",
+        "fb_story": "Historia de Facebook",
+        "ig_portrait_post": "Retrato en Instagram",
+        "ig_square_post": "Instagram post cuadrado",
+        "ig_story": "Historia de Instagram",
+        "linkedin_post": "LinkedIn post",
+        "x_post": "X puesto",
+        "pinterest_post": "Pinterest post",
+        "media": "Medios"
     },
     "page": {
         "pages": "Páginas",
@@ -447,7 +468,7 @@
         "accounts": "Cuentas",
         "author": "Autor",
         "no_posts_found": "No se han encontrado publicaciones.",
-        "delete_posts": "Borrar publicaciones",
+        "delete_posts": "Borrar mensajes|Borrar mensajes",
         "your_post": "Tu publicación",
         "confirmation_delete_post": "¿Estás seguro de que deseas eliminar las publicaciones seleccionadas?",
         "posts_history_not_edited": "Las publicaciones en el historial no se pueden editar.",
@@ -509,7 +530,16 @@
         "approval_required": "Los mensajes deben ser aprobados antes de ser publicados.",
         "needs_approval": "Necesita aprobación",
         "approve": "Aprobar",
-        "view": "Ver el post"
+        "view": "Ver el post",
+        "posts_deleted_from_social_platforms": "Publicaciones seleccionadas eliminadas de las plataformas sociales",
+        "does_not_support_deleting": "{provider} no permite borrar {types}",
+        "confirmation_delete_posts_from": "¿De dónde quieres borrar este mensaje? ¿De dónde quieres borrar los mensajes seleccionados?",
+        "delete_post_from": {
+            "app_only": "Sólo desde la aplicación",
+            "app_and_social": "Desde aplicaciones y plataformas sociales",
+            "social_only": "Sólo desde plataformas sociales"
+        },
+        "post_deleted_from_social_platforms": "Publicación eliminada de las plataformas sociales"
     },
     "post_activity": {
         "activity": "Actividad",
@@ -537,7 +567,8 @@
         "watch": "Ver",
         "notify_all_activity": "Notificarme toda la actividad de esta tarea.",
         "unwatch": "Unwatch",
-        "notify_mentions_only": "Notificarme sólo las menciones."
+        "notify_mentions_only": "Notificarme sólo las menciones.",
+        "post_deleted_from_social_platforms": "Publicación eliminada de las plataformas sociales"
     },
     "posting_schedule": {
         "everyday": "Todos los días",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "Número total de pulsaciones sobre el enlace del sitio web en el perfil",
                 "website_clicks": "Clics en el sitio web"
             },
-            "select_video_image": "Selecciona un video o una imagen para esta cuenta de Instagram."
+            "select_video_image": "Selecciona un video o una imagen para esta cuenta de Instagram.",
+            "post": "Publicar",
+            "reel": "Reel",
+            "story": "Historia"
         },
         "linkedin": {
             "connect_page": "Conectar una nueva página de LinkedIn",
@@ -779,7 +813,47 @@
             "connect_profile": "Conectar un nuevo perfil Bluesky",
             "service": "Servicio",
             "server_address": "Dirección del servidor"
-        }
+        },
+        "gbp": {
+            "post": "Publicar",
+            "offer": "Oferta",
+            "event": "Evento",
+            "event_title": "Título del evento",
+            "add_time": "Añadir tiempo",
+            "offer_title": "Título de la oferta",
+            "start_date": "Fecha de inicio",
+            "end_date": "Fecha final",
+            "button": "Botón",
+            "none": "Ninguno",
+            "book": "Reserve",
+            "order_online": "Pedidos en línea",
+            "buy": "Comprar",
+            "learn_more": "Más información",
+            "sign_up": "Inscribirse",
+            "button_link": "Botón de enlace",
+            "add_more_details": "Añadir más detalles",
+            "coupon_code": "Código de cupón",
+            "offer_link": "Ofrecer enlace",
+            "tos": "Condiciones generales",
+            "start_time": "Hora de inicio",
+            "end_time": "Fin de los tiempos",
+            "call_now": "Llama ahora",
+            "redeem_online": "Canjear en línea",
+            "show_code": "Mostrar este código en la tienda",
+            "offer_valid": "Válido {start_date} - {end_date}",
+            "connect_profile": "Conectar una nueva cuenta de perfil de Google Business"
+        },
+        "stock_photo": {
+            "search": "Buscar {source}",
+            "can_use_external_photos": "Con {provider} puede utilizar fotos de archivo externas directamente en Mixpost."
+        },
+        "facebook_page": {
+            "post": "Publicar",
+            "reel": "Reel",
+            "story": "Historia"
+        },
+        "story": "Historia",
+        "generate_api_key": "Generar clave API"
     },
     "system": {
         "system": "Sistema",
@@ -882,6 +956,10 @@
         "upload_favicon": "Subir favicon",
         "theme_color": "Color del tema",
         "rebrand_company": "Cambie la marca de su empresa"
+    },
+    "url_shortener": {
+        "on": "Acortamiento de URL: En",
+        "off": "Acortamiento de URL: Off"
     },
     "user": {
         "create_user": "Crear usuario",

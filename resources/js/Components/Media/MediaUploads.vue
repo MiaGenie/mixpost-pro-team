@@ -22,6 +22,10 @@ const props = defineProps({
     mimeTypes: {
         type: Array,
         default: []
+    },
+    selectedItems:{
+        type: Array,
+        default: []
     }
 })
 
@@ -37,7 +41,7 @@ const {
     removeItems,
     isSelected,
     createObserver
-} = useMedia('mixpost.media.fetchUploads', {workspace: workspaceCtx.id}, props.maxSelectedItems, props.mimeTypes);
+} = useMedia('mixpost.media.fetchUploads', {workspace: workspaceCtx.id}, props.maxSelectedItems, props.mimeTypes, props.selectedItems);
 
 onMounted(() => {
     createObserver();

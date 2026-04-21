@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <TwitterIcon class="text-twitter"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">X</span>
+            <span class="font-medium">X</span>
             <span>{{ $t("service.twitter.connect_profile") }}</span>
         </span>
     </Link>

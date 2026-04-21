@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Eskaera baliogabea. Kode parametroa falta da.',
+    'missing_callback_response' => 'Dei-itzulerako erantzuna falta da.',
   ],
   'invalid_grant' => 'Kredentzialak baliogabeak edo iraungitako baimena.',
 ];

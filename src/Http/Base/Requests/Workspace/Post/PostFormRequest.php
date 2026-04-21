@@ -66,7 +66,7 @@ abstract class PostFormRequest extends FormRequest
                     continue;
                 }
 
-                foreach ($provider::postOptions()->rules() as $option => $optionRules) {
+                foreach ($provider::postOptions()->rules($this) as $option => $optionRules) {
                     $rules["versions.{$index}.options.{$key}.{$option}"] = $optionRules;
                 }
             }

@@ -10,7 +10,7 @@ import Dropdown from "../Dropdown/Dropdown.vue";
 import PencilSquare from "../../Icons/PencilSquare.vue";
 import TrashIcon from "@/Icons/Trash.vue";
 import Photo from "@/Icons/Photo.vue";
-import {useForm} from "@inertiajs/vue3";
+import {useForm, usePage} from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/Button/PrimaryButton.vue";
 import SecondaryButton from "@/Components/Button/SecondaryButton.vue";
 import DialogModal from "@/Components/Modal/DialogModal.vue";
@@ -21,6 +21,8 @@ import PhotoSolid from "@/Icons/PhotoSolid.vue";
 import DangerButton from "@/Components/Button/DangerButton.vue";
 import Flex from "@/Components/Layout/Flex.vue";
 import AlertText from "@/Components/Util/AlertText.vue";
+import useAdobeExpress from "../../Composables/useAdobeExpress.js";
+import AdobeExpress from "@/Icons/AdobeExpress.vue";
 import Placeholder from "@/Components/Media/Placeholder.vue";
 
 const props = defineProps({
@@ -138,6 +140,11 @@ const removeCustomVideoThumb = () => {
     emits('removeCustomVideoThumb');
     viewCustomThumbnail.value = false;
 }
+
+const {
+    openAdobeExpressEditor
+} = useAdobeExpress();
+
 </script>
 <template>
     <figure :class="{'border border-gray-200 rounded-md p-xs bg-stone-500': showCaption}" class="group relative">
@@ -211,6 +218,14 @@ const removeCustomVideoThumb = () => {
                         </PureButton>
                     </template>
                     <template #content>
+                        <template v-if="media.adobe_express_doc_id && usePage().props.is_configured_service.adobe_express && editMode">
+                            <DropdownItem as="button" @click="() => openAdobeExpressEditor({ documentId: media.adobe_express_doc_id, media: media})">
+                                <template #icon>
+                                    <AdobeExpress/>
+                                </template>
+                                {{ $t('media.edit_adobe_express') }}
+                            </DropdownItem>
+                        </template>
                         <template v-if="showAltText && editMode">
                             <DropdownItem as="button" @click="openAltTextForm(media)">
                                 <template #icon>

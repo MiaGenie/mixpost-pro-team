@@ -19,6 +19,7 @@ import Panel from "@/Components/Surface/Panel.vue";
 import ConfirmationModal from "@/Components/Modal/ConfirmationModal.vue";
 import TrashIcon from "@/Icons/Trash.vue";
 import PlusIcon from "@/Icons/Plus.vue";
+import MediaNewDesign from "../../Components/Media/MediaNewDesign.vue";
 
 const workspaceCtx = inject('workspaceCtx');
 
@@ -35,7 +36,8 @@ const {
 const sources = {
     'uploads': MediaUploads,
     'stock': MediaStock,
-    'gifs': MediaGifs
+    'gifs': MediaGifs,
+    'new_design': MediaNewDesign
 };
 
 const sourceProperties = ref();
@@ -45,15 +47,15 @@ const source = computed(() => {
 })
 
 const selectedItems = computed(() => {
-    return sourceProperties.value ? sourceProperties.value.selected : [];
+    return sourceProperties?.value?.selected ?? [];
 })
 
 const deselectAll = () => {
-    sourceProperties.value.deselectAll()
+    sourceProperties.value.deselectAll?.()
 }
 
 const use = () => {
-    const toDownload = activeTab.value !== 'uploads';
+    const toDownload = !['uploads', 'new_design'].includes(activeTab.value);
 
     if (toDownload) {
         downloadExternal(selectedItems.value.map((item) => {
@@ -91,6 +93,13 @@ const deleteSelectedItems = () => {
         confirmationDeletion.value = false;
     })
 }
+
+const selectedMedia = ref();
+
+const sourceParams = computed(() => {
+    return sources.uploads == source.value && selectedMedia.value ? { selectedItems: [selectedMedia.value] } : {};
+})
+
 </script>
 <template>
     <Head :title="$t('media.media_library')"/>
@@ -108,7 +117,11 @@ const deleteSelectedItems = () => {
 
         <div class="w-full row-px mt-lg">
             <Panel>
-                <component :is="source" ref="sourceProperties" :columns="4"/>
+                <component :is="source"
+                           v-bind="sourceParams"
+                           ref="sourceProperties"
+                           :columns="4"
+                           @selectMediaInMediaLibrary="(media) => { activeTab = 'uploads'; selectedMedia = media; }" />
 
                 <SelectableBar :count="selectedItems.length" @close="deselectAll()">
                     <SecondaryButton @click="use"

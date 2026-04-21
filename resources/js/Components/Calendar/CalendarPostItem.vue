@@ -112,7 +112,7 @@ const closePreview = () => {
         <template #footer>
             <template v-if="preview">
                 <div class="mr-xs">
-                    <PostItemActions :item-id="item.id" />
+                    <PostItemActions :item="item" />
                 </div>
                 <SecondaryButton @click="closePreview">{{ $t("general.close") }}</SecondaryButton>
             </template>

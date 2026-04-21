@@ -240,7 +240,7 @@ trait ManagesResources
         );
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
         if ($this->tokenIsAboutToExpire()) {
             $newAccessToken = $this->refreshToken();
@@ -255,6 +255,14 @@ trait ManagesResources
         $token = $this->getAccessToken()['access_token'];
 
         $response = $this->getHttpClient()::withToken($token)->delete("{$this->getApiUrl()}/$this->apiVersion/pins/$id");
+
+        if ($response->notFound()) {
+            /**
+             * Handle 404 response when attempting to delete a post that no longer exists on the platform.
+             * This occurs when we have a stored post_provider_id but the post has already been deleted directly on the platform.
+             */
+            return $this->response(SocialProviderResponseStatus::OK, []);
+        }
 
         return $this->buildResponse($response);
     }

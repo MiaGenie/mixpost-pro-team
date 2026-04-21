@@ -15,7 +15,7 @@ return [
   'accounts' => 'Comptes',
   'author' => 'Auteur',
   'no_posts_found' => 'Aucun message trouvé.',
-  'delete_posts' => 'Supprimer les messages',
+  'delete_posts' => 'Supprimer les messages|Supprimer les messages',
   'your_post' => 'Votre publication',
   'confirmation_delete_post' => 'Êtes-vous sûr de vouloir supprimer les publications sélectionnées?',
   'posts_history_not_edited' => 'Les messages de l\'historique ne peuvent pas être modifiés.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Doit être approuvé',
   'approve' => 'Approuver',
   'view' => 'Voir l\'article',
+  'posts_deleted_from_social_platforms' => 'Les messages sélectionnés sont supprimés des plates-formes sociales',
+  'does_not_support_deleting' => ':provider ne permet pas de supprimer :types',
+  'confirmation_delete_posts_from' => 'Où voulez-vous supprimer ce message ? Où voulez-vous supprimer les messages sélectionnés ?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'A partir de la demande uniquement',
+    'app_and_social' => 'À partir d\'applications et de plateformes sociales',
+    'social_only' => 'Uniquement à partir de plateformes sociales',
+  ],
+  'post_deleted_from_social_platforms' => 'Publication supprimée des plateformes sociales',
 ];

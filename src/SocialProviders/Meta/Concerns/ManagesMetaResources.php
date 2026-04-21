@@ -36,7 +36,7 @@ trait ManagesMetaResources
         return $this->getUserAccount();
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
         return $this->response(SocialProviderResponseStatus::OK, []);
     }

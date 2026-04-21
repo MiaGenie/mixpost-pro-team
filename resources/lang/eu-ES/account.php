@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'accounts' => 'Gizarte Kontuak',
+  'accounts' => 'Sare Sozialak',
   'account_updated' => 'Kontua eguneratu da',
   'account_reauthenticate' => 'Ezin da kontua eguneratu. Berriro autentifikatu zure kontua.',
   'connect_social_account' => 'Konektatu kudeatu nahi duzun sare sozial bat.',
@@ -21,7 +21,7 @@ return [
   'connected' => 'Konektatuta',
   'access_token_expired' => 'Sarbide-tokena iraungi da. Konektatu berriro zure kontua.',
   'unauthorized' => 'Baimenik gabe',
-  'add_social_account' => 'Ez duzu kontu sozialik, gehitu gutxienez bat.',
+  'add_social_account' => 'Ez duzu gehitu sare sozialik, gehitu bat gutxienez.',
   'backend' => 
   [
     'notification' => 

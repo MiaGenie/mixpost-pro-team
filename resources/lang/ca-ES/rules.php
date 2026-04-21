@@ -7,4 +7,5 @@ return [
   ],
   'file_required' => 'El fitxer és obligatori',
   'file_max_size' => 'El :type no ha de ser superior a :max MB',
+  'domain_url_invalid' => 'L\'URL del domini ha de ser un nom de domini vàlid, com ara https://example.com.',
 ];

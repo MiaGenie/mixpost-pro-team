@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Demande non valide. Paramètre de code manquant.',
+    'missing_callback_response' => 'Réponse de rappel manquante.',
   ],
   'invalid_grant' => 'Informations d\'identification non valides ou autorisation expirée.',
 ];

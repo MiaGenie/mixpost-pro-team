@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Notify me on all activity for this task.',
   'unwatch' => 'Unwatch',
   'notify_mentions_only' => 'Notify me only on mentions.',
+  'post_deleted_from_social_platforms' => 'Post deleted from social platforms',
 ];

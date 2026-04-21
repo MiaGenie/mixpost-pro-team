@@ -2,12 +2,13 @@
 
 namespace Inovector\Mixpost\SocialProviders\TikTok\Support;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
-use Inovector\Mixpost\Contracts\SocialProviderPostOptions;
+use Inovector\Mixpost\Support\SocialProviderPostOptions;
 
-class TikTokPostOptions implements SocialProviderPostOptions
+class TikTokPostOptions extends SocialProviderPostOptions
 {
-    public function rules(): array
+    public function rules(FormRequest $request): array
     {
         return [
             'privacy_level' => ['sometimes', 'array'],

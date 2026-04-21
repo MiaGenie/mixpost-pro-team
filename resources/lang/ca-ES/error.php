@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Sol·licitud no vàlida. Falta el paràmetre del codi.',
+    'missing_callback_response' => 'Falta la resposta de devolució de trucada.',
   ],
   'invalid_grant' => 'Credencials no vàlides o autorització caducada.',
 ];

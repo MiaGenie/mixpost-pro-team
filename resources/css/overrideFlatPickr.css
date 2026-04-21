@@ -2,8 +2,12 @@
 
 /* Custom styles for PickTime Component */
 
+.flatpickr-calendar {
+    @apply rounded-md border border-gray-200 !shadow-mix;
+}
+
 .pickTime .flatpickr-calendar {
-    @apply mx-auto;
+    @apply mx-auto rounded-none border-0 !shadow-none;
 }
 
 .pickTime .flatpickr-input {
@@ -124,5 +128,6 @@
 
 .flatpickr-time .flatpickr-time-separator, .flatpickr-time .flatpickr-am-pm {
     @apply mx-1;
+    width: 4%;
 }
 

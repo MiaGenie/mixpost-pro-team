@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Ungültige Anfrage. Fehlender Code-Parameter.',
+    'missing_callback_response' => 'Fehlende Callback-Antwort.',
   ],
   'invalid_grant' => 'Ungültige Anmeldedaten oder abgelaufene Berechtigung.',
 ];

@@ -54,6 +54,7 @@
         "nanoid": "^5.0.7",
         "nprogress": "^0.2.0",
         "pretty": "^2.0.0",
+        "prosemirror-keymap": "^1.2.3",
         "tippy.js": "^6.3.7",
         "twemoji-parser": "^14.0.0",
         "twitter-text": "^3.1.0",

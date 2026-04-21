@@ -330,7 +330,8 @@
         "generate_new": "Создайте новый",
         "search_jump": "Поиск или переход к",
         "replace": "Заменить",
-        "retry": "Повторная попытка"
+        "retry": "Повторная попытка",
+        "general": "Общие сведения"
     },
     "hashtag": {
         "hashtag_name": "Название группы хэштегов",
@@ -381,7 +382,27 @@
         "change_video_thumb": "Изменение миниатюры видео",
         "view_video_thumb": "Просмотр миниатюры видео",
         "video_thumb": "Миниатюра видео",
-        "video_thumb_providers": "Эскиз видео доступен через: {providers}."
+        "video_thumb_providers": "Эскиз видео доступен через: {providers}.",
+        "custom_size": "Нестандартный размер",
+        "width": "Ширина",
+        "height": "Высота",
+        "unit": "Единица",
+        "px": "пиксели",
+        "inch": "дюймы",
+        "mm": "миллиметры",
+        "create_design": "Создайте дизайн",
+        "edit_adobe_express": "Редактирование в Adobe Express",
+        "new_design": "Новый дизайн",
+        "saved": "Носитель успешно сохранен.",
+        "fb_post": "Сообщение на Facebook",
+        "fb_story": "История на Facebook",
+        "ig_portrait_post": "Портретный пост в Instagram",
+        "ig_square_post": "Квадратный пост в Instagram",
+        "ig_story": "История в Instagram",
+        "linkedin_post": "Сообщение LinkedIn",
+        "x_post": "X пост",
+        "pinterest_post": "Пост в Pinterest",
+        "media": "СМИ"
     },
     "page": {
         "pages": "Страницы",
@@ -447,7 +468,7 @@
         "accounts": "Счета",
         "author": "Автор",
         "no_posts_found": "Сообщения не найдены.",
-        "delete_posts": "Удалить сообщения",
+        "delete_posts": "Удалить сообщения|Удалить сообщения",
         "your_post": "Ваш пост",
         "confirmation_delete_post": "Вы уверены, что хотите удалить выбранные сообщения?",
         "posts_history_not_edited": "Сообщения в истории не могут быть отредактированы.",
@@ -509,7 +530,16 @@
         "approval_required": "Перед публикацией сообщение должно быть одобрено.",
         "needs_approval": "Требуется одобрение",
         "approve": "Утвердить",
-        "view": "View Post"
+        "view": "View Post",
+        "posts_deleted_from_social_platforms": "Удаление избранных постов с социальных платформ",
+        "does_not_support_deleting": "{provider} не поддерживает удаление {types}",
+        "confirmation_delete_posts_from": "Откуда вы хотите удалить это сообщение?|Где вы хотите удалить выбранные сообщения?",
+        "delete_post_from": {
+            "app_only": "Только из приложения",
+            "app_and_social": "Из приложений и социальных платформ",
+            "social_only": "Только с социальных платформ"
+        },
+        "post_deleted_from_social_platforms": "Посты удалены с социальных платформ"
     },
     "post_activity": {
         "activity": "Деятельность",
@@ -537,7 +567,8 @@
         "watch": "Смотреть",
         "notify_all_activity": "Уведомлять меня о всех действиях для этого задания.",
         "unwatch": "Не смотреть",
-        "notify_mentions_only": "Уведомлять меня только о упоминаниях."
+        "notify_mentions_only": "Уведомлять меня только о упоминаниях.",
+        "post_deleted_from_social_platforms": "Посты удалены с социальных платформ"
     },
     "posting_schedule": {
         "everyday": "Повседневность",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "Общее количество переходов по ссылке на сайт в профиле",
                 "website_clicks": "Клики на сайте"
             },
-            "select_video_image": "Выберите видео или изображение для этого аккаунта Instagram."
+            "select_video_image": "Выберите видео или изображение для этого аккаунта Instagram.",
+            "post": "Пост",
+            "reel": "Reel",
+            "story": "История"
         },
         "linkedin": {
             "connect_page": "Подключите новую страницу LinkedIn",
@@ -779,7 +813,47 @@
             "connect_profile": "Подключите новый профиль Bluesky",
             "service": "Сервис",
             "server_address": "Адрес сервера"
-        }
+        },
+        "gbp": {
+            "post": "Пост",
+            "offer": "Предложение",
+            "event": "Событие",
+            "event_title": "Название мероприятия",
+            "add_time": "Добавить время",
+            "offer_title": "Название предложения",
+            "start_date": "Дата начала",
+            "end_date": "Дата окончания",
+            "button": "Кнопка",
+            "none": "Нет",
+            "book": "Книга",
+            "order_online": "Заказать онлайн",
+            "buy": "Купить",
+            "learn_more": "Узнать больше",
+            "sign_up": "Зарегистрироваться",
+            "button_link": "Ссылка на кнопку",
+            "add_more_details": "Добавить подробности",
+            "coupon_code": "Код купона",
+            "offer_link": "Ссылка на предложение",
+            "tos": "Условия и положения",
+            "start_time": "Время начала",
+            "end_time": "Конец времени",
+            "call_now": "Звоните сейчас",
+            "redeem_online": "Выкупить онлайн",
+            "show_code": "Покажите этот код в магазине",
+            "offer_valid": "Действительный {start_date} - {end_date}",
+            "connect_profile": "Подключите новый аккаунт Google Business Profile"
+        },
+        "stock_photo": {
+            "search": "Поиск {source}",
+            "can_use_external_photos": "С помощью {provider} вы можете использовать внешние стоковые фотографии прямо в Mixpost."
+        },
+        "facebook_page": {
+            "post": "Пост",
+            "reel": "Reel",
+            "story": "История"
+        },
+        "story": "История",
+        "generate_api_key": "Сгенерируйте ключ API"
     },
     "system": {
         "system": "Система",
@@ -882,6 +956,10 @@
         "upload_favicon": "Загрузить фавикон",
         "theme_color": "Цвет темы",
         "rebrand_company": "Ребрендинг вашей компании"
+    },
+    "url_shortener": {
+        "on": "Сокращение URL-адресов: На сайте",
+        "off": "Сокращение URL-адресов: Выкл."
     },
     "user": {
         "create_user": "Создать пользователя",

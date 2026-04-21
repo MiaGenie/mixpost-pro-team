@@ -12,7 +12,7 @@ trait ManagesOAuth
         $params = [
             'client_id' => $this->clientId,
             'redirect_uri' => $this->redirectUrl,
-            'scope' => 'threads_basic,threads_content_publish,threads_manage_replies,threads_manage_insights',
+            'scope' => 'threads_basic,threads_delete,threads_content_publish,threads_manage_replies,threads_manage_insights',
             'response_type' => 'code',
             'state' => $this->values['state']
         ];

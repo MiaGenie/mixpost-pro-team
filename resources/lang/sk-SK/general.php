@@ -85,4 +85,5 @@ return [
   'search_jump' => 'Vyhľadávanie alebo prechod na',
   'replace' => 'Vymeňte stránku',
   'retry' => 'Opakovanie',
+  'general' => 'Všeobecné',
 ];

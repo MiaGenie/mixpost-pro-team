@@ -12,6 +12,7 @@ import PostPreviewPinterest from "@/Components/PostPreview/PostPreviewPinterest.
 import PostPreviewLinkedIn from "@/Components/PostPreview/LinkedIn/PostPreviewLinkedIn.vue"
 import PostPreviewTikTok from "@/Components/PostPreview/PostPreviewTikTok.vue"
 import PostPreviewBluesky from "@/Components/PostPreview/Bluesky/PostPreviewBluesky.vue"
+import PostPreviewGBP from "@/Components/PostPreview/PostPreviewGBP.vue"
 import Panel from "@/Components/Surface/Panel.vue";
 import Alert from "@/Components/Util/Alert.vue";
 import ProviderIcon from "../Account/ProviderIcon.vue";
@@ -67,6 +68,7 @@ const previews = computed(() => {
                 'linkedin_page': PostPreviewLinkedIn,
                 'tiktok': PostPreviewTikTok,
                 'bluesky': PostPreviewBluesky,
+                'gbp': PostPreviewGBP,
             }[account.provider]
         }
     }).filter((preview) => {

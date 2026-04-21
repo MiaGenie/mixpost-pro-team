@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Webseiten Klicks',
     ],
     'select_video_image' => 'Wähle ein Video oder Bild für diesen Instagram-Account aus.',
+    'post' => 'Beitrag',
+    'reel' => 'Reel',
+    'story' => 'Story',
   ],
   'linkedin' => 
   [
@@ -200,12 +203,55 @@ return [
   'services' => 'Dienstleistungen',
   'threads' => 
   [
-    'connect' => 'Ein neues Threads-Profil verbinden',
+    'connect' => 'Verbinde ein neues Threads-Konto',
   ],
   'bluesky' => 
   [
-    'connect_profile' => 'Verbinde ein neues Bluesky-Profil',
+    'connect_profile' => 'Verbinde ein neues Bluesky-Konto',
     'service' => 'Service',
     'server_address' => 'Server Adresse',
   ],
+  'gbp' => 
+  [
+    'post' => 'Beitrag',
+    'offer' => 'Angebot',
+    'event' => 'Veranstaltung',
+    'event_title' => 'Titel der Veranstaltung',
+    'add_time' => 'Zeit hinzufügen',
+    'offer_title' => 'Angebot Titel',
+    'start_date' => 'Startdatum',
+    'end_date' => 'Enddatum',
+    'button' => 'Schaltfläche',
+    'none' => 'Keine',
+    'book' => 'Buchen',
+    'order_online' => 'Online bestellen',
+    'buy' => 'Kaufen',
+    'learn_more' => 'Mehr erfahren',
+    'sign_up' => 'Anmelden',
+    'button_link' => 'Link-Schaltfläche',
+    'add_more_details' => 'Mehr Details hinzufügen',
+    'coupon_code' => 'Rabattcode',
+    'offer_link' => 'Angebot Link',
+    'tos' => 'Bedingungen & Konditionen',
+    'start_time' => 'Startzeit',
+    'end_time' => 'Endzeit',
+    'call_now' => 'Jetzt anrufen',
+    'redeem_online' => 'Online einlösen',
+    'show_code' => 'Zeige diesen Code im Laden an',
+    'offer_valid' => 'Gültig :start_date - :end_date',
+    'connect_profile' => 'Verbinde ein neues Google Business Profil Konto',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Suche :source',
+    'can_use_external_photos' => 'Mit :provider kannst du externe Stockfotos direkt in Mixpost verwenden.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Beitrag',
+    'reel' => 'Reel',
+    'story' => 'Story',
+  ],
+  'story' => 'Story',
+  'generate_api_key' => 'API-Schlüssel generieren',
 ];

@@ -7,4 +7,5 @@ return [
   ],
   'file_required' => 'Le fichier est requis',
   'file_max_size' => 'Le :type ne doit pas dépasser :max Mo.',
+  'domain_url_invalid' => 'L\'URL du domaine doit être un nom de domaine valide, tel que https://example.com.',
 ];

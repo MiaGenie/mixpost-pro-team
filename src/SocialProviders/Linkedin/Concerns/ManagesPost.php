@@ -33,7 +33,7 @@ trait ManagesPost
         try {
             $postParams = [
                 'author' => "urn:li:{$this->author()}:{$this->values['provider_id']}",
-                'commentary' => $text,
+                'commentary' => $this->escapeText($text),
                 'visibility' => Str::upper(Arr::get($params, 'visibility', 'PUBLIC')),
                 'distribution' => [
                     'feedDistribution' => 'MAIN_FEED',
@@ -80,7 +80,7 @@ trait ManagesPost
         });
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
         if ($this->hasRefreshToken() && $this->tokenIsAboutToExpire()) {
             $newAccessToken = $this->refreshToken();
@@ -93,8 +93,16 @@ trait ManagesPost
         }
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
-            ->withHeaders($this->httpHeaders())
+            ->withHeaders($this->httpHeadersNext())
             ->delete("$this->apiUrl/rest/posts/$id");
+
+        if ($response->notFound()) {
+            /**
+             * Handle 404 response when attempting to delete a post that no longer exists on the platform.
+             * This occurs when we have a stored post_provider_id but the post has already been deleted directly on the platform.
+             */
+            return $this->response(SocialProviderResponseStatus::OK, []);
+        }
 
         return $this->buildResponse($response);
     }
@@ -182,5 +190,41 @@ trait ManagesPost
         }
 
         $postParams['content']['multiImage']['images'] = $uploadedImages->toArray();
+    }
+
+    /**
+     * Escape reserved characters in the text to prevent issues with LinkedIn's API.
+     * @see https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/little-text-format?view=li-lms-2025-05&tabs=curl#text
+     *
+     * @param string $text
+     * @return string
+     */
+    private function escapeText(string $text): string
+    {
+        // Reserved characters that must be escaped according to LinkedIn's official documentation
+        $reservedChars = [
+            '\\' => '\\\\',  // Backslash must be escaped first to avoid double escaping
+            '|' => '\\|',   // Pipe character
+            '{' => '\\{',   // Opening curly brace
+            '}' => '\\}',   // Closing curly brace
+            '@' => '\\@',   // At symbol (used for mentions)
+            '[' => '\\[',   // Opening square bracket
+            ']' => '\\]',   // Closing square bracket
+            '(' => '\\(',   // Opening parenthesis - this fixes your specific issue!
+            ')' => '\\)',   // Closing parenthesis
+            '<' => '\\<',   // Less than
+            '>' => '\\>',   // Greater than
+            '#' => '\\#',   // Hash symbol (used for hashtags)
+            '*' => '\\*',   // Asterisk
+            '_' => '\\_',   // Underscore
+            '~' => '\\~'    // Tilde
+        ];
+
+        // Apply escaping in the correct order (backslash first!)
+        foreach ($reservedChars as $char => $escaped) {
+            $text = str_replace($char, $escaped, $text);
+        }
+
+        return $text;
     }
 }

@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.8.1 - 2025-07-26
+
+**Changed**
+
+- Changed LinkedIn API version from `202407` to `202507`
+
 ## 3.8.0 - 2025-06-06
 
 **New Features**

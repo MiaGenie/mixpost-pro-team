@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <ProviderIcon provider="tiktok"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">TikTok</span>
+            <span class="font-medium">TikTok</span>
             <span>{{ $t("service.tiktok.connect_profile") }}</span>
         </span>
     </Link>

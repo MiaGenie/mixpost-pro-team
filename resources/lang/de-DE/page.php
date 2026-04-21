@@ -37,7 +37,7 @@ return [
   'brand_logo' => 'Logo',
   'brand_name' => 'Markenname',
   'contact_email' => 'Kontakt E-Mail',
-  'register_url' => 'Url registrieren',
+  'register_url' => 'URL registrieren',
   'destroy_existing_pages' => 'Vorhandene Seiten und Blöcke zerstören',
   'remove_from_page' => 'Von dieser Seite entfernen',
   'page_no_blocks_added' => 'Dieser Seite wurden keine Blöcke hinzugefügt.',

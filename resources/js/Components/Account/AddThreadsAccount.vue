@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <ThreadsIcon class="text-threads"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">Threads</span>
+            <span class="font-medium">Threads</span>
             <span>{{ $t("service.threads.connect") }}</span>
         </span>
     </Link>

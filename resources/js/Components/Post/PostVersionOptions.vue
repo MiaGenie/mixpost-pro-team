@@ -9,6 +9,7 @@ import TikTokOptions from "@/Components/ProviderVersionOptions/TikTokOptions.vue
 import usePostVersions from "@/Composables/usePostVersions";
 import MastodonOptions from "../ProviderVersionOptions/MastodonOptions.vue";
 import FacebookPageOptions from "../ProviderVersionOptions/FacebookPageOptions.vue";
+import GBPOptions from "@/Components/ProviderVersionOptions/GBP/GBPOptions.vue";
 
 const props = defineProps({
     selectedAccounts: {
@@ -88,6 +89,14 @@ const showYoutube = computed(() => {
     return activeVersionHasProvider('youtube');
 });
 
+const showGBP = computed(() => {
+    if (props.activeVersion === 0 && isProviderSelected('gbp')) {
+        return !providerHaveVersion('gbp');
+    }
+
+    return activeVersionHasProvider('gbp');
+});
+
 const showPinterest = computed(() => {
     if (props.activeVersion === 0 && isProviderSelected('pinterest')) {
         return !providerHaveVersion('pinterest');
@@ -154,6 +163,10 @@ const tiktokAccounts = computed(() => {
 
         <div v-if="showYoutube" class="pb-md">
             <YoutubeOptions :options="options.youtube"/>
+        </div>
+
+        <div v-if="showGBP" class="pb-md">
+            <GBPOptions :options="options.gbp"/>
         </div>
 
         <div v-if="showPinterest" class="pb-md">

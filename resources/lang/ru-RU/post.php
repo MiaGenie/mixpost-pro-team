@@ -15,7 +15,7 @@ return [
   'accounts' => 'Счета',
   'author' => 'Автор',
   'no_posts_found' => 'Сообщения не найдены.',
-  'delete_posts' => 'Удалить сообщения',
+  'delete_posts' => 'Удалить сообщения|Удалить сообщения',
   'your_post' => 'Ваш пост',
   'confirmation_delete_post' => 'Вы уверены, что хотите удалить выбранные сообщения?',
   'posts_history_not_edited' => 'Сообщения в истории не могут быть отредактированы.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Требуется одобрение',
   'approve' => 'Утвердить',
   'view' => 'View Post',
+  'posts_deleted_from_social_platforms' => 'Удаление избранных постов с социальных платформ',
+  'does_not_support_deleting' => ':provider не поддерживает удаление :types',
+  'confirmation_delete_posts_from' => 'Откуда вы хотите удалить это сообщение?|Где вы хотите удалить выбранные сообщения?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Только из приложения',
+    'app_and_social' => 'Из приложений и социальных платформ',
+    'social_only' => 'Только с социальных платформ',
+  ],
+  'post_deleted_from_social_platforms' => 'Посты удалены с социальных платформ',
 ];

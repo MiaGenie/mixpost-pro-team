@@ -330,7 +330,8 @@
         "generate_new": "Generate new",
         "search_jump": "Search or jump to",
         "replace": "Replace",
-        "retry": "Retry"
+        "retry": "Retry",
+        "general": "General"
     },
     "hashtag": {
         "hashtag_name": "Hashtag Group Name",
@@ -378,7 +379,27 @@
         "change_video_thumb": "Change video thumbnail",
         "view_video_thumb": "View video thumbnail",
         "video_thumb": "Video thumbnail",
-        "video_thumb_providers": "The video thumbnail is available across: {providers}."
+        "video_thumb_providers": "The video thumbnail is available across: {providers}.",
+        "custom_size": "Custom size",
+        "width": "Width",
+        "height": "Height",
+        "unit": "Unit",
+        "px": "pixels",
+        "inch": "inches",
+        "mm": "millimeters",
+        "create_design": "Create design",
+        "edit_adobe_express": "Edit in Adobe Express",
+        "new_design": "New design",
+        "saved": "Media saved successfully.",
+        "fb_post": "Facebook post",
+        "fb_story": "Facebook story",
+        "ig_portrait_post": "Instagram portrait post",
+        "ig_square_post": "Instagram square post",
+        "ig_story": "Instagram story",
+        "linkedin_post": "LinkedIn post",
+        "x_post": "X post",
+        "pinterest_post": "Pinterest post",
+        "media": "Media"
     },
     "page": {
         "pages": "Pages",
@@ -444,7 +465,7 @@
         "accounts": "Accounts",
         "author": "Author",
         "no_posts_found": "No posts found.",
-        "delete_posts": "Delete posts",
+        "delete_posts": "Delete posts|Delete posts",
         "your_post": "Your post",
         "confirmation_delete_post": "Are you sure you want to delete selected posts?",
         "posts_history_not_edited": "Posts in history cannot be edited.",
@@ -506,7 +527,16 @@
         "approval_required": "Post must be approved before it can be published.",
         "needs_approval": "Needs approval",
         "approve": "Approve",
-        "view": "View Post"
+        "view": "View Post",
+        "posts_deleted_from_social_platforms": "Selected posts deleted from social platforms",
+        "does_not_support_deleting": "{provider} doesn't support deleting {types}",
+        "confirmation_delete_posts_from": "Where do you want to delete this post from?|Where do you want to delete selected posts from?",
+        "delete_post_from": {
+            "app_only": "From application only",
+            "app_and_social": "From application and social platforms",
+            "social_only": "From social platforms only"
+        },
+        "post_deleted_from_social_platforms": "Post deleted from social platforms"
     },
     "post_activity": {
         "activity": "Activity",
@@ -534,7 +564,8 @@
         "watch": "Watch",
         "notify_all_activity": "Notify me on all activity for this task.",
         "unwatch": "Unwatch",
-        "notify_mentions_only": "Notify me only on mentions."
+        "notify_mentions_only": "Notify me only on mentions.",
+        "post_deleted_from_social_platforms": "Post deleted from social platforms"
     },
     "posting_schedule": {
         "everyday": "Everyday",
@@ -661,7 +692,10 @@
                 "number_website_clicks": "Total number of taps on the website link in the profile",
                 "website_clicks": "Website clicks"
             },
-            "select_video_image": "Select a video or image for this Instagram account."
+            "select_video_image": "Select a video or image for this Instagram account.",
+            "post": "Post",
+            "reel": "Reel",
+            "story": "Story"
         },
         "linkedin": {
             "connect_page": "Connect a new LinkedIn page",
@@ -776,7 +810,47 @@
             "connect_profile": "Connect a new Bluesky profile",
             "service": "Service",
             "server_address": "Server Address"
-        }
+        },
+        "gbp": {
+            "post": "Post",
+            "offer": "Offer",
+            "event": "Event",
+            "event_title": "Event Title",
+            "add_time": "Add time",
+            "offer_title": "Offer Title",
+            "start_date": "Start Date",
+            "end_date": "End Date",
+            "button": "Button",
+            "none": "None",
+            "book": "Book",
+            "order_online": "Order online",
+            "buy": "Buy",
+            "learn_more": "Learn more",
+            "sign_up": "Sign Up",
+            "button_link": "Button link",
+            "add_more_details": "Add more details",
+            "coupon_code": "Coupon Code",
+            "offer_link": "Offer Link",
+            "tos": "Terms & Conditions",
+            "start_time": "Start Time",
+            "end_time": "End Time",
+            "call_now": "Call now",
+            "redeem_online": "Redeem online",
+            "show_code": "Show this code at the shop",
+            "offer_valid": "Valid {start_date} - {end_date}",
+            "connect_profile": "Connect a new Google Business Profile account"
+        },
+        "stock_photo": {
+            "search": "Search {source}",
+            "can_use_external_photos": "With {provider} you can use external stock photos directly in Mixpost."
+        },
+        "facebook_page": {
+            "post": "Post",
+            "reel": "Reel",
+            "story": "Story"
+        },
+        "story": "Story",
+        "generate_api_key": "Generate API Key"
     },
     "system": {
         "system": "System",
@@ -879,6 +953,10 @@
         "upload_favicon": "Upload favicon",
         "theme_color": "Theme color",
         "rebrand_company": "Rebrand your company"
+    },
+    "url_shortener": {
+        "on": "URL shortening: On",
+        "off": "URL shortening: Off"
     },
     "user": {
         "create_user": "Create user",

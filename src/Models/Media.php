@@ -32,6 +32,7 @@ class Media extends Model
         'path',
         'data',
         'data->alt_text',
+        'data->adobe_express_doc_id',
         'size',
         'size_total',
         'conversions'
@@ -61,6 +62,14 @@ class Media extends Model
     {
         return Attribute::make(
             get: fn(mixed $value, array $attributes) => json_decode($attributes['data'], true)['alt_text'] ?? null,
+        );
+    }
+
+
+    protected function adobeExpressDocId(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => json_decode($attributes['data'], true)['adobe_express_doc_id'] ?? null,
         );
     }
 

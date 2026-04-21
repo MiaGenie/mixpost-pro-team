@@ -139,4 +139,9 @@ class MetaProvider extends SocialProvider
             default => $key,
         };
     }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return false;
+    }
 }

@@ -11,6 +11,11 @@ import UnsplashIcon from "@/Icons/Unsplash.vue";
 import ProviderIcon from "../../../Components/Account/ProviderIcon.vue";
 import OpenAI from "../../../Icons/OpenAI.vue";
 import Tenor from "../../../Icons/Tenor.vue";
+import Bitly from "@/Icons/Bitly.vue";
+import Yourls from "@/Icons/Yourls.vue";
+import Shlink from "@/Icons/Shlink.vue";
+import AdobeExpress from "@/Icons/AdobeExpress.vue";
+import PexelsIcon from "@/Icons/Pexels.vue";
 
 const FacebookServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/FacebookServiceForm.vue"));
 const ThreadsServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/ThreadsServiceForm.vue"));
@@ -23,6 +28,11 @@ const TwitterServiceForm = defineAsyncComponent(() => import("@/Components/Servi
 const UnsplashServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/UnsplashServiceForm.vue"));
 const TenorServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/TenorServiceForm.vue"));
 const OpenAIServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/OpenAIServiceForm.vue"));
+const BitlyServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/BitlyServiceForm.vue"));
+const YourlsServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/YourlsServiceForm.vue"));
+const ShlinkServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/ShlinkServiceForm.vue"));
+const AdobeExpressServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/AdobeExpressServiceForm.vue"));
+const PexelsServiceForm = defineAsyncComponent(() => import("@/Components/ServiceForm/PexelsServiceForm.vue"));
 
 defineOptions({layout: AdminLayout});
 
@@ -112,6 +122,13 @@ const tab = ref('facebook');
                     Unsplash
                 </Tab>
 
+                <Tab @click="tab = 'pexels'" :active="tab === 'pexels'">
+                    <template #icon>
+                        <PexelsIcon/>
+                    </template>
+                    Pexels
+                </Tab>
+
                 <Tab @click="tab = 'tenor'" :active="tab === 'tenor'">
                     <template #icon>
                         <Tenor/>
@@ -119,11 +136,39 @@ const tab = ref('facebook');
                     Tenor
                 </Tab>
 
+                <Tab @click="tab = 'adobe_express'" :active="tab === 'adobe_express'">
+                    <template #icon>
+                        <AdobeExpress/>
+                    </template>
+                    Adobe Express
+                </Tab>
+
                 <Tab @click="tab = 'openai'" :active="tab === 'openai'">
                     <template #icon>
                         <OpenAI class="text-openai"/>
                     </template>
                     OpenAI
+                </Tab>
+
+                <Tab @click="tab = 'bitly'" :active="tab === 'bitly'">
+                    <template #icon>
+                        <Bitly />
+                    </template>
+                    Bitly
+                </Tab>
+
+                <Tab @click="tab = 'yourls'" :active="tab === 'yourls'">
+                    <template #icon>
+                        <Yourls />
+                    </template>
+                    Yourls
+                </Tab>
+
+                <Tab @click="tab = 'shlink'" :active="tab === 'shlink'">
+                    <template #icon>
+                        <Shlink />
+                    </template>
+                    Shlink
                 </Tab>
             </Tabs>
         </div>
@@ -165,12 +210,32 @@ const tab = ref('facebook');
                 <UnsplashServiceForm :form="form.unsplash"/>
             </template>
 
+            <template v-if="tab === 'pexels'">
+                <PexelsServiceForm :form="form.pexels"/>
+            </template>
+
             <template v-if="tab === 'tenor'">
                 <TenorServiceForm :form="form.tenor"/>
             </template>
 
+            <template v-if="tab === 'adobe_express'">
+                <AdobeExpressServiceForm :form="form.adobe_express"/>
+            </template>
+
             <template v-if="tab === 'openai'">
                 <OpenAIServiceForm :form="form.openai"/>
+            </template>
+
+            <template v-if="tab === 'bitly'">
+                <BitlyServiceForm :form="form.bitly"/>
+            </template>
+
+            <template v-if="tab === 'yourls'">
+                <YourlsServiceForm :form="form.yourls"/>
+            </template>
+
+            <template v-if="tab === 'shlink'">
+                <ShlinkServiceForm :form="form.shlink"/>
             </template>
         </div>
     </div>

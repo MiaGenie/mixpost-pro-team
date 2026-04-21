@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <InstagramIcon class="text-instagram"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">Instagram</span>
+            <span class="font-medium">Instagram</span>
             <span>{{ $t("service.instagram.connect_account") }}</span>
         </span>
     </Link>

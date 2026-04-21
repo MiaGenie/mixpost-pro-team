@@ -81,7 +81,7 @@ const {enterpriseConsole} = useEnterpriseConsole()
                     </template>
                     {{ $t('service.services') }}
                 </MenuItem>
-                <MenuItem :url="route('mixpost.configs.theme.form')"
+                <MenuItem :url="route('mixpost.configs.general.form')"
                           :active="$page.component === 'Admin/Configs/ThemeConfig'">
                     <template #icon>
                         <Cog/>

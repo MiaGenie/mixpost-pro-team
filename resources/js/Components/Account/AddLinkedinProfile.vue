@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <ProviderIcon provider="linkedin"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">LinkedIn Profile</span>
+            <span class="font-medium">LinkedIn Profile</span>
             <span>{{ $t("service.linkedin.connect_profile") }}</span>
         </span>
     </Link>

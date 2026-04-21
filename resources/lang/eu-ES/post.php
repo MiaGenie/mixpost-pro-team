@@ -15,7 +15,7 @@ return [
   'accounts' => 'Kontuak',
   'author' => 'Egilea',
   'no_posts_found' => 'Ez da mezurik aurkitu.',
-  'delete_posts' => 'Ezabatu argitalpenak',
+  'delete_posts' => 'Ezabatu mezuak',
   'your_post' => 'Zure mezua',
   'confirmation_delete_post' => 'Ziur hautatutako argitalpenak ezabatu nahi dituzula?',
   'posts_history_not_edited' => 'Historiako argitalpenak ezin dira editatu.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Onarpena behar du',
   'approve' => 'Onartu',
   'view' => 'Ikusi mezua',
+  'posts_deleted_from_social_platforms' => 'Hautatutako mezuak sare sozialetatik ezabatu dira',
+  'does_not_support_deleting' => ':provider-k ez du onartzen :types ezabatzea',
+  'confirmation_delete_posts_from' => 'Nondik ezabatu nahi duzu mezu hau?|Nondik ezabatu nahi dituzu hautatutako mezuak?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Aplikaziotik soilik',
+    'app_and_social' => 'Aplikazioetatik eta sare sozialetako plataformetatik',
+    'social_only' => 'Plataforma sozialetatik bakarrik',
+  ],
+  'post_deleted_from_social_platforms' => 'Mezua sare sozialetatik ezabatuta',
 ];

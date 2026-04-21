@@ -2,7 +2,6 @@
 import {inject} from "vue";
 import {Head, useForm} from "@inertiajs/vue3";
 import {cloneDeep} from "lodash";
-import useNotifications from "../../../Composables/useNotifications";
 import useEnterpriseConsole from "../../../Composables/useEnterpriseConsole";
 import AdminLayout from "@/Layouts/Admin.vue";
 import Panel from "../../../Components/Surface/Panel.vue";
@@ -13,7 +12,6 @@ import Error from "../../../Components/Form/Error.vue";
 import HorizontalGroup from "../../../Components/Layout/HorizontalGroup.vue";
 import DangerButton from "../../../Components/Button/DangerButton.vue";
 import X from "../../../Icons/X.vue";
-import Alert from "../../../Components/Util/Alert.vue";
 import Settings from "../../../Layouts/Child/Settings.vue";
 
 defineOptions({layout: AdminLayout});
@@ -28,8 +26,6 @@ const props = defineProps({
 });
 
 const form = useForm(cloneDeep(props.configs));
-
-const {notify} = useNotifications();
 
 const save = () => {
     form.put(route(`${routePrefix}.configs.theme.update`));

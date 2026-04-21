@@ -75,4 +75,9 @@ class TikTokProvider extends SocialProvider
             default => $key
         };
     }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return false;
+    }
 }

@@ -7,4 +7,5 @@ return [
   ],
   'file_required' => 'Súbor je potrebný',
   'file_max_size' => 'Hodnota :type nesmie byť väčšia ako :max MB',
+  'domain_url_invalid' => 'Adresa URL domény musí byť platný názov domény, napríklad https://example.com.',
 ];

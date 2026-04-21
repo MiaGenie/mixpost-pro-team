@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Notifica\'m sobre totes les activitats d\'aquesta tasca.',
   'unwatch' => 'Deixa de mirar',
   'notify_mentions_only' => 'Aviseu-me només en mencions.',
+  'post_deleted_from_social_platforms' => 'Publicació eliminada de les plataformes socials',
 ];

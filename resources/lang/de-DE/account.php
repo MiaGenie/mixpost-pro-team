@@ -1,10 +1,10 @@
 <?php
 
 return [
-  'accounts' => 'Soziale Konten',
+  'accounts' => 'Social-Media-Konten',
   'account_updated' => 'Das Konto wurde aktualisiert',
   'account_reauthenticate' => 'Das Konto kann nicht aktualisiert werden. Authentifiziere dein Konto erneut.',
-  'connect_social_account' => 'Verbinde ein soziales Konto, das du verwalten möchtest.',
+  'connect_social_account' => 'Verbinde ein Social-Media-Konto, das du verwalten möchtest.',
   'account_deleted' => 'Konto gelöscht',
   'add_account' => 'Konto hinzufügen | Konten hinzufügen',
   'edit_suffix' => 'Suffix bearbeiten',
@@ -19,9 +19,9 @@ return [
   'account_entities' => 'Konto Entitäten',
   'select_the_social_entities' => 'Wähle die Konten aus, die du verbinden möchtest',
   'connected' => 'Verbunden',
-  'access_token_expired' => 'Das Zugangstoken ist abgelaufen. Verbinde dein Konto neu.',
+  'access_token_expired' => 'Der Zugangs-Token ist abgelaufen. Bitte verbinde dein Konto erneut.',
   'unauthorized' => 'Kein Zugriff',
-  'add_social_account' => 'Wenn du kein soziales Konto hast, füge bitte mindestens eines hinzu.',
+  'add_social_account' => 'Du hast noch kein Social-Media-Konto verknüpft. Bitte füge mindestens eines hinzu.',
   'backend' => 
   [
     'notification' => 

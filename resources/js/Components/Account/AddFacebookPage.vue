@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <FacebookIcon class="text-facebook"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">Facebook Page</span>
+            <span class="font-medium">Facebook Page</span>
             <span>{{ $t("service.facebook.connect_page") }}</span>
         </span>
     </Link>

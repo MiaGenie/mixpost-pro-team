@@ -15,7 +15,7 @@ return [
   'accounts' => 'Cuentas',
   'author' => 'Autor',
   'no_posts_found' => 'No se han encontrado publicaciones.',
-  'delete_posts' => 'Borrar publicaciones',
+  'delete_posts' => 'Borrar mensajes|Borrar mensajes',
   'your_post' => 'Tu publicación',
   'confirmation_delete_post' => '¿Estás seguro de que deseas eliminar las publicaciones seleccionadas?',
   'posts_history_not_edited' => 'Las publicaciones en el historial no se pueden editar.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Necesita aprobación',
   'approve' => 'Aprobar',
   'view' => 'Ver el post',
+  'posts_deleted_from_social_platforms' => 'Publicaciones seleccionadas eliminadas de las plataformas sociales',
+  'does_not_support_deleting' => ':provider no permite borrar :types',
+  'confirmation_delete_posts_from' => '¿De dónde quieres borrar este mensaje? ¿De dónde quieres borrar los mensajes seleccionados?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Sólo desde la aplicación',
+    'app_and_social' => 'Desde aplicaciones y plataformas sociales',
+    'social_only' => 'Sólo desde plataformas sociales',
+  ],
+  'post_deleted_from_social_platforms' => 'Publicación eliminada de las plataformas sociales',
 ];

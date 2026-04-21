@@ -15,7 +15,7 @@ return [
   'accounts' => 'Účty',
   'author' => 'Autor',
   'no_posts_found' => 'Nebyly nalezeny žádné příspěvky.',
-  'delete_posts' => 'Smazat příspěvky',
+  'delete_posts' => 'Smazat příspěvky|Smazat příspěvky',
   'your_post' => 'Váš příspěvek',
   'confirmation_delete_post' => 'Opravdu chcete smazat vybrané příspěvky?',
   'posts_history_not_edited' => 'Příspěvky v historii nelze upravovat.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Potřebuje schválení',
   'approve' => 'Schválit',
   'view' => 'Zobrazit příspěvek',
+  'posts_deleted_from_social_platforms' => 'Vybrané příspěvky odstraněné ze sociálních platforem',
+  'does_not_support_deleting' => ':provider nepodporuje mazání :types',
+  'confirmation_delete_posts_from' => 'Odkud chcete odstranit tento příspěvek?|Kde chcete odstranit vybrané příspěvky?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Pouze z aplikace',
+    'app_and_social' => 'Z aplikací a sociálních platforem',
+    'social_only' => 'Pouze ze sociálních platforem',
+  ],
+  'post_deleted_from_social_platforms' => 'Smazání příspěvku ze sociálních platforem',
 ];

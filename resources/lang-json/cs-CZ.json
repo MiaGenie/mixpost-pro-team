@@ -330,7 +330,8 @@
         "generate_new": "Vygenerovat nové",
         "search_jump": "Vyhledat nebo přejít na",
         "replace": "Nahradit",
-        "retry": "Opakovat"
+        "retry": "Opakovat",
+        "general": "Obecné"
     },
     "hashtag": {
         "hashtag_name": "Název skupiny hashtagů",
@@ -381,7 +382,27 @@
         "change_video_thumb": "Změna miniatury videa",
         "view_video_thumb": "Zobrazit miniaturu videa",
         "video_thumb": "Miniatura videa",
-        "video_thumb_providers": "Miniatura videa je k dispozici napříč: {providers}."
+        "video_thumb_providers": "Miniatura videa je k dispozici napříč: {providers}.",
+        "custom_size": "Vlastní velikost",
+        "width": "Šířka",
+        "height": "Výška",
+        "unit": "Jednotka",
+        "px": "pixely",
+        "inch": "palce",
+        "mm": "milimetry",
+        "create_design": "Vytvořit design",
+        "edit_adobe_express": "Úpravy v aplikaci Adobe Express",
+        "new_design": "Nový design",
+        "saved": "Média byla úspěšně uložena.",
+        "fb_post": "Příspěvek na Facebooku",
+        "fb_story": "Příběh na Facebooku",
+        "ig_portrait_post": "Portrétní příspěvek na Instagramu",
+        "ig_square_post": "Čtvercový příspěvek na Instagramu",
+        "ig_story": "Příběh na Instagramu",
+        "linkedin_post": "Příspěvek na LinkedIn",
+        "x_post": "X příspěvek",
+        "pinterest_post": "Příspěvek na Pinterestu",
+        "media": "Média"
     },
     "page": {
         "pages": "Stránky",
@@ -447,7 +468,7 @@
         "accounts": "Účty",
         "author": "Autor",
         "no_posts_found": "Nebyly nalezeny žádné příspěvky.",
-        "delete_posts": "Smazat příspěvky",
+        "delete_posts": "Smazat příspěvky|Smazat příspěvky",
         "your_post": "Váš příspěvek",
         "confirmation_delete_post": "Opravdu chcete smazat vybrané příspěvky?",
         "posts_history_not_edited": "Příspěvky v historii nelze upravovat.",
@@ -509,7 +530,16 @@
         "approval_required": "Příspěvek musí být před zveřejněním schválen.",
         "needs_approval": "Potřebuje schválení",
         "approve": "Schválit",
-        "view": "Zobrazit příspěvek"
+        "view": "Zobrazit příspěvek",
+        "posts_deleted_from_social_platforms": "Vybrané příspěvky odstraněné ze sociálních platforem",
+        "does_not_support_deleting": "{provider} nepodporuje mazání {types}",
+        "confirmation_delete_posts_from": "Odkud chcete odstranit tento příspěvek?|Kde chcete odstranit vybrané příspěvky?",
+        "delete_post_from": {
+            "app_only": "Pouze z aplikace",
+            "app_and_social": "Z aplikací a sociálních platforem",
+            "social_only": "Pouze ze sociálních platforem"
+        },
+        "post_deleted_from_social_platforms": "Smazání příspěvku ze sociálních platforem"
     },
     "post_activity": {
         "activity": "Aktivita",
@@ -537,7 +567,8 @@
         "watch": "Sledujte",
         "notify_all_activity": "Informujte mě o všech aktivitách týkajících se tohoto úkolu.",
         "unwatch": "Zrušit sledování",
-        "notify_mentions_only": "Upozorněte mě pouze na zmínky."
+        "notify_mentions_only": "Upozorněte mě pouze na zmínky.",
+        "post_deleted_from_social_platforms": "Smazání příspěvku ze sociálních platforem"
     },
     "posting_schedule": {
         "everyday": "Každý den",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "Celkový počet klepnutí na odkaz na webové stránky ve vašem profilu",
                 "website_clicks": "Kliknutí na webové stránky"
             },
-            "select_video_image": "Vyberte video nebo obrázek pro tento účet Instagram."
+            "select_video_image": "Vyberte video nebo obrázek pro tento účet Instagram.",
+            "post": "Příspěvek",
+            "reel": "Reel",
+            "story": "Story"
         },
         "linkedin": {
             "connect_page": "Připojení nové stránky LinkedIn",
@@ -779,7 +813,47 @@
             "connect_profile": "Připojení nového profilu Bluesky",
             "service": "Služba",
             "server_address": "Adresa serveru"
-        }
+        },
+        "gbp": {
+            "post": "Příspěvek",
+            "offer": "Nabídka",
+            "event": "Událost",
+            "event_title": "Název události",
+            "add_time": "Přidat čas",
+            "offer_title": "Název nabídky",
+            "start_date": "Datum zahájení",
+            "end_date": "Datum ukončení",
+            "button": "Tlačítko",
+            "none": "Žádné",
+            "book": "Kniha",
+            "order_online": "Objednat online",
+            "buy": "Koupit",
+            "learn_more": "Zjistěte více",
+            "sign_up": "Zaregistrujte se",
+            "button_link": "Odkaz na tlačítko",
+            "add_more_details": "Přidat další podrobnosti",
+            "coupon_code": "Kód kupónu",
+            "offer_link": "Odkaz na nabídku",
+            "tos": "Podmínky a pravidla",
+            "start_time": "Čas zahájení",
+            "end_time": "Čas konce",
+            "call_now": "Zavolejte nyní",
+            "redeem_online": "Uplatnit online",
+            "show_code": "Ukažte tento kód v obchodě",
+            "offer_valid": "Platí {start_date} - {end_date}",
+            "connect_profile": "Připojení nového firemního profilu Google"
+        },
+        "stock_photo": {
+            "search": "Hledání {source}",
+            "can_use_external_photos": "Pomocí {provider} můžete používat externí fotografie přímo v aplikaci Mixpost."
+        },
+        "facebook_page": {
+            "post": "Příspěvek",
+            "reel": "Reel",
+            "story": "Story"
+        },
+        "story": "Story",
+        "generate_api_key": "Generování klíče API"
     },
     "system": {
         "system": "Systém",
@@ -882,6 +956,10 @@
         "upload_favicon": "Nahrát favicon",
         "theme_color": "Barva tématu",
         "rebrand_company": "Změna brandu vaší společnosti"
+    },
+    "url_shortener": {
+        "on": "Zkrácení adresy URL: Na",
+        "off": "Zkrácení adresy URL: Vypnuto"
     },
     "user": {
         "create_user": "Vytvořit uživatele",

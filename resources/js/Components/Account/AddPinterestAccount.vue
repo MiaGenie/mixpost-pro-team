@@ -15,7 +15,7 @@ const workspaceCtx = inject('workspaceCtx');
             <PinterestIcon class="text-pinterest"/>
         </span>
         <span class="flex flex-col items-start">
-            <span class="font-semibold">Pinterest</span>
+            <span class="font-medium">Pinterest</span>
             <span>{{ $t("service.pinterest.connect_profile") }}</span>
         </span>
     </Link>

@@ -6,6 +6,7 @@ import FacebookIcon from "@/Icons/Facebook.vue";
 import InstagramIcon from "@/Icons/Instagram.vue";
 import MastodonIcon from "@/Icons/Mastodon.vue";
 import YoutubeIcon from "@/Icons/Youtube.vue";
+import GBPIcon from "@/Icons/GBP.vue";
 import PinterestIcon from "@/Icons/Pinterest.vue";
 import LinkedinIcon from "@/Icons/Linkedin.vue";
 import TikTokIcon from "@/Icons/TikTok.vue";
@@ -28,6 +29,7 @@ const providers = {
     'threads': Threads,
     'mastodon': MastodonIcon,
     'youtube': YoutubeIcon,
+    'gbp': GBPIcon,
     'pinterest': PinterestIcon,
     'linkedin': LinkedinIcon,
     'linkedin_page': LinkedinIcon,

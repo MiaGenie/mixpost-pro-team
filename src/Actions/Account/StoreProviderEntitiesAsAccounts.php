@@ -125,6 +125,32 @@ class StoreProviderEntitiesAsAccounts
         }
     }
 
+    private function storeGBPs(array $items): void
+    {
+        $provider = SocialProviderManager::connect('gbp');
+
+        /**
+         * Get entities with an access token
+         *
+         * @var SocialProviderResponse $entities
+         */
+        $entities = $provider->getEntities();
+
+        $entities = Arr::where($entities->context(), function ($entity) use ($items) {
+            return in_array($entity['id'], $items);
+        });
+
+        $accessToken = $provider->getAccessToken();
+
+        foreach ($entities as $account) {
+            (new UpdateOrCreateAccount())(
+                providerName: 'gbp',
+                account: $account,
+                accessToken: $accessToken
+            );
+        }
+    }
+
     private function storeLinkedinPages(array $items): void
     {
         $provider = SocialProviderManager::connect('linkedin_page');

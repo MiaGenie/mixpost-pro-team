@@ -85,4 +85,5 @@ return [
   'search_jump' => 'Căutare sau salt la',
   'replace' => 'Înlocuiți',
   'retry' => 'Reîncercare',
+  'general' => 'Generalități',
 ];

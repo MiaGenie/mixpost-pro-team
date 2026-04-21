@@ -15,7 +15,7 @@ return [
   'accounts' => 'Conturi',
   'author' => 'Autor',
   'no_posts_found' => 'Nu s-au găsit posturi.',
-  'delete_posts' => 'Ștergeți posturile',
+  'delete_posts' => 'Ștergeți postările|Ștergeți postările',
   'your_post' => 'Postul tau',
   'confirmation_delete_post' => 'Sunteți sigur că doriți să ștergeți mesajele selectate?',
   'posts_history_not_edited' => 'Postările din istorie nu pot fi editate.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Necesită aprobare',
   'approve' => 'Aprobă',
   'view' => 'Vezi mesajele',
+  'posts_deleted_from_social_platforms' => 'Postări selectate șterse de pe platformele sociale',
+  'does_not_support_deleting' => ':provider nu acceptă ștergerea :types',
+  'confirmation_delete_posts_from' => 'De unde doriți să ștergeți această postare?|De unde doriți să ștergeți postările selectate?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'Numai din aplicație',
+    'app_and_social' => 'Din aplicații și platforme sociale',
+    'social_only' => 'Numai de pe platformele sociale',
+  ],
+  'post_deleted_from_social_platforms' => 'Mesaj șters de pe platformele sociale',
 ];

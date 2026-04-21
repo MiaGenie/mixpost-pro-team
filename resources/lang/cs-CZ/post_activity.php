@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Informujte mě o všech aktivitách týkajících se tohoto úkolu.',
   'unwatch' => 'Zrušit sledování',
   'notify_mentions_only' => 'Upozorněte mě pouze na zmínky.',
+  'post_deleted_from_social_platforms' => 'Smazání příspěvku ze sociálních platforem',
 ];

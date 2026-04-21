@@ -330,7 +330,8 @@
         "generate_new": "Générer à nouveau",
         "search_jump": "Rechercher ou aller à",
         "replace": "Remplacer",
-        "retry": "Réessayer"
+        "retry": "Réessayer",
+        "general": "Général"
     },
     "hashtag": {
         "hashtag_name": "Nom du groupe de Hashtags",
@@ -381,7 +382,27 @@
         "change_video_thumb": "Modifier la vignette de la vidéo",
         "view_video_thumb": "Voir la vignette de la vidéo",
         "video_thumb": "Miniature de la vidéo",
-        "video_thumb_providers": "La vignette vidéo est disponible à travers : {providers}."
+        "video_thumb_providers": "La vignette vidéo est disponible à travers : {providers}.",
+        "custom_size": "Taille personnalisée",
+        "width": "Largeur",
+        "height": "Hauteur",
+        "unit": "Unité",
+        "px": "pixels",
+        "inch": "pouces",
+        "mm": "millimètres",
+        "create_design": "Créer un design",
+        "edit_adobe_express": "Modifier dans Adobe Express",
+        "new_design": "Nouvelle conception",
+        "saved": "Le média a été enregistré avec succès.",
+        "fb_post": "Message sur Facebook",
+        "fb_story": "L'histoire de Facebook",
+        "ig_portrait_post": "Portrait Instagram",
+        "ig_square_post": "Postes carrés sur Instagram",
+        "ig_story": "L'histoire d'Instagram",
+        "linkedin_post": "Article sur LinkedIn",
+        "x_post": "X post",
+        "pinterest_post": "Postes sur Pinterest",
+        "media": "Médias"
     },
     "page": {
         "pages": "Pages",
@@ -447,7 +468,7 @@
         "accounts": "Comptes",
         "author": "Auteur",
         "no_posts_found": "Aucune publication n'a été trouvée.",
-        "delete_posts": "Supprimer les publications",
+        "delete_posts": "Supprimer les messages|Supprimer les messages",
         "your_post": "Votre publication",
         "confirmation_delete_post": "Êtes-vous sûr(e) de vouloir supprimer les publications sélectionnées ?",
         "posts_history_not_edited": "Les publications dans l'historique ne peuvent pas être modifiées.",
@@ -509,7 +530,16 @@
         "approval_required": "La publication doit être approuvée avant d'être publiée.",
         "needs_approval": "Doit être approuvé",
         "approve": "Approuver",
-        "view": "Voir la publication"
+        "view": "Voir la publication",
+        "posts_deleted_from_social_platforms": "Les messages sélectionnés sont supprimés des plates-formes sociales",
+        "does_not_support_deleting": "{provider} ne permet pas de supprimer {types}",
+        "confirmation_delete_posts_from": "Où voulez-vous supprimer ce message ? Où voulez-vous supprimer les messages sélectionnés ?",
+        "delete_post_from": {
+            "app_only": "A partir de la demande uniquement",
+            "app_and_social": "À partir d'applications et de plateformes sociales",
+            "social_only": "Uniquement à partir de plateformes sociales"
+        },
+        "post_deleted_from_social_platforms": "Publication supprimée des plateformes sociales"
     },
     "post_activity": {
         "activity": "Activité",
@@ -537,7 +567,8 @@
         "watch": "Surveiller",
         "notify_all_activity": "Me notifier de toute activité pour cette tâche.",
         "unwatch": "Ne plus surveiller",
-        "notify_mentions_only": "Ne m'informez que sur les mentions."
+        "notify_mentions_only": "Ne m'informez que sur les mentions.",
+        "post_deleted_from_social_platforms": "Publication supprimée des plateformes sociales"
     },
     "posting_schedule": {
         "everyday": "Tous les jours",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "Nombre total de clics sur le lien du site web dans le profil",
                 "website_clicks": "Clics sur le site web"
             },
-            "select_video_image": "Sélectionnez une vidéo ou une image pour ce compte Instagram."
+            "select_video_image": "Sélectionnez une vidéo ou une image pour ce compte Instagram.",
+            "post": "Publication",
+            "reel": "Reel",
+            "story": "Story"
         },
         "linkedin": {
             "connect_page": "Connecter une nouvelle page LinkedIn",
@@ -779,7 +813,47 @@
             "connect_profile": "Connecter un nouveau profil Bluesky",
             "service": "Service",
             "server_address": "Adresse du serveur"
-        }
+        },
+        "gbp": {
+            "post": "Publication",
+            "offer": "Offre",
+            "event": "Événement",
+            "event_title": "Titre de l'événement",
+            "add_time": "Ajouter du temps",
+            "offer_title": "Titre de l'offre",
+            "start_date": "Date de début",
+            "end_date": "Date de fin",
+            "button": "Bouton",
+            "none": "Aucun",
+            "book": "Livre",
+            "order_online": "Commander en ligne",
+            "buy": "Acheter",
+            "learn_more": "En savoir plus",
+            "sign_up": "S'inscrire",
+            "button_link": "Lien vers le bouton",
+            "add_more_details": "Plus de détails",
+            "coupon_code": "Code des coupons",
+            "offer_link": "Lien de l'offre",
+            "tos": "Conditions générales d'utilisation",
+            "start_time": "Heure de début",
+            "end_time": "L'heure de la fin",
+            "call_now": "Appeler maintenant",
+            "redeem_online": "Remboursement en ligne",
+            "show_code": "Afficher ce code dans la boutique",
+            "offer_valid": "Valable {start_date} - {end_date}",
+            "connect_profile": "Connecter un nouveau compte Google Business Profile"
+        },
+        "stock_photo": {
+            "search": "Recherche {source}",
+            "can_use_external_photos": "Avec {provider}, vous pouvez utiliser des photos externes directement dans Mixpost."
+        },
+        "facebook_page": {
+            "post": "Publication",
+            "reel": "Reel",
+            "story": "Story"
+        },
+        "story": "Story",
+        "generate_api_key": "Générer une clé API"
     },
     "system": {
         "system": "Système",
@@ -882,6 +956,10 @@
         "upload_favicon": "Télécharger la favicon",
         "theme_color": "Couleur du thème",
         "rebrand_company": "Modifier l'image de votre entreprise"
+    },
+    "url_shortener": {
+        "on": "Raccourcissement d'URL : Sur",
+        "off": "Raccourcissement d'URL : Désactivé"
     },
     "user": {
         "create_user": "Créer un utilisateur",

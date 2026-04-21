@@ -10,7 +10,7 @@ import ExclamationCircle from "../../Icons/ExclamationCircle.vue";
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
 import '@css/overrideFlatPickr.css'
-import {captureTimeValueTo24} from "../../Util/FlatPickr";
+import {captureTimeValueTo24} from "@/Util/FlatPickr.js";
 
 const props = defineProps(['modelValue']);
 

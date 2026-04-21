@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Jakinaraz iezadazu zeregin honetako jarduera guztien berri.',
   'unwatch' => 'Desikusi',
   'notify_mentions_only' => 'Jakinarazi aipamenetan soilik.',
+  'post_deleted_from_social_platforms' => 'Mezua sare sozialetatik ezabatuta',
 ];

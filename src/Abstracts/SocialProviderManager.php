@@ -2,6 +2,7 @@
 
 namespace Inovector\Mixpost\Abstracts;
 
+use Illuminate\Support\Arr;
 use Inovector\Mixpost\Contracts\SocialProvider;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Str;
@@ -51,5 +52,12 @@ abstract class SocialProviderManager
         }
 
         return $connection;
+    }
+
+    public function supportPostDeletion():array
+    {
+        return Arr::map($this->providers(), function ($provider) {
+            return $provider::supportPostDeletion();
+        });
     }
 }

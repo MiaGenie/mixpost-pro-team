@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Website clicks',
     ],
     'select_video_image' => 'Select a video or image for this Instagram account.',
+    'post' => 'Post',
+    'reel' => 'Reel',
+    'story' => 'Story',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Service',
     'server_address' => 'Server Address',
   ],
+  'gbp' => 
+  [
+    'post' => 'Post',
+    'offer' => 'Offer',
+    'event' => 'Event',
+    'event_title' => 'Event Title',
+    'add_time' => 'Add time',
+    'offer_title' => 'Offer Title',
+    'start_date' => 'Start Date',
+    'end_date' => 'End Date',
+    'button' => 'Button',
+    'none' => 'None',
+    'book' => 'Book',
+    'order_online' => 'Order online',
+    'buy' => 'Buy',
+    'learn_more' => 'Learn more',
+    'sign_up' => 'Sign Up',
+    'button_link' => 'Button link',
+    'add_more_details' => 'Add more details',
+    'coupon_code' => 'Coupon Code',
+    'offer_link' => 'Offer Link',
+    'tos' => 'Terms & Conditions',
+    'start_time' => 'Start Time',
+    'end_time' => 'End Time',
+    'call_now' => 'Call now',
+    'redeem_online' => 'Redeem online',
+    'show_code' => 'Show this code at the shop',
+    'offer_valid' => 'Valid :start_date - :end_date',
+    'connect_profile' => 'Connect a new Google Business Profile account',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Search :source',
+    'can_use_external_photos' => 'With :provider you can use external stock photos directly in Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Post',
+    'reel' => 'Reel',
+    'story' => 'Story',
+  ],
+  'story' => 'Story',
+  'generate_api_key' => 'Generate API Key',
 ];

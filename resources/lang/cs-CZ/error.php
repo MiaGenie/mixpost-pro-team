@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Neplatný požadavek. Chybí parametr kódu.',
+    'missing_callback_response' => 'Chybějící odpověď na zpětné volání.',
   ],
   'invalid_grant' => 'Neplatné pověření nebo vypršení platnosti autorizace.',
 ];

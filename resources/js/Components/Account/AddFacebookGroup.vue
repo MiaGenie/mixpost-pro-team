@@ -23,7 +23,7 @@ const {user} = useAuth();
             <FacebookIcon class="text-facebook"/>
         </span>
             <span class="flex flex-col items-start">
-            <span class="font-semibold">Facebook Group <template v-if="metaAppVersion === 'v19.0'"><Badge
+            <span class="font-medium">Facebook Group <template v-if="metaAppVersion === 'v19.0'"><Badge
                 variant="error">Deprecated in v19</Badge></template></span>
             <span>{{ $t("service.facebook.connect_group") }}</span>
 

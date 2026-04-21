@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Clics al lloc web',
     ],
     'select_video_image' => 'Seleccioneu un vídeo o una imatge per a aquest compte d\'Instagram.',
+    'post' => 'Publicació',
+    'reel' => 'Bobina',
+    'story' => 'Història',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Servei',
     'server_address' => 'Adreça del servidor',
   ],
+  'gbp' => 
+  [
+    'post' => 'Publicació',
+    'offer' => 'Oferta',
+    'event' => 'Esdeveniment',
+    'event_title' => 'Títol de l\'esdeveniment',
+    'add_time' => 'Afegeix temps',
+    'offer_title' => 'Títol de l\'oferta',
+    'start_date' => 'Data d\'inici',
+    'end_date' => 'Data de finalització',
+    'button' => 'Botó',
+    'none' => 'Cap',
+    'book' => 'Llibre',
+    'order_online' => 'Comanda en línia',
+    'buy' => 'Comprar',
+    'learn_more' => 'Més informació',
+    'sign_up' => 'Registra\'t',
+    'button_link' => 'Enllaç de botó',
+    'add_more_details' => 'Afegeix més detalls',
+    'coupon_code' => 'Codi de cupó',
+    'offer_link' => 'Enllaç d\'oferta',
+    'tos' => 'Termes i condicions',
+    'start_time' => 'Hora d\'inici',
+    'end_time' => 'Hora de finalització',
+    'call_now' => 'Truca ara',
+    'redeem_online' => 'Bescanvia en línia',
+    'show_code' => 'Mostra aquest codi a la botiga',
+    'offer_valid' => 'Vàlid :start_date - :end_date',
+    'connect_profile' => 'Connecta un nou compte de perfil d\'empresa de Google',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Cerca :source',
+    'can_use_external_photos' => 'Amb :provider pots utilitzar fotos de stock externes directament a Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Publicació',
+    'reel' => 'Bobina',
+    'story' => 'Història',
+  ],
+  'story' => 'Història',
+  'generate_api_key' => 'Generar clau API',
 ];

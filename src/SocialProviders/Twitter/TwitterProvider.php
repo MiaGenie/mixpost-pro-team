@@ -80,4 +80,9 @@ class TwitterProvider extends SocialProvider
             default => $key,
         };
     }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
+    }
 }

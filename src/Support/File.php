@@ -2,6 +2,7 @@
 
 namespace Inovector\Mixpost\Support;
 
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Http\File as HttpFile;
@@ -9,6 +10,8 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use RuntimeException;
+use Exception;
 
 class File
 {
@@ -17,6 +20,27 @@ class File
         // Get file data base64 string
         $fileData = base64_decode(Arr::last(explode(',', $base64File)));
 
+        return self::fromFileData($fileData, $filename);
+    }
+
+    public static function fromURL(string $url, ?string $filename = null): UploadedFile
+    {
+        if(filter_var($url, FILTER_VALIDATE_URL)){
+            try {
+                $response = self::fetchUrl($url);
+            } catch (RequestException $e) {
+                throw new RuntimeException($e->getMessage());
+            } catch (Exception $e){
+                throw new Exception($e->getMessage());
+            }
+            return self::fromFileData($response->body(), $filename);
+        } else {
+            throw new Exception('Failed to download file: URL is not valid');
+        }
+    }
+
+    public static function fromFileData(string $fileData, ?string $filename = null): UploadedFile
+    {
         // Create temp file and get its absolute path
         $tempFile = tmpfile();
         $tempFilePath = stream_get_meta_data($tempFile)['uri'];

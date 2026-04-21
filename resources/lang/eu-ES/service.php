@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Webgunearen klikak',
     ],
     'select_video_image' => 'Hautatu Instagram kontu honetarako bideo edo irudi bat.',
+    'post' => 'Argitalpena',
+    'reel' => 'Reel',
+    'story' => 'Story-a',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Zerbitzua',
     'server_address' => 'Zerbitzariaren helbidea',
   ],
+  'gbp' => 
+  [
+    'post' => 'Argitalpena',
+    'offer' => 'Eskaintza',
+    'event' => 'Gertaera',
+    'event_title' => 'Gertaeraren izenburua',
+    'add_time' => 'Gehitu denbora',
+    'offer_title' => 'Eskaintzaren izenburua',
+    'start_date' => 'Hasiera data',
+    'end_date' => 'Amaiera data',
+    'button' => 'Botoia',
+    'none' => 'Bat ere ez',
+    'book' => 'Liburua',
+    'order_online' => 'Eskatu online',
+    'buy' => 'Erosi',
+    'learn_more' => 'Informazio gehiago',
+    'sign_up' => 'Izena eman',
+    'button_link' => 'Botoi-esteka',
+    'add_more_details' => 'Gehitu xehetasun gehiago',
+    'coupon_code' => 'Kupoi Kodea',
+    'offer_link' => 'Eskaintzaren esteka',
+    'tos' => 'Baldintzak eta zehaztapenak',
+    'start_time' => 'Hasiera ordua',
+    'end_time' => 'Amaiera ordua',
+    'call_now' => 'Deitu orain',
+    'redeem_online' => 'Trukatu online',
+    'show_code' => 'Erakutsi kode hau dendan',
+    'offer_valid' => 'Baliozkoa :start_date - :end_date',
+    'connect_profile' => 'Konektatu Google Business Profile kontu berri bat',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Bilatu :source',
+    'can_use_external_photos' => ':provider-rekin kanpoko stock argazkiak zuzenean erabil ditzakezu Mixpost-en.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Argitalpena',
+    'reel' => 'Reel',
+    'story' => 'Story-a',
+  ],
+  'story' => 'Story-a',
+  'generate_api_key' => 'Sortu API gakoa',
 ];

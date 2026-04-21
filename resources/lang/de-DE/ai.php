@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'tell_ai' => 'Sag AI, worüber sie schreiben soll',
+  'tell_ai' => 'Beschreibe der KI, worüber sie schreiben soll',
   'write_about' => 'z.B. Schreibe über eine Social-Media-Strategie für ein kleines-mittelständisches Unternehmen',
   'tone_' => 'Ton',
   'tone' => 

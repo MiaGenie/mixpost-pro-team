@@ -50,7 +50,7 @@ const save = () => {
         </template>
 
         <template #description>
-            <p>{{ $t('service.unsplash.can_use_external_photos') }}</p>
+            <p>{{ $t('service.stock_photo.can_use_external_photos', {provider: 'Unsplash'}) }}</p>
             <p>
                 <a href="https://unsplash.com/oauth/applications" class="link" target="_blank">
                     {{ $t('service.create_app', {name: 'Unsplash'}) }}</a>.

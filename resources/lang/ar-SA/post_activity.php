@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'ابلغني بجميع الأنشطة الخاصة بهذه المهمة.',
   'unwatch' => 'إلغاء التنبيهات',
   'notify_mentions_only' => 'ابلغني فقط اذا شخص ما اشار لي في المهمة.',
+  'post_deleted_from_social_platforms' => 'تم حذف المنشور من منصات التواصل الاجتماعي',
 ];

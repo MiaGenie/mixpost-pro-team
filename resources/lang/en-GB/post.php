@@ -15,7 +15,7 @@ return [
   'accounts' => 'Accounts',
   'author' => 'Author',
   'no_posts_found' => 'No posts found.',
-  'delete_posts' => 'Delete posts',
+  'delete_posts' => 'Delete posts|Delete posts',
   'your_post' => 'Your post',
   'confirmation_delete_post' => 'Are you sure you want to delete selected posts?',
   'posts_history_not_edited' => 'Posts in history cannot be edited.',
@@ -79,4 +79,14 @@ return [
   'needs_approval' => 'Needs approval',
   'approve' => 'Approve',
   'view' => 'View Post',
+  'posts_deleted_from_social_platforms' => 'Selected posts deleted from social platforms',
+  'does_not_support_deleting' => ':provider doesn\'t support deleting :types',
+  'confirmation_delete_posts_from' => 'Where do you want to delete this post from?|Where do you want to delete selected posts from?',
+  'delete_post_from' => 
+  [
+    'app_only' => 'From application only',
+    'app_and_social' => 'From application and social platforms',
+    'social_only' => 'From social platforms only',
+  ],
+  'post_deleted_from_social_platforms' => 'Post deleted from social platforms',
 ];

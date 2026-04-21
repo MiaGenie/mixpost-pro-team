@@ -82,6 +82,9 @@ return [
       'website_clicks' => 'نقرات الموقع',
     ],
     'select_video_image' => 'حدد مقطع فيديو أو صورة لحساب Instagram هذا.',
+    'post' => 'المنشور',
+    'reel' => 'Reel ميتا',
+    'story' => 'القصة',
   ],
   'linkedin' => 
   [
@@ -201,12 +204,55 @@ return [
   'services' => 'خدمات',
   'threads' => 
   [
-    'connect' => 'ربط ملف تعريف Threads جديد',
+    'connect' => 'ربط حساب  Threads جديد',
   ],
   'bluesky' => 
   [
-    'connect_profile' => 'ربط ملف تعريفي جديد على Bluesky',
+    'connect_profile' => 'ربط حساب جديد على Bluesky',
     'service' => 'خدمة',
     'server_address' => 'عنوان الخادم',
   ],
+  'gbp' => 
+  [
+    'post' => 'المنشور',
+    'offer' => 'عرض',
+    'event' => 'حدث',
+    'event_title' => 'عنوان الحدث',
+    'add_time' => 'أضف الوقت',
+    'offer_title' => 'عنوان العرض',
+    'start_date' => 'تاريخ البدء',
+    'end_date' => 'تاريخ الانتهاء',
+    'button' => 'زر',
+    'none' => 'بدون',
+    'book' => 'جحز',
+    'order_online' => 'اطلب اونلاين',
+    'buy' => 'شراء',
+    'learn_more' => 'تفاصيل أكثر',
+    'sign_up' => 'اشتراك',
+    'button_link' => 'رابط الزر',
+    'add_more_details' => 'أضف المزيد من التفاصيل',
+    'coupon_code' => 'كود الخصم',
+    'offer_link' => 'رابط العرض',
+    'tos' => 'الشروط والأحكام',
+    'start_time' => 'وقت البدء',
+    'end_time' => 'وقت الانتهاء',
+    'call_now' => 'اتصل الآن',
+    'redeem_online' => 'استفد من العرض عبر الإنترنت',
+    'show_code' => 'أظهر هذا الرمز في المتجر',
+    'offer_valid' => 'صالح :start_date إلى :end_date',
+    'connect_profile' => 'ربط حساب ملف تعريف قوقل بزنس جديد',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'بحث :source',
+    'can_use_external_photos' => 'مع :source يمكنك استخدام صور المخزون الخارجية مباشرة في المنصة.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'المنشور',
+    'reel' => 'Reel ميتا',
+    'story' => 'القصة',
+  ],
+  'story' => 'القصة',
+  'generate_api_key' => 'إنشاء مفتاح API',
 ];

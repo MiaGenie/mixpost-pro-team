@@ -162,7 +162,7 @@ const accounts = computed(() => {
 })
 </script>
 <template>
-    <div class="w-full flex items-center justify-end bg-stone-500 border-t border-gray-200 z-10">
+    <div class="w-full flex items-center justify-end bg-stone-500 border-t border-gray-200">
         <div class="py-4 flex items-center space-x-xs row-px">
             <PostTags :items="form.tags" @update="form.tags = $event"/>
 

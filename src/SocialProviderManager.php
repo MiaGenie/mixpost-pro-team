@@ -10,6 +10,7 @@ use Inovector\Mixpost\Concerns\UsesCacheKey;
 use Inovector\Mixpost\Exceptions\OAuthSessionExpired;
 use Inovector\Mixpost\Facades\ServiceManager;
 use Inovector\Mixpost\SocialProviders\Bluesky\BlueskyProvider;
+use Inovector\Mixpost\SocialProviders\Google\GBPProvider;
 use Inovector\Mixpost\SocialProviders\Google\YoutubeProvider;
 use Inovector\Mixpost\SocialProviders\Linkedin\LinkedinPageProvider;
 use Inovector\Mixpost\SocialProviders\Linkedin\LinkedinProvider;
@@ -41,6 +42,7 @@ class SocialProviderManager extends SocialProviderManagerAbstract
             'threads' => ThreadsProvider::class,
             'mastodon' => MastodonProvider::class,
             'youtube' => YoutubeProvider::class,
+            'gbp' => GBPProvider::class,
             'pinterest' => PinterestProvider::class,
             'linkedin' => LinkedinProvider::class,
             'linkedin_page' => LinkedinPageProvider::class,
@@ -92,6 +94,15 @@ class SocialProviderManager extends SocialProviderManagerAbstract
         $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'youtube']);
 
         return $this->buildConnectionProvider(YoutubeProvider::class, $config);
+    }
+
+    protected function connectGBPProvider()
+    {
+        $config = ServiceManager::get('google', 'configuration');
+
+        $config['redirect'] = route('mixpost.callbackSocialProvider', ['provider' => 'gbp']);
+
+        return $this->buildConnectionProvider(GBPProvider::class, $config);
     }
 
     protected function connectPinterestProvider()

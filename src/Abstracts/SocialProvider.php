@@ -179,6 +179,11 @@ abstract class SocialProvider implements SocialProviderContract
         return SocialProviderContentType::SINGLE;
     }
 
+    public static function supportAnalytics(): bool
+    {
+        return true;
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {

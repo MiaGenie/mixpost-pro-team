@@ -38,9 +38,9 @@
         "access_token_expired": "انتهت صلاحية رمز الوصول. يرجى إعادة ربط حسابك",
         "unauthorized": "غير مصرح",
         "add_social_account": "ليس لديك حساب تواصل اجتماعي، يرجى إضافة حساب واحد على الأقل لتستمتع بتجربة المنصة والاستفادة من المميزات",
-        "no_accounts_found": "لم يتم العثور على حسابات",
+        "no_accounts_found": "لم يتم العثور على حسابات اجتماعية",
         "finish_connection": "إنهاء الاتصال",
-        "open_account_page": "صفحة فتح الحساب"
+        "open_account_page": "افتح صفحة الحساب"
     },
     "ai": {
         "tell_ai": "أخبر الذكاء الاصطناعي عما يكتب عنه",
@@ -241,7 +241,7 @@
         "unknown_error": "خطأ غير معروف",
         "service_auth_failed": "المصادقة فشلت! يرجى التحقق من بيانات اعتماد خدمة {service}.",
         "page_expired": "انتهت صلاحية الصفحة، يرجى المحاولة مرة أخرى.",
-        "invalid_grant": "بيانات اعتماد غير صالحة أو ترخيص منتهي الصلاحية."
+        "invalid_grant": "بيانات الدخول غير صحيحة أو أن التفويض منتهي الصلاحية."
     },
     "finance": {
         "billing": "الفواتير"
@@ -330,7 +330,8 @@
         "generate_new": "أنشاء جديد",
         "search_jump": "ابحث أو انتقل إلى",
         "replace": "استبدال",
-        "retry": "أعد المحاولة"
+        "retry": "أعد المحاولة",
+        "general": "عام"
     },
     "hashtag": {
         "hashtag_name": "اسم مجموعة الوسم (HashTag)",
@@ -377,11 +378,31 @@
         "edit_alt_text": "تعديل النص البديل",
         "write_alt_text": "اكتب نصًا بديلًا",
         "add_alt_text_for": "أضف نصًا بديلًا لـ {platforms}.",
-        "add_video_thumb": "إضافة صورة مصغرة للفيديو",
-        "change_video_thumb": "تغيير الصورة المصغرة للفيديو",
+        "add_video_thumb": "أضف صورة لتمثيل الفيديو.",
+        "change_video_thumb": "غيّر الصورة المصغّرة للفيديو.",
         "view_video_thumb": "مشاهدة الصورة المصغرة للفيديو",
         "video_thumb": "صورة مصغرة للفيديو",
-        "video_thumb_providers": "الصورة المصغرة للفيديو متاحة عبر: {providers}."
+        "video_thumb_providers": "الصورة المصغرة للفيديو متاحة عبر: {providers}.",
+        "custom_size": "تخصيص الحجم",
+        "width": "عرض",
+        "height": "ارتفاع",
+        "unit": "وحدة",
+        "px": "بكسل",
+        "inch": "بوصة",
+        "mm": "ملليمترات",
+        "create_design": "إنشاء تصميم",
+        "edit_adobe_express": "تحرير في Adobe Express",
+        "new_design": "تصميم جديد",
+        "saved": "تم حفظ الوسائط بنجاح.",
+        "fb_post": "منشور على الفيسبوك",
+        "fb_story": "قصة على الفيسبوك",
+        "ig_portrait_post": "منشور صورة شخصية على إنستغرام",
+        "ig_square_post": "منشور مربع على إنستغرام",
+        "ig_story": "قصة انستغرام",
+        "linkedin_post": "منشور على LinkedIn",
+        "x_post": "منشور لمنصة X",
+        "pinterest_post": "منشور على بينتريست",
+        "media": "الوسائط المتعددة"
     },
     "page": {
         "pages": "الصفحات",
@@ -447,7 +468,7 @@
         "accounts": "الحسابات",
         "author": "الكاتب",
         "no_posts_found": "لم يتم العثور على أية منشورات أو مشاركات.",
-        "delete_posts": "حذف المنشورات",
+        "delete_posts": "حذف المنشورات | حذف المنشورات",
         "your_post": "منشوراتك أو مشاركاتك",
         "confirmation_delete_post": "هل أنت متأكد أنك تريد حذف المنشورات أو المشاركات المحددة؟",
         "posts_history_not_edited": "لا يمكن تعديل المنشورات في الماضي.",
@@ -509,7 +530,16 @@
         "approval_required": "يجب الموافقة على المنشور قبل أن يتم نشره.",
         "needs_approval": "يحتاج إلى موافقة",
         "approve": "موافقة على النشر",
-        "view": "عرض المنشور"
+        "view": "عرض المنشور",
+        "posts_deleted_from_social_platforms": "تم حذف المنشورات المختارة من منصات التواصل الاجتماعي",
+        "does_not_support_deleting": "{provider} لا يدعم حذف {types}",
+        "confirmation_delete_posts_from": "من أين تريد حذف هذه المنشور؟ | من أين تريد حذف المنشورات المحددة؟",
+        "delete_post_from": {
+            "app_only": "من التطبيق فقط",
+            "app_and_social": "كلاهما من التطبيق و المنصات الاجتماعية",
+            "social_only": "من منصات التواصل الاجتماعي فقط"
+        },
+        "post_deleted_from_social_platforms": "تم حذف المنشور من منصات التواصل الاجتماعي"
     },
     "post_activity": {
         "activity": "موضوع المنشور",
@@ -537,7 +567,8 @@
         "watch": "فعل التنبيهات",
         "notify_all_activity": "ابلغني بجميع الأنشطة الخاصة بهذه المهمة.",
         "unwatch": "إلغاء التنبيهات",
-        "notify_mentions_only": "ابلغني فقط اذا شخص ما اشار لي في المهمة."
+        "notify_mentions_only": "ابلغني فقط اذا شخص ما اشار لي في المهمة.",
+        "post_deleted_from_social_platforms": "تم حذف المنشور من منصات التواصل الاجتماعي"
     },
     "posting_schedule": {
         "everyday": "كل يوم",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "إجمالي عدد النقرات على رابط موقع الويب في الملف الشخصي",
                 "website_clicks": "نقرات الموقع"
             },
-            "select_video_image": "حدد مقطع فيديو أو صورة لحساب Instagram هذا."
+            "select_video_image": "حدد مقطع فيديو أو صورة لحساب Instagram هذا.",
+            "post": "المنشور",
+            "reel": "Reel ميتا",
+            "story": "القصة"
         },
         "linkedin": {
             "connect_page": "ربط صفحة LinkedIn جديدة",
@@ -773,13 +807,53 @@
         "provider_options": "خيارات {provider}.",
         "services": "خدمات",
         "threads": {
-            "connect": "ربط ملف تعريف Threads جديد"
+            "connect": "ربط حساب  Threads جديد"
         },
         "bluesky": {
-            "connect_profile": "ربط ملف تعريفي جديد على Bluesky",
+            "connect_profile": "ربط حساب جديد على Bluesky",
             "service": "خدمة",
             "server_address": "عنوان الخادم"
-        }
+        },
+        "gbp": {
+            "post": "المنشور",
+            "offer": "عرض",
+            "event": "حدث",
+            "event_title": "عنوان الحدث",
+            "add_time": "أضف الوقت",
+            "offer_title": "عنوان العرض",
+            "start_date": "تاريخ البدء",
+            "end_date": "تاريخ الانتهاء",
+            "button": "زر",
+            "none": "بدون",
+            "book": "جحز",
+            "order_online": "اطلب اونلاين",
+            "buy": "شراء",
+            "learn_more": "تفاصيل أكثر",
+            "sign_up": "اشتراك",
+            "button_link": "رابط الزر",
+            "add_more_details": "أضف المزيد من التفاصيل",
+            "coupon_code": "كود الخصم",
+            "offer_link": "رابط العرض",
+            "tos": "الشروط والأحكام",
+            "start_time": "وقت البدء",
+            "end_time": "وقت الانتهاء",
+            "call_now": "اتصل الآن",
+            "redeem_online": "استفد من العرض عبر الإنترنت",
+            "show_code": "أظهر هذا الرمز في المتجر",
+            "offer_valid": "صالح {start_date} إلى {end_date}",
+            "connect_profile": "ربط حساب ملف تعريف قوقل بزنس جديد"
+        },
+        "stock_photo": {
+            "search": "بحث {source}",
+            "can_use_external_photos": "مع {source} يمكنك استخدام صور المخزون الخارجية مباشرة في المنصة."
+        },
+        "facebook_page": {
+            "post": "المنشور",
+            "reel": "Reel ميتا",
+            "story": "القصة"
+        },
+        "story": "القصة",
+        "generate_api_key": "إنشاء مفتاح API"
     },
     "system": {
         "system": "النظام",
@@ -825,7 +899,7 @@
         "confirm_label_delete": "هل أنت متأكد أنك تريد حذف التصنيف {name} من كل مكان؟",
         "create_new_label": "اضغط على Enter لإنشاء تصنيف جديد",
         "search_create_post": "بحث أو إنشاء جديد",
-        "no_labels_found": "لم يتم العثور على أي علامات"
+        "no_labels_found": "لم يتم العثور على أي تصنيفات"
     },
     "team": {
         "add_user": "إضافة مستخدم",
@@ -882,6 +956,10 @@
         "upload_favicon": "تحميل رمز اللوقو",
         "theme_color": "لون الثيم",
         "rebrand_company": "إعادة تسمية شركتك"
+    },
+    "url_shortener": {
+        "on": "تفعيل اختصار الرابط ",
+        "off": "إيقاف اختصار الرابط"
     },
     "user": {
         "create_user": "إنشاء مستخدم جديد",

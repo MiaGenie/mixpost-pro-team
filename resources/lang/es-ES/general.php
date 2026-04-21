@@ -85,4 +85,5 @@ return [
   'search_jump' => 'Buscar o saltar a',
   'replace' => 'Sustituir',
   'retry' => 'Reintentar',
+  'general' => 'General',
 ];

@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Clics sur le site Web',
     ],
     'select_video_image' => 'Sélectionnez une vidéo ou une image pour ce compte Instagram.',
+    'post' => 'Publier',
+    'reel' => 'Reel',
+    'story' => 'Story',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Service',
     'server_address' => 'Adresse du serveur',
   ],
+  'gbp' => 
+  [
+    'post' => 'Publier',
+    'offer' => 'Offre',
+    'event' => 'Événement',
+    'event_title' => 'Titre de l\'événement',
+    'add_time' => 'Ajouter du temps',
+    'offer_title' => 'Titre de l\'offre',
+    'start_date' => 'Date de début',
+    'end_date' => 'Date de fin',
+    'button' => 'Bouton',
+    'none' => 'Aucun',
+    'book' => 'Livre',
+    'order_online' => 'Commander en ligne',
+    'buy' => 'Acheter',
+    'learn_more' => 'En savoir plus',
+    'sign_up' => 'S\'inscrire',
+    'button_link' => 'Lien vers le bouton',
+    'add_more_details' => 'Plus de détails',
+    'coupon_code' => 'Code des coupons',
+    'offer_link' => 'Lien de l\'offre',
+    'tos' => 'Conditions générales d\'utilisation',
+    'start_time' => 'Heure de début',
+    'end_time' => 'L\'heure de la fin',
+    'call_now' => 'Appeler maintenant',
+    'redeem_online' => 'Remboursement en ligne',
+    'show_code' => 'Afficher ce code dans la boutique',
+    'offer_valid' => 'Valable :start_date - :end_date',
+    'connect_profile' => 'Connecter un nouveau compte Google Business Profile',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Recherche :source',
+    'can_use_external_photos' => 'Avec :provider, vous pouvez utiliser des photos externes directement dans Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Publier',
+    'reel' => 'Reel',
+    'story' => 'Story',
+  ],
+  'story' => 'Story',
+  'generate_api_key' => 'Générer une clé API',
 ];

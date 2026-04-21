@@ -15,7 +15,7 @@ return [
   'update_password' => 'Passwort aktualisieren',
   'password_has_been_changed' => 'Das Passwort wurde geändert',
   'leave_blank_password' => 'Leer lassen, wenn du das Passwort nicht ändern willst',
-  'confirm_secure_password' => 'Achte darauf, dass dein Konto ein langes, zufälliges Passwort verwendet.',
+  'confirm_secure_password' => 'Verwende ein langes, zufällig generiertes Passwort, um die Sicherheit deines Kontos zu gewährleisten.',
   'password_reset_link' => 'Wir haben dir den Link zum Zurücksetzen deines Passworts per E-Mail geschickt!',
   'send_password_reset' => 'E-Mail zum Zurücksetzen des Passworts senden',
   'password' => 'Passwort',
@@ -29,7 +29,7 @@ return [
   'use_recovery_code' => 'Einen Wiederherstellungscode verwenden',
   'use_authentication_code' => 'Einen Authentifizierungscode verwenden',
   'provided_two_factor_code_invalid' => 'Der angegebene Zwei-Faktor-Code war ungültig.',
-  'security_using_two_factor' => 'Erhöhe die Sicherheit deines Kontos mit der Zwei-Faktor-Authentifizierung.',
+  'security_using_two_factor' => 'Erhöhe die Sicherheit deines Kontos durch Zwei-Faktor-Authentifizierung.',
   'two_factor_auth_code_invalid' => 'Der angegebene Zwei-Faktor-Authentifizierungscode war ungültig.',
   'forgot_password' => 'Hast du dein Passwort vergessen?',
   'backend' => 

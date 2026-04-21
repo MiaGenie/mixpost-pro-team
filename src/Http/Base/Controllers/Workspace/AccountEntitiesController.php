@@ -21,7 +21,8 @@ class AccountEntitiesController extends Controller
         $providerName = $request->route('provider');
 
         if (!$request->session()->has('mixpost_callback_response')) {
-            return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid]);
+            return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid])
+                ->with('error', __('mixpost::error.backend.missing_callback_response'));
         }
 
         $provider = SocialProviderManager::connect($providerName);
@@ -58,7 +59,7 @@ class AccountEntitiesController extends Controller
             return $account['connected'];
         })->values();
 
-        if (empty($entities)) {
+        if ($entities->isEmpty()) {
             return redirect()->route('mixpost.accounts.index', ['workspace' => WorkspaceManager::current()->uuid])
                 ->with('warning', __('mixpost::account.account_no_entities'));
         }

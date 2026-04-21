@@ -18,7 +18,6 @@ use Inovector\Mixpost\Http\Base\Controllers\Workspace\MediaFetchUploadsControlle
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\MediaUploadFileController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\AddPostToQueueController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\ApprovePostController;
-use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\DeletePostsController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\DuplicatePostController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostActivitiesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostCommentsController;
@@ -38,6 +37,7 @@ use Inovector\Mixpost\Http\Base\Controllers\Workspace\TagsController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\TemplatesApiController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\TemplatesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\UpdateAccountSuffixController;
+use Inovector\Mixpost\Http\Base\Controllers\Workspace\UrlShortenerController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\VariablesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\DeleteWebhooksController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\ResendWebhookController;
@@ -45,6 +45,7 @@ use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\UpdateWebhookSecre
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\WebhookDeliveriesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\WebhooksController;
 use Inovector\Mixpost\Http\Base\Middleware\CheckAIConfiguration;
+use Inovector\Mixpost\Http\Base\Middleware\CheckUrlShortenerEnabled;
 use Inovector\Mixpost\Http\Base\Middleware\CheckWorkspaceUser;
 use Inovector\Mixpost\Http\Base\Middleware\EnsurePasswordConfirmed;
 use Inovector\Mixpost\Http\Base\Middleware\HandleInertiaRequests;
@@ -112,14 +113,13 @@ Route::middleware(array_merge([
             Route::post('store', [PostsController::class, 'store'])->name('store');
             Route::get('{post}', [PostsController::class, 'edit'])->name('edit')->withoutMiddleware($editorMiddleware);
             Route::put('{post}', [PostsController::class, 'update'])->name('update');
-            Route::delete('{post}', [PostsController::class, 'destroy'])->name('delete');
+            Route::delete('/', [PostsController::class, 'destroy'])->name('delete');
 
             Route::post('schedule/{post}', SchedulePostController::class)->name('schedule');
             Route::post('add-to-queue/{post}', AddPostToQueueController::class)->name('addToQueue');
             Route::post('approve/{post}', ApprovePostController::class)->name('approve')->withoutMiddleware($editorMiddleware);
             Route::post('duplicate/{post}', DuplicatePostController::class)->name('duplicate');
             Route::post('restore/{post}', RestorePostController::class)->name('restore');
-            Route::delete('/', DeletePostsController::class)->name('deleteMultiple');
 
             Route::prefix('activities')->name('activities.')->withoutMiddleware($editorMiddleware)->group(function () {
                 Route::get('{post}', PostActivitiesController::class)->name('index');
@@ -205,4 +205,6 @@ Route::middleware(array_merge([
                 Route::post('store-board', StorePinterestBorderController::class)->name('storeBoard');
             });
         });
+
+        Route::post('url-shortener', [UrlShortenerController::class, 'shortenUrls'])->middleware(CheckUrlShortenerEnabled::class)->name('url-shortener');
     });

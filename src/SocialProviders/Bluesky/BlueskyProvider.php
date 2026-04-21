@@ -28,4 +28,9 @@ class BlueskyProvider extends SocialProvider
     {
         return BlueskyService::class;
     }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
+    }
 }

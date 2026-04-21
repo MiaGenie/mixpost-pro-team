@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Cerere invalidă. Lipsește parametrul de cod.',
+    'missing_callback_response' => 'Lipsește răspunsul la apel.',
   ],
   'invalid_grant' => 'Acreditări invalide sau autorizație expirată.',
 ];

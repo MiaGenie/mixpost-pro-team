@@ -17,7 +17,7 @@
         "copy_token": "Kopiatu token hau orain. Ezin izango duzu berriro ikusi."
     },
     "account": {
-        "accounts": "Gizarte Kontuak",
+        "accounts": "Sare Sozialak",
         "account_updated": "Kontua eguneratu da",
         "account_reauthenticate": "Ezin da kontua eguneratu. Berriro autentifikatu zure kontua.",
         "connect_social_account": "Konektatu kudeatu nahi duzun sare sozial bat.",
@@ -37,7 +37,7 @@
         "connected": "Konektatuta",
         "access_token_expired": "Sarbide-tokena iraungi da. Konektatu berriro zure kontua.",
         "unauthorized": "Baimenik gabe",
-        "add_social_account": "Ez duzu kontu sozialik, gehitu gutxienez bat.",
+        "add_social_account": "Ez duzu gehitu sare sozialik, gehitu bat gutxienez.",
         "no_accounts_found": "Ez da konturik aurkitu",
         "finish_connection": "Amaitu konexioa",
         "open_account_page": "Ireki kontu orria"
@@ -330,7 +330,8 @@
         "generate_new": "Berria sortu",
         "search_jump": "Bilatu edo joan hara",
         "replace": "Ordezkatu",
-        "retry": "Saiatu berriro"
+        "retry": "Saiatu berriro",
+        "general": "Orokorra"
     },
     "hashtag": {
         "hashtag_name": "Hashtag taldearen izena",
@@ -381,7 +382,27 @@
         "change_video_thumb": "Aldatu bideoaren miniatura",
         "view_video_thumb": "Ikusi bideoaren miniatura",
         "video_thumb": "Bideoaren miniatura",
-        "video_thumb_providers": "Bideoaren miniatura hemen dago eskuragarri: {providers}."
+        "video_thumb_providers": "Bideoaren miniatura hemen dago eskuragarri: {providers}.",
+        "custom_size": "Tamaina pertsonalizatua",
+        "width": "Zabalera",
+        "height": "Altuera",
+        "unit": "Unitatea",
+        "px": "pixelak",
+        "inch": "hazbeteak",
+        "mm": "milimetroak",
+        "create_design": "Diseinua sortu",
+        "edit_adobe_express": "Editatu Adobe Express-en",
+        "new_design": "Diseinu berria",
+        "saved": "Multimedia behar bezala gorde da.",
+        "fb_post": "Facebook-eko argitalpena",
+        "fb_story": "Facebook-eko istorioa",
+        "ig_portrait_post": "Instagrameko erretratu-argitalpena",
+        "ig_square_post": "Instagrameko karratu-argitalpena",
+        "ig_story": "Instagram istorioa",
+        "linkedin_post": "LinkedIn-eko argitalpena",
+        "x_post": "X mezua",
+        "pinterest_post": "Pinterest-eko argitalpena",
+        "media": "Komunikabideak"
     },
     "page": {
         "pages": "Orrialdeak",
@@ -447,7 +468,7 @@
         "accounts": "Kontuak",
         "author": "Egilea",
         "no_posts_found": "Ez da mezurik aurkitu.",
-        "delete_posts": "Ezabatu argitalpenak",
+        "delete_posts": "Ezabatu mezuak",
         "your_post": "Zure mezua",
         "confirmation_delete_post": "Ziur hautatutako argitalpenak ezabatu nahi dituzula?",
         "posts_history_not_edited": "Historiako argitalpenak ezin dira editatu.",
@@ -509,7 +530,16 @@
         "approval_required": "Argitalpena argitaratu aurretik onartu behar da.",
         "needs_approval": "Onarpena behar du",
         "approve": "Onartu",
-        "view": "Ikusi mezua"
+        "view": "Ikusi mezua",
+        "posts_deleted_from_social_platforms": "Hautatutako mezuak sare sozialetatik ezabatu dira",
+        "does_not_support_deleting": "{provider}-k ez du onartzen {types} ezabatzea",
+        "confirmation_delete_posts_from": "Nondik ezabatu nahi duzu mezu hau?|Nondik ezabatu nahi dituzu hautatutako mezuak?",
+        "delete_post_from": {
+            "app_only": "Aplikaziotik soilik",
+            "app_and_social": "Aplikazioetatik eta sare sozialetako plataformetatik",
+            "social_only": "Plataforma sozialetatik bakarrik"
+        },
+        "post_deleted_from_social_platforms": "Mezua sare sozialetatik ezabatuta"
     },
     "post_activity": {
         "activity": "Jarduera",
@@ -537,7 +567,8 @@
         "watch": "Ikusi",
         "notify_all_activity": "Jakinaraz iezadazu zeregin honetako jarduera guztien berri.",
         "unwatch": "Desikusi",
-        "notify_mentions_only": "Jakinarazi aipamenetan soilik."
+        "notify_mentions_only": "Jakinarazi aipamenetan soilik.",
+        "post_deleted_from_social_platforms": "Mezua sare sozialetatik ezabatuta"
     },
     "posting_schedule": {
         "everyday": "Egunero",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "Profileko webguneko estekan egindako klik kopurua guztira",
                 "website_clicks": "Webgunearen klikak"
             },
-            "select_video_image": "Hautatu Instagram kontu honetarako bideo edo irudi bat."
+            "select_video_image": "Hautatu Instagram kontu honetarako bideo edo irudi bat.",
+            "post": "Argitalpena",
+            "reel": "Reel",
+            "story": "Story-a"
         },
         "linkedin": {
             "connect_page": "Konektatu LinkedIn orri berri bat",
@@ -779,7 +813,47 @@
             "connect_profile": "Konektatu Bluesky profil berri bat",
             "service": "Zerbitzua",
             "server_address": "Zerbitzariaren helbidea"
-        }
+        },
+        "gbp": {
+            "post": "Argitalpena",
+            "offer": "Eskaintza",
+            "event": "Gertaera",
+            "event_title": "Gertaeraren izenburua",
+            "add_time": "Gehitu denbora",
+            "offer_title": "Eskaintzaren izenburua",
+            "start_date": "Hasiera data",
+            "end_date": "Amaiera data",
+            "button": "Botoia",
+            "none": "Bat ere ez",
+            "book": "Liburua",
+            "order_online": "Eskatu online",
+            "buy": "Erosi",
+            "learn_more": "Informazio gehiago",
+            "sign_up": "Izena eman",
+            "button_link": "Botoi-esteka",
+            "add_more_details": "Gehitu xehetasun gehiago",
+            "coupon_code": "Kupoi Kodea",
+            "offer_link": "Eskaintzaren esteka",
+            "tos": "Baldintzak eta zehaztapenak",
+            "start_time": "Hasiera ordua",
+            "end_time": "Amaiera ordua",
+            "call_now": "Deitu orain",
+            "redeem_online": "Trukatu online",
+            "show_code": "Erakutsi kode hau dendan",
+            "offer_valid": "Baliozkoa {start_date} - {end_date}",
+            "connect_profile": "Konektatu Google Business Profile kontu berri bat"
+        },
+        "stock_photo": {
+            "search": "Bilatu {source}",
+            "can_use_external_photos": "{provider}-rekin kanpoko stock argazkiak zuzenean erabil ditzakezu Mixpost-en."
+        },
+        "facebook_page": {
+            "post": "Argitalpena",
+            "reel": "Reel",
+            "story": "Story-a"
+        },
+        "story": "Story-a",
+        "generate_api_key": "Sortu API gakoa"
     },
     "system": {
         "system": "Sistema",
@@ -882,6 +956,10 @@
         "upload_favicon": "Kargatu favicon irudia",
         "theme_color": "Gaiaren kolorea",
         "rebrand_company": "Zure enpresaren marka aldatu"
+    },
+    "url_shortener": {
+        "on": "URL laburtzea: Aktibatuta",
+        "off": "URL laburtzea: Desaktibatuta"
     },
     "user": {
         "create_user": "Sortu erabiltzailea",

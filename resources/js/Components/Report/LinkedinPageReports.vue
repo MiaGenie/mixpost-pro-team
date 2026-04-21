@@ -31,7 +31,7 @@ const chartData = computed(() => {
 </script>
 <template>
     <div class="row-px mt-2xl">
-        <span class="font-semibold">{{ $t('service.linkedin.insights') }}</span> {{ $t('util.coming_soon') }}
+        <span class="font-medium">{{ $t('service.linkedin.insights') }}</span> {{ $t('util.coming_soon') }}
     </div>
 
     <div class="row-px mt-2xl">

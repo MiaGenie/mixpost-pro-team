@@ -70,7 +70,7 @@ const iconClasses = computed(() => {
                   class="inline-flex justify-center items-center shrink-0 rounded-full">
                 <img v-if="imgUrl" :src="imgUrl" class="object-cover w-full h-full rounded-full" alt=""/>
                 <template v-else>
-                    <Avatar :name="name"/>
+                    <Avatar :name="name" :size="size"/>
                 </template>
             </span>
             <span v-if="warningMessage" v-tooltip="warningMessage"

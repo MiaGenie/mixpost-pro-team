@@ -24,6 +24,21 @@ const usePostVersions = () => {
                 title,
                 status: 'public'
             },
+            gbp: {
+                type: 'post',
+                button: 'NONE',
+                button_link: '',
+                offer_has_details: false,
+                coupon_code: '',
+                offer_link: '',
+                terms: '',
+                event_title: '',
+                start_date: null,
+                end_date: null,
+                event_has_time: false,
+                start_time: '09:00',
+                end_time: '17:00',
+            },
             pinterest: {
                 title,
                 link,

@@ -36,7 +36,7 @@ return [
       ],
     ],
   ],
-  'no_accounts_found' => 'لم يتم العثور على حسابات',
+  'no_accounts_found' => 'لم يتم العثور على حسابات اجتماعية',
   'finish_connection' => 'إنهاء الاتصال',
-  'open_account_page' => 'صفحة فتح الحساب',
+  'open_account_page' => 'افتح صفحة الحساب',
 ];

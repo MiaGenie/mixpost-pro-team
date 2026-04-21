@@ -257,6 +257,7 @@ return [
         ['short' => 'ca', 'long' => 'ca-ES', 'direction' => 'ltr', 'english' => 'Catalan (Spain)', 'native' => 'Català (España)'],
         ['short' => 'cs', 'long' => 'cs-CZ', 'direction' => 'ltr', 'english' => 'Czech (Czechia)', 'native' => 'Čeština (Česko)'],
         ['short' => 'de', 'long' => 'de-DE', 'direction' => 'ltr', 'english' => 'German (Germany)', 'native' => 'Deutsch (Deutschland)'],
+        ['short' => 'nl', 'long' => 'nl-NL', 'direction' => 'ltr', 'english' => 'Dutch (Netherlands)', 'native' => 'Nederlands (Nederland)'],
         ['short' => 'en', 'long' => 'en-GB', 'direction' => 'ltr', 'english' => 'English (GB)', 'native' => 'English (GB)'],
         ['short' => 'es', 'long' => 'es-ES', 'direction' => 'ltr', 'english' => 'Spanish (Spain)', 'native' => 'Español (España)'],
         ['short' => 'es', 'long' => 'es-MX', 'direction' => 'ltr', 'english' => 'Spanish (Mexico)', 'native' => 'Español (México)'],

@@ -61,7 +61,7 @@ const connect = async () => {
             </span>
 
             <span class="flex flex-col items-start">
-                <span class="font-semibold">Mastodon</span>
+                <span class="font-medium">Mastodon</span>
                 <span>{{ $t("service.mastodon.connect_profile") }}</span>
             </span>
         </div>

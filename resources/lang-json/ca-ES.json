@@ -330,7 +330,8 @@
         "generate_new": "Generar nous",
         "search_jump": "Cerca o salta a",
         "replace": "Substitueix",
-        "retry": "Torna-ho a provar"
+        "retry": "Torna-ho a provar",
+        "general": "General"
     },
     "hashtag": {
         "hashtag_name": "Nom del grup hashtag",
@@ -381,7 +382,27 @@
         "change_video_thumb": "Canvia la miniatura del vídeo",
         "view_video_thumb": "Visualitza la miniatura del vídeo",
         "video_thumb": "Miniatura del vídeo",
-        "video_thumb_providers": "La miniatura del vídeo està disponible a: {providers}."
+        "video_thumb_providers": "La miniatura del vídeo està disponible a: {providers}.",
+        "custom_size": "Mida personalitzada",
+        "width": "Amplada",
+        "height": "Alçada",
+        "unit": "Unitat",
+        "px": "píxels",
+        "inch": "polzades",
+        "mm": "mil·límetres",
+        "create_design": "Crea un disseny",
+        "edit_adobe_express": "Edita a Adobe Express",
+        "new_design": "Nou disseny",
+        "saved": "El contingut multimèdia s'ha desat correctament.",
+        "fb_post": "Publicació de Facebook",
+        "fb_story": "Història de Facebook",
+        "ig_portrait_post": "Publicació de retrat d'Instagram",
+        "ig_square_post": "Publicació quadrada d'Instagram",
+        "ig_story": "Història d'Instagram",
+        "linkedin_post": "Publicació de LinkedIn",
+        "x_post": "Publicació X",
+        "pinterest_post": "Publicació de Pinterest",
+        "media": "Mitjans de comunicació"
     },
     "page": {
         "pages": "Pàgines",
@@ -447,7 +468,7 @@
         "accounts": "Comptes",
         "author": "Autor",
         "no_posts_found": "No s'han trobat publicacions.",
-        "delete_posts": "Suprimeix les publicacions",
+        "delete_posts": "Suprimeix publicacions",
         "your_post": "La teva publicació",
         "confirmation_delete_post": "Esteu segur que voleu suprimir les publicacions seleccionades?",
         "posts_history_not_edited": "Les publicacions de l'historial no es poden editar.",
@@ -509,7 +530,16 @@
         "approval_required": "La publicació s'ha d'aprovar abans de poder publicar-la.",
         "needs_approval": "Necessita aprovació",
         "approve": "Aprovar",
-        "view": "Veure publicació"
+        "view": "Veure publicació",
+        "posts_deleted_from_social_platforms": "Publicacions seleccionades eliminades de les plataformes socials",
+        "does_not_support_deleting": "{provider} no permet suprimir {types}",
+        "confirmation_delete_posts_from": "D'on vols suprimir aquesta publicació? | D'on vols suprimir les publicacions seleccionades?",
+        "delete_post_from": {
+            "app_only": "Només des de l'aplicació",
+            "app_and_social": "Des de l'aplicació i les plataformes socials",
+            "social_only": "Només des de plataformes socials"
+        },
+        "post_deleted_from_social_platforms": "Publicació eliminada de les plataformes socials"
     },
     "post_activity": {
         "activity": "Activitat",
@@ -537,7 +567,8 @@
         "watch": "Mira",
         "notify_all_activity": "Notifica'm sobre totes les activitats d'aquesta tasca.",
         "unwatch": "Deixa de mirar",
-        "notify_mentions_only": "Aviseu-me només en mencions."
+        "notify_mentions_only": "Aviseu-me només en mencions.",
+        "post_deleted_from_social_platforms": "Publicació eliminada de les plataformes socials"
     },
     "posting_schedule": {
         "everyday": "Cada dia",
@@ -664,7 +695,10 @@
                 "number_website_clicks": "Nombre total de tocs a l'enllaç del lloc web del perfil",
                 "website_clicks": "Clics al lloc web"
             },
-            "select_video_image": "Seleccioneu un vídeo o una imatge per a aquest compte d'Instagram."
+            "select_video_image": "Seleccioneu un vídeo o una imatge per a aquest compte d'Instagram.",
+            "post": "Publicació",
+            "reel": "Bobina",
+            "story": "Història"
         },
         "linkedin": {
             "connect_page": "Connecteu una nova pàgina de LinkedIn",
@@ -779,7 +813,47 @@
             "connect_profile": "Connecteu un nou perfil de Bluesky",
             "service": "Servei",
             "server_address": "Adreça del servidor"
-        }
+        },
+        "gbp": {
+            "post": "Publicació",
+            "offer": "Oferta",
+            "event": "Esdeveniment",
+            "event_title": "Títol de l'esdeveniment",
+            "add_time": "Afegeix temps",
+            "offer_title": "Títol de l'oferta",
+            "start_date": "Data d'inici",
+            "end_date": "Data de finalització",
+            "button": "Botó",
+            "none": "Cap",
+            "book": "Llibre",
+            "order_online": "Comanda en línia",
+            "buy": "Comprar",
+            "learn_more": "Més informació",
+            "sign_up": "Registra't",
+            "button_link": "Enllaç de botó",
+            "add_more_details": "Afegeix més detalls",
+            "coupon_code": "Codi de cupó",
+            "offer_link": "Enllaç d'oferta",
+            "tos": "Termes i condicions",
+            "start_time": "Hora d'inici",
+            "end_time": "Hora de finalització",
+            "call_now": "Truca ara",
+            "redeem_online": "Bescanvia en línia",
+            "show_code": "Mostra aquest codi a la botiga",
+            "offer_valid": "Vàlid {start_date} - {end_date}",
+            "connect_profile": "Connecta un nou compte de perfil d'empresa de Google"
+        },
+        "stock_photo": {
+            "search": "Cerca {source}",
+            "can_use_external_photos": "Amb {provider} pots utilitzar fotos de stock externes directament a Mixpost."
+        },
+        "facebook_page": {
+            "post": "Publicació",
+            "reel": "Bobina",
+            "story": "Història"
+        },
+        "story": "Història",
+        "generate_api_key": "Generar clau API"
     },
     "system": {
         "system": "Sistema",
@@ -882,6 +956,10 @@
         "upload_favicon": "Carregueu favicon",
         "theme_color": "Color del tema",
         "rebrand_company": "Remarca la teva empresa"
+    },
+    "url_shortener": {
+        "on": "Escurçament d'URL: Activat",
+        "off": "Escurçament d'URL: Desactivat"
     },
     "user": {
         "create_user": "Crear usuari",

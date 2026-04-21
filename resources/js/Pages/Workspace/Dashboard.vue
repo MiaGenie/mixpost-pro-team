@@ -17,10 +17,8 @@ import InstagramReports from "@/Components/Report/InstagramReports.vue"
 import ThreadsReports from "@/Components/Report/ThreadsReports.vue"
 import MastodonReports from "@/Components/Report/MastodonReports.vue"
 import PinterestReports from "@/Components/Report/PinterestReports.vue"
-import LinkedinReports from "@/Components/Report/LinkedinReports.vue"
 import LinkedinPageReports from "@/Components/Report/LinkedinPageReports.vue"
 import TikTokReports from "@/Components/Report/TikTokReports.vue"
-import YoutubeReports from "@/Components/Report/YoutubeReports.vue"
 import BlueskyReports from "@/Components/Report/BlueskyReports.vue"
 import useWorkspace from "../../Composables/useWorkspace.js";
 
@@ -84,10 +82,8 @@ const providers = {
     'threads': ThreadsReports,
     'mastodon': MastodonReports,
     'pinterest': PinterestReports,
-    'linkedin': LinkedinReports,
     'linkedin_page': LinkedinPageReports,
     'tiktok': TikTokReports,
-    'youtube': YoutubeReports,
     'bluesky': BlueskyReports,
 };
 
@@ -142,7 +138,7 @@ watch(workspaceCtx.dashboard_filter, () => {
         <div class="row-px flex items-center">
             <div class="w-full">
                 <div v-if="accounts.length" class="flex flex-wrap items-center gap-sm">
-                    <template v-for="account in accounts" :key="account.id">
+                    <template v-for="account in accounts.filter((acc => acc.support_analytics))" :key="account.id">
                         <button @click="selectAccount(account)" type="button">
                             <Account
                                 :provider="account.provider"

@@ -12,6 +12,7 @@ import Hashtag from "@/Extensions/TipTap/Hashtag"
 import UserTag from "@/Extensions/TipTap/UserTag"
 import Variable from "@/Extensions/TipTap/Variable"
 import ClipboardTextParser from "../../Extensions/ProseMirror/ClipboardTextParser";
+import PreventLinkDeletion from "@/Extensions/TipTap/PreventLinkDeletion.js";
 
 const {t: $t} = useI18n()
 
@@ -54,7 +55,8 @@ const editor = useEditor({
         StripLinksOnPaste,
         Hashtag,
         UserTag,
-        Variable
+        Variable,
+        PreventLinkDeletion
     ]],
     editorProps: {
         attributes: {
@@ -70,12 +72,93 @@ const editor = useEditor({
     },
     onBlur: () => {
         focused.value = false;
-    }
+    },
+    onCreate: ({editor}) => {
+        editor.view.dom.addEventListener('keydown', keydownHandler);
+    },
 });
 
 const isEditor = (id) => {
     return attrs.hasOwnProperty('id') && id === attrs.id;
 }
+
+const moveCursorOutsideOfNonEditable = () => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    let node = range.startContainer;
+
+    // If it's a text node, climb up to its parent
+    if (node.nodeType === Node.TEXT_NODE) {
+        node = node.parentNode;
+    }
+
+    while (node) {
+        if (node.nodeName === 'A' && node.classList.contains('non_editable')) {
+            const anchor = node;
+            const parent = anchor.parentNode;
+            if (!parent) return;
+
+            // Step 1: Insert a temporary <span> marker after the <a>
+            const marker = document.createElement('span');
+            marker.innerHTML = '\u200B'; // zero-width space to make it visible for caret
+            parent.insertBefore(marker, anchor.nextSibling);
+
+            // Step 2: Place the caret inside the marker
+            const newRange = document.createRange();
+            newRange.setStart(marker.firstChild, 1); // after zero-width space
+            newRange.collapse(true);
+            selection.removeAllRanges();
+            selection.addRange(newRange);
+
+            // Step 3: Optionally simulate pressing space
+            document.execCommand('insertText', false, ' ');
+
+            // Step 4: Clean up the marker (optional)
+            marker.remove();
+
+            return;
+        }
+        node = node.parentNode;
+    }
+};
+
+const isCursorInsideNonEditable = () => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return false;
+
+    const range = selection.getRangeAt(0);
+    let node = range.startContainer;
+
+    // Get the offset inside the node
+    const offset = range.startOffset;
+
+    // If inside a text node, get the parent element
+    if (node.nodeType === Node.TEXT_NODE) {
+        const parent = node.parentNode;
+        if (parent.nodeName === 'A' && parent.classList.contains('non_editable')) {
+            return true;
+        }
+    }
+
+    // Traverse up the DOM
+    while (node) {
+        if (node.nodeName === 'A' && node.classList.contains('non_editable')) {
+            return true;
+        }
+        node = node.parentNode;
+    }
+
+    return false;
+};
+
+const keydownHandler = (event) => {
+    if (isCursorInsideNonEditable() && !['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+        moveCursorOutsideOfNonEditable();
+    }
+};
 
 onMounted(() => {
     emitter.on('insertEmoji', e => {
@@ -110,6 +193,9 @@ onBeforeUnmount(() => {
     emitter.off('insertContent');
     emitter.off('replaceContent');
     emitter.off('focusEditor');
+    if (editor.value?.view?.dom) {
+        editor.value.view.dom.removeEventListener('keydown', keydownHandler)
+    }
 });
 
 watch(() => props.value, (value) => {

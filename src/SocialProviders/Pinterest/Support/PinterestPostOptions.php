@@ -2,12 +2,13 @@
 
 namespace Inovector\Mixpost\SocialProviders\Pinterest\Support;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
-use Inovector\Mixpost\Contracts\SocialProviderPostOptions;
+use Inovector\Mixpost\Support\SocialProviderPostOptions;
 
-class PinterestPostOptions implements SocialProviderPostOptions
+class PinterestPostOptions extends SocialProviderPostOptions
 {
-    public function rules(): array
+    public function rules(FormRequest $request): array
     {
         return [
             'title' => ['sometimes', 'nullable', 'string'],

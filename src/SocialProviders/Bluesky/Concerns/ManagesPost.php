@@ -4,6 +4,7 @@ namespace Inovector\Mixpost\SocialProviders\Bluesky\Concerns;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\SocialProviders\Bluesky\Helpers;
@@ -58,9 +59,15 @@ trait ManagesPost
         });
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        return $this->response(SocialProviderResponseStatus::OK, []);
+        $response = $this->http()->post("com.atproto.repo.deleteRecord", [
+            'repo' => $this->getDid(),
+            'collection' => 'app.bsky.feed.post',
+            'rkey' => Str::afterLast($params['uri'], '/')
+        ]);
+
+        return $this->buildResponse($response);
     }
 
     private function handleReplies(array $params, array &$postParams): void

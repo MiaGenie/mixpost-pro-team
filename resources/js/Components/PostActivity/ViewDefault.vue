@@ -15,6 +15,7 @@ import ItemPublishedFailedType from "./ItemPublishedFailedType.vue";
 import NewComment from "./NewComment.vue";
 import NProgress from "nprogress";
 import usePostActivity from "../../Composables/usePostActivity";
+import ItemDeletedFromSocialPlatformType from "./ItemDeletedFromSocialPlatformType.vue";
 
 const {t: $t} = useI18n();
 
@@ -25,7 +26,6 @@ const props = defineProps({
     }
 });
 
-const routePrefix = inject('routePrefix');
 const workspaceCtx = inject('workspaceCtx');
 const postCtx = inject('postCtx');
 
@@ -48,6 +48,7 @@ const itemComponentType = shallowRef({
     'SCHEDULE_PROCESSING': ItemScheduleProcessingType,
     'PUBLISHED': ItemPublishedType,
     'PUBLISHED_FAILED': ItemPublishedFailedType,
+    'DELETED_FROM_SOCIAL_PLATFORMS': ItemDeletedFromSocialPlatformType,
 });
 
 const fetchItems = async () => {

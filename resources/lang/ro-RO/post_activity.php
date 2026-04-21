@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Anunțați-mă cu privire la toate activitățile pentru această sarcină.',
   'unwatch' => 'Nu urmăriți',
   'notify_mentions_only' => 'Anunțați-mă numai cu privire la mențiuni.',
+  'post_deleted_from_social_platforms' => 'Mesaj șters de pe platformele sociale',
 ];

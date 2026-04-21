@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Notificarme toda la actividad de esta tarea.',
   'unwatch' => 'Unwatch',
   'notify_mentions_only' => 'Notificarme sólo las menciones.',
+  'post_deleted_from_social_platforms' => 'Publicación eliminada de las plataformas sociales',
 ];

@@ -13,10 +13,14 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Inovector\Mixpost\Actions\Post\RedirectAfterDeletedPost;
 use Inovector\Mixpost\Builders\Post\PostQuery;
-use Inovector\Mixpost\Events\Post\PostDeleted;
+use Inovector\Mixpost\Configs\GeneralConfig;
+use Inovector\Mixpost\Enums\PostDeleteMode;
+use Inovector\Mixpost\Configs\MediaConfig;
 use Inovector\Mixpost\Facades\AIManager;
 use Inovector\Mixpost\Facades\ServiceManager;
+use Inovector\Mixpost\Facades\SocialProviderManager;
 use Inovector\Mixpost\Facades\WorkspaceManager;
+use Inovector\Mixpost\Http\Base\Requests\Workspace\Post\DeletePost;
 use Inovector\Mixpost\Http\Base\Requests\Workspace\Post\StorePost;
 use Inovector\Mixpost\Http\Base\Requests\Workspace\Post\UpdatePost;
 use Inovector\Mixpost\Http\Base\Resources\AccountResource;
@@ -27,6 +31,7 @@ use Inovector\Mixpost\Models\Post;
 use Inovector\Mixpost\Models\Tag;
 use Inovector\Mixpost\PostingSchedule;
 use Inovector\Mixpost\Support\EagerLoadPostVersionsMedia;
+use Inovector\Mixpost\Actions\Post\DeletePost as DeletePostAction;
 
 class PostsController extends Controller
 {
@@ -57,7 +62,8 @@ class PostsController extends Controller
             ]),
             'has_needs_approval_posts' => Post::needsApproval()->exists(),
             'has_failed_posts' => Post::failed()->exists(),
-            'service_configs' => ServiceManager::exposedConfiguration()
+            'service_configs' => ServiceManager::exposedConfiguration(),
+            'support_post_deletion' => SocialProviderManager::supportPostDeletion(),
         ]);
     }
 
@@ -81,7 +87,9 @@ class PostsController extends Controller
             ],
             'is_configured_service' => ServiceManager::isActive(),
             'service_configs' => ServiceManager::exposedConfiguration(),
+            'general_configs' => (new GeneralConfig())->all(),
             'ai_is_ready_to_use' => AIManager::isReadyToUse(),
+            'stock_photo_provider' => app(MediaConfig::class)->get('stock_photo_provider'),
         ]);
     }
 
@@ -109,7 +117,9 @@ class PostsController extends Controller
             'has_activities_ns' => $post->hasNotificationSubscriptionForActivities(user: Auth::id()),
             'is_configured_service' => ServiceManager::isActive(),
             'service_configs' => ServiceManager::exposedConfiguration(),
+            'general_configs' => (new GeneralConfig())->all(), // TODO: Use specific config. Not all configs are needed here.
             'ai_is_ready_to_use' => AIManager::isReadyToUse(),
+            'stock_photo_provider' => app(MediaConfig::class)->get('stock_photo_provider'),
         ]);
     }
 
@@ -120,21 +130,16 @@ class PostsController extends Controller
         return new PostResource($updatePost->getPost());
     }
 
-    public function destroy(Request $request, RedirectAfterDeletedPost $redirectAfterPostDeleted): RedirectResponse
+    public function destroy(DeletePost $request, RedirectAfterDeletedPost $redirectAfterPostDeleted): RedirectResponse
     {
-        $query = Post::where('uuid', $request->route('post'));
-
-        if ($request->get('status') === 'trash') {
-            $query->forceDelete();
-
-            PostDeleted::dispatch([$request->route('post')], false);
-        }
-
-        if ($request->get('status') !== 'trash') {
-            $query->delete();
-
-            PostDeleted::dispatch([$request->route('post')], true);
-        }
+        (new DeletePostAction())(
+            uuids: $request->get('posts'),
+            mode: PostDeleteMode::from(
+                $request->input('delete_mode', PostDeleteMode::APP_ONLY->value)
+            ),
+            toTrash: !($request->get('status') === 'trash'),
+            userId: Auth::id()
+        );
 
         return $redirectAfterPostDeleted($request);
     }

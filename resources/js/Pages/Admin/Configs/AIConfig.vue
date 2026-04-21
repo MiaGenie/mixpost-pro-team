@@ -10,8 +10,6 @@ import Panel from "../../../Components/Surface/Panel.vue";
 import PrimaryButton from "../../../Components/Button/PrimaryButton.vue";
 import Select from "../../../Components/Form/Select.vue";
 import Alert from "../../../Components/Util/Alert.vue";
-import VerticalGroup from "../../../Components/Layout/VerticalGroup.vue";
-import Label from "../../../Components/Form/Label.vue";
 import Textarea from "../../../Components/Form/Textarea.vue";
 import HorizontalGroup from "../../../Components/Layout/HorizontalGroup.vue";
 

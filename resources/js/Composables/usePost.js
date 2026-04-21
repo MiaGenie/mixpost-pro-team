@@ -51,7 +51,7 @@ const usePost = () => {
         isScheduleProcessing,
         needsApproval,
         editAllowed,
-        userCanApprove
+        userCanApprove,
     }
 }
 

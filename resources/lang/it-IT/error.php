@@ -14,6 +14,7 @@ return [
   'backend' => 
   [
     'missing_code' => 'Richiesta non valida. Parametro codice mancante.',
+    'missing_callback_response' => 'Risposta di callback mancante.',
   ],
   'invalid_grant' => 'Credenziali non valide o autorizzazione scaduta.',
 ];

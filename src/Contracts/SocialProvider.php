@@ -3,6 +3,7 @@
 namespace Inovector\Mixpost\Contracts;
 
 use Closure;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Inovector\Mixpost\Http\Base\Resources\AccountResource;
@@ -33,7 +34,9 @@ interface SocialProvider
 
     public function publishComment(string $text, string $postId, array $params = []): SocialProviderResponse;
 
-    public function deletePost($id): SocialProviderResponse;
+    public function deletePost(string $id, array $params = []): SocialProviderResponse;
+
+    public static function supportPostDeletion(): bool|array;
 
     public static function postConfigs(): SocialProviderPostConfigs;
 

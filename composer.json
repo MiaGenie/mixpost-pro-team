@@ -28,7 +28,7 @@
         "illuminate/contracts": "^10.47|^11.0|^12.0",
         "inertiajs/inertia-laravel": "^2.0",
         "inovector/twitteroauth": "^7.1",
-        "intervention/image": "^2.7",
+        "intervention/image": "^3.11",
         "laravel/horizon": "^5.0",
         "openai-php/client": "^0.8.4",
         "php-ffmpeg/php-ffmpeg": "^1.0",

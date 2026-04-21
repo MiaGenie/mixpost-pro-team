@@ -27,4 +27,5 @@ return [
   'notify_all_activity' => 'Уведомлять меня о всех действиях для этого задания.',
   'unwatch' => 'Не смотреть',
   'notify_mentions_only' => 'Уведомлять меня только о упоминаниях.',
+  'post_deleted_from_social_platforms' => 'Посты удалены с социальных платформ',
 ];

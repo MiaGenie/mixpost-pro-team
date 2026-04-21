@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'clicuri pe site',
     ],
     'select_video_image' => 'Selectați un videoclip sau o imagine pentru acest cont de Instagram.',
+    'post' => 'Post',
+    'reel' => 'Reel',
+    'story' => 'Poveste',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Service',
     'server_address' => 'Adresa serverului',
   ],
+  'gbp' => 
+  [
+    'post' => 'Post',
+    'offer' => 'Ofertă',
+    'event' => 'Eveniment',
+    'event_title' => 'Titlul evenimentului',
+    'add_time' => 'Adaugă timp',
+    'offer_title' => 'Titlul ofertei',
+    'start_date' => 'Data de începere',
+    'end_date' => 'Data de încheiere',
+    'button' => 'Buton',
+    'none' => 'Niciuna',
+    'book' => 'Carte',
+    'order_online' => 'Comandă online',
+    'buy' => 'Cumpărați',
+    'learn_more' => 'Aflați mai multe',
+    'sign_up' => 'Înscriere',
+    'button_link' => 'Buton de legătură',
+    'add_more_details' => 'Adaugă mai multe detalii',
+    'coupon_code' => 'Cod cupon',
+    'offer_link' => 'Link ofertă',
+    'tos' => 'Termeni și condiții',
+    'start_time' => 'Ora de începere',
+    'end_time' => 'Timpul final',
+    'call_now' => 'Sunați acum',
+    'redeem_online' => 'Răscumpărare online',
+    'show_code' => 'Afișați acest cod la magazin',
+    'offer_valid' => 'Valabil :start_date - :end_date',
+    'connect_profile' => 'Conectați un nou cont Google Business Profile',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Căutare :source',
+    'can_use_external_photos' => 'Cu :provider puteți utiliza fotografii de stoc externe direct în Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Post',
+    'reel' => 'Reel',
+    'story' => 'Poveste',
+  ],
+  'story' => 'Poveste',
+  'generate_api_key' => 'Generarea cheii API',
 ];

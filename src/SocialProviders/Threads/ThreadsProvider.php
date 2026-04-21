@@ -40,4 +40,9 @@ class ThreadsProvider extends SocialProvider
     {
         return "https://www.threads.com/@$accountResource->username";
     }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
+    }
 }

@@ -12,6 +12,11 @@ class LinkedinPageProvider extends LinkedinProvider
 
     public bool $onlyUserAccount = false;
 
+    public static function supportAnalytics(): bool
+    {
+        return true;
+    }
+
     public static function externalAccountUrl(AccountResource $accountResource): string
     {
         $pageType = $accountResource->data['page_type'] ?? PageType::COMPANY->value;

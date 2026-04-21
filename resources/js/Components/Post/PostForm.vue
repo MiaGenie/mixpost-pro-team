@@ -2,7 +2,7 @@
 import {computed, defineAsyncComponent, inject, onMounted, ref, watch, nextTick} from "vue";
 import {useI18n} from "vue-i18n";
 import {clone, cloneDeep, debounce, uniqBy} from "lodash";
-import {extractFirstURL} from "@/helpers.js";
+import {extractFirstURL, extractUrls} from "@/helpers.js";
 import emitter from "@/Services/emitter";
 import usePost from "@/Composables/usePost";
 import usePostVersions from "@/Composables/usePostVersions";
@@ -33,12 +33,20 @@ import PostContentValidator from "./PostContentValidator.vue";
 import AlertText from "../Util/AlertText.vue";
 import Badge from "../DataDisplay/Badge.vue";
 import ChatBubbleBottomCenterText from "../../Icons/ChatBubbleBottomCenterText.vue";
+import Link from "@/Icons/Link.vue";
+import useNotifications from "@/Composables/useNotifications";
+
+const workspaceCtx = inject('workspaceCtx');
+import useAdobeExpress from "../../Composables/useAdobeExpress.js";
+import {usePage} from "@inertiajs/vue3";
 
 const AIAssist = defineAsyncComponent(() => import("@/Components/AI/Text/AIAssist.vue"));
 
 const {t: $t} = useI18n()
 
 const confirmation = inject('confirmation');
+
+const {notify} = useNotifications();
 
 const props = defineProps({
     form: {
@@ -115,6 +123,7 @@ const {setupURLMeta, setupURLMetaForAllVersions} = usePostURLMeta();
 
 const activeVersion = ref(0);
 const currentMaxCharLimit = ref(0);
+const urlShortenerActivated = ref(false);
 
 const resetActiveVersion = () => {
     activeVersion.value = 0;
@@ -130,7 +139,54 @@ const updateContent = (contentIndex, key, value) => {
     props.form.versions[versionIndex].content[contentIndex][key] = value;
 
     extractAndAssignUrlToContentItem(versionIndex, contentIndex);
+
+    urlShortenerActivated.value && shortenUrls();
 }
+
+const shortenUrls = () => {
+    const contentOpened = content.value.find(content => content.opened).body;
+    const urls = extractUrls(contentOpened, urlShortenerActivated.value);
+
+    if (!urls.length) {
+        return;
+    }
+
+    axios.post(route('mixpost.url-shortener', {
+        workspace: workspaceCtx.id,
+        urls: urls,
+        url_shortener_active: urlShortenerActivated.value
+    })).then((response) => {
+        if (response.data.status === 'OK') {
+            content.value.find(content => content.opened).body = swapUrls(contentOpened, response.data.urls, urlShortenerActivated.value);
+        }
+        if (response.data.status === 'ERROR' && response?.data?.message) {
+            notify('error', response.data.message);
+        }
+    });
+}
+
+const swapUrls = (htmlString, urlsData, urlShortenerActive) => {
+    const searchFor = urlShortenerActive ? 'original_url' : 'short_url';
+    const replaceWith = urlShortenerActive ? 'short_url' : 'original_url';
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+
+    const links = doc.querySelectorAll('a');
+
+    links.forEach(link => {
+        urlsData.forEach(urlData => {
+            if (link.textContent.trim() === urlData[searchFor]) {
+                link.href = urlData[replaceWith];
+                link.textContent = urlData[replaceWith];
+
+                urlShortenerActive ? link.classList.add('non_editable') : link.classList.remove('non_editable');
+            }
+        });
+    });
+
+    return doc.body.innerHTML;
+};
 
 const extractAndAssignUrlToContentItem = debounce((versionIndex, contentIndex) => {
     const oldUrl = props.form.versions[versionIndex].content[contentIndex]['url'];
@@ -172,10 +228,10 @@ const addVersion = (accountId) => {
     // Copy options from the default version to the new version
     newVersion.options = cloneDeep(originalVersion.options);
 
-    // Add the new version to the versions array
+    // Add the new version to the version array
     props.form.versions.push(newVersion);
 
-    // Set added version as active version
+    // Set added version as an active version
     activeVersion.value = accountId;
 }
 
@@ -366,17 +422,24 @@ const moveContentItemOneStepBottom = (index) => {
     }
 }
 
-onMounted(() => {
-    setupVersions();
-
-    setupURLMetaForAllVersions(props.form.versions);
-})
-
 watch(() => props.form.accounts, () => {
     setupVersions();
 });
 
 const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
+const {loadAdobeSdk} = useAdobeExpress();
+const postHasAtLeastOneMediaWithAdobeExpressDocId = () =>
+    content.value.some(item => item.media?.some(mediaItem => mediaItem.adobe_express_doc_id !== null))
+
+onMounted(async () => {
+    setupVersions();
+
+    setupURLMetaForAllVersions(props.form.versions);
+
+    if (usePage().props.is_configured_service.adobe_express && postHasAtLeastOneMediaWithAdobeExpressDocId()) {
+        await loadAdobeSdk()
+    }
+})
 </script>
 <template>
     <div class="flex flex-wrap items-center gap-sm mb-lg">
@@ -494,6 +557,10 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                                         <PostAddMedia @insert="($event)=> {
                                             updateContent(index, 'media', [...item.media, ...$event.items])
 
+                                            if(postHasAtLeastOneMediaWithAdobeExpressDocId()){
+                                                loadAdobeSdk();
+                                            }
+
                                             if($event.crediting) {
                                                 insertContent({editorId: `postEditor-${index}`, text: $event.crediting})
                                             }
@@ -525,6 +592,18 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                                                 :characterLimit="currentMaxCharLimit"
                                             />
                                         </template>
+                                        <div v-if="$page.props.general_configs.url_shortener_provider !== 'disabled'">
+                                            <EditorButton
+                                                v-tooltip="urlShortenerActivated ? $t('url_shortener.on') : $t('url_shortener.off')"
+                                                @click="() => {
+                                                              urlShortenerActivated = !urlShortenerActivated;
+                                                              shortenUrls();
+                                                          }"
+                                                :active="urlShortenerActivated"
+                                            >
+                                                <Link/>
+                                            </EditorButton>
+                                        </div>
                                     </Flex>
 
                                     <Flex :responsive="false">

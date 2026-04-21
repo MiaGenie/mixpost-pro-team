@@ -81,6 +81,9 @@ return [
       'website_clicks' => 'Клики на сайте',
     ],
     'select_video_image' => 'Выберите видео или изображение для этого аккаунта Instagram.',
+    'post' => 'Пост',
+    'reel' => 'Reel',
+    'story' => 'История',
   ],
   'linkedin' => 
   [
@@ -208,4 +211,47 @@ return [
     'service' => 'Сервис',
     'server_address' => 'Адрес сервера',
   ],
+  'gbp' => 
+  [
+    'post' => 'Пост',
+    'offer' => 'Предложение',
+    'event' => 'Событие',
+    'event_title' => 'Название мероприятия',
+    'add_time' => 'Добавить время',
+    'offer_title' => 'Название предложения',
+    'start_date' => 'Дата начала',
+    'end_date' => 'Дата окончания',
+    'button' => 'Кнопка',
+    'none' => 'Нет',
+    'book' => 'Книга',
+    'order_online' => 'Заказать онлайн',
+    'buy' => 'Купить',
+    'learn_more' => 'Узнать больше',
+    'sign_up' => 'Зарегистрироваться',
+    'button_link' => 'Ссылка на кнопку',
+    'add_more_details' => 'Добавить подробности',
+    'coupon_code' => 'Код купона',
+    'offer_link' => 'Ссылка на предложение',
+    'tos' => 'Условия и положения',
+    'start_time' => 'Время начала',
+    'end_time' => 'Конец времени',
+    'call_now' => 'Звоните сейчас',
+    'redeem_online' => 'Выкупить онлайн',
+    'show_code' => 'Покажите этот код в магазине',
+    'offer_valid' => 'Действительный :start_date - :end_date',
+    'connect_profile' => 'Подключите новый аккаунт Google Business Profile',
+  ],
+  'stock_photo' => 
+  [
+    'search' => 'Поиск :source',
+    'can_use_external_photos' => 'С помощью :provider вы можете использовать внешние стоковые фотографии прямо в Mixpost.',
+  ],
+  'facebook_page' => 
+  [
+    'post' => 'Пост',
+    'reel' => 'Reel',
+    'story' => 'История',
+  ],
+  'story' => 'История',
+  'generate_api_key' => 'Сгенерируйте ключ API',
 ];

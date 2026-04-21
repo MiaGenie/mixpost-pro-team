@@ -129,9 +129,18 @@ class MediaUploader
 
     public function uploadAndInsert()
     {
-        return Media::create(
-            Arr::only($this->upload(), ['name', 'mime_type', 'size', 'size_total', 'disk', 'path', 'conversions', 'data'])
-        );
+        $data = Arr::only($this->upload(), ['name', 'mime_type', 'size', 'size_total', 'disk', 'path', 'conversions', 'data']);
+
+        if (!(  isset($this->data['adobe_express_doc_id'])
+                &&
+                $media = Media::whereJsonContains('data->adobe_express_doc_id', $this->data['adobe_express_doc_id'])->first())) {
+            return Media::create($data);
+        }
+
+        $media->deleteFiles();
+        $media->update($data);
+
+        return $media->refresh();
     }
 
     protected function performConversions(string $filepath): array
@@ -161,7 +170,7 @@ class MediaUploader
 
         $image->disk($this->disk)
             ->path($this->path)
-            ->resize(Image::LARGE_WIDTH, Image::LARGE_HEIGHT);
+            ->resize(Image::LARGE_WIDTH);
 
         return $image->getDestinationFilePath();
     }

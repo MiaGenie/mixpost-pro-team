@@ -40,7 +40,7 @@ const {
     getItem,
     fetchThreadItems,
 } = usePostActivity({context: postCtx});
-const {isLoadingPreloader, startPreloader, stopPreloader} = usePreloader();
+const {isLoadingPreloader, startPreloader, stopPreloader} = usePreloader({});
 const listRef = ref(null);
 const {scrollPosition, setScrollPosition, scrollToBottom, isNearBottom} = useScrollPosition(listRef);
 

@@ -22,6 +22,11 @@ use Inovector\Mixpost\Services\ThreadsService;
 use Inovector\Mixpost\Services\TikTokService;
 use Inovector\Mixpost\Services\TwitterService;
 use Inovector\Mixpost\Services\UnsplashService;
+use Inovector\Mixpost\Services\ShlinkService;
+use Inovector\Mixpost\Services\BitlyService;
+use Inovector\Mixpost\Services\YourlsService;
+use Inovector\Mixpost\Services\PexelsService;
+use Inovector\Mixpost\Services\AdobeExpressService;
 use Inovector\Mixpost\Support\Log;
 
 class ServiceManager
@@ -50,6 +55,11 @@ class ServiceManager
             UnsplashService::class,
             TenorService::class,
             OpenAIService::class,
+            PexelsService::class,
+            AdobeExpressService::class,
+            BitlyService::class,
+            YourlsService::class,
+            ShlinkService::class
         ];
     }
 
