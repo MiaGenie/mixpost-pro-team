@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'Rezoluția trebuie să fie de minimum :min x :max px. Recomandată este :recommended_min x :recommended_max px.',
   'duration_range' => 'Durata trebuie să fie cuprinsă între :min și :max secunde.',
   'frame_rate_range' => 'Rata de cadre trebuie să fie între :min și :max cadre pe secundă.',
+  'edit_alt_text' => 'Editarea textului alt',
+  'write_alt_text' => 'Scrieți un text alt',
+  'add_alt_text_for' => 'Adăugați un text alt pentru :platforms.',
+  'add_video_thumb' => 'Adăugați thumbnail video',
+  'change_video_thumb' => 'Schimbare miniatură video',
+  'view_video_thumb' => 'Vizualizați miniatura videoclipului',
+  'video_thumb' => 'Miniatură video',
+  'video_thumb_providers' => 'Miniatura video este disponibilă peste: :providers.',
 ];

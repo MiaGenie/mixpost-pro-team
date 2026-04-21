@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Nu s-a reușit copierea în clipboard!',
   'usage_api' => 'Utilizare în API',
   'stored_safely' => 'Am păstrat-o în siguranță.',
+  'backend' => 
+  [
+    'installed' => 'Instalat',
+    'not_installed' => 'Neinstalat',
+  ],
 ];

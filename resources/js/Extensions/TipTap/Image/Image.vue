@@ -212,7 +212,7 @@ const offEvents = () => {
                 <span
                     v-for="direction in resizeDirections"
                     :key="direction"
-                    class="bg-primary-500 border border-white rounded box-border block h-sm w-sm absolute z-10"
+                    class="bg-primary-500 border border-white rounded-sm box-border block h-sm w-sm absolute z-10"
                     :class="{
                         'tl': 'left-[-6px] top-[-6px] cursor-nwse-resize',
                         'tr': 'right-[-6px] top-[-6px] cursor-nesw-resize',

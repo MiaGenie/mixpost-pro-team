@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Impossibile copiare negli appunti!',
   'usage_api' => 'Utilizzo in API',
   'stored_safely' => 'L\'ho conservato al sicuro',
+  'backend' => 
+  [
+    'installed' => 'Installato',
+    'not_installed' => 'Non installato',
+  ],
 ];

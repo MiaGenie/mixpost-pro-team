@@ -43,7 +43,7 @@ const lastStatusText = () => {
         </TableCell>
 
         <TableCell>
-            <Badge :variant="lastStatusVariant()" v-tooltip="lastStatusText()" class="w-5 h-5 !rounded-full"/>
+            <Badge :variant="lastStatusVariant()" v-tooltip="lastStatusText()" class="w-5 h-5 rounded-full!"/>
         </TableCell>
 
         <TableCell>

@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Entitats del compte',
   'select_the_social_entities' => 'Seleccioneu les entitats socials que voleu connectar',
   'connected' => 'Connectat',
-  'choose' => 'Tria',
   'access_token_expired' => 'El testimoni d\'accés ha caducat. Torneu a connectar el vostre compte.',
   'unauthorized' => 'No autoritzat',
   'add_social_account' => 'No teniu cap compte social, afegiu-ne almenys un.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'No s\'han trobat comptes',
+  'finish_connection' => 'Acabar la connexió',
 ];

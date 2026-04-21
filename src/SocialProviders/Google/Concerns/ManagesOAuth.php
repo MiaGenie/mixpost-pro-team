@@ -8,7 +8,8 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 trait ManagesOAuth
 {
     protected array $scope = [
-        'https://www.googleapis.com/auth/youtube'
+        'https://www.googleapis.com/auth/youtube',
+        'https://www.googleapis.com/auth/youtube.upload'
     ];
 
     public function getAuthUrl(): string

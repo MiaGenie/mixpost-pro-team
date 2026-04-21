@@ -196,7 +196,7 @@ const submit = () => {
 
                         <Flex class="items-center">
                             <Checkbox v-model:checked="form.active" id="active"/>
-                            <Label for="active" class="!mb-0">{{ $t('general.active') }}</Label>
+                            <Label for="active" class="mb-0!">{{ $t('general.active') }}</Label>
                         </Flex>
 
                         <template #footer>
@@ -238,7 +238,7 @@ const submit = () => {
                         <template v-for="(eventName, eventId) in events" :key="eventId">
                             <Flex :responsive="false" class="items-center">
                                 <Checkbox v-model:checked="form.events" :value="eventId" :id="eventId"/>
-                                <Label :for="eventId" class="!mb-0">{{ eventName }}</Label>
+                                <Label :for="eventId" class="mb-0!">{{ eventName }}</Label>
                             </Flex>
                         </template>
                     </div>

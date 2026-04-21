@@ -145,6 +145,7 @@ Route::middleware(array_merge([
 
         Route::prefix('media')->name('media.')->group(function () use($editorMiddleware) {
             Route::get('/', [MediaController::class, 'index'])->name('index');
+            Route::put('{id}', [MediaController::class, 'update'])->middleware($editorMiddleware)->name('update');
             Route::delete('/', [MediaController::class, 'destroy'])->middleware($editorMiddleware)->name('delete');
             Route::get('fetch/uploaded', MediaFetchUploadsController::class)->name('fetchUploads');
             Route::get('fetch/stock', MediaFetchStockController::class)->name('fetchStock');

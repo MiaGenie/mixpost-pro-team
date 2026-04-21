@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Nepodařilo se zkopírovat do schránky!',
   'usage_api' => 'Použití v rozhraní API',
   'stored_safely' => 'Bezpečně uloženo',
+  'backend' => 
+  [
+    'installed' => 'Nainstalováno',
+    'not_installed' => 'Není nainstalováno',
+  ],
 ];

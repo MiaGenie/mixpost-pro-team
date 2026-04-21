@@ -115,7 +115,7 @@ const save = () => {
                     @click="save"
                     class="mt-lg"
                     :disabled="!form.selected.length"
-                    > {{ $t("account.choose") }}</PrimaryButton
+                    > {{ $t("account.finish_connection") }}</PrimaryButton
                 >
             </div>
         </div>

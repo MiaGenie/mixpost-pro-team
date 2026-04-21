@@ -13,8 +13,8 @@ const data = inject('instagramCtx');
 <template>
     <div>
         <template v-if="data.content[0].media[0].is_video">
-            <div class="bg-black rounded-xl mx-auto max-w-sm">
-                <div class="mx-auto rounded-xl rounded-b-lg border-none overflow-hidden max-w-full block outline-none relative">
+            <div class="bg-black rounded-xl mx-auto max-w-(--container-sm)">
+                <div class="mx-auto rounded-xl rounded-b-lg border-none overflow-hidden max-w-full block outline-hidden relative">
                     <div class="bg-black aspect-w-9 aspect-h-16">
                         <div class="absolute inset-0">
                             <div class="relative w-full h-full flex items-center">
@@ -54,7 +54,7 @@ const data = inject('instagramCtx');
                                     <div class="absolute bottom-lg px-md pr-[5.5rem] w-full">
                                         <div class="flex items-center">
                                             <div class="mr-sm">
-                                <span class="flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full">
+                                <span class="flex justify-center items-center shrink-0 w-10 h-10 rounded-full">
                                     <img :src="data.image"
                                          class="object-cover w-full h-full rounded-full" alt=""/>
                                 </span>

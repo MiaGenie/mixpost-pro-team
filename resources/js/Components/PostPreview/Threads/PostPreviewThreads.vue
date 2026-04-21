@@ -47,7 +47,7 @@ const {isDocEmpty} = useEditor();
         <template v-for="(contentItem, index) in props.content">
             <div :class="{'thread pb-md': index !== props.content.length - 1}" class="relative flex items-start">
                 <div class="mr-sm">
-                <span class="inline-flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full">
+                <span class="inline-flex justify-center items-center shrink-0 w-10 h-10 rounded-full">
                    <img
                        :src="image || defaultAvatar"
                        class="object-cover w-full h-full rounded-full z-10"
@@ -72,13 +72,13 @@ const {isDocEmpty} = useEditor();
 
                     <Flex gap="gap-lg" class="items-center mt-sm">
                         <div>
-                           <Likes class="!w-5 !h-5"/>
+                           <Likes class="w-5! h-5!"/>
                         </div>
                         <div>
-                         <Comments class="!w-5 !h-5"/>
+                         <Comments class="w-5! h-5!"/>
                         </div>
                         <div>
-                           <Share class="!w-5 !h-5"/>
+                           <Share class="w-5! h-5!"/>
                         </div>
                     </Flex>
                 </div>

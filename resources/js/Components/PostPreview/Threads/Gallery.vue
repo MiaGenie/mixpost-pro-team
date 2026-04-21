@@ -1,5 +1,6 @@
 <script setup>
 import {computed} from "vue";
+import Placeholder from "@/Components/Media/Placeholder.vue";
 
 const props = defineProps({
     media: {
@@ -14,7 +15,13 @@ const limitedMedia = computed(() => props.media.slice(0, 3));
     <div v-if="media.length" class="w-full">
         <!-- Display a single image -->
         <div v-if="media.length === 1" class="w-full">
-            <img :src="media[0].thumb_url" alt="Gallery Image" class="w-full rounded-md object-cover object-left"/>
+            <template v-if="media.thumb_url">
+                <img :src="media[0].thumb_url" alt="Gallery Image" class="w-full rounded-md object-cover object-left"/>
+            </template>
+
+            <template v-if="!media.thumb_url">
+                <Placeholder widthClass="w-full" type="video"/>
+            </template>
         </div>
 
         <!-- Display two images -->
@@ -35,7 +42,7 @@ const limitedMedia = computed(() => props.media.slice(0, 3));
                 v-for="(image, index) in limitedMedia"
                 :key="index"
                 :class="[
-          'flex-shrink-0 rounded-md overflow-hidden h-full',
+          'shrink-0 rounded-md overflow-hidden h-full',
           index === limitedMedia.length - 1 ? 'w-[15%]' : 'w-[42.5%]',
         ]"
             >

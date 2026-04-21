@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'La resolució ha de ser mínima de :min x :max px. Es recomana :recommended_min x :recommended_max px.',
   'duration_range' => 'La durada ha d\'estar entre :min i :max segons.',
   'frame_rate_range' => 'La velocitat de fotogrames ha d\'estar entre :min i :max fotogrames per segon.',
+  'edit_alt_text' => 'Edita el text alternatiu',
+  'write_alt_text' => 'Escriu un text alternatiu',
+  'add_alt_text_for' => 'Afegiu un text alternatiu per a :platforms.',
+  'add_video_thumb' => 'Afegeix una miniatura del vídeo',
+  'change_video_thumb' => 'Canvia la miniatura del vídeo',
+  'view_video_thumb' => 'Visualitza la miniatura del vídeo',
+  'video_thumb' => 'Miniatura del vídeo',
+  'video_thumb_providers' => 'La miniatura del vídeo està disponible a: :providers.',
 ];

@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'Resolution must be minimum :min x :max px. Recommended is :recommended_min x :recommended_max px.',
   'duration_range' => 'Duration must be between :min and :max seconds.',
   'frame_rate_range' => 'Frame rate must be between :min and :max frames per second.',
+  'edit_alt_text' => 'Edit alt text',
+  'write_alt_text' => 'Write an alt text',
+  'add_alt_text_for' => 'Add an alt text for :platforms.',
+  'add_video_thumb' => 'Add video thumbnail',
+  'change_video_thumb' => 'Change video thumbnail',
+  'view_video_thumb' => 'View video thumbnail',
+  'video_thumb' => 'Video thumbnail',
+  'video_thumb_providers' => 'The video thumbnail is available across: :providers.',
 ];

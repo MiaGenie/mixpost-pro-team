@@ -35,11 +35,11 @@
         "account_entities": "Konto Entitäten",
         "select_the_social_entities": "Wähle die Konten aus, die du verbinden möchtest",
         "connected": "Verbunden",
-        "choose": "Wähle",
         "access_token_expired": "Das Zugangstoken ist abgelaufen. Verbinde dein Konto neu.",
         "unauthorized": "Kein Zugriff",
         "add_social_account": "Wenn du kein soziales Konto hast, füge bitte mindestens eines hinzu.",
-        "no_accounts_found": "Keine Konten gefunden"
+        "no_accounts_found": "Keine Konten gefunden",
+        "finish_connection": "Finish Verbindung"
     },
     "ai": {
         "tell_ai": "Sag AI, worüber sie schreiben soll",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "Das Seitenverhältnis muss zwischen {min} und {max} liegen.",
         "resolution_range": "Die Auflösung muss mindestens {min} x {max} px betragen. Empfohlen ist {recommended_min} x {recommended_max} px.",
         "duration_range": "Die Dauer muss zwischen {min} und {max} Sekunden liegen.",
-        "frame_rate_range": "Die Bildrate muss zwischen {min} und {max} Bildern pro Sekunde liegen."
+        "frame_rate_range": "Die Bildrate muss zwischen {min} und {max} Bildern pro Sekunde liegen.",
+        "edit_alt_text": "Alt-Text bearbeiten",
+        "write_alt_text": "Schreibe einen Alt-Text",
+        "add_alt_text_for": "Füge einen Alt-Text für {platforms} hinzu.",
+        "add_video_thumb": "Video-Miniaturansicht hinzufügen",
+        "change_video_thumb": "Video-Miniaturansicht ändern",
+        "view_video_thumb": "Video-Miniaturansicht ansehen",
+        "video_thumb": "Video-Miniaturansicht",
+        "video_thumb_providers": "Das Video-Miniaturbild ist verfügbar über: {providers}."
     },
     "page": {
         "pages": "Seiten",

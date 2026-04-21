@@ -10,7 +10,7 @@ const workspaceCtx = inject('workspaceCtx');
           method="post"
           as="button"
           type="button"
-          class="w-full flex items-center px-lg py-4 hover:bg-twitter hover:bg-opacity-20 ease-in-out duration-200">
+          class="w-full flex items-center px-lg py-4 hover:bg-pinterest/20 ease-in-out duration-200">
         <span class="flex mr-4">
             <PinterestIcon class="text-pinterest"/>
         </span>

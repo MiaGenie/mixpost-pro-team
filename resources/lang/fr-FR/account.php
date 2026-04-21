@@ -26,7 +26,6 @@ return [
   'account_entities' => 'Entités de compte',
   'select_the_social_entities' => 'Sélectionnez les entités sociales que vous souhaitez connecter',
   'connected' => 'Connecté',
-  'choose' => 'Choisissez',
   'access_token_expired' => 'Le jeton d\'accès a expiré. Reconnectez votre compte.',
   'unauthorized' => 'Non autorisé',
   'add_social_account' => 'Vous n\'avez pas de compte social, veuillez en ajouter au moins un.',
@@ -44,4 +43,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'Aucun compte trouvé',
+  'finish_connection' => 'Finition Connexion',
 ];

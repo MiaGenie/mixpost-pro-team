@@ -18,6 +18,10 @@ const props = defineProps({
     columns: {
         type: Number,
         default: 3
+    },
+    maxSelectedItems: {
+        type: Number,
+        default: -1 //infinite
     }
 })
 
@@ -38,7 +42,7 @@ const {
     deselectAll,
     isSelected,
     createObserver
-} = useMedia('mixpost.media.fetchGifs', {workspace: workspaceCtx.id});
+} = useMedia('mixpost.media.fetchGifs', {workspace: workspaceCtx.id}, props.maxSelectedItems);
 
 onMounted(() => {
     if (enabled.value) {

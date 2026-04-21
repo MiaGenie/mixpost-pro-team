@@ -35,11 +35,11 @@
         "account_entities": "Entidades de cuenta",
         "select_the_social_entities": "Seleccione las entidades sociales que desea conectar",
         "connected": "Conectado",
-        "choose": "Elija",
         "access_token_expired": "El token de acceso ha caducado. Vuelva a conectar su cuenta.",
         "unauthorized": "Sin autorización",
         "add_social_account": "Si no tienes una cuenta social, añade al menos una.",
-        "no_accounts_found": "No se han encontrado cuentas"
+        "no_accounts_found": "No se han encontrado cuentas",
+        "finish_connection": "Conexión de acabado"
     },
     "ai": {
         "tell_ai": "Dile a la IA sobre qué escribir",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "La relación de aspecto debe estar entre {min} y {max}.",
         "resolution_range": "La resolución debe ser como mínimo de {min} x {max} px. Se recomienda {recommended_min} x {recommended_max} px.",
         "duration_range": "La duración debe estar comprendida entre {min} y {max} segundos.",
-        "frame_rate_range": "La frecuencia de imagen debe estar entre {min} y {max} imágenes por segundo."
+        "frame_rate_range": "La frecuencia de imagen debe estar entre {min} y {max} imágenes por segundo.",
+        "edit_alt_text": "Editar texto alternativo",
+        "write_alt_text": "Escribir un texto alternativo",
+        "add_alt_text_for": "Añade un texto alternativo para {platforms}.",
+        "add_video_thumb": "Añadir miniatura de vídeo",
+        "change_video_thumb": "Cambiar la miniatura del vídeo",
+        "view_video_thumb": "Ver vídeo en miniatura",
+        "video_thumb": "Miniatura del vídeo",
+        "video_thumb_providers": "La miniatura del vídeo está disponible a través de: {providers}."
     },
     "page": {
         "pages": "Páginas",

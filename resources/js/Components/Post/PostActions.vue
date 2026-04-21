@@ -81,7 +81,7 @@ const schedule = (postNow = false) => {
         postNow
     }).then((response) => {
         const message = `${$t('post.post_scheduled')}\n${response.data.scheduled_at}
-        ${response.data.needs_approval ? `<div class="text-sm max-w-xs mt-xs">${$t('post.approval_required')}</div>` : ''}`;
+        ${response.data.needs_approval ? `<div class="text-sm max-w-(--container-xs) mt-xs">${$t('post.approval_required')}</div>` : ''}`;
 
         notify('success', message, {
             name: $t("post.view_in_calendar"),
@@ -104,7 +104,7 @@ const addToQueue = () => {
         post: postId.value
     }), {}).then((response) => {
         const message = `${$t('post.post_scheduled')}\n${response.data.scheduled_at}
-        ${response.data.needs_approval ? `<div class="text-sm max-w-xs mt-xs">${$t('post.approval_required')}</div>` : ''}`;
+        ${response.data.needs_approval ? `<div class="text-sm max-w-(--container-xs) mt-xs">${$t('post.approval_required')}</div>` : ''}`;
 
         notify('success', message, {
             name: $t("post.view_in_calendar"),
@@ -169,7 +169,7 @@ const accounts = computed(() => {
             <div class="flex items-center" role="group">
                 <SecondaryButton size="md"
                                  :hiddenTextOnSmallScreen="true"
-                                 :class="{ '!normal-case border-r-primary-800 ltr:rounded-r-none rtl:rounded-l-none': scheduleTime, 'ltr:!rounded-r-lg rtl:!rounded-l-lg': !canSchedule }"
+                                 :class="{ 'normal-case! border-r-primary-800 ltr:rounded-r-none rtl:rounded-l-none': scheduleTime, 'ltr:rounded-r-lg! rtl:rounded-l-lg!': !canSchedule }"
                                  @click="timePicker = true">
                     <template #icon>
                         <CalendarIcon/>
@@ -180,7 +180,7 @@ const accounts = computed(() => {
 
                 <template v-if="scheduleTime && canSchedule">
                     <SecondaryButton size="md" @click="clearScheduleTime" v-tooltip="$t('post.clear_time')"
-                                     class="ltr:rounded-l-none ltr:border-l-0 rtl:rounded-r-none rtl:border-r-0 hover:text-red-500 !px-2">
+                                     class="ltr:rounded-l-none ltr:border-l-0 rtl:rounded-r-none rtl:border-r-0 hover:text-red-500 px-2!">
                         <XIcon/>
                     </SecondaryButton>
                 </template>

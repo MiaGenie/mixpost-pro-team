@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'La résolution doit être au minimum de :min x :max px. La résolution recommandée est de :recommended_min x :recommended_max px.',
   'duration_range' => 'La durée doit être comprise entre :min et :max secondes.',
   'frame_rate_range' => 'La fréquence d\'images (fps) doit être comprise entre :min et :max images par seconde.',
+  'edit_alt_text' => 'Modifier le texte alt',
+  'write_alt_text' => 'Rédiger un texte alt',
+  'add_alt_text_for' => 'Ajouter un texte alt pour :platforms.',
+  'add_video_thumb' => 'Ajouter une vignette vidéo',
+  'change_video_thumb' => 'Modifier la vignette de la vidéo',
+  'view_video_thumb' => 'Voir la vignette de la vidéo',
+  'video_thumb' => 'Miniature de la vidéo',
+  'video_thumb_providers' => 'La vignette vidéo est disponible à travers : :providers.',
 ];

@@ -13,7 +13,7 @@ const data = inject('facebookCtx');
 </script>
 <template>
     <div class="flex items-center">
-            <span class="inline-flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full mr-sm">
+            <span class="inline-flex justify-center items-center shrink-0 w-10 h-10 rounded-full mr-sm">
                 <img :src="data.image"
                      class="object-cover w-full h-full rounded-full" alt=""/>
             </span>
@@ -63,6 +63,7 @@ const data = inject('facebookCtx');
     </div>
 </template>
 <style>
+@reference "@css/app.css";
 .facebook-toolbar-icon {
     @apply inline-block w-5 h-5 bg-no-repeat;
 }

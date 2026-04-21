@@ -40,6 +40,10 @@ class MediaVideoThumbConversion extends MediaConversion
 
     public function handle(): MediaConversionData|null
     {
+        if(!Util::isFFmpegInstalled()) {
+            return null;
+        }
+
         $temporaryFile = TemporaryFile::make()->fromDisk(
             sourceDisk: $this->getFromDisk(),
             sourceFilepath: $this->getFilepath()

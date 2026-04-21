@@ -1,8 +1,9 @@
 const usePostVersions = () => {
-    const versionContentObject = (body = '', media = [], url = '', opened = true) => {
+    const versionContentObject = (body = '', media = [], video_thumbs = [], url = '', opened = true) => {
         return {
             body,
             media,
+            video_thumbs,
             url,
             opened
         };
@@ -59,11 +60,11 @@ const usePostVersions = () => {
         };
     }
 
-    const versionObject = (accountId = 0, isOriginal = false, contentBody = '', media = [], title = '', link = '') => {
+    const versionObject = (accountId = 0, isOriginal = false, contentBody = '', media = [], video_thumbs = [], title = '', link = '') => {
         return {
             account_id: accountId,
             is_original: isOriginal,
-            content: [versionContentObject(contentBody, media, link)],
+            content: [versionContentObject(contentBody, media, video_thumbs, link)],
             options: versionOptions(title, link)
         }
     }
@@ -88,6 +89,12 @@ const usePostVersions = () => {
         return versions.findIndex(version => version.account_id === accountId);
     }
 
+    const getAccountsWithoutVersion = (versions, selectedAccounts) => {
+        return selectedAccounts.filter(
+            (account) => !accountHasVersion(versions, account.id)
+        )
+    }
+
     const accountHasVersion = (versions, accountId) => {
         return versions.some(version => version.account_id === accountId);
     }
@@ -98,6 +105,7 @@ const usePostVersions = () => {
         getOriginalVersion,
         getAccountVersion,
         getIndexAccountVersion,
+        getAccountsWithoutVersion,
         accountHasVersion
     }
 }

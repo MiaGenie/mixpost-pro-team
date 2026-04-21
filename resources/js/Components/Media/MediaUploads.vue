@@ -14,6 +14,14 @@ const props = defineProps({
     columns: {
         type: Number,
         default: 3
+    },
+    maxSelectedItems: {
+        type: Number,
+        default: -1 //infinite
+    },
+    mimeTypes: {
+        type: Array,
+        default: []
     }
 })
 
@@ -29,7 +37,7 @@ const {
     removeItems,
     isSelected,
     createObserver
-} = useMedia('mixpost.media.fetchUploads', {workspace: workspaceCtx.id});
+} = useMedia('mixpost.media.fetchUploads', {workspace: workspaceCtx.id}, props.maxSelectedItems, props.mimeTypes);
 
 onMounted(() => {
     createObserver();
@@ -44,6 +52,7 @@ defineExpose({selected, deselectAll, removeItems})
                  :toggleSelect="toggleSelect"
                  :isSelected="isSelected"
                  :columns="columns"
+                 :mimeTypes="props.mimeTypes"
     />
 
     <div :class="{'mt-lg': items.length}">

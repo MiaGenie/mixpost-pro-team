@@ -12,10 +12,26 @@ const props = defineProps({
     media: {
         type: Array,
         required: true
+    },
+    showItemDropdownMenu: {
+        type: Boolean,
+        default: true
+    },
+    videoThumbs: {
+        type: Array,
+        required: true
+    },
+    enableVideoThumb: {
+        type: Boolean,
+        default: false,
+    },
+    providersWithVideoThumbEnabled: {
+        type: Array,
+        default: () => []
     }
 })
 
-const emits = defineEmits(['updated']);
+const emits = defineEmits(['updated', 'videoThumbsUpdated']);
 
 const {editAllowed} = usePost();
 
@@ -42,8 +58,54 @@ const remove = (id) => {
     const items = clone(props.media);
     items.splice(index, 1);
 
+    //remove thumbnail only if there are no other media with the provided id
+    if(props.media.findIndex(item => item.id === id)){
+        const thumbs = clone(props.videoThumbs).filter(thumb => {
+            return thumb.media_id !== id;
+        });
+        emits('videoThumbsUpdated', thumbs);
+    }
+
     emits('updated', items);
     close();
+}
+
+const update = (media) => {
+    const items = clone(props.media);
+    items.forEach(item => {
+        if(item.id === media.id){
+            item.alt_text = media.alt_text
+        }
+    });
+    emits('updated', items);
+}
+const syncVideoThumb = (media, mode, thumbnail = {}) => {
+    if(!['add_thumbnail', 'remove_thumbnail'].includes(mode)){
+        return;
+    }
+
+    const items = clone(props.media);
+    let thumbs = clone(props.videoThumbs);
+
+    items.forEach(item => {
+        if(item.id === media.id){
+            thumbs = thumbs.filter(thumb => {
+                return thumb.media_id !== media.id;
+            });
+            if(mode === 'add_thumbnail'){
+                item.video_custom_thumb_url = thumbnail.url;
+                thumbs.push({
+                    media_id: media.id,
+                    thumb_id: thumbnail.id
+                });
+            } else if(mode === 'remove_thumbnail'){
+                item.video_custom_thumb_url = null;
+            }
+        }
+    } );
+
+    emits('updated', items);
+    emits('videoThumbsUpdated', thumbs);
 }
 </script>
 <template>
@@ -56,11 +118,25 @@ const remove = (id) => {
                 group: 'media'
             }"
             item-key="id"
-            class="flex flex-wrap gap-xs"
+            class="flex flex-wrap gap-sm"
         >
             <template #item="{element}">
-                <div role="button" class="cursor-pointer" @click="open(element)">
-                    <MediaFile :media="element" img-height="sm" :imgWidthFull="false" :showCaption="false"/>
+                <div role="button" class="cursor-pointer">
+                    <MediaFile :media="element"
+                               imgHeight="sm"
+                               placeholderHeight="sm"
+                               :imgWidthFull="false"
+                               :showCaption="false"
+                               :editMode="editAllowed"
+                               :showDropdownMenu="showItemDropdownMenu"
+                               :enableVideoThumb="enableVideoThumb"
+                               :providersWithVideoThumbEnabled="providersWithVideoThumbEnabled"
+                               @open="open(element)"
+                               @update="(el) => update(el)"
+                               @remove="remove(element.id)"
+                               @addCustomVideoThumb="(el) => syncVideoThumb(element, 'add_thumbnail', el)"
+                               @removeCustomVideoThumb="() => syncVideoThumb(element, 'remove_thumbnail')"
+                    />
                 </div>
             </template>
         </Draggable>

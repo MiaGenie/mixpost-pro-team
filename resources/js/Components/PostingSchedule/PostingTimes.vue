@@ -88,7 +88,7 @@ const remove = (dayIndex, timeValue) => {
                             <span
                                 class="flex absolute right-0 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-200">
                                 <PureDangerButton @click="remove(dayIndex, item.originalValue)">
-                                    <X class="!w-5 !-5"/>
+                                    <X class="w-5! !-5"/>
                                 </PureDangerButton>
                             </span>
                         </div>

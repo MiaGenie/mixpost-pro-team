@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Konto Entitäten',
   'select_the_social_entities' => 'Wähle die Konten aus, die du verbinden möchtest',
   'connected' => 'Verbunden',
-  'choose' => 'Wähle',
   'access_token_expired' => 'Das Zugangstoken ist abgelaufen. Verbinde dein Konto neu.',
   'unauthorized' => 'Kein Zugriff',
   'add_social_account' => 'Wenn du kein soziales Konto hast, füge bitte mindestens eines hinzu.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'Keine Konten gefunden',
+  'finish_connection' => 'Finish Verbindung',
 ];

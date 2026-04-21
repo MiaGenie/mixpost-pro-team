@@ -58,7 +58,7 @@ const {createPost, formatTemplateContent, deleteTemplate} = useTemplate();
                     <Masonry :items="templates" :columns="3">
                         <template #default="{item}">
                             <ListGroup class="group">
-                                <ListItem :withClassesForLast="false" class="!p-lg bg-white rounded-lg">
+                                <ListItem :withClassesForLast="false" class="p-lg! bg-white rounded-lg">
                                     <TemplateItem :template="item">
                                         <template #action>
                                             <div class="flex justify-end">
@@ -81,12 +81,12 @@ const {createPost, formatTemplateContent, deleteTemplate} = useTemplate();
                                                     <template #content>
                                                         <DropdownItem linkAs="a"
                                                                       :href="route('mixpost.templates.edit', {workspace: workspaceCtx.id, template: item.id})">
-                                                            <PencilSquare class="!w-5 !h-5 mr-1"/>
+                                                            <PencilSquare class="w-5! h-5! mr-1"/>
                                                             {{ $t('general.edit') }}
                                                         </DropdownItem>
 
                                                         <DropdownItem @click="deleteTemplate(item)" as="button">
-                                                            <Trash class="!w-5 !h-5 mr-1 text-red-500"/>
+                                                            <Trash class="w-5! h-5! mr-1 text-red-500"/>
                                                             {{ $t('general.delete') }}
                                                         </DropdownItem>
                                                     </template>

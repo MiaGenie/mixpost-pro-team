@@ -20,11 +20,11 @@ const form = useForm(props.settings);
 <template>
     <Head :title="$t('profile.edit_profile')"/>
 
-    <PageHeader :title="$t('profile.edit_profile')" class="!px-0">
+    <PageHeader :title="$t('profile.edit_profile')" class="px-0!">
         <BackToDashboardButton/>
     </PageHeader>
 
-    <div class="row-py w-full mx-auto !pt-0">
+    <div class="row-py w-full mx-auto pt-0!">
         <div class="w-full mb-lg">
             <div class="mt-2xl sm:mt-0">
                 <ActionSection>

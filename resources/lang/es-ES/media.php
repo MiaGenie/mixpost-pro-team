@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'La resolución debe ser como mínimo de :min x :max px. Se recomienda :recommended_min x :recommended_max px.',
   'duration_range' => 'La duración debe estar comprendida entre :min y :max segundos.',
   'frame_rate_range' => 'La frecuencia de imagen debe estar entre :min y :max imágenes por segundo.',
+  'edit_alt_text' => 'Editar texto alternativo',
+  'write_alt_text' => 'Escribir un texto alternativo',
+  'add_alt_text_for' => 'Añade un texto alternativo para :platforms.',
+  'add_video_thumb' => 'Añadir miniatura de vídeo',
+  'change_video_thumb' => 'Cambiar la miniatura del vídeo',
+  'view_video_thumb' => 'Ver vídeo en miniatura',
+  'video_thumb' => 'Miniatura del vídeo',
+  'video_thumb_providers' => 'La miniatura del vídeo está disponible a través de: :providers.',
 ];

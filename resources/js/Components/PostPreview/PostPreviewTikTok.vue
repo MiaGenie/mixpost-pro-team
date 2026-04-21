@@ -49,7 +49,7 @@ const isDirectShareType = computed(() => {
                 {{ $t('service.tiktok.direct_share_type') }}
             </Alert>
 
-            <div v-if="content[0].media[0].is_video" class="relative overflow-hidden rounded-xl mx-auto max-w-md">
+            <div v-if="content[0].media[0].is_video" class="relative overflow-hidden rounded-xl mx-auto max-w-(--container-md)">
                 <div class="bg-black aspect-w-9 aspect-h-16">
                     <div class="absolute inset-0">
                         <div class="relative w-full h-full flex items-center">
@@ -78,7 +78,7 @@ const isDirectShareType = computed(() => {
                                 <div class="absolute right-xs bottom-2xl w-16">
                                     <div class="flex flex-col space-y-lg">
                                         <div
-                                            class="relative flex justify-center items-center flex-shrink-0 w-10 h-10 mx-auto rounded-full bg-white p-0.5">
+                                            class="relative flex justify-center items-center shrink-0 w-10 h-10 mx-auto rounded-full bg-white p-0.5">
                                             <img :src="image"
                                                  class="object-cover w-full h-full rounded-full" alt=""/>
 
@@ -118,7 +118,7 @@ const isDirectShareType = computed(() => {
                                         <div class="flex flex-col text-white">
                                             <div
                                                 :class="{'animate-spin-slow': videoIsPlaying}"
-                                                class="relative flex justify-center items-center flex-shrink-0 w-10 h-10 mx-auto rounded-full bg-gray-800 p-xs">
+                                                class="relative flex justify-center items-center shrink-0 w-10 h-10 mx-auto rounded-full bg-gray-800 p-xs">
                                                 <img :src="image"
                                                      class="object-cover w-full h-full rounded-full" alt=""/>
                                             </div>

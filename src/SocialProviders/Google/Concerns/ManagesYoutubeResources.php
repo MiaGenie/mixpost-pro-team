@@ -14,6 +14,7 @@ trait ManagesYoutubeResources
 {
     protected string $apiVersion = 'v3';
     protected string $apiUrl = 'https://www.googleapis.com/youtube';
+    protected string $apiUploadUrl = 'https://www.googleapis.com/upload/youtube';
 
     public function getAccount(): SocialProviderResponse
     {
@@ -96,7 +97,7 @@ trait ManagesYoutubeResources
                 'X-Upload-Content-Type' => 'video/*',
             ])
             ->withBody($data, 'application/json; charset=UTF-8')
-            ->post("https://www.googleapis.com/upload/youtube/$this->apiVersion/videos?uploadType=resumable&part=snippet,status");
+            ->post("$this->apiUploadUrl/$this->apiVersion/videos?uploadType=resumable&part=snippet,status");
 
         if ($session->status() !== 200) {
             return $this->response(SocialProviderResponseStatus::ERROR, $session->json());
@@ -115,6 +116,22 @@ trait ManagesYoutubeResources
         $result = Util::performHttpRequestWithTimeoutRetries($upload, 7 * 60);
 
         Util::closeAndDeleteStreamResource($stream);
+
+        $videoId = $result->json('id');
+
+        $thumbId = collect($params['video_thumbs'] ?? [])->firstWhere('media_id', $mediaItem->id)['thumb_id'] ?? null;
+
+        if ($thumbId) {
+            $customVideoThumb = Media::where('id', $thumbId)->first();
+
+            $session = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
+                ->withBody($customVideoThumb->contents(), 'application/octet-stream')
+                ->post("$this->apiUploadUrl/$this->apiVersion/thumbnails/set?videoId=$videoId&uploadType=multipart");
+
+            if ($session->status() !== 200) {
+                return $this->response(SocialProviderResponseStatus::ERROR, $session->json());
+            }
+        }
 
         return $this->buildResponse($result, function () use ($result) {
             $data = $result->json();

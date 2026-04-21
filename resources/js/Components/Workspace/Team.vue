@@ -94,7 +94,7 @@ const deleteUser = (userId) => {
         <template #title> {{ $t('team.team') }}</template>
         <template #action>
             <SecondaryButton @click="storeUserModel = true" size="md">
-                <PlusIcon class="!w-5 !h-5 mr-xs"/>
+                <PlusIcon class="w-5! h-5! mr-xs"/>
                 {{ $t('team.add_user') }}
             </SecondaryButton>
         </template>
@@ -125,12 +125,12 @@ const deleteUser = (userId) => {
 
                                     <template #content>
                                         <DropdownItem @click="openEditUserModal(user)" as="button">
-                                            <PencilSquare class="!w-5 !h-5 mr-1"/>
+                                            <PencilSquare class="w-5! h-5! mr-1"/>
                                             {{ $t('team.edit_role') }}
                                         </DropdownItem>
 
                                         <DropdownItem @click="deleteUser(user.id)" as="button">
-                                            <Trash class="!w-5 !h-5 mr-1 text-red-500"/>
+                                            <Trash class="w-5! h-5! mr-1 text-red-500"/>
                                             {{ $t('general.delete') }}
                                         </DropdownItem>
                                     </template>

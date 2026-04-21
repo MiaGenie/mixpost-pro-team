@@ -35,11 +35,11 @@
         "account_entities": "Entités du compte",
         "select_the_social_entities": "Sélectionnez les entités sociales que vous souhaitez connecter",
         "connected": "Connecté",
-        "choose": "Choisir",
         "access_token_expired": "Le jeton d'accès a expiré. Reconnectez votre compte.",
         "unauthorized": "Non autorisé",
         "add_social_account": "Vous n'avez pas de compte social, veuillez en ajouter au moins un.",
-        "no_accounts_found": "Aucun compte trouvé"
+        "no_accounts_found": "Aucun compte trouvé",
+        "finish_connection": "Finition Connexion"
     },
     "ai": {
         "tell_ai": "Indiquez à l'IA sur quel sujet écrire",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "Le rapport hauteur\/largeur doit être compris entre {min} et {max}.",
         "resolution_range": "La résolution doit être au minimum de {min} x {max} px. La résolution recommandée est de {recommended_min} x {recommended_max} px.",
         "duration_range": "La durée doit être comprise entre {min} et {max} secondes.",
-        "frame_rate_range": "La fréquence d'images doit être comprise entre {min} et {max} images par seconde."
+        "frame_rate_range": "La fréquence d'images doit être comprise entre {min} et {max} images par seconde.",
+        "edit_alt_text": "Modifier le texte alt",
+        "write_alt_text": "Rédiger un texte alt",
+        "add_alt_text_for": "Ajouter un texte alt pour {platforms}.",
+        "add_video_thumb": "Ajouter une vignette vidéo",
+        "change_video_thumb": "Modifier la vignette de la vidéo",
+        "view_video_thumb": "Voir la vignette de la vidéo",
+        "video_thumb": "Miniature de la vidéo",
+        "video_thumb_providers": "La vignette vidéo est disponible à travers : {providers}."
     },
     "page": {
         "pages": "Pages",

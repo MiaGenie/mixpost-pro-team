@@ -35,11 +35,11 @@
         "account_entities": "Subjekty účtu",
         "select_the_social_entities": "Vyberte sociálne subjekty, ktoré chcete pripojiť",
         "connected": "Pripojené",
-        "choose": "Vyberte si",
         "access_token_expired": "Platnosť prístupového tokenu vypršala. Znova pripojte svoj účet.",
         "unauthorized": "Neoprávnené",
         "add_social_account": "Nemáte účet na sociálnej sieti, pridajte si aspoň jeden.",
-        "no_accounts_found": "Nenašli sa žiadne účty"
+        "no_accounts_found": "Nenašli sa žiadne účty",
+        "finish_connection": "Dokončenie pripojenia"
     },
     "ai": {
         "tell_ai": "Povedzte AI, o čom má písať",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "Pomer strán musí byť medzi {min} a {max}.",
         "resolution_range": "Rozlíšenie musí byť minimálne {min} x {max} px. Odporúčaná hodnota je {recommended_min} x {recommended_max} px.",
         "duration_range": "Trvanie musí byť medzi {min} a {max} sekúnd.",
-        "frame_rate_range": "Snímková frekvencia musí byť medzi {min} a {max} snímok za sekundu."
+        "frame_rate_range": "Snímková frekvencia musí byť medzi {min} a {max} snímok za sekundu.",
+        "edit_alt_text": "Úprava textu alt",
+        "write_alt_text": "Napíšte text alt",
+        "add_alt_text_for": "Pridajte text alt pre {platforms}.",
+        "add_video_thumb": "Pridanie miniatúry videa",
+        "change_video_thumb": "Zmena miniatúry videa",
+        "view_video_thumb": "Zobraziť miniatúru videa",
+        "video_thumb": "Miniatúra videa",
+        "video_thumb_providers": "Miniatúra videa je k dispozícii naprieč: {providers}."
     },
     "page": {
         "pages": "Stránky",

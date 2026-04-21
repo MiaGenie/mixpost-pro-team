@@ -54,6 +54,7 @@ trait ManagesMetaResources
             ->post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/photos", [
                 'published' => false,
                 'access_token' => $this->accessToken(),
+                'alt_text_custom' => $mediaItem->alt_text,
             ]);
 
         Util::closeAndDeleteStreamResource($readStream);

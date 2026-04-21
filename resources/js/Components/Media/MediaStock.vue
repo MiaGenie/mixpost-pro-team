@@ -19,6 +19,10 @@ const props = defineProps({
     columns: {
         type: Number,
         default: 3
+    },
+    maxSelectedItems: {
+        type: Number,
+        default: -1 //infinite
     }
 })
 
@@ -42,7 +46,7 @@ const {
     deselectAll,
     isSelected,
     createObserver
-} = useMedia('mixpost.media.fetchStock', {workspace: workspaceCtx.id});
+} = useMedia('mixpost.media.fetchStock', {workspace: workspaceCtx.id}, props.maxSelectedItems);
 
 onMounted(() => {
     if (enabled.value) {
@@ -60,7 +64,7 @@ defineExpose({selected, deselectAll})
             <Masonry :items="items" :columns="columns">
                 <template #default="{item}">
                     <MediaSelectable v-if="item" :active="isSelected(item)" @click="toggleSelect(item)">
-                        <MediaFile :media="item" class="group">
+                        <MediaFile :media="item">
                             <MediaCredit>
                                 <div>{{ $t('media.image_source') }}: <a
                                     :href="`https://unsplash.com/?utm_source=${appName}&utm_medium=referral`"

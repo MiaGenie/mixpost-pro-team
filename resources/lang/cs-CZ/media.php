@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'Rozlišení musí být minimálně :min x :max px. Doporučené rozlišení je :recommended_min x :recommended_max px.',
   'duration_range' => 'Doba trvání musí být mezi :min a :max sekundami.',
   'frame_rate_range' => 'Snímková frekvence musí být mezi :min a :max snímků za sekundu.',
+  'edit_alt_text' => 'Úprava textu alt',
+  'write_alt_text' => 'Napište text alt',
+  'add_alt_text_for' => 'Přidejte text alt pro :platforms.',
+  'add_video_thumb' => 'Přidání miniatury videa',
+  'change_video_thumb' => 'Změna miniatury videa',
+  'view_video_thumb' => 'Zobrazit miniaturu videa',
+  'video_thumb' => 'Miniatura videa',
+  'video_thumb_providers' => 'Miniatura videa je k dispozici napříč: :providers.',
 ];

@@ -1,8 +1,8 @@
 <script setup>
 import {computed, defineAsyncComponent, inject, onMounted, ref, watch, nextTick} from "vue";
 import {useI18n} from "vue-i18n";
-import {clone, cloneDeep, debounce} from "lodash";
-import {extractFirstURL} from "../../helpers";
+import {clone, cloneDeep, debounce, uniqBy} from "lodash";
+import {extractFirstURL} from "@/helpers.js";
 import emitter from "@/Services/emitter";
 import usePost from "@/Composables/usePost";
 import usePostVersions from "@/Composables/usePostVersions";
@@ -107,6 +107,7 @@ const {
     getOriginalVersion,
     getAccountVersion,
     getIndexAccountVersion,
+    getAccountsWithoutVersion,
     versionContentObject
 } = usePostVersions();
 
@@ -193,7 +194,7 @@ const removeVersion = (accountId) => {
 }
 
 const setupVersions = () => {
-    // If an account was deselected, we're make sure to change the active version to the default version
+    // If an account was deselected, we make sure to change the active version to the default version
     const isAccountSelected = props.form.accounts.includes(activeVersion.value);
 
     if (!isAccountSelected) {
@@ -232,7 +233,7 @@ const singleContentProviders = computed(() => {
     }, []);
 });
 
-const hasFirstComment = computed(() => {
+const isCommentsContentType = computed(() => {
     return getActiveAccounts().some(account => account.content_type === 'comments');
 });
 
@@ -265,18 +266,44 @@ const threadBtnInfo = computed(() => {
     return {show: false, type: '', name: ''};
 });
 
+const accountsWithoutVersion = computed(() => getAccountsWithoutVersion(props.form.versions, selectedAccounts.value,));
+
+const providersPostConfigs = computed(() => {
+    const versionObj = getAccountVersion(props.form.versions, activeVersion.value);
+    const accounts = activeVersion.value === 0 ? uniqBy(accountsWithoutVersion.value, 'provider') : selectedAccounts.value.filter(account => account.id === activeVersion.value);
+
+    return accounts.map(account => {
+        const type = versionObj?.options[account.provider]?.type || 'default';
+        const enableThumb = account.post_configs.enable_video_thumb[type];
+
+        return {
+            provider: account.provider,
+            provider_name: account.provider_name,
+            enableThumb,
+        };
+    });
+});
+
+const providersWithVideoThumbEnabled = computed(() => {
+    return providersPostConfigs.value.filter(provider => provider.enableThumb).map(provider => provider.provider_name);
+});
+
+const enableVideoThumb = computed(() => {
+    return providersPostConfigs.value.some(provider => provider.enableThumb);
+});
+
 const addContentItem = (afterIndex) => {
     const items = getAccountVersion(props.form.versions, activeVersion.value)?.content || [];
     const isOriginalVersion = activeVersion.value === 0;
 
-    // Don't allow adding more than 1 comment for original version
+    // Don't allow adding more than 1 comment for an original version
     if (isOriginalVersion &&
         items.length > 1 &&
         selectedAccounts.value.some(account => account.content_type === 'comments')) {
         return;
     }
 
-    // Don't allow adding more than 1 comment for specific version
+    // Don't allow adding more than 1 comment for a specific version
     if (!isOriginalVersion &&
         items.length > 1 &&
         getAccount(selectedAccounts.value, activeVersion.value)?.content_type === 'comments') {
@@ -394,10 +421,10 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
 
         <Flex :col="true">
             <template v-for="(item, index) in content" :key="index">
-                <div class="relative" :class="{'mt-sm first:mt-0': hasFirstComment && index === 1}">
-                    <template v-if="hasFirstComment && index === 1">
+                <div class="relative" :class="{'mt-sm first:mt-0': isCommentsContentType && index === 1}">
+                    <template v-if="isCommentsContentType && index === 1">
                         <Badge class="absolute left-0 -mt-sm ml-sm z-20">
-                            <ChatBubbleBottomCenterText class="mr-xs !h-5 !w-5"/>
+                            <ChatBubbleBottomCenterText class="mr-xs h-5! w-5!"/>
                             {{
                                 $t('post.first_comment')
                             }}
@@ -445,8 +472,14 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                                 :value="item.body"
                                 :editable="editAllowed"
                                 @update="updateContent(index, 'body', $event)">
-                            <template #default="props">
-                                <PostMedia :media="item.media" @updated="updateContent(index, 'media', $event)"/>
+                            <template #default>
+                                <PostMedia :media="item.media"
+                                           :videoThumbs="item.video_thumbs"
+                                           :enableVideoThumb="enableVideoThumb && !(isCommentsContentType && index === 1)"
+                                           :providersWithVideoThumbEnabled="providersWithVideoThumbEnabled"
+                                           @updated="updateContent(index, 'media', $event)"
+                                           @videoThumbsUpdated="updateContent(index, 'video_thumbs', $event)"
+                                />
 
                                 <Flex :responsive="false"
                                       class="relative justify-between border-t border-gray-200 pt-md mt-md">
@@ -504,7 +537,7 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
 
                                         <template v-if="threadBtnInfo.show">
                                             <EditorButton @click="addContentItem(index)"
-                                                          class="flex items-center !text-primary-500"
+                                                          class="flex items-center text-primary-500!"
                                                           v-tooltip="threadBtnInfo.name">
                                                 <Plus/>
                                             </EditorButton>
@@ -529,7 +562,13 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                             <div
                                 class="top-0 left-0 absolute w-full h-full z-10 bg-white bg-opacity-50 hover:bg-opacity-30 transition ease-in-out duration-200"></div>
                             <EditorReadOnly :value="item.body"/>
-                            <PostMedia :media="item.media" @updated="updateContent(index, 'media', $event)"/>
+                            <PostMedia :media="item.media"
+                                       :videoThumbs="item.video_thumbs"
+                                       :showItemDropdownMenu="false"
+                                       :enableVideoThumb="enableVideoThumb"
+                                       @updated="updateContent(index, 'media', $event)"
+                                       @videoThumbsUpdated="updateContent(index, 'video_thumbs', $event)"
+                            />
                         </div>
                     </template>
                 </div>
@@ -542,7 +581,7 @@ const {insertEmoji, insertContent, replaceContent, focusEditor} = useEditor();
                 </AlertText>
             </template>
 
-            <template v-if="hasFirstComment && content.length > 2">
+            <template v-if="isCommentsContentType && content.length > 2">
                 <AlertText variant="warning" class="mt-xs">
                     {{ $t('post.only_one_first_comment') }}
                 </AlertText>

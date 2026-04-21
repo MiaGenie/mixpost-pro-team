@@ -138,7 +138,7 @@ const update = (data) => {
             <form @submit.prevent="save">
                 <Panel>
                     <template #title>{{ $t('general.details') }}</template>
-                    <VerticalGroup class="mb-lg !max-w-full">
+                    <VerticalGroup class="mb-lg max-w-full!">
                         <template #title>
                             <label for="template_name">{{ $t('template.template_name') }}
                                 <LabelSuffix :danger="true">*</LabelSuffix>

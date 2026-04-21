@@ -54,7 +54,7 @@ const editor = useEditor({
     editorProps: {
         workspaceId: workspaceCtx?.id,
         attributes: {
-            class: 'focus:outline-none min-h-[10px] max-h-96 overflow-y-auto',
+            class: 'focus:outline-hidden min-h-[10px] max-h-96 overflow-y-auto',
         },
         clipboardTextParser: ClipboardTextParser,
         handleDOMEvents: {
@@ -80,7 +80,7 @@ const editor = useEditor({
         emit('focus')
     },
     onBlur: () => {
-        emit('blur')
+        emit('blur-sm')
     }
 });
 
@@ -94,6 +94,7 @@ defineExpose({ editor });
     <editor-content :editor="editor"/>
 </template>
 <style lang="css">
+@reference "@css/app.css";
 [data-type="mention"] {
     @apply text-primary-500;
 }

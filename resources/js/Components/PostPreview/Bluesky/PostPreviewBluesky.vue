@@ -42,14 +42,14 @@ const {isDocEmpty} = useEditor();
         <template v-for="(contentItem, index) in props.content">
             <div :class="{'thread pb-md': index !== props.content.length - 1}" class="relative flex items-start">
                 <div class="mr-sm">
-                <span class="inline-flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full">
+                <span class="inline-flex justify-center items-center shrink-0 w-10 h-10 rounded-full">
                     <img :src="image"
                          class="object-cover w-full h-full rounded-full z-10" alt=""/>
                 </span>
                 </div>
                 <div class="w-full">
                   <div>
-                      <div class="flex flex-wrap flex-grow-0 space-x-1 overflow-hidden">
+                      <div class="flex flex-wrap grow-0 space-x-1 overflow-hidden">
                           <div class="font-medium mr-xs">{{ name }}</div>
                           <div class="text-gray-400">@{{ username }}</div>
                       </div>

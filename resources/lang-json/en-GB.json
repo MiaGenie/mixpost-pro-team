@@ -35,11 +35,11 @@
         "account_entities": "Account Entities",
         "select_the_social_entities": "Select the social entities you want to connect",
         "connected": "Connected",
-        "choose": "Choose",
         "access_token_expired": "Access token has expired. Reconnect your account.",
         "unauthorized": "Unauthorized",
         "add_social_account": "You don't have a social account, please add at least one.",
-        "no_accounts_found": "No accounts found"
+        "no_accounts_found": "No accounts found",
+        "finish_connection": "Finish Connection"
     },
     "ai": {
         "tell_ai": "Tell AI what to write about",
@@ -369,7 +369,15 @@
         "aspect_ratio_range": "Aspect ratio must be between {min} and {max}.",
         "resolution_range": "Resolution must be minimum {min} x {max} px. Recommended is {recommended_min} x {recommended_max} px.",
         "duration_range": "Duration must be between {min} and {max} seconds.",
-        "frame_rate_range": "Frame rate must be between {min} and {max} frames per second."
+        "frame_rate_range": "Frame rate must be between {min} and {max} frames per second.",
+        "edit_alt_text": "Edit alt text",
+        "write_alt_text": "Write an alt text",
+        "add_alt_text_for": "Add an alt text for {platforms}.",
+        "add_video_thumb": "Add video thumbnail",
+        "change_video_thumb": "Change video thumbnail",
+        "view_video_thumb": "View video thumbnail",
+        "video_thumb": "Video thumbnail",
+        "video_thumb_providers": "The video thumbnail is available across: {providers}."
     },
     "page": {
         "pages": "Pages",

@@ -222,21 +222,21 @@ onBeforeUnmount(() => {
                     <template #title>{{ $t('service.tiktok.allow_users') }}</template>
 
                     <Flex gap="gap-md" class="md:items-center">
-                        <Label :for="`allow_comments-${account.id}`" class="!mb-0">
+                        <Label :for="`allow_comments-${account.id}`" class="mb-0!">
                             <Checkbox v-model:checked="options.allow_comments[`account-${account.id}`]"
                                       :disabled="account.data.comment_disabled"
                                       :id="`allow_comments-${account.id}`"/>
                             {{ $t('service.tiktok.comment') }}
                         </Label>
 
-                        <Label :for="`allow_duet-${account.id}`" class="!mb-0">
+                        <Label :for="`allow_duet-${account.id}`" class="mb-0!">
                             <Checkbox v-model:checked="options.allow_duet[`account-${account.id}`]"
                                       :disabled="account.data.duet_disabled"
                                       :id="`allow_duet-${account.id}`"/>
                             {{ $t('service.tiktok.duet') }}
                         </Label>
 
-                        <Label :for="`allow_stitch-${account.id}`" class="!mb-0">
+                        <Label :for="`allow_stitch-${account.id}`" class="mb-0!">
                             <Checkbox v-model:checked="options.allow_stitch[`account-${account.id}`]"
                                       :disabled="account.data.stitch_disabled"
                                       :id="`allow_stitch-${account.id}`"/>

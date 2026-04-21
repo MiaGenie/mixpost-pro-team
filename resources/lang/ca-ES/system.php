@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'No s\'ha pogut copiar al porta-retalls!',
   'usage_api' => 'Ús a l\'API',
   'stored_safely' => 'L\'he guardat amb seguretat',
+  'backend' => 
+  [
+    'installed' => 'Instal·lat',
+    'not_installed' => 'No instal·lat',
+  ],
 ];

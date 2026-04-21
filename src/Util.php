@@ -8,6 +8,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inovector\Mixpost\Concerns\UsesUserModel;
 use Inovector\Mixpost\Facades\Settings;
@@ -190,5 +191,16 @@ class Util
     public static function isMysqlDatabase(?string $connection = null): bool
     {
         return self::getDatabaseDriver($connection) === 'mysql';
+    }
+
+    public static function isFFmpegInstalled(): bool
+    {
+        $ffmpegPath = Util::config('ffmpeg_path');
+        $ffprobePath = Util::config('ffprobe_path');
+
+        return file_exists($ffmpegPath) &&
+            file_exists($ffprobePath) &&
+            str_ends_with($ffmpegPath, 'ffmpeg') &&
+            str_ends_with($ffprobePath, 'ffprobe');
     }
 }

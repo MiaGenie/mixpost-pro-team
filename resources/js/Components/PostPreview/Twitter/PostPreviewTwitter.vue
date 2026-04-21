@@ -42,7 +42,7 @@ const {isDocEmpty} = useEditor();
         <template v-for="(contentItem, index) in props.content">
             <div :class="{'thread pb-md': index !== props.content.length - 1}" class="relative flex items-start">
                 <div class="mr-sm">
-                <span class="inline-flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full">
+                <span class="inline-flex justify-center items-center shrink-0 w-10 h-10 rounded-full">
                     <img :src="image"
                          class="object-cover w-full h-full rounded-full z-10" alt=""/>
                 </span>

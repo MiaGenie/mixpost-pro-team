@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Identità dell\'account',
   'select_the_social_entities' => 'Selezionare le identità social che si desisdera connettere',
   'connected' => 'Connesso',
-  'choose' => 'Scegli',
   'access_token_expired' => 'Il token di accesso è scaduto. Ricollega il tuo account.',
   'unauthorized' => 'Non autorizzato',
   'add_social_account' => 'Non hai un account social, aggiungine almeno uno.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'Nessun conto trovato',
+  'finish_connection' => 'Connessione di finitura',
 ];

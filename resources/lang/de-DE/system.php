@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Das Kopieren in die Zwischenablage ist fehlgeschlagen!',
   'usage_api' => 'Verwendung in API',
   'stored_safely' => 'Ich habe es sicher aufbewahrt',
+  'backend' => 
+  [
+    'installed' => 'Installiert',
+    'not_installed' => 'Nicht installiert',
+  ],
 ];

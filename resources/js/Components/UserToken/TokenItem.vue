@@ -77,7 +77,7 @@ const deleteTokenAfterConfirmed = (dialog) => {
 
         <TableCell>
             <PureDangerButton @click="openDeleteTokenConfirmation" v-tooltip="$t('general.delete')">
-                <Trash class="!w-5 !h-5"/>
+                <Trash class="w-5! h-5!"/>
             </PureDangerButton>
         </TableCell>
     </TableRow>

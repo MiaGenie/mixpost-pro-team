@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'يجب أن يكون الحد الأدنى للدقة :min × :max بكسل. يوصى بـ :recommended_min x :recommended_max بكسل.',
   'duration_range' => 'يجب أن تتراوح المدة بين :min و:max ثانية.',
   'frame_rate_range' => 'يجب أن يكون معدل الإطارات بين :min و:max إطارًا في الثانية.',
+  'edit_alt_text' => 'تعديل النص البديل',
+  'write_alt_text' => 'اكتب نصًا بديلًا',
+  'add_alt_text_for' => 'أضف نصًا بديلًا لـ :platforms.',
+  'add_video_thumb' => 'إضافة صورة مصغرة للفيديو',
+  'change_video_thumb' => 'تغيير الصورة المصغرة للفيديو',
+  'view_video_thumb' => 'مشاهدة الصورة المصغرة للفيديو',
+  'video_thumb' => 'صورة مصغرة للفيديو',
+  'video_thumb_providers' => 'الصورة المصغرة للفيديو متاحة عبر: :providers.',
 ];

@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Ezin izan da kopiatu arbelean!',
   'usage_api' => 'Erabilera APIan',
   'stored_safely' => 'Leku seguruan gorde dut',
+  'backend' => 
+  [
+    'installed' => 'Instalatuta',
+    'not_installed' => 'Ez instalatuta',
+  ],
 ];

@@ -59,7 +59,7 @@ onBeforeUnmount(() => {
         <div class="z-10 w-full h-full absolute flex items-center justify-center">
             <button v-if="!isPlaying"
                     class="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center text-white bg-black bg-opacity-50">
-                <Play class="!w-10 !h-10"/>
+                <Play class="w-10! h-10!"/>
             </button>
         </div>
 

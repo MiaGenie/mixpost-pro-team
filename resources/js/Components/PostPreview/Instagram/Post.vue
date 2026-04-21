@@ -39,11 +39,11 @@ const lastSlideIndex = computed(() => {
 });
 </script>
 <template>
-    <div class="border border-gray-200 rounded py-sm">
+    <div class="border border-gray-200 rounded-sm py-sm">
         <div class="flex items-center justify-between px-sm">
             <div class="flex items-center">
                         <span
-                            class="inline-flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full mr-sm">
+                            class="inline-flex justify-center items-center shrink-0 w-10 h-10 rounded-full mr-sm">
                             <img :src="data.image"
                                  class="object-cover w-full h-full rounded-full" alt=""/>
                         </span>
@@ -78,7 +78,7 @@ const lastSlideIndex = computed(() => {
                                     <div class="w-1.5 h-1.5 flex rounded-full"
                                          :class="{'bg-gray-500': index > 0,
                                       'bg-blue-500': index === 0,
-                                      '!w-1 !h-1': slidersLength > 6 && index === lastSlideIndex}">
+                                      'w-1! h-1!': slidersLength > 6 && index === lastSlideIndex}">
                                     </div>
                                 </template>
                             </div>

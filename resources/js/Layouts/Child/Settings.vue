@@ -12,7 +12,7 @@ const routePrefix = inject('routePrefix');
         <PageHeader :title="$t('general.settings')"/>
 
         <div class="row-px">
-            <Tabs class="overflow-x-auto !flex-nowrap md:!flex-wrap md:gap-sm max-w-full w-full mb-lg">
+            <Tabs class="overflow-x-auto flex-nowrap! md:flex-wrap! md:gap-sm max-w-full w-full mb-lg">
                 <Link :href="route(`${routePrefix}.configs.theme.form`)" class="mr-md">
                     <Tab :active="$page.component === 'Admin/Configs/ThemeConfig'">{{ $t('theme.customization') }}</Tab>
                 </Link>

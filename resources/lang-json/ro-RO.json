@@ -35,11 +35,11 @@
         "account_entities": "Entități ale contului",
         "select_the_social_entities": "Selectați entitățile sociale pe care doriți să le conectați",
         "connected": "Conectat",
-        "choose": "Alegeți",
         "access_token_expired": "Indicatorul de acces a expirat. Reconectați-vă contul.",
         "unauthorized": "Neautorizat",
         "add_social_account": "Nu aveți un cont social, vă rugăm să adăugați cel puțin unul.",
-        "no_accounts_found": "Nu s-au găsit conturi"
+        "no_accounts_found": "Nu s-au găsit conturi",
+        "finish_connection": "Terminare conexiune"
     },
     "ai": {
         "tell_ai": "Spuneți-i IA despre ce să scrie",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "Raportul de aspect trebuie să fie între {min} și {max}.",
         "resolution_range": "Rezoluția trebuie să fie de minimum {min} x {max} px. Recomandată este {recommended_min} x {recommended_max} px.",
         "duration_range": "Durata trebuie să fie cuprinsă între {min} și {max} secunde.",
-        "frame_rate_range": "Rata de cadre trebuie să fie între {min} și {max} cadre pe secundă."
+        "frame_rate_range": "Rata de cadre trebuie să fie între {min} și {max} cadre pe secundă.",
+        "edit_alt_text": "Editarea textului alt",
+        "write_alt_text": "Scrieți un text alt",
+        "add_alt_text_for": "Adăugați un text alt pentru {platforms}.",
+        "add_video_thumb": "Adăugați thumbnail video",
+        "change_video_thumb": "Schimbare miniatură video",
+        "view_video_thumb": "Vizualizați miniatura videoclipului",
+        "video_thumb": "Miniatură video",
+        "video_thumb_providers": "Miniatura video este disponibilă peste: {providers}."
     },
     "page": {
         "pages": "Pagini",

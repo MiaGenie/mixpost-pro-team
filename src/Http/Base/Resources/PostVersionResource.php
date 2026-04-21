@@ -43,13 +43,20 @@ class PostVersionResource extends JsonResource
         return collect($items)->map(function ($item, $index) {
             $data = [
                 'body' => (string)$item['body'],
-                'media' => Arr::map($item['media'], function ($mediaItem) {
+                'media' => Arr::map($item['media'], function ($mediaItem) use ($item) {
                     if ($mediaItem instanceof Media) {
-                        return new MediaResource($mediaItem);
-                    }
+                        $mediaResource = new MediaResource($mediaItem);
 
+                        if(isset($item['video_thumb_media']) && $videoThumbMedia = $item['video_thumb_media'][$mediaItem->id] ?? NULL){
+                            return $mediaResource->additionalFields([
+                                'video_custom_thumb_url' => $videoThumbMedia->getUrl()
+                            ]);
+                        }
+                        return $mediaResource;
+                    }
                     return $mediaItem;
                 }),
+                'video_thumbs' => $item['video_thumbs'] ?? [],
                 'url' => $item['url'] ?? '',
                 'opened' => $index === 0,
             ];

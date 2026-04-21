@@ -33,12 +33,16 @@ const props = defineProps({
     columns: {
         type: Number,
         default: 3,
+    },
+    mimeTypes:{
+        type: Array,
+        default: []
     }
 })
 
 const emit = defineEmits(['mediaSelect'])
 
-const mimeTypes = usePage().props.mixpost.mime_types;
+const mimeTypes = props.mimeTypes.length ? props.mimeTypes : usePage().props.mixpost.mime_types;
 
 const input = ref(null);
 
@@ -188,10 +192,10 @@ onUnmounted(() => {
                  @dragover.prevent
                  class="w-full h-full absolute"></div>
             <PhotoIcon :class="{'text-stone-700': !dragEnter, 'text-cyan-500': dragEnter}"
-                       class="!w-16 !h-16 mx-auto mb-xs transition-colors ease-in-out duration-200"/>
+                       class="w-16! h-16! mx-auto mb-xs transition-colors ease-in-out duration-200"/>
             <div class="text-center mb-1">{{ $t('media.drag_drop_files') }}
                 <label for="browse"
-                       class="cursor-pointer text-primary-500 hover:text-primary-700 active:text-primary-700 focus:outline-none focus:text-primary-700 transition-colors ease-in-out duration-200">
+                       class="cursor-pointer text-primary-500 hover:text-primary-700 active:text-primary-700 focus:outline-hidden focus:text-primary-700 transition-colors ease-in-out duration-200">
                     {{ $t('general.browse') }}
                 </label>
             </div>

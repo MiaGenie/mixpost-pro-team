@@ -145,6 +145,7 @@ trait ManagesResources
                 'title' => $params['title'],
                 'board_id' => $params['board_id'],
                 'description' => $text,
+                'alt_text' => $media->first()->alt_text,
             ], $mediaData));
 
         return $this->buildResponse($response, function () use ($response) {

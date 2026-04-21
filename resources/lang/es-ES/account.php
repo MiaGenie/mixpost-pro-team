@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Entidades de cuenta',
   'select_the_social_entities' => 'Seleccione las entidades sociales que desea conectar',
   'connected' => 'Conectado',
-  'choose' => 'Elija',
   'access_token_expired' => 'El token de acceso ha caducado. Vuelva a conectar su cuenta.',
   'unauthorized' => 'Sin autorización',
   'add_social_account' => 'Si no tienes una cuenta social, añade al menos una.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'No se han encontrado cuentas',
+  'finish_connection' => 'Conexión de acabado',
 ];

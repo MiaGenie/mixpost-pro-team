@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Kontu-entitateak',
   'select_the_social_entities' => 'Hautatu konektatu nahi dituzun entitate sozialak',
   'connected' => 'Konektatuta',
-  'choose' => 'Aukeratu',
   'access_token_expired' => 'Sarbide-tokena iraungi da. Konektatu berriro zure kontua.',
   'unauthorized' => 'Baimenik gabe',
   'add_social_account' => 'Ez duzu kontu sozialik, gehitu gutxienez bat.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'Ez da konturik aurkitu',
+  'finish_connection' => 'Amaitu konexioa',
 ];

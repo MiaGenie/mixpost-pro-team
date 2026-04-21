@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'Ebazpenak gutxienez :min x :max px izan behar du. :recommended_min x :recommended_max px-koa da gomendatua.',
   'duration_range' => 'Iraupena :min eta :max segundo artekoa izan behar du.',
   'frame_rate_range' => 'Fotograma-abiadura segundoko :min eta :max fotograma artekoa izan behar du.',
+  'edit_alt_text' => 'Editatu alt testua',
+  'write_alt_text' => 'Idatzi alt testu bat',
+  'add_alt_text_for' => 'Gehitu :platforms testu alternatiboa.',
+  'add_video_thumb' => 'Gehitu bideoaren miniatura',
+  'change_video_thumb' => 'Aldatu bideoaren miniatura',
+  'view_video_thumb' => 'Ikusi bideoaren miniatura',
+  'video_thumb' => 'Bideoaren miniatura',
+  'video_thumb_providers' => 'Bideoaren miniatura hemen dago eskuragarri: :providers.',
 ];

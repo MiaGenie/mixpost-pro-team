@@ -7,7 +7,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Support\SocialProviderResponse;
-use Spatie\TemporaryDirectory\TemporaryDirectory;
 
 trait ManagesResources
 {
@@ -104,6 +103,13 @@ trait ManagesResources
                     $errors[] = 'upload_failed';
                     continue;
                 }
+            }
+
+            if ($item->alt_text) {
+                $this->connection->mediaMetadataCreate(
+                    media_id: $result->media_id_string,
+                    alt_text:  $item->alt_text
+                );
             }
 
             $ids[] = $result->media_id_string;

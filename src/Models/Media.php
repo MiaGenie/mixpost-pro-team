@@ -31,6 +31,7 @@ class Media extends Model
         'disk',
         'path',
         'data',
+        'data->alt_text',
         'size',
         'size_total',
         'conversions'
@@ -53,6 +54,13 @@ class Media extends Model
     {
         return Attribute::make(
             get: fn(mixed $value, array $attributes) => json_decode($attributes['data'], true)['author'] ?? null,
+        );
+    }
+
+    protected function altText(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => json_decode($attributes['data'], true)['alt_text'] ?? null,
         );
     }
 

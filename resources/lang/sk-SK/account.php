@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Subjekty účtu',
   'select_the_social_entities' => 'Vyberte sociálne subjekty, ktoré chcete pripojiť',
   'connected' => 'Pripojené',
-  'choose' => 'Vyberte si',
   'access_token_expired' => 'Platnosť prístupového tokenu vypršala. Znova pripojte svoj účet.',
   'unauthorized' => 'Neoprávnené',
   'add_social_account' => 'Nemáte účet na sociálnej sieti, pridajte si aspoň jeden.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'Nenašli sa žiadne účty',
+  'finish_connection' => 'Dokončenie pripojenia',
 ];

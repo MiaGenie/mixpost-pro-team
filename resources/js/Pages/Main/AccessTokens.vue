@@ -113,7 +113,7 @@ const deleteTokensAfterConfirmed = (dialog) => {
 <template>
     <Head :title="$t('access_token.access_tokens')"/>
 
-    <PageHeader :title="$t('access_token.access_tokens')" class="!px-0">
+    <PageHeader :title="$t('access_token.access_tokens')" class="px-0!">
         <template #description>
             {{ $t('access_token.desc') }}
         </template>
@@ -121,7 +121,7 @@ const deleteTokensAfterConfirmed = (dialog) => {
         <BackToDashboardButton/>
     </PageHeader>
 
-    <div class="row-py w-full mx-auto !pt-0">
+    <div class="row-py w-full mx-auto pt-0!">
         <SelectableBar :count="selectedRecords.length" @close="deselectAllRecords">
             <PureDangerButton @click="openDeleteTokensConfirmation" v-tooltip="$t('general.delete')">
                 <Trash/>

@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Models\Media;
+use Inovector\Mixpost\Support\PostVersionHelpers;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
 trait ManagesInstagramResources
@@ -66,7 +67,10 @@ trait ManagesInstagramResources
         $isStory = Arr::get($params, 'type') === 'story';
 
         if ($isReel && $media->count() === 1) {
-            $response = $this->publishInstagramReel($text, $media->first());
+            if (isset($params['video_thumbs']) && is_array($params['video_thumbs'])) {
+                $thumb = PostVersionHelpers::getThumbForMediaId($media->first()->id, $params['video_thumbs']);
+            }
+            $response = $this->publishInstagramReel($text, $media->first(), $thumb ?? null);
         }
 
         if ($isReel && $media->count() > 1) {
@@ -125,7 +129,8 @@ trait ManagesInstagramResources
     {
         $data = [
             'access_token' => $this->getAccessToken()['access_token'],
-            'caption' => $text
+            'caption' => $text,
+            'alt_text' => $mediaItem->alt_text,
         ];
 
         if ($mediaItem->isVideo()) {
@@ -149,7 +154,7 @@ trait ManagesInstagramResources
         return $this->publishContainer($response->id);
     }
 
-    public function publishInstagramReel(string $text, Media $mediaItem): SocialProviderResponse
+    public function publishInstagramReel(string $text, Media $mediaItem, ?Media $thumb = null): SocialProviderResponse
     {
         if (!$mediaItem->isVideo()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['reel_only_video_allowed']);
@@ -159,8 +164,13 @@ trait ManagesInstagramResources
             'access_token' => $this->getAccessToken()['access_token'],
             'caption' => $text,
             'media_type' => 'REELS',
-            'video_url' => $mediaItem->getUrl()
+            'video_url' => $mediaItem->getUrl(),
+            'alt_text' => $mediaItem->alt_text,
         ];
+
+        if($thumb){
+            $data['cover_url'] = $thumb->getUrl();
+        }
 
         $response = $this->buildResponse(
             $this->getHttpClient()::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", $data)
@@ -181,7 +191,8 @@ trait ManagesInstagramResources
             $mediaContainerResponse = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", [
                 'access_token' => $this->getAccessToken()['access_token'],
                 'is_carousel_item' => true,
-                'image_url' => $item->getUrl()
+                'image_url' => $item->getUrl(),
+                'alt_text' => $item->alt_text,
             ]));
 
             if ($mediaContainerResponse->hasError()) {

@@ -35,11 +35,11 @@
         "account_entities": "منصات التواصل الاجتماعي للحساب",
         "select_the_social_entities": "حدد منصات التواصل الاجتماعية التي تريد ربطها بالمنصة",
         "connected": "متصل",
-        "choose": "أختر",
         "access_token_expired": "انتهت صلاحية رمز الوصول. يرجى إعادة ربط حسابك",
         "unauthorized": "غير مصرح",
         "add_social_account": "ليس لديك حساب تواصل اجتماعي، يرجى إضافة حساب واحد على الأقل لتستمتع بتجربة المنصة والاستفادة من المميزات",
-        "no_accounts_found": "لم يتم العثور على حسابات"
+        "no_accounts_found": "لم يتم العثور على حسابات",
+        "finish_connection": "إنهاء الاتصال"
     },
     "ai": {
         "tell_ai": "أخبر الذكاء الاصطناعي عما يكتب عنه",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "يجب أن تكون نسبة العرض إلى الارتفاع بين {min} و{max}.",
         "resolution_range": "يجب أن يكون الحد الأدنى للدقة {min} × {max} بكسل. يوصى بـ {recommended_min} x {recommended_max} بكسل.",
         "duration_range": "يجب أن تتراوح المدة بين {min} و{max} ثانية.",
-        "frame_rate_range": "يجب أن يكون معدل الإطارات بين {min} و{max} إطارًا في الثانية."
+        "frame_rate_range": "يجب أن يكون معدل الإطارات بين {min} و{max} إطارًا في الثانية.",
+        "edit_alt_text": "تعديل النص البديل",
+        "write_alt_text": "اكتب نصًا بديلًا",
+        "add_alt_text_for": "أضف نصًا بديلًا لـ {platforms}.",
+        "add_video_thumb": "إضافة صورة مصغرة للفيديو",
+        "change_video_thumb": "تغيير الصورة المصغرة للفيديو",
+        "view_video_thumb": "مشاهدة الصورة المصغرة للفيديو",
+        "video_thumb": "صورة مصغرة للفيديو",
+        "video_thumb_providers": "الصورة المصغرة للفيديو متاحة عبر: {providers}."
     },
     "page": {
         "pages": "الصفحات",
@@ -584,11 +592,11 @@
         "members": "الأعضاء"
     },
     "service": {
-        "third_party_services": "خدمات الطرف الثالث",
-        "third_party_services_desc": "هذه الصفحة مخصصة لتخزين بيانات الاعتماد لخدمات الطرف الثالث.",
+        "third_party_services": "تنصيب أعدادات حساب X  تويتر",
+        "third_party_services_desc": "هذه الصفحة مخصصة لتخزين بيانات الاعتماد لخدمات حساب X تويتر.",
         "create_app": "إنشاء تطبيق على {name}",
         "configure_services_desc": "انقر فوق الزر أدناه لتنصيب خدمات الطرف الثالث.",
-        "configure_services": "تنصيب الخدمات",
+        "configure_services": "تنصيب اعدادات حساب X",
         "representative_data": "هذه البيانات ليست حقيقية، بل تمثيلية فقط.",
         "not_configured_service": "لم تقم بربط حساب {service}.",
         "service_saved": "تم حفظ  الخدمة {service}.",

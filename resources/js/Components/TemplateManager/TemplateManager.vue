@@ -81,17 +81,15 @@ const addTemplate = (templateOb) => {
                 </template>
 
                 <template v-if="show === 'form'">
-                    <div class="w-full max-w-xl">
-                        <TemplateForm
-                            :template="template"
-                            :content="postContent"
-                            @store="(event)=> {
+                    <TemplateForm
+                        :template="template"
+                        :content="postContent"
+                        @store="(event)=> {
                             addTemplate(event);
                             showList();
                         }"
-                            @update="showList"
-                        />
-                    </div>
+                        @update="showList"
+                    />
                 </template>
             </template>
 

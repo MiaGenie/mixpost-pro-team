@@ -33,10 +33,10 @@ const connect = () => {
 }
 </script>
 <template>
-    <div :class="{'bg-bluesky bg-opacity-20': open}">
+    <div :class="{'bg-bluesky/20': open}">
         <div role="button" @click="open = !open"
              type="button"
-             class="w-full flex items-center px-lg py-md hover:bg-bluesky hover:bg-opacity-20 ease-in-out duration-200">
+             class="w-full flex items-center px-lg py-md hover:bg-bluesky/20 ease-in-out duration-200">
             <span class="flex mr-md">
                 <ProviderIcon provider="bluesky"/>
             </span>

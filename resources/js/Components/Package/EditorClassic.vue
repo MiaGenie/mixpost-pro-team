@@ -63,7 +63,7 @@ const editor = useEditor({
     ],
     editorProps: {
         attributes: {
-            class: 'focus:outline-none min-h-[150px]',
+            class: 'focus:outline-hidden min-h-[150px]',
         },
         clipboardTextParser: ClipboardTextParserParagraph,
     },
@@ -126,7 +126,7 @@ const insertLink = ({url, target}) => {
 </script>
 <template>
     <div
-        :class="{'border-primary-200 ring ring-primary-200 ring-opacity-50': focused}"
+        :class="{'border-primary-200 ring-3 ring-primary-200/50': focused}"
         class="editorClassic border border-gray-200 rounded-lg p-md pb-xs text-base transition-colors ease-in-out duration-200">
         <div v-if="editor"
              class="editorClassicMenu text-stone-800 flex flex-wrap gap-xs border-b border-gray-200 pb-md mb-md">

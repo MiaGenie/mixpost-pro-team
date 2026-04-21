@@ -1,11 +1,11 @@
 <?php
 
 return [
-  'third_party_services' => 'خدمات الطرف الثالث',
-  'third_party_services_desc' => 'هذه الصفحة مخصصة لتخزين بيانات الاعتماد لخدمات الطرف الثالث.',
+  'third_party_services' => 'تنصيب أعدادات حساب X  تويتر',
+  'third_party_services_desc' => 'هذه الصفحة مخصصة لتخزين بيانات الاعتماد لخدمات حساب X تويتر.',
   'create_app' => 'إنشاء تطبيق على :name',
   'configure_services_desc' => 'انقر فوق الزر أدناه لتنصيب خدمات الطرف الثالث.',
-  'configure_services' => 'تنصيب الخدمات',
+  'configure_services' => 'تنصيب اعدادات حساب X',
   'representative_data' => 'هذه البيانات ليست حقيقية، بل تمثيلية فقط.',
   'not_configured_service' => 'لم تقم بربط حساب :service.',
   'service_saved' => 'تم حفظ  الخدمة :service.',

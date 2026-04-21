@@ -17,7 +17,7 @@ defineProps({
             <Video :media="media[0]"/>
         </div>
 
-        <div v-else class="rounded overflow-hidden">
+        <div v-else class="rounded-sm overflow-hidden">
             <OneImage v-if="media.length === 1" :media="media[0]"/>
             <TwoImage v-if="media.length === 2" :media="media"/>
             <ThreeAndMoreImage v-if="media.length > 2" :media="media"/>

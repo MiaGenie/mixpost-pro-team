@@ -25,4 +25,12 @@ return [
   'resolution_range' => 'Разрешение должно быть не менее :min x :max px. Рекомендуется :recommended_min x :recommended_max px.',
   'duration_range' => 'Продолжительность должна составлять от :min до :max секунд.',
   'frame_rate_range' => 'Частота кадров должна быть в диапазоне от :min до :max кадров в секунду.',
+  'edit_alt_text' => 'Редактирование текста alt',
+  'write_alt_text' => 'Напишите alt-текст',
+  'add_alt_text_for' => 'Добавьте alt-текст для :platforms.',
+  'add_video_thumb' => 'Добавить миниатюру видео',
+  'change_video_thumb' => 'Изменение миниатюры видео',
+  'view_video_thumb' => 'Просмотр миниатюры видео',
+  'video_thumb' => 'Миниатюра видео',
+  'video_thumb_providers' => 'Эскиз видео доступен через: :providers.',
 ];

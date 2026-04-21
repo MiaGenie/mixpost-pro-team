@@ -87,14 +87,21 @@ trait ManagesPost
 
     private function embedImages(Collection $images, array &$postParams): void
     {
-        $blobs = $images->map(function ($media) use (&$blobs) {
+        $blobs = $images->map(function ($media) {
             $response = $this->uploadBlob($media);
 
             if ($response->hasError()) {
                 throw new RuntimeException(json_encode($response->context()));
             }
 
-            return $response->blob;
+            if (!$response->blob) {
+                return null;
+            }
+
+            return [
+                'image' => $response->blob,
+                'alt' => $media->alt_text ?? '',
+            ];
         })->filter();
 
         if ($blobs->isEmpty()) {
@@ -103,12 +110,7 @@ trait ManagesPost
 
         $postParams['embed'] = [
             '$type' => 'app.bsky.embed.images',
-            'images' => $blobs->map(function ($blob) {
-                return [
-                    'image' => $blob,
-                    'alt' => '',
-                ];
-            })->toArray(),
+            'images' => $blobs->toArray(),
         ];
     }
 

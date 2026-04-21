@@ -42,7 +42,8 @@ class YoutubeProvider extends SocialProvider
             ->maxPhotos(Util::config('social_provider_options.youtube.media_limit.photos'))
             ->maxVideos(Util::config('social_provider_options.youtube.media_limit.videos'))
             ->maxGifs(Util::config('social_provider_options.youtube.media_limit.gifs'))
-            ->allowMixingMediaTypes(Util::config('social_provider_options.youtube.allow_mixing'));
+            ->allowMixingMediaTypes(Util::config('social_provider_options.youtube.allow_mixing'))
+            ->enableVideoThumb(true);
     }
 
     public static function postOptions(): SocialProviderPostOptions

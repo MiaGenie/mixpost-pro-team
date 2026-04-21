@@ -22,10 +22,26 @@ const props = defineProps({
     combinesMimeTypes: {
         type: String,
         default: '',
+    },
+    showImmediate: {
+        type: Boolean,
+        default: false,
+    },
+    disableTrigger: {
+        type: Boolean,
+        default: false
+    },
+    maxSelectedItems: {
+        type: Number,
+        default: -1 //infinite
+    },
+    mimeTypes: {
+        type: Array,
+        default: []
     }
 })
 
-const emit = defineEmits(['insert']);
+const emit = defineEmits(['insert', 'close']);
 
 const show = ref(false);
 
@@ -35,7 +51,7 @@ const {
     isDownloading,
     downloadExternal,
     getMediaCrediting,
-} = useMedia('mixpost.media.fetchStock', {workspace: workspaceCtx.id});
+} = useMedia('mixpost.media.fetchStock', {workspace: workspaceCtx.id}, props.maxSelectedItems, props.mimeTypes);
 
 const sources = {
     'uploads': MediaUploads,
@@ -49,6 +65,16 @@ const source = computed(() => {
     return sources[activeTab.value]
 })
 
+const sourceParams = () => {
+    const params = {
+        maxSelectedItems: props.maxSelectedItems
+    }
+    if(source.value === sources.uploads){
+        params.mimeTypes = props.mimeTypes
+    }
+    return params;
+}
+
 const selectedItems = computed(() => {
     return sourceProperties.value ? sourceProperties.value.selected : [];
 })
@@ -61,6 +87,9 @@ const close = () => {
     deselectAll();
     show.value = false;
     activeTab.value = 'uploads'
+    if(props.showImmediate){
+        emit('close');
+    }
 };
 
 const insert = () => {
@@ -92,11 +121,13 @@ const insert = () => {
 }
 </script>
 <template>
-    <div @click="show = !show">
-        <slot/>
-    </div>
+    <template v-if="!props.disableTrigger">
+        <div @click="show = !show">
+            <slot/>
+        </div>
+    </template>
 
-    <DialogModal :show="show"
+    <DialogModal :show="show || props.showImmediate"
                  max-width="2xl"
                  :closeable="true"
                  :scrollable-body="true"
@@ -117,22 +148,29 @@ const insert = () => {
             </Tabs>
 
             <div class="mt-lg">
-                <component :is="source" ref="sourceProperties"/>
+                <component :is="source"
+                           ref="sourceProperties"
+                           v-bind="sourceParams()"/>
             </div>
         </template>
 
         <template #footer>
             <SecondaryButton @click="close" class="mr-xs rtl:mr-0 rtl:ml-xs">{{ $t('general.cancel') }}</SecondaryButton>
 
-            <template v-if="selectedItems.length">
+            <template v-if="props.maxSelectedItems === 1">
+                <PrimaryButton @click="insert">
+                    {{ $t('general.insert') }}
+                </PrimaryButton>
+            </template>
+            <template v-else-if="selectedItems.length">
                 <SecondaryButton @click="deselectAll" v-tooltip.top="$t('general.dismiss')" class="mr-xs rtl:mr-0 rtl:ml-xs">
                     <template #icon>
                         <XIcon/>
                     </template>
                 </SecondaryButton>
 
-                <PrimaryButton @click="insert">{{ $t('general.insert') }} {{ selectedItems.length }}
-                    {{ $t('general.items') }}
+                <PrimaryButton @click="insert">
+                    {{ $t('general.insert') }} {{ selectedItems.length }} {{ $t('general.items') }}
                 </PrimaryButton>
             </template>
         </template>

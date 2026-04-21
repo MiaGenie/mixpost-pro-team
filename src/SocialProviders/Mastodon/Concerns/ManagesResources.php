@@ -79,7 +79,9 @@ trait ManagesResources
                 $this->getHttpClient()::timeout(60 * 10)
                     ->withToken($this->getAccessToken()['access_token'])
                     ->attach('file', $stream['stream'])
-                    ->post("$this->serverUrl/api/v2/media")
+                    ->post("$this->serverUrl/api/v2/media", [
+                        'description' => $item->alt_text
+                    ])
             );
 
             Util::closeAndDeleteStreamResource($stream);

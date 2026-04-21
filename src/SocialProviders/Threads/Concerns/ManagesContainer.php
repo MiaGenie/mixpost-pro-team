@@ -19,6 +19,10 @@ trait ManagesContainer
             $data[$mediaItem->isVideo() ? 'video_url' : 'image_url'] = $mediaItem->getUrl();
         }
 
+        if($mediaItem && $mediaItem->alt_text) {
+            $data['alt_text'] = $mediaItem->alt_text;
+        }
+
         return $this->buildResponse(
             $this->getHttpClient()::withToken($this->accessToken())
                 ->post("$this->graphUrl/$this->graphVersion/me/threads", $data)

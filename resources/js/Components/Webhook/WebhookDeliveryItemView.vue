@@ -140,7 +140,7 @@ const resend = () => {
                 <SectionTitle>{{ $t(`webhook.event.${delivery.event}`) }}</SectionTitle>
                 <template v-if="delivery.resent_manually">
                     <div v-tooltip="$t('webhook.resend_manually')" class="select-none">
-                        <Refresh class=" text-gray-500 !w-5 !h-5"/>
+                        <Refresh class=" text-gray-500 w-5! h-5!"/>
                     </div>
                 </template>
             </Flex>
@@ -178,7 +178,7 @@ const resend = () => {
 
             <template v-if="!isLoading">
                <pre class="border-0 p-0 inline-grid">
-                    <code v-html="highlightedResponse" class="hljs json text-sm !p-0"/>
+                    <code v-html="highlightedResponse" class="hljs json text-sm p-0!"/>
                </pre>
             </template>
         </div>
@@ -196,7 +196,7 @@ const resend = () => {
 
             <template v-if="!isLoading">
                <pre class="border-0 p-0 inline-grid">
-                   <code v-html="highlightedPayload" class="hljs json text-sm !p-0"/>
+                   <code v-html="highlightedPayload" class="hljs json text-sm p-0!"/>
                </pre>
             </template>
         </div>

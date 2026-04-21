@@ -134,7 +134,7 @@ const updateParentCommentCountChildren = () => {
     </div>
 
     <div ref="listRef"
-         class="relative flex flex-col h-full overflow-y-scroll mixpost-scroll-style row-px row-pt pr-1 sm:!pr-4 lg:!pr-6 pb-md">
+         class="relative flex flex-col h-full overflow-y-scroll mixpost-scroll-style row-px row-pt pr-1 sm:pr-4! lg:pr-6! pb-md">
         <Transition>
             <template v-if="isLoadingPreloader">
                 <Preloader :opacity="50"/>

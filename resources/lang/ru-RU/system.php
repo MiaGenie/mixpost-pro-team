@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Не удалось скопировать в буфер обмена!',
   'usage_api' => 'Использование в API',
   'stored_safely' => 'Я хранил его в надежном месте.',
+  'backend' => 
+  [
+    'installed' => 'Установлено',
+    'not_installed' => 'Не установлено',
+  ],
 ];

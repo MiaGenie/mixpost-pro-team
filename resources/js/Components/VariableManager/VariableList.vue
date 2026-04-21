@@ -111,12 +111,12 @@ onMounted(() => {
 
                                         <template #content>
                                             <DropdownItem @click="$emit('edit', variable)" as="button">
-                                                <PencilSquare class="!w-5 !h-5 mr-1"/>
+                                                <PencilSquare class="w-5! h-5! mr-1"/>
                                                 {{ $t('general.edit') }}
                                             </DropdownItem>
 
                                             <DropdownItem @click="deleteVariable(variable)" as="button">
-                                                <Trash class="!w-5 !h-5 mr-1 text-red-500"/>
+                                                <Trash class="w-5! h-5! mr-1 text-red-500"/>
                                                 {{ $t('general.delete') }}
                                             </DropdownItem>
                                         </template>

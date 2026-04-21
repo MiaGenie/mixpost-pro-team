@@ -39,7 +39,8 @@ class SystemStatusController extends Controller
                 'mysql' => $this->mysqlVersion(),
                 'mixpost' => InstalledVersions::getVersion('inovector/mixpost-pro-team'),
                 'mixpost_enterprise' => Mixpost::getEnterpriseVersion(),
-            ]
+            ],
+            'ffmpeg_status' => Util::isFFmpegInstalled() ? __('mixpost::system.backend.installed') : __('mixpost::system.backend.not_installed')
         ]);
     }
 

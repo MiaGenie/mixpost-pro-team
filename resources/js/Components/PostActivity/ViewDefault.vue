@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
 </script>
 <template>
     <div ref="listRef"
-         class="flex flex-col h-full overflow-y-scroll mixpost-scroll-style row-px row-pt pr-1 sm:!pr-4 lg:!pr-6 pb-md">
+         class="flex flex-col h-full overflow-y-scroll mixpost-scroll-style row-px row-pt pr-1 sm:pr-4! lg:pr-6! pb-md">
         <template v-if="postCtx.activity[VIEW_DEFAULT].items.length">
             <ul class="space-y-md">
                 <li v-for="item in postCtx.activity[VIEW_DEFAULT].items" :key="item.id">

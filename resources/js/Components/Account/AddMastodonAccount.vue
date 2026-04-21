@@ -52,10 +52,10 @@ const connect = async () => {
 }
 </script>
 <template>
-    <div :class="{'bg-mastodon bg-opacity-20': open}">
+    <div :class="{'bg-mastodon/20': open}">
         <div role="button" @click="open = !open"
              type="button"
-             class="w-full flex items-center px-lg py-md hover:bg-mastodon hover:bg-opacity-20 ease-in-out duration-200">
+             class="w-full flex items-center px-lg py-md hover:bg-mastodon/20 ease-in-out duration-200">
             <span class="flex mr-md">
                 <MastodonIcon class="text-mastodon"/>
             </span>

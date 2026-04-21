@@ -35,11 +35,11 @@
         "account_entities": "Účetní jednotky",
         "select_the_social_entities": "Vyberte sociální účty, které chcete připojit",
         "connected": "Připojeno",
-        "choose": "Vyberte si",
         "access_token_expired": "Platnost přístupového tokenu vypršela. Znovu připojte svůj účet.",
         "unauthorized": "Neoprávněný",
         "add_social_account": "Nemáte účet na sociální síti, přidejte si alespoň jeden.",
-        "no_accounts_found": "Nebyly nalezeny žádné účty"
+        "no_accounts_found": "Nebyly nalezeny žádné účty",
+        "finish_connection": "Dokončení připojení"
     },
     "ai": {
         "tell_ai": "Řekněte AI, o čem má psát",
@@ -372,7 +372,15 @@
         "aspect_ratio_range": "Poměr stran musí být mezi {min} a {max}.",
         "resolution_range": "Rozlišení musí být minimálně {min} x {max} px. Doporučené rozlišení je {recommended_min} x {recommended_max} px.",
         "duration_range": "Doba trvání musí být mezi {min} a {max} sekundami.",
-        "frame_rate_range": "Snímková frekvence musí být mezi {min} a {max} snímků za sekundu."
+        "frame_rate_range": "Snímková frekvence musí být mezi {min} a {max} snímků za sekundu.",
+        "edit_alt_text": "Úprava textu alt",
+        "write_alt_text": "Napište text alt",
+        "add_alt_text_for": "Přidejte text alt pro {platforms}.",
+        "add_video_thumb": "Přidání miniatury videa",
+        "change_video_thumb": "Změna miniatury videa",
+        "view_video_thumb": "Zobrazit miniaturu videa",
+        "video_thumb": "Miniatura videa",
+        "video_thumb_providers": "Miniatura videa je k dispozici napříč: {providers}."
     },
     "page": {
         "pages": "Stránky",

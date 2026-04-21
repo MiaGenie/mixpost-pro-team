@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Entități ale contului',
   'select_the_social_entities' => 'Selectați entitățile sociale pe care doriți să le conectați',
   'connected' => 'Conectat',
-  'choose' => 'Alegeți',
   'access_token_expired' => 'Indicatorul de acces a expirat. Reconectați-vă contul.',
   'unauthorized' => 'Neautorizat',
   'add_social_account' => 'Nu aveți un cont social, vă rugăm să adăugați cel puțin unul.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'Nu s-au găsit conturi',
+  'finish_connection' => 'Terminare conexiune',
 ];

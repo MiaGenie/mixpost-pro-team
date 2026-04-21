@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import PlayIcon from "@/Icons/Play.vue"
+import Placeholder from "@/Components/Media/Placeholder.vue";
 
 const isOpen = ref(false);
 
@@ -14,15 +15,22 @@ defineProps({
 <template>
     <div class="relative">
         <div class="w-full h-full absolute flex items-center justify-center">
-            <button
-                @click="isOpen = true"
-                v-if="!isOpen"
-                class="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center text-white bg-twitter">
-                <PlayIcon class="!w-10 !h-10"/>
-            </button>
+            <template v-if="!isOpen">
+                <button
+                    @click="isOpen = true"
+                    class="w-16 h-16 border-2 border-white rounded-full flex items-center justify-center text-white bg-twitter">
+                    <PlayIcon class="w-10! h-10!"/>
+                </button>
+            </template>
         </div>
 
-        <img v-if="!isOpen" :src="media.thumb_url" draggable="false" class="rounded-xl h-full w-full" alt="Image"/>
+       <template v-if="media.thumb_url && !isOpen">
+           <img :src="media.thumb_url" draggable="false" class="rounded-xl h-full w-full" alt="Image"/>
+       </template>
+
+        <template v-if="!media.thumb_url && !isOpen">
+            <Placeholder widthClass="w-full" type="video"/>
+        </template>
 
         <video v-if="isOpen" class="w-auto h-full mx-auto" controls autoplay media="">
             <source :src="media.url" :type="media.mime_type">

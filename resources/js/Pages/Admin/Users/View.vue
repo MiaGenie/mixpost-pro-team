@@ -88,7 +88,7 @@ const deleteUser = () => {
             <Panel>
                 <template #title>{{ $t("user.user_details") }}</template>
 
-                <div class="md:max-w-2xl">
+                <div class="md:max-w-(--container-2xl)">
                     <HorizontalGroup>
                         <template #title>
                             {{ $t("general.name") }}

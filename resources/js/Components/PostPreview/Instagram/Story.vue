@@ -7,8 +7,8 @@ import Share from "./Icons/Share.vue";
 const data = inject('instagramCtx');
 </script>
 <template>
-    <div class="bg-black rounded-xl mx-auto max-w-sm">
-        <div class="mx-auto rounded-xl rounded-b-lg border-none overflow-hidden max-w-full block outline-none relative">
+    <div class="bg-black rounded-xl mx-auto max-w-(--container-sm)">
+        <div class="mx-auto rounded-xl rounded-b-lg border-none overflow-hidden max-w-full block outline-hidden relative">
             <div class="bg-black aspect-w-9 aspect-h-16">
                 <div class="absolute inset-0">
                     <div class="relative w-full h-full flex items-center">
@@ -35,7 +35,7 @@ const data = inject('instagramCtx');
                     <div class="absolute top-lg left-md">
                         <div class="flex items-center text-sm text-white gap-xs">
                                          <span
-                                             class="inline-flex justify-center items-center flex-shrink-0 w-8 h-8 rounded-full mr-sm">
+                                             class="inline-flex justify-center items-center shrink-0 w-8 h-8 rounded-full mr-sm">
                                                  <img :src="data.image" class="object-cover w-full h-full rounded-full"
                                                       alt=""/>
                                              </span>
@@ -51,7 +51,7 @@ const data = inject('instagramCtx');
         </div>
 
         <div class="flex w-full p-md space-x-md bg-black text-white rounded-b-xl">
-            <div class="border-gray-400 border rounded-full py-sm pl-md flex-grow text-sm">Send message</div>
+            <div class="border-gray-400 border rounded-full py-sm pl-md grow text-sm">Send message</div>
             <div class="flex space-x-md items-center">
                 <Likes/>
                 <Share/>

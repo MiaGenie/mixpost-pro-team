@@ -82,7 +82,7 @@ const {offline} = useOffline();
 
 const form = useForm({
     accounts: post ? post.accounts.map(account => account.id) : [],
-    versions: post ? post.versions : [versionObject(0, true, props.prefill.body, [], props.prefill.title, props.prefill.link)],
+    versions: post ? post.versions : [versionObject(0, true, props.prefill.body, [], [], props.prefill.title, props.prefill.link)],
     tags: post ? post.tags : [],
     date: post ? post.scheduled_at.date : props.schedule_at.date,
     time: post ? post.scheduled_at.time : props.schedule_at.time,
@@ -154,6 +154,7 @@ const save = () => {
                         body: item.body,
                         media: item.media.map(itemMedia => itemMedia.id),
                         url: item.url,
+                        video_thumbs: item.video_thumbs
                     }
                 }),
                 options: version.options

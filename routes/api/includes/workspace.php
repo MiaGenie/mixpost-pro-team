@@ -44,6 +44,7 @@ Route::middleware(array_merge([
         Route::prefix('media')->name('media.')->middleware($editorMiddleware)->group(function () use($editorMiddleware) {
             Route::get('/', [MediaController::class, 'index'])->name('index')->withoutMiddleware($editorMiddleware);
             Route::get('{media}', [MediaController::class, 'show'])->name('show')->withoutMiddleware($editorMiddleware);
+            Route::put('{id}', [MediaController::class, 'update'])->name('update');
             Route::post('/', MediaUploadFileController::class)->name('upload');
             Route::delete('/', [MediaController::class, 'destroy'])->name('delete');
         });

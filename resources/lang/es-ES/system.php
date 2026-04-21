@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'No se ha podido copiar en el portapapeles.',
   'usage_api' => 'Uso en API',
   'stored_safely' => 'Lo he guardado a buen recaudo',
+  'backend' => 
+  [
+    'installed' => 'Instalado',
+    'not_installed' => 'No instalado',
+  ],
 ];

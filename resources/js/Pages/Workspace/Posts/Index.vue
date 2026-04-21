@@ -120,7 +120,7 @@ const deletePosts = () => {
 
     <div class="row-py">
         <PageHeader :title="$t('post.posts')">
-            <PostsFilter v-model="filter" class="md:ml-xs rtl:md:ml-0 rtl:md:mr-xs"/>
+            <PostsFilter v-model="filter" class="md:ml-xs md:rtl:ml-0 md:rtl:mr-xs"/>
         </PageHeader>
 
         <div class="w-full row-px">
@@ -167,7 +167,7 @@ const deletePosts = () => {
                                 <Checkbox v-model:checked="toggleSelectRecordsOnPage" :disabled="!posts.meta.total"/>
                             </TableCell>
                             <TableCell component="th" scope="col" class="w-44">{{ $t("post.status") }}</TableCell>
-                            <TableCell component="th" scope="col" class="!pl-0 text-left">
+                            <TableCell component="th" scope="col" class="pl-0! text-left">
                                 {{ $t("post.content") }}
                             </TableCell>
                             <TableCell component="th" scope="col" class="w-48">{{ $t("post.media") }}</TableCell>

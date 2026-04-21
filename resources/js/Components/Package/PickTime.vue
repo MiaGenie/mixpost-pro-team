@@ -221,7 +221,7 @@ const configTimePicker = {
                 <div class="text-sm flex items-center justify-center mt-sm">
                     <div class="mr-1">{{ timeZone }}</div>
                     <Link :href="route('mixpost.profile.index')" v-tooltip="$t('post.post_scheduled_timezone')">
-                        <ExclamationCircleIcon class="!w-4 !h-4"/>
+                        <ExclamationCircleIcon class="w-4! h-4!"/>
                     </Link>
                 </div>
                 <div v-if="hasErrors" class="mt-xs text-center text-red-500">{{ $t('post.past_selected_date') }}

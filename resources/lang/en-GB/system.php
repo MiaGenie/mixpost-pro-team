@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Failed to copy to clipboard!',
   'usage_api' => 'Usage in API',
   'stored_safely' => 'I\'ve stored it safely',
+  'backend' => 
+  [
+    'installed' => 'Installed',
+    'not_installed' => 'Not Installed',
+  ],
 ];

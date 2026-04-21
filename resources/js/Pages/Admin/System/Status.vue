@@ -23,14 +23,14 @@ const props = defineProps({
     horizon_status: String,
     has_queue_connection: Boolean,
     last_scheduled_run: Object,
-    // scheduled_tasks: Array,
     broadcast_driver: String,
     cache_driver: String,
     base_path: String,
     disk: String,
     log_channel: String,
     user_agent: String,
-    versions: Object
+    ffmpeg_status: String,
+    versions: Object,
 })
 
 const {notify} = useNotifications();
@@ -56,6 +56,7 @@ const getBody = () => {
     body += `**Broadcast Driver**: ${props.broadcast_driver} \n`;
     body += `**Cache Driver**: ${props.cache_driver} \n`;
     body += `**${$t("system.user_agent")}**: ${props.user_agent} \n`;
+    body += `**FFmpeg**: ${props.ffmpeg_status} \n`;
     if (props.versions.mysql) {
         body += `**MySql**: ${props.versions.mysql} \n`;
     }
@@ -168,29 +169,6 @@ const copyToClipboard = () => {
                 </Table>
             </Panel>
 
-            <!--            <Panel class="mt-lg">-->
-            <!--                <template #title>Schedule Commands</template>-->
-
-            <!--                <Table>-->
-            <!--                    <template #head>-->
-            <!--                        <TableRow>-->
-            <!--                            <TableCell component="th" scope="col">Schedule</TableCell>-->
-            <!--                            <TableCell component="th" scope="col">Command</TableCell>-->
-            <!--                        </TableRow>-->
-            <!--                    </template>-->
-            <!--                    <template #body>-->
-            <!--                        <TableRow :hoverable="true">-->
-            <!--                            <TableCell>-->
-            <!--                                * * * * *-->
-            <!--                            </TableCell>-->
-            <!--                            <TableCell>-->
-            <!--                                mixpost:run-scheduled-posts-->
-            <!--                            </TableCell>-->
-            <!--                        </TableRow>-->
-            <!--                    </template>-->
-            <!--                </Table>-->
-            <!--            </Panel>-->
-
             <Panel class="mt-lg">
                 <template #title>{{ $t("system.technical_details") }}</template>
 
@@ -244,6 +222,14 @@ const copyToClipboard = () => {
                                 {{ user_agent }}
                             </TableCell>
                         </TableRow>
+                        <TableRow :hoverable="true">
+                            <TableCell class="font-medium">
+                                FFMpeg
+                            </TableCell>
+                            <TableCell>
+                                {{ ffmpeg_status }}
+                            </TableCell>
+                        </TableRow>
                         <template v-if="versions.mysql">
                             <TableRow :hoverable="true">
                                 <TableCell class="font-medium">
@@ -286,7 +272,6 @@ const copyToClipboard = () => {
                                 {{ versions.mixpost }}
                             </TableCell>
                         </TableRow>
-
                         <template v-if="versions.mixpost_enterprise">
                             <TableRow :hoverable="true">
                                 <TableCell class="font-medium">

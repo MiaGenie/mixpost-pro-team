@@ -19,7 +19,6 @@ return [
   'account_entities' => 'Account Entities',
   'select_the_social_entities' => 'Select the social entities you want to connect',
   'connected' => 'Connected',
-  'choose' => 'Choose',
   'access_token_expired' => 'Access token has expired. Reconnect your account.',
   'unauthorized' => 'Unauthorized',
   'add_social_account' => 'You don\'t have a social account, please add at least one.',
@@ -37,4 +36,5 @@ return [
     ],
   ],
   'no_accounts_found' => 'No accounts found',
+  'finish_connection' => 'Finish Connection',
 ];

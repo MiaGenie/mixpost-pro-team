@@ -108,6 +108,9 @@ trait ManagesResources
 
                 $uploadedMedia[] = [
                     'media' => $mediaResponse->value['asset'],
+                    'description' => [
+                        'text' => $mediaItem->alt_text ?? ''
+                    ],
                     'status' => 'READY'
                 ];
             }
@@ -120,7 +123,7 @@ trait ManagesResources
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->withHeaders($this->httpHeaders())
-            ->post("$this->apiUrl/$this->apiVersion/ugcPosts", [
+                ->post("$this->apiUrl/$this->apiVersion/ugcPosts", [
                 'author' => "urn:li:{$this->author()}:{$this->values['provider_id']}",
                 'lifecycleState' => 'PUBLISHED',
                 'specificContent' => [

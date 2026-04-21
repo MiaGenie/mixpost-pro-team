@@ -37,16 +37,16 @@ const {isDocEmpty} = useEditor();
             <div class="relative">
                 <div :class="{'pt-xl': index !== 0}">
                     <template v-if="index !== 0">
-                        <div :class="{'!h-full': index !== props.content.length - 1}"
+                        <div :class="{'h-full!': index !== props.content.length - 1}"
                              class="status-line h-3 top-0 start-[21px] border-l border-gray-200 after:bg-gray-200 after:content-[''] after:block after:h-[54px] after:absolute after:top-[12px] after:w-[1px] after:start-[-1px] absolute w-0"></div>
                     </template>
 
                     <div class="flex items-start justify-between">
                         <div class="flex items-center">
                             <div class="mr-sm">
-                            <span class="inline-flex justify-center items-center flex-shrink-0 w-10 h-10 rounded-full">
+                            <span class="inline-flex justify-center items-center shrink-0 w-10 h-10 rounded-full">
                                 <img :src="image"
-                                     class="object-cover w-full h-full rounded z-10" alt=""/>
+                                     class="object-cover w-full h-full rounded-sm z-10" alt=""/>
                             </span>
                             </div>
                             <div>

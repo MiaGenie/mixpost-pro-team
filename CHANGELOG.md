@@ -2,6 +2,17 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.5.4 - 2025-03-08
+
+**Fixes**
+
+- Fixed display errors when adding new account
+- Bluesky FetchUrlCard fixed Exception
+
+**Changes**
+
+- Upgraded `bacon/bacon-qr-code` to v3.0
+
 ## 3.5.3 - 2025-02-22
 
 **Fixes**

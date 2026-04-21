@@ -32,7 +32,7 @@ const submit = () => {
 <template>
     <Head :title="$t('auth.forgot_password')"/>
 
-    <div class="w-full sm:max-w-lg mx-auto">
+    <div class="w-full sm:max-w-(--container-lg) mx-auto">
         <form @submit.prevent="submit">
             <Panel>
                 <template #title>

@@ -93,7 +93,7 @@ onMounted(() => {
 <template>
     <div class="row-px">
         <div
-            :class="{'border-primary-200 ring ring-primary-200 ring-opacity-50': focus}"
+            :class="{'border-primary-200 ring-3 ring-primary-200/50': focus}"
             class="border bg-white border-gray-200 rounded-lg p-md pb-xs text-base transition-colors ease-in-out duration-200">
             <Editor
                 ref="editorRef"

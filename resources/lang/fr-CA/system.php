@@ -35,4 +35,9 @@ return [
   'failed_copied_clipboard' => 'Échec de la copie dans le presse-papiers !',
   'usage_api' => 'Utilisation dans l\'API',
   'stored_safely' => 'Je l\'ai conservée en toute sécurité',
+  'backend' => 
+  [
+    'installed' => 'Installé',
+    'not_installed' => 'Non installé',
+  ],
 ];
