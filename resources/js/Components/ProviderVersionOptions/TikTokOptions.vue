@@ -129,7 +129,7 @@ const isPrivacySelfOnlyDisabled = account => {
 const isBrandContentToggleDisabled = account => {
   const level = getAccountPrivacyLevel(account)
 
-  return !level || level === 'SELF_ONLY'
+  return level && level === 'SELF_ONLY'
 }
 
 const onPrivacyLevelChange = account => {
@@ -259,7 +259,6 @@ onBeforeUnmount(() => {
                 v-model:checked="options.allow_comments[`account-${account.id}`]"
                 :disabled="account.data.comment_disabled"
               />
-              />
               {{ $t('service.tiktok.comment') }}
             </Label>
 
@@ -357,10 +356,24 @@ onBeforeUnmount(() => {
                 <span class="text-sm">{{ $t('service.tiktok.branded_content_desc') }}</span>
 
                 <span
-                  v-if="isBrandContentToggleDisabled(account)"
+                  v-if="
+                    (!getAccountPrivacyLevel(account) ||
+                      getAccountPrivacyLevel(account) === 'SELF_ONLY') &&
+                    getBrandContentToggle(account)
+                  "
                   class="flex items-center mt-xs text-sm text-orange-600 border border-orange-600 rounded-md p-xs"
                   ><Exclamation class="mr-xs" />
                   {{ $t('service.tiktok.visibility_branded_content') }}
+                </span>
+
+                <span
+                  v-if="
+                    (!getAccountPrivacyLevel(account) ||
+                      getAccountPrivacyLevel(account) === 'SELF_ONLY') &&
+                    !getBrandContentToggle(account)
+                  "
+                  class="flex items-center mt-xs text-sm text-orange-600 border border-orange-600 rounded-md p-xs"
+                  ><Exclamation class="mr-xs" /> {{ $t('service.tiktok.branded_no_private') }}
                 </span>
               </template>
 

@@ -116,7 +116,7 @@ return [
         'your_brand_accept_terms' => 'Mit dem Posten stimmst du TikToks <a href=":href" target="_blank" class="link">Musiknutzungsbestätigung</a> zu.',
         'accept_terms' => 'Mit dem Posten stimmst du der <a href=":href_brand" target="_blank" class="link">Richtlinie für Markeninhalte</a> und der <a href=":href_music" target="_blank" class="link">Musiknutzungsbestätigung</a> von TikTok zu.',
         'partner_video_alert' => 'Dein Video wird als "Bezahlte Partnerschaft" gekennzeichnet.',
-        'visibility_branded_content' => 'Die Sichtbarkeit für gebrandete Inhalte kann nicht privat sein. Wähle die Sichtbarkeit "Alle/Freunde", um diese Option zu aktivieren.',
+        'visibility_branded_content' => 'Branded Content kann nur mit Sichtbarkeit als Follower/Freunde konfiguriert werden.',
         'allow_users' => 'Erlaubt den Nutzern',
         'comment' => 'Kommentar',
         'duet' => 'Duett',

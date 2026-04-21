@@ -10,6 +10,8 @@ use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Support\PostVersionHelpers;
 use Inovector\Mixpost\Support\SocialProviderResponse;
+use Inovector\Mixpost\Util;
+use RuntimeException;
 
 trait ManagesInstagramResources
 {
@@ -187,16 +189,34 @@ trait ManagesInstagramResources
     {
         $mediaContainerIds = [];
 
-        foreach ($media as $item) {
-            $mediaContainerResponse = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", [
+        foreach ($media as $mediaItem) {
+            $data = [
                 'access_token' => $this->getAccessToken()['access_token'],
                 'is_carousel_item' => true,
-                'image_url' => $item->getUrl(),
-                'alt_text' => $item->alt_text,
-            ]));
+            ];
+
+            if ($mediaItem->isImage()) {
+                $data['alt_text'] = $mediaItem->alt_text;
+                $data['image_url'] = $mediaItem->getUrl();
+            }
+
+            if ($mediaItem->isVideo()) {
+                $data['media_type'] = 'VIDEO';
+                $data['video_url'] = $mediaItem->getUrl();
+            }
+
+            $mediaContainerResponse = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", $data));
 
             if ($mediaContainerResponse->hasError()) {
                 return $mediaContainerResponse;
+            }
+
+            if ($mediaItem->isVideo()) {
+                try {
+                    $this->waitForContainerCompletion($mediaContainerResponse);
+                } catch (RuntimeException $e) {
+                    return $this->response(SocialProviderResponseStatus::ERROR, json_decode($e->getMessage(), true));
+                }
             }
 
             $mediaContainerIds[] = $mediaContainerResponse->id;
@@ -205,7 +225,7 @@ trait ManagesInstagramResources
         $carouselContainer = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", [
             'access_token' => $this->getAccessToken()['access_token'],
             'media_type' => 'CAROUSEL',
-            'children' => $mediaContainerIds,
+            'children' => implode(',', $mediaContainerIds),
             'caption' => $text,
         ]));
 
@@ -380,5 +400,23 @@ trait ManagesInstagramResources
         ]);
 
         return $this->buildResponse($response);
+    }
+
+    protected function waitForContainerCompletion(SocialProviderResponse $response): void
+    {
+        $result = Util::performTaskWithDelay(function () use ($response) {
+            $container = $this->getContainer($response->id());
+
+            if ($container->status_code == 'IN_PROGRESS') {
+                // Return null to continue checking
+                return null;
+            }
+
+            return $container;
+        }, 30);
+
+        if ($result->status_code != 'FINISHED') {
+            throw new RuntimeException(json_encode($result->context()));
+        }
     }
 }

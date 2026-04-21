@@ -46,7 +46,7 @@ class InstagramProvider extends MetaProvider
             ->maxVideos(Util::config('social_provider_options.instagram.media_limit.videos'))
             ->maxVideos(1, 'reel')
             ->maxGifs(Util::config('social_provider_options.instagram.media_limit.gifs'))
-            ->allowMixingMediaTypes(Util::config('social_provider_options.instagram.allow_mixing'))
+            ->allowMixingMediaTypes(true, 'post')
             ->allowMixingMediaTypes(false, 'reel')
             ->enableVideoThumb(true, 'reel');
     }

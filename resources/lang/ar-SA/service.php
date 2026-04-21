@@ -117,7 +117,7 @@ return [
         'your_brand_accept_terms' => 'من خلال النشر، فإنك توافق على <a href=":href" target="_blank" class="link">تأكيد استخدام الموسيقى</a> الخاص بـ TikTok.',
         'accept_terms' => 'من خلال النشر، فإنك توافق على <a href=":href_music" target="_blank" class="link">سياسة المحتوى المرتبط بعلامة تجارية</a> و<a href=":href_brand" target="_blank" الخاصة بـ TikTok ="link">تأكيد استخدام الموسيقى</a>.',
         'partner_video_alert' => 'سيتم تصنيف الفيديو الخاص بك على أنه "شراكة مدفوعة الأجر".',
-        'visibility_branded_content' => 'لا يمكن أن تكون رؤية المحتوى المرتبط بعلامة تجارية خاصة. حدد رؤية "الجميع/الأصدقاء" لتمكين هذا الخيار.',
+        'visibility_branded_content' => 'لا يمكن تكوين المحتوى الذي يحمل علامة تجارية إلا مع إمكانية رؤيته كمتابعين/أصدقاء.',
         'allow_users' => 'السماح للمستخدمين',
         'comment' => 'تعليق',
         'duet' => 'دويتو',

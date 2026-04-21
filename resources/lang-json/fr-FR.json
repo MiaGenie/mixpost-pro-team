@@ -741,7 +741,7 @@
             "your_brand_accept_terms": "En publiant, vous acceptez la <a href=\"{href}\" target=\"_blank\" class=\"link\">Confirmation d'utilisation de la musique<\/a> de TikTok.",
             "accept_terms": "En publiant, vous acceptez la politique de TikTok en matière de contenu de marque (<a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Branded Content Policy<\/a>) et la confirmation de l'utilisation de la musique (<a href=\"{href_music}\" target=\"_blank\" class=\"link\">Music Usage Confirmation<\/a>).",
             "partner_video_alert": "Votre vidéo sera étiquetée \"Partenariat payant\".",
-            "visibility_branded_content": "La visibilité du contenu de marque ne peut pas être privée. Sélectionnez la visibilité \"Tout le monde\/amis\" pour activer cette option.",
+            "visibility_branded_content": "Le contenu de marque ne peut être configuré qu'avec une visibilité en tant que followers\/amis.",
             "allow_users": "Permettre aux utilisateurs de",
             "comment": "Commenter",
             "duet": "Duo",

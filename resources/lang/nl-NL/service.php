@@ -116,7 +116,7 @@ return [
         'your_brand_accept_terms' => 'Door te posten, gaat u akkoord met Tiktok\'s <a href=":href" target="_ blank" class="link"> Bevestiging voor muziekgebruik </a>.',
         'accept_terms' => 'Door te posten, gaat u akkoord met Tiktok\'s <a href=":href_brand" target="_ blank" class="link"> Content -beleid voor merkbeleid </a> en <a href=":href_music" target="_ blank" class="link"> Muziekgebruiksbevestiging </a>.',
         'partner_video_alert' => 'Uw video wordt bestempeld als "Betaald partnerschap".',
-        'visibility_branded_content' => 'Zichtbaarheid voor merkinhoud kan niet privé zijn. Selecteer de zichtbaarheid "Iedereen/vrienden" om deze optie in te schakelen.',
+        'visibility_branded_content' => 'Branded content kan alleen worden geconfigureerd met zichtbaarheid als volgers/vrienden.',
         'allow_users' => 'Gebruikers toestaan',
         'comment' => 'Opmerking',
         'duet' => 'Duet',

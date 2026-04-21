@@ -7,17 +7,12 @@ use Inovector\Mixpost\Support\SocialProviderResponse;
 
 trait ManagesOAuth
 {
-    protected array $scope = [
-        'https://www.googleapis.com/auth/youtube',
-        'https://www.googleapis.com/auth/youtube.upload',
-    ];
-
     public function getAuthUrl(): string
     {
         $params = [
             'client_id' => $this->clientId,
             'redirect_uri' => $this->redirectUrl,
-            'scope' => implode(' ', $this->scope),
+            'scope' => implode(' ', $this->getScopes()),
             'state' => $this->values['state'],
             'include_granted_scopes' => 'true',
             'response_type' => 'code',

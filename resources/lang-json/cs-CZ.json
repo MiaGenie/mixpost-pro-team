@@ -741,7 +741,7 @@
             "your_brand_accept_terms": "Odesláním příspěvku souhlasíte s <a href=\"{href}\" target=\"_blank\" class=\"link\">Potvrzením o používání hudby<\/a> společnosti TikTok.",
             "accept_terms": "Odesláním příspěvku souhlasíte se <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Zásadami používání značkového obsahu<\/a> a <a href=\"{href_music}\" target=\"_blank\" class=\"link\">Potvrzením o používání hudby<\/a> společnosti TikTok.",
             "partner_video_alert": "Vaše video bude označeno jako \"Placené partnerství\".",
-            "visibility_branded_content": "Viditelnost značkového obsahu nemůže být soukromá. Chcete-li tuto možnost povolit, vyberte možnost Viditelnost pro všechny\/přátele.",
+            "visibility_branded_content": "Značkový obsah může být nakonfigurován pouze s viditelností jako sledující\/přátelé.",
             "allow_users": "Umožnit uživatelům",
             "comment": "Komentář",
             "duet": "Duet",

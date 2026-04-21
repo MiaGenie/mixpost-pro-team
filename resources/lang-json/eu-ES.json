@@ -741,7 +741,7 @@
             "your_brand_accept_terms": "Argitaratzean, TikTok-en <a href=\"{href}\" target=\"_blank\" class=\"link\">Musika erabileraren berrespena<\/a> onartzen duzu.",
             "accept_terms": "Argitaratzean, TikTok-en <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Markaren Edukien Politika<\/a> eta <a href=\"{href_music}\" target=\"_blank\" klasea onartzen dituzu =\"link\">Musika erabileraren berrespena<\/a>.",
             "partner_video_alert": "Zure bideoak \"Ordainpeko lankidetza\" etiketa izango du.",
-            "visibility_branded_content": "Marka-edukiaren ikusgarritasuna ezin da pribatua izan. Aukera hau gaitzeko, hautatu \"Denok\/Lagunak\" ikusgaitasuna.",
+            "visibility_branded_content": "Marka-edukia jarraitzaile\/lagun gisa ikusgai egon dadin soilik konfigura daiteke.",
             "allow_users": "Baimendu erabiltzaileei",
             "comment": "Iruzkina",
             "duet": "Duet bat",

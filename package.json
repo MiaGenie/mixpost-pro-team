@@ -86,7 +86,6 @@
       "prettier --write"
     ],
     "*.php": [
-      "composer analyse",
       "composer format"
     ]
   }

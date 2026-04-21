@@ -741,7 +741,7 @@
             "your_brand_accept_terms": "Odoslaním príspevku súhlasíte s <a href=\"{href}\" target=\"_blank\" class=\"link\">Potvrdením o používaní hudby<\/a> spoločnosti TikTok.",
             "accept_terms": "Publikovaním súhlasíte so <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Zásadami používania značkového obsahu<\/a> a <a href=\"{href_music}\" target=\"_blank\" class=\"link\">Potvrdením o používaní hudby<\/a> spoločnosti TikTok.",
             "partner_video_alert": "Vaše video bude označené ako \"Platené partnerstvo\".",
-            "visibility_branded_content": "Viditeľnosť značkového obsahu nemôže byť súkromná. Ak chcete túto možnosť povoliť, vyberte možnosť Viditeľnosť pre všetkých\/priateľov.",
+            "visibility_branded_content": "Značkový obsah môže byť nakonfigurovaný len s viditeľnosťou sledovateľov\/priateľov.",
             "allow_users": "Umožniť používateľom",
             "comment": "Komentár",
             "duet": "Duet",

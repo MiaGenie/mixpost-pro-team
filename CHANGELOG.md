@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 4.1.1 - 2025-08-15
+
+**Fixes**
+
+- Fixed image quality issues when resizing uploads
+
 ## 4.1.0 - 2025-08-15
 
 **Fixes**
