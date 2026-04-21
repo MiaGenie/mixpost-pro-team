@@ -38,8 +38,12 @@ class MediaVideoThumbConversion extends MediaConversion
         return $this;
     }
 
-    public function handle(): MediaConversionData|null
+    public function handle(): ?MediaConversionData
     {
+        if (! Util::isFFmpegInstalled()) {
+            return null;
+        }
+
         $temporaryFile = TemporaryFile::make()->fromDisk(
             sourceDisk: $this->getFromDisk(),
             sourceFilepath: $this->getFilepath()
@@ -64,7 +68,7 @@ class MediaVideoThumbConversion extends MediaConversion
 
         // Sometimes the frame is not saved, so we save it again with the first frame
         // This is a workaround for the issue
-        if ($this->atSecond !== 0 && !File::exists($thumbFilepath)) {
+        if ($this->atSecond !== 0 && ! File::exists($thumbFilepath)) {
             $frame = $video->frame(TimeCode::fromSeconds(0));
             $frame->save($thumbFilepath);
         }

@@ -18,7 +18,7 @@ class TemplatesController extends Controller
         $templates = Template::latest()->latest('id')->get();
 
         return Inertia::render('Workspace/Templates/Index', [
-            'templates' => fn() => TemplateResource::collection($templates)->resolve()
+            'templates' => fn () => TemplateResource::collection($templates)->resolve(),
         ]);
     }
 

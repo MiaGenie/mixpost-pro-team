@@ -16,7 +16,7 @@ trait ManagesMetaResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/me", [
             'fields' => 'id,name',
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -26,7 +26,7 @@ trait ManagesMetaResources
                 'id' => $data['id'],
                 'name' => $data['name'],
                 'username' => '',
-                'image' => $this->apiUrl . '/' . $this->apiVersion . '/' . $data['id'] . '/picture?normal',
+                'image' => $this->apiUrl.'/'.$this->apiVersion.'/'.$data['id'].'/picture?normal',
             ];
         });
     }
@@ -36,7 +36,7 @@ trait ManagesMetaResources
         return $this->getUserAccount();
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
         return $this->response(SocialProviderResponseStatus::OK, []);
     }
@@ -54,6 +54,7 @@ trait ManagesMetaResources
             ->post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/photos", [
                 'published' => false,
                 'access_token' => $this->accessToken(),
+                'alt_text_custom' => $mediaItem->alt_text,
             ]);
 
         Util::closeAndDeleteStreamResource($readStream);
@@ -65,7 +66,7 @@ trait ManagesMetaResources
     {
         $result = $this->getHttpClient()::get("$this->apiUrl/$this->apiVersion/$videoId", [
             'fields' => 'status',
-            'access_token' => $this->accessToken()
+            'access_token' => $this->accessToken(),
         ]);
 
         return $this->buildResponse($result);
@@ -99,7 +100,7 @@ trait ManagesMetaResources
 
         $result = Util::performTaskWithDelay($status, $delay['initial'], $delay['max'], $maxAttempts);
 
-        if (!$result) {
+        if (! $result) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['request_timeout']);
         }
 

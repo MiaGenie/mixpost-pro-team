@@ -11,7 +11,7 @@ class BlueskyReports extends Report
     {
         return [
             'metrics' => [],
-            'audience' => $this->audience($account, $period)
+            'audience' => $this->audience($account, $period),
         ];
     }
 }

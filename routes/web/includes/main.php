@@ -7,13 +7,13 @@ use Inovector\Mixpost\Features;
 use Inovector\Mixpost\Http\Base\Controllers\Main\AccessTokensController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\ConfirmPasswordController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\DeleteAccessTokensController;
+use Inovector\Mixpost\Http\Base\Controllers\Main\ExtractUrlMetaController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\HomeController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\ProfileController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\TwoFactorAuthController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\UpdateAuthUserController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\UpdateAuthUserPasswordController;
 use Inovector\Mixpost\Http\Base\Controllers\Main\UpdateAuthUserPreferencesController;
-use Inovector\Mixpost\Http\Base\Controllers\Main\ExtractUrlMetaController;
 use Inovector\Mixpost\Http\Base\Middleware\EnsurePasswordConfirmed;
 
 Route::get('/', HomeController::class)->name('home');
@@ -58,5 +58,6 @@ Route::get('extract-url-meta', ExtractUrlMetaController::class)->name('extractUr
 
 Route::get('refresh-csrf-token', function (Request $request) {
     $request->session()->regenerateToken();
+
     return response(Config::get('app.name'));
 })->name('refreshCsrfToken');

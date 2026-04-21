@@ -2,7 +2,9 @@
 
 namespace Inovector\Mixpost\Http\Base\Requests\Workspace;
 
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\File;
 use Inovector\Mixpost\Abstracts\Image;
@@ -11,6 +13,7 @@ use Inovector\Mixpost\Events\Media\UploadingMediaFile;
 use Inovector\Mixpost\MediaConversions\MediaImageResizerConversion;
 use Inovector\Mixpost\MediaConversions\MediaVideoThumbConversion;
 use Inovector\Mixpost\Models\Media;
+use Inovector\Mixpost\Support\File as FileSupport;
 use Inovector\Mixpost\Support\MediaUploader;
 use Inovector\Mixpost\Util;
 
@@ -21,15 +24,28 @@ class MediaUploadFile extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', File::types($this->allowedTypes())->max($this->max())]
+            'file' => ['required', function ($attribute, $value, $fail) {
+                if ($this->hasFile('file')) {
+                    $rules = File::types($this->allowedTypes())->max($this->max());
+                    validator(['file' => $value], ['file' => [$rules]])->validate();
+                } elseif (! filter_var($value, FILTER_VALIDATE_URL)) {
+                    $fail('The file must be an uploaded file or a valid file URL.');
+                }
+            }],
+            'adobe_express_doc_id' => ['string', 'max:255'],
+            'file_name' => ['string', 'max:255'],
+            // TODO: Need to refactor
+            //            'integration' => ['required', 'in:default, adobe_express'],
+            //            'integration_data' => ['sometimes', 'array'],
+            'alt_text' => ['string', 'max:255', 'nullable'],
         ];
     }
 
-    private function max()
+    private function max(): int
     {
         $max = 0;
 
-        if (!$this->file('file')) {
+        if (! $this->file('file')) {
             return $max;
         }
 
@@ -45,7 +61,7 @@ class MediaUploadFile extends FormRequest
             $max = config('mixpost.max_file_size.video');
         }
 
-        return $max;
+        return (int) $max;
     }
 
     private function isImage(): bool
@@ -68,24 +84,50 @@ class MediaUploadFile extends FormRequest
         return Util::config('mime_types');
     }
 
+    private function getFile(): UploadedFile
+    {
+        if (! $this->hasFile('file')) {
+            try {
+                return FileSupport::fromURL($this->get('file'), $this->get('file_name'));
+            } catch (Exception $e) {
+                abort(400, 'Failed to download file');
+            }
+        }
+
+        return $this->file('file');
+    }
+
     public function handle(): Media
     {
-        UploadingMediaFile::dispatch($this->file('file'));
+        $file = $this->getFile();
 
-        return MediaUploader::fromFile($this->file('file'))
+        UploadingMediaFile::dispatch($file);
+
+        $data = [];
+
+        if ($this->has('adobe_express_doc_id')) {
+            $data['adobe_express_doc_id'] = $this->get('adobe_express_doc_id');
+        }
+
+        if ($this->has('alt_text')) {
+            $data['alt_text'] = $this->get('alt_text');
+        }
+
+        return MediaUploader::fromFile($file)
             ->path(self::mediaWorkspacePathWithDateSubpath())
             ->conversions([
                 MediaImageResizerConversion::name('thumb')->width(Image::MEDIUM_WIDTH)->height(Image::MEDIUM_HEIGHT),
-                MediaVideoThumbConversion::name('thumb')->atSecond(5)
+                MediaVideoThumbConversion::name('thumb')->atSecond(5),
             ])
+            ->data($data)
             ->uploadAndInsert();
     }
 
     public function messages(): array
     {
-        if (!$this->file('file')) {
+        if (! $this->file('file')) {
             return [
-                'file.required' => __('mixpost::rules.file_required')
+                'file.required' => __('mixpost::rules.file_required'),
             ];
         }
 

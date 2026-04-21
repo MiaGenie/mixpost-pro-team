@@ -35,11 +35,13 @@
         "account_entities": "Account Entities",
         "select_the_social_entities": "Select the social entities you want to connect",
         "connected": "Connected",
-        "choose": "Choose",
         "access_token_expired": "Access token has expired. Reconnect your account.",
         "unauthorized": "Unauthorized",
         "add_social_account": "You don't have a social account, please add at least one.",
-        "no_accounts_found": "No accounts found"
+        "no_accounts_found": "No accounts found",
+        "finish_connection": "Finish Connection",
+        "open_account_page": "Open account page",
+        "view_profile": "View profile"
     },
     "ai": {
         "tell_ai": "Tell AI what to write about",
@@ -329,7 +331,8 @@
         "generate_new": "Generate new",
         "search_jump": "Search or jump to",
         "replace": "Replace",
-        "retry": "Retry"
+        "retry": "Retry",
+        "general": "General"
     },
     "genie": {
         "name": "Name",
@@ -772,7 +775,36 @@
         "aspect_ratio_range": "Aspect ratio must be between {min} and {max}.",
         "resolution_range": "Resolution must be minimum {min} x {max} px. Recommended is {recommended_min} x {recommended_max} px.",
         "duration_range": "Duration must be between {min} and {max} seconds.",
-        "frame_rate_range": "Frame rate must be between {min} and {max} frames per second."
+        "frame_rate_range": "Frame rate must be between {min} and {max} frames per second.",
+        "edit_alt_text": "Edit alt text",
+        "write_alt_text": "Write an alt text",
+        "add_alt_text_for": "Add an alt text for {platforms}.",
+        "add_video_thumb": "Add video thumbnail",
+        "change_video_thumb": "Change video thumbnail",
+        "view_video_thumb": "View video thumbnail",
+        "video_thumb": "Video thumbnail",
+        "video_thumb_providers": "The video thumbnail is available across: {providers}.",
+        "custom_size": "Custom size",
+        "width": "Width",
+        "height": "Height",
+        "unit": "Unit",
+        "px": "pixels",
+        "inch": "inches",
+        "mm": "millimeters",
+        "create_design": "Create design",
+        "create_adobe_express": "Create with Adobe Express",
+        "new_design": "New design",
+        "saved": "Media saved successfully.",
+        "fb_post": "Facebook post",
+        "fb_story": "Facebook story",
+        "ig_portrait_post": "Instagram portrait post",
+        "ig_square_post": "Instagram square post",
+        "ig_story": "Instagram story",
+        "linkedin_post": "LinkedIn post",
+        "x_post": "X post",
+        "pinterest_post": "Pinterest post",
+        "media": "Media",
+        "create_for_adobe_express": "Create for Adobe Express"
     },
     "page": {
         "pages": "Pages",
@@ -838,7 +870,7 @@
         "accounts": "Accounts",
         "author": "Author",
         "no_posts_found": "No posts found.",
-        "delete_posts": "Delete posts",
+        "delete_posts": "Delete posts|Delete posts",
         "your_post": "Your post",
         "confirmation_delete_post": "Are you sure you want to delete selected posts?",
         "posts_history_not_edited": "Posts in history cannot be edited.",
@@ -900,7 +932,16 @@
         "approval_required": "Post must be approved before it can be published.",
         "needs_approval": "Needs approval",
         "approve": "Approve",
-        "view": "View Post"
+        "view": "View Post",
+        "posts_deleted_from_social_platforms": "Selected posts deleted from social platforms",
+        "does_not_support_deleting": "{provider} doesn't support deleting {types}",
+        "confirmation_delete_posts_from": "Where do you want to delete this post from?|Where do you want to delete selected posts from?",
+        "delete_post_from": {
+            "app_only": "From application only",
+            "app_and_social": "From application and social platforms",
+            "social_only": "From social platforms only"
+        },
+        "post_deleted_from_social_platforms": "Post deleted from social platforms"
     },
     "post_activity": {
         "activity": "Activity",
@@ -928,7 +969,8 @@
         "watch": "Watch",
         "notify_all_activity": "Notify me on all activity for this task.",
         "unwatch": "Unwatch",
-        "notify_mentions_only": "Notify me only on mentions."
+        "notify_mentions_only": "Notify me only on mentions.",
+        "post_deleted_from_social_platforms": "Post deleted from social platforms"
     },
     "posting_schedule": {
         "everyday": "Everyday",
@@ -1055,7 +1097,10 @@
                 "number_website_clicks": "Total number of taps on the website link in the profile",
                 "website_clicks": "Website clicks"
             },
-            "select_video_image": "Select a video or image for this Instagram account."
+            "select_video_image": "Select a video or image for this Instagram account.",
+            "post": "Post",
+            "reel": "Reel",
+            "story": "Story"
         },
         "linkedin": {
             "connect_page": "Connect a new LinkedIn page",
@@ -1063,7 +1108,6 @@
             "visibility": "Visibility",
             "public": "Public",
             "connections": "Connections",
-            "not_support_accounts": "Unfortunately, LinkedIn's API does not support showing analytics for personal LinkedIn accounts.",
             "insights": "Insights",
             "job_title": "Your job title",
             "send": "Send"
@@ -1091,13 +1135,13 @@
             },
             "video_limit": "Only one video is allowed per post.",
             "disclose_desc": "Turn on to disclose that this video promotes goods or services in exchange for something of value. Your video could promote yourself, a third party, or both.",
-            "promo_video_alert": "Your video will be labeled \"Promotional content\". ",
+            "promo_video_alert": "Your video will be labeled as \"Promotional content\". ",
             "branded_content_desc": "You are promoting another brand or a third party. This video will be classified as Branded Content.",
             "your_brand_desc": "You are promoting yourself or your own business. This video will be classified as Brand Organic.",
             "your_brand_accept_terms": "By posting, you agree to TikTok's <a href=\"{href}\" target=\"_blank\" class=\"link\">Music Usage Confirmation<\/a>.",
             "accept_terms": "By posting, you agree to TikTok's <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Branded Content Policy<\/a> and <a href=\"{href_music}\" target=\"_blank\" class=\"link\">Music Usage Confirmation<\/a>.",
-            "partner_video_alert": "Your video will be labeled \"Paid partnership\". ",
-            "visibility_branded_content": "Visibility for branded content can't be private. Select \"Everyone\/Friends\" visibility to enable this option.",
+            "partner_video_alert": "Your video will be labeled as 'Paid partnership'",
+            "visibility_branded_content": "Branded content can only be configured with visibility as followers\/friends.",
             "allow_users": "Allow users to",
             "comment": "Comment",
             "duet": "Duet",
@@ -1142,7 +1186,6 @@
             "public": "Public",
             "private": "Private",
             "unlisted": "Unlisted",
-            "analytics_under_development": "YouTube analytics is under development.",
             "select_video": "Select a video for this YouTube account.",
             "privacy_config": "Privacy configuration",
             "title": "Video or short title"
@@ -1170,7 +1213,47 @@
             "connect_profile": "Connect a new Bluesky profile",
             "service": "Service",
             "server_address": "Server Address"
-        }
+        },
+        "gbp": {
+            "post": "Post",
+            "offer": "Offer",
+            "event": "Event",
+            "event_title": "Event Title",
+            "add_time": "Add time",
+            "offer_title": "Offer Title",
+            "start_date": "Start Date",
+            "end_date": "End Date",
+            "button": "Button",
+            "none": "None",
+            "book": "Book",
+            "order_online": "Order online",
+            "buy": "Buy",
+            "learn_more": "Learn more",
+            "sign_up": "Sign Up",
+            "button_link": "Button link",
+            "add_more_details": "Add more details",
+            "coupon_code": "Coupon Code",
+            "offer_link": "Offer Link",
+            "tos": "Terms & Conditions",
+            "start_time": "Start Time",
+            "end_time": "End Time",
+            "call_now": "Call now",
+            "redeem_online": "Redeem online",
+            "show_code": "Show this code at the shop",
+            "offer_valid": "Valid {start_date} - {end_date}",
+            "connect_profile": "Connect a new Google Business Profile account"
+        },
+        "stock_photo": {
+            "search": "Search {source}",
+            "can_use_external_photos": "With {provider} you can use external stock photos directly in Mixpost."
+        },
+        "facebook_page": {
+            "post": "Post",
+            "reel": "Reel",
+            "story": "Story"
+        },
+        "story": "Story",
+        "generate_api_key": "Generate API Key"
     },
     "system": {
         "system": "System",
@@ -1206,7 +1289,9 @@
         "copied_clipboard": "Copied to clipboard!",
         "failed_copied_clipboard": "Failed to copy to clipboard!",
         "usage_api": "Usage in API",
-        "stored_safely": "I've stored it safely"
+        "stored_safely": "I've stored it safely",
+        "copy_id": "Copy ID",
+        "copy_uuid": "Copy UUID"
     },
     "tag": {
         "change_label_color": "Change label color",
@@ -1273,6 +1358,10 @@
         "upload_favicon": "Upload favicon",
         "theme_color": "Theme color",
         "rebrand_company": "Rebrand your company"
+    },
+    "url_shortener": {
+        "on": "URL shortening: On",
+        "off": "URL shortening: Off"
     },
     "user": {
         "create_user": "Create user",

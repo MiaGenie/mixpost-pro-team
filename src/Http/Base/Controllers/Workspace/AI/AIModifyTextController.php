@@ -11,7 +11,7 @@ class AIModifyTextController extends Controller
     public function __invoke(AIModifyText $modifyText): JsonResponse
     {
         return response()->json([
-            'text' => $modifyText->handle()
+            'text' => $modifyText->handle(),
         ]);
     }
 }

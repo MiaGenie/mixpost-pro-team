@@ -2,7 +2,6 @@
 
 namespace Inovector\Mixpost\SocialProviders\Bluesky\Concerns;
 
-
 use Illuminate\Support\Arr;
 
 trait UsesAccessToken

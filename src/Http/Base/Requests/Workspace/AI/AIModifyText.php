@@ -44,7 +44,7 @@ class AIModifyText extends FormRequest
         $agentInstructions = app(AIConfig::class)->get('instructions');
         $commandInstructions = $this->getCommandSpecificInstruction($this->input('command'));
         $characterLimit = "Ensure that the reply should be within {$this->input('character_limit')} characters.";
-        $languageOutputInstructions = "Ensure that the reply should be in user language.";
+        $languageOutputInstructions = 'Ensure that the reply should be in user language.';
 
         $this->response = AIManager::connect()->generateText(
             prompt: strip_tags($this->input('text')),

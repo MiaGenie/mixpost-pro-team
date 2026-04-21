@@ -25,7 +25,7 @@ class MediaFilesystem
 
     public static function copyToDisk(string $destinationDisk, string $destinationFilePath, string $sourceFilePath): bool
     {
-        if (!File::exists($sourceFilePath)) {
+        if (! File::exists($sourceFilePath)) {
             throw new RuntimeException("Source file does not exist: $sourceFilePath");
         }
 

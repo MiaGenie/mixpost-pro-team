@@ -40,6 +40,7 @@ class AccountPublishPost
             media: $parser->formatMedia($content[0]['media']),
             params: array_merge($options, [
                 'url' => $content[0]['url'] ?? '',
+                'video_thumbs' => $content[0]['video_thumbs'] ?? '',
             ])
         );
 

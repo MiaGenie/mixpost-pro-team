@@ -11,7 +11,7 @@ class BlueskyService
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!ServiceManager::isConfigured('bluesky') || !ServiceManager::isActive('bluesky')) {
+        if (! ServiceManager::isConfigured('bluesky') || ! ServiceManager::isActive('bluesky')) {
             abort(Response::HTTP_FORBIDDEN, 'Bluesky service is not configured or not active');
         }
 

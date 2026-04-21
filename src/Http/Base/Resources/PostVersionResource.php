@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Inovector\Mixpost\Contracts\SocialProvider;
 use Inovector\Mixpost\Facades\SocialProviderManager;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Util;
@@ -22,7 +21,7 @@ class PostVersionResource extends JsonResource
             'account_id' => $this->account_id,
             'is_original' => $this->is_original,
             'content' => $this->content(),
-            'options' => $this->options()
+            'options' => $this->options(),
         ];
     }
 
@@ -42,14 +41,23 @@ class PostVersionResource extends JsonResource
 
         return collect($items)->map(function ($item, $index) {
             $data = [
-                'body' => (string)$item['body'],
-                'media' => Arr::map($item['media'], function ($mediaItem) {
+                'body' => (string) $item['body'],
+                'media' => Arr::map($item['media'], function ($mediaItem) use ($item) {
                     if ($mediaItem instanceof Media) {
-                        return new MediaResource($mediaItem);
+                        $mediaResource = new MediaResource($mediaItem);
+
+                        if (isset($item['video_thumb_media']) && $videoThumbMedia = $item['video_thumb_media'][$mediaItem->id] ?? null) {
+                            return $mediaResource->additionalFields([
+                                'video_custom_thumb_url' => $videoThumbMedia->getUrl(),
+                            ]);
+                        }
+
+                        return $mediaResource;
                     }
 
                     return $mediaItem;
                 }),
+                'video_thumbs' => $item['video_thumbs'] ?? [],
                 'url' => $item['url'] ?? '',
                 'opened' => $index === 0,
             ];
@@ -68,21 +76,10 @@ class PostVersionResource extends JsonResource
 
     protected function options(): array
     {
-        if (!$this->options) {
-            return [];
-        }
-
         $providers = SocialProviderManager::providers();
 
-        return Arr::map($this->options, function ($options, $keyProvider) use ($providers) {
-            /** @var SocialProvider $provider */
-            $provider = $providers[$keyProvider] ?? null;
-
-            if (!$provider) {
-                return [];
-            }
-
-            return $provider::postOptions()->map(Arr::wrap($options));
+        return Arr::map($providers, function ($provider, $keyProvider) {
+            return $provider::postOptions()->map(Arr::wrap($this->options[$keyProvider] ?? []));
         });
     }
 }

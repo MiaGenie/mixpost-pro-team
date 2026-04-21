@@ -22,7 +22,7 @@ final readonly class DidDocument
 
     public function pdsServiceEndpoint(string $default = ''): string
     {
-        $service = collect((array)$this->didDoc->get('service', []))
+        $service = collect((array) $this->didDoc->get('service', []))
             ->firstWhere('id', '#atproto_pds');
 
         return Arr::get($service, 'serviceEndpoint', $default);

@@ -46,8 +46,9 @@ class InstagramProvider extends MetaProvider
             ->maxVideos(Util::config('social_provider_options.instagram.media_limit.videos'))
             ->maxVideos(1, 'reel')
             ->maxGifs(Util::config('social_provider_options.instagram.media_limit.gifs'))
-            ->allowMixingMediaTypes(Util::config('social_provider_options.instagram.allow_mixing'))
-            ->allowMixingMediaTypes(false, 'reel');
+            ->allowMixingMediaTypes(true, 'post')
+            ->allowMixingMediaTypes(false, 'reel')
+            ->enableVideoThumb(true, 'reel');
     }
 
     public static function postOptions(): SocialProviderPostOptions
@@ -65,10 +66,15 @@ class InstagramProvider extends MetaProvider
 
         $shortcode = Arr::get($data, 'shortcode');
 
-        if (!$shortcode) {
+        if (! $shortcode) {
             return '';
         }
 
         return "https://www.instagram.com/p/$shortcode/";
+    }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.instagram.com/$accountResource->username";
     }
 }

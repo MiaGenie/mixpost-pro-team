@@ -17,15 +17,15 @@ use Inovector\Mixpost\Models\Account;
 use Inovector\Mixpost\Models\Audience;
 use Inovector\Mixpost\SocialProviders\Meta\FacebookGroupProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
+
 // @deprecated
 // We will remove this feature soon
-class ImportFacebookGroupMembersJob implements ShouldQueue, QueueWorkspaceAware
+class ImportFacebookGroupMembersJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
 
@@ -42,7 +42,7 @@ class ImportFacebookGroupMembersJob implements ShouldQueue, QueueWorkspaceAware
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             return;
         }
 
@@ -54,6 +54,7 @@ class ImportFacebookGroupMembersJob implements ShouldQueue, QueueWorkspaceAware
 
         /**
          * @see FacebookGroupProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->getGroupMetrics();
@@ -84,9 +85,9 @@ class ImportFacebookGroupMembersJob implements ShouldQueue, QueueWorkspaceAware
 
         Audience::updateOrCreate([
             'account_id' => $this->account->id,
-            'date' => Carbon::today('UTC')->toDateString()
+            'date' => Carbon::today('UTC')->toDateString(),
         ], [
-            'total' => $response->member_count ?? 0
+            'total' => $response->member_count ?? 0,
         ]);
     }
 }

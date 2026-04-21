@@ -18,13 +18,12 @@ use Inovector\Mixpost\Models\Audience;
 use Inovector\Mixpost\SocialProviders\Pinterest\PinterestProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
-class ImportPinterestFollowersJob implements ShouldQueue, QueueWorkspaceAware
+class ImportPinterestFollowersJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
 
@@ -41,7 +40,7 @@ class ImportPinterestFollowersJob implements ShouldQueue, QueueWorkspaceAware
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             return;
         }
 
@@ -53,6 +52,7 @@ class ImportPinterestFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         /**
          * @see PinterestProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->getAccountMetrics();
@@ -83,9 +83,9 @@ class ImportPinterestFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         Audience::updateOrCreate([
             'account_id' => $this->account->id,
-            'date' => Carbon::today('UTC')
+            'date' => Carbon::today('UTC'),
         ], [
-            'total' => $response->follower_count ?? 0
+            'total' => $response->follower_count ?? 0,
         ]);
     }
 }

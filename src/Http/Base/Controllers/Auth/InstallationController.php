@@ -21,7 +21,7 @@ class InstallationController extends Controller
         }
 
         return Inertia::render('Auth/Installation', [
-            'timezone_list' => (new TimezoneList())->splitGroup()->list(),
+            'timezoneList' => (new TimezoneList)->splitGroup()->list(),
         ]);
     }
 

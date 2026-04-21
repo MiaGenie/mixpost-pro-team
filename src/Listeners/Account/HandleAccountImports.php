@@ -9,7 +9,7 @@ use Inovector\Mixpost\Commands\Workspace\ImportAccountData;
 use Inovector\Mixpost\Commands\Workspace\ProcessMetrics;
 use Inovector\Mixpost\Contracts\QueueWorkspaceAware;
 
-class HandleAccountImports implements ShouldQueue, QueueWorkspaceAware
+class HandleAccountImports implements QueueWorkspaceAware, ShouldQueue
 {
     public function handle(object $event): void
     {

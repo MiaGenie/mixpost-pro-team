@@ -2,22 +2,23 @@
 
 namespace Inovector\Mixpost\SocialProviders\Meta\Support;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
-use Inovector\Mixpost\Contracts\SocialProviderPostOptions;
+use Inovector\Mixpost\Support\SocialProviderPostOptions;
 
-class InstagramPostOptions implements SocialProviderPostOptions
+class InstagramPostOptions extends SocialProviderPostOptions
 {
-    public function rules(): array
+    public function rules(FormRequest $request): array
     {
         return [
-            'type' => ['sometimes', 'string', 'in:post,reel,story']
+            'type' => ['sometimes', 'string', 'in:post,reel,story'],
         ];
     }
 
     public function map(array $options = []): array
     {
         return [
-            'type' => Arr::get($options, 'type', 'post')
+            'type' => Arr::get($options, 'type', 'post'),
         ];
     }
 }

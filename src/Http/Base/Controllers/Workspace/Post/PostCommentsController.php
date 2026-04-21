@@ -10,7 +10,6 @@ use Inovector\Mixpost\Http\Base\Requests\Workspace\Post\DeletePostComment;
 use Inovector\Mixpost\Http\Base\Requests\Workspace\Post\StorePostComment;
 use Inovector\Mixpost\Http\Base\Requests\Workspace\Post\UpdatePostComment;
 use Inovector\Mixpost\Http\Base\Resources\PostActivityResource;
-use Inovector\Mixpost\Models\Post;
 
 class PostCommentsController extends Controller
 {
@@ -34,7 +33,7 @@ class PostCommentsController extends Controller
     public function update(UpdatePostComment $updatePostComment): JsonResponse
     {
         return response()->json([
-            'success' => $updatePostComment->handle()
+            'success' => $updatePostComment->handle(),
         ]);
     }
 

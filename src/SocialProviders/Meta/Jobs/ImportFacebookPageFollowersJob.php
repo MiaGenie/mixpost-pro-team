@@ -18,13 +18,12 @@ use Inovector\Mixpost\Models\Audience;
 use Inovector\Mixpost\SocialProviders\Meta\FacebookPageProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
-class ImportFacebookPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
+class ImportFacebookPageFollowersJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
 
@@ -41,7 +40,7 @@ class ImportFacebookPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             return;
         }
 
@@ -53,6 +52,7 @@ class ImportFacebookPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         /**
          * @see FacebookPageProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->getPageAudience();
@@ -84,9 +84,9 @@ class ImportFacebookPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         Audience::updateOrCreate([
             'account_id' => $this->account->id,
-            'date' => Carbon::today('UTC')->toDateString()
+            'date' => Carbon::today('UTC')->toDateString(),
         ], [
-            'total' => $response->context()['followers_count']
+            'total' => $response->context()['followers_count'],
         ]);
     }
 }

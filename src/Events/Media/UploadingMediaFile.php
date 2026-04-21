@@ -13,6 +13,7 @@ class UploadingMediaFile
     use Dispatchable, SerializesModels;
 
     public ?Workspace $workspace;
+
     public UploadedFile $file;
 
     public function __construct(UploadedFile $file)

@@ -18,4 +18,6 @@ enum PostActivityType: int
     case PUBLISHED = 6;
 
     case PUBLISHED_FAILED = 7;
+
+    case DELETED_FROM_SOCIAL_PLATFORMS = 8;
 }

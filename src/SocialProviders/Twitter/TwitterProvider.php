@@ -17,8 +17,8 @@ use Inovector\Mixpost\Util;
 class TwitterProvider extends SocialProvider
 {
     use ManagesConfig;
-    use ManagesRateLimit;
     use ManagesOAuth;
+    use ManagesRateLimit;
     use ManagesResources;
 
     public array $callbackResponseKeys = ['oauth_token', 'oauth_verifier'];
@@ -67,6 +67,11 @@ class TwitterProvider extends SocialProvider
         return "https://twitter.com/$accountResource->username/status/{$accountResource->pivot->provider_post_id}";
     }
 
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://x.com/$accountResource->username";
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {
@@ -74,5 +79,10 @@ class TwitterProvider extends SocialProvider
             'upload_failed' => __('mixpost::service.twitter.upload_failed'),
             default => $key,
         };
+    }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
     }
 }

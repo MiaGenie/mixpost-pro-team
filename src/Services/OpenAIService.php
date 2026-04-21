@@ -29,7 +29,7 @@ class OpenAIService extends Service
     public static function formRules(): array
     {
         return [
-            "secret_key" => ['required']
+            'secret_key' => ['required'],
         ];
     }
 

@@ -4,7 +4,7 @@ namespace Inovector\Mixpost\SocialProviders\Bluesky;
 
 use Inovector\Mixpost\Abstracts\SocialProvider;
 use Inovector\Mixpost\Services\Bluesky\BlueskyService;
-use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\HasExternalPostUrl;
+use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\HasExternalUrls;
 use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\ManagesAccount;
 use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\ManagesConfig;
 use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\ManagesMetrics;
@@ -13,12 +13,12 @@ use Inovector\Mixpost\SocialProviders\Bluesky\Concerns\ManagesPost;
 
 class BlueskyProvider extends SocialProvider
 {
-    use ManagesConfig;
-    use HasExternalPostUrl;
-    use ManagesOAuth;
+    use HasExternalUrls;
     use ManagesAccount;
-    use ManagesPost;
+    use ManagesConfig;
     use ManagesMetrics;
+    use ManagesOAuth;
+    use ManagesPost;
 
     public const DEFAULT_SERVER = 'https://bsky.social';
 
@@ -27,5 +27,10 @@ class BlueskyProvider extends SocialProvider
     public static function service(): string
     {
         return BlueskyService::class;
+    }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return true;
     }
 }

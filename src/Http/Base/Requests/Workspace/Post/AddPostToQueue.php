@@ -32,11 +32,11 @@ class AddPostToQueue extends FormRequest
                 $validator->errors()->add('publishing', 'publishing');
             }
 
-            if (!$this->post->accounts()->exists()) {
-                $validator->errors()->add('cannot_scheduled', __('mixpost::post.post_cannot_scheduled') . "\n" . __('mixpost::post.accounts_not_selected'));
+            if (! $this->post->accounts()->exists()) {
+                $validator->errors()->add('cannot_scheduled', __('mixpost::post.post_cannot_scheduled')."\n".__('mixpost::post.accounts_not_selected'));
             }
 
-            if (!PostingSchedule::hasAvailableTimes()) {
+            if (! PostingSchedule::hasAvailableTimes()) {
                 $validator->errors()->add('available_times', __('mixpost::post.posting_schedule_not_available_times'));
             }
         });

@@ -8,7 +8,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Models\Media;
+use Inovector\Mixpost\Support\PostVersionHelpers;
 use Inovector\Mixpost\Support\SocialProviderResponse;
+use Inovector\Mixpost\Util;
+use RuntimeException;
 
 trait ManagesInstagramResources
 {
@@ -24,7 +27,7 @@ trait ManagesInstagramResources
         $response = Http::withToken($this->getAccessToken()['access_token'])
             ->get("$this->apiUrl/$this->apiVersion/me/accounts", [
                 'fields' => 'id,name,username,picture{url},instagram_business_account',
-                'limit' => 200
+                'limit' => 200,
             ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -40,7 +43,7 @@ trait ManagesInstagramResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/$id", [
             'fields' => 'id,name,username,profile_picture_url',
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response, function () use ($response) {
@@ -57,7 +60,7 @@ trait ManagesInstagramResources
 
     public function publishPost(string $text, Collection $media, array $params = []): SocialProviderResponse
     {
-        if (!$media->count()) {
+        if (! $media->count()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['no_media_selected']);
         }
 
@@ -66,7 +69,10 @@ trait ManagesInstagramResources
         $isStory = Arr::get($params, 'type') === 'story';
 
         if ($isReel && $media->count() === 1) {
-            $response = $this->publishInstagramReel($text, $media->first());
+            if (isset($params['video_thumbs']) && is_array($params['video_thumbs'])) {
+                $thumb = PostVersionHelpers::getThumbForMediaId($media->first()->id, $params['video_thumbs']);
+            }
+            $response = $this->publishInstagramReel($text, $media->first(), $thumb ?? null);
         }
 
         if ($isReel && $media->count() > 1) {
@@ -83,8 +89,8 @@ trait ManagesInstagramResources
             return $response->useContext([
                 'id' => $response->id,
                 'data' => [
-                    'story' => true
-                ]
+                    'story' => true,
+                ],
             ]);
         }
 
@@ -92,11 +98,11 @@ trait ManagesInstagramResources
             $response = $this->response(SocialProviderResponseStatus::ERROR, ['story_single_media_limit']);
         }
 
-        if (!$isReel && !$isStory && $media->count() === 1) {
+        if (! $isReel && ! $isStory && $media->count() === 1) {
             $response = $this->publishSingleMediaPost($text, $media->first());
         }
 
-        if (!$isReel && !$isStory && $media->count() > 1) {
+        if (! $isReel && ! $isStory && $media->count() > 1) {
             $response = $this->publishCarouselPost($text, $media);
         }
 
@@ -117,7 +123,7 @@ trait ManagesInstagramResources
 
         return $response->useContext([
             'id' => $response->id,
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
@@ -125,7 +131,8 @@ trait ManagesInstagramResources
     {
         $data = [
             'access_token' => $this->getAccessToken()['access_token'],
-            'caption' => $text
+            'caption' => $text,
+            'alt_text' => $mediaItem->alt_text,
         ];
 
         if ($mediaItem->isVideo()) {
@@ -149,9 +156,9 @@ trait ManagesInstagramResources
         return $this->publishContainer($response->id);
     }
 
-    public function publishInstagramReel(string $text, Media $mediaItem): SocialProviderResponse
+    public function publishInstagramReel(string $text, Media $mediaItem, ?Media $thumb = null): SocialProviderResponse
     {
-        if (!$mediaItem->isVideo()) {
+        if (! $mediaItem->isVideo()) {
             return $this->response(SocialProviderResponseStatus::ERROR, ['reel_only_video_allowed']);
         }
 
@@ -159,8 +166,13 @@ trait ManagesInstagramResources
             'access_token' => $this->getAccessToken()['access_token'],
             'caption' => $text,
             'media_type' => 'REELS',
-            'video_url' => $mediaItem->getUrl()
+            'video_url' => $mediaItem->getUrl(),
+            'alt_text' => $mediaItem->alt_text,
         ];
+
+        if ($thumb) {
+            $data['cover_url'] = $thumb->getUrl();
+        }
 
         $response = $this->buildResponse(
             $this->getHttpClient()::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", $data)
@@ -177,15 +189,34 @@ trait ManagesInstagramResources
     {
         $mediaContainerIds = [];
 
-        foreach ($media as $item) {
-            $mediaContainerResponse = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", [
+        foreach ($media as $mediaItem) {
+            $data = [
                 'access_token' => $this->getAccessToken()['access_token'],
                 'is_carousel_item' => true,
-                'image_url' => $item->getUrl()
-            ]));
+            ];
+
+            if ($mediaItem->isImage()) {
+                $data['alt_text'] = $mediaItem->alt_text;
+                $data['image_url'] = $mediaItem->getUrl();
+            }
+
+            if ($mediaItem->isVideo()) {
+                $data['media_type'] = 'VIDEO';
+                $data['video_url'] = $mediaItem->getUrl();
+            }
+
+            $mediaContainerResponse = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", $data));
 
             if ($mediaContainerResponse->hasError()) {
                 return $mediaContainerResponse;
+            }
+
+            if ($mediaItem->isVideo()) {
+                try {
+                    $this->waitForContainerCompletion($mediaContainerResponse);
+                } catch (RuntimeException $e) {
+                    return $this->response(SocialProviderResponseStatus::ERROR, json_decode($e->getMessage(), true));
+                }
             }
 
             $mediaContainerIds[] = $mediaContainerResponse->id;
@@ -194,8 +225,8 @@ trait ManagesInstagramResources
         $carouselContainer = $this->buildResponse(Http::post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media", [
             'access_token' => $this->getAccessToken()['access_token'],
             'media_type' => 'CAROUSEL',
-            'children' => $mediaContainerIds,
-            'caption' => $text
+            'children' => implode(',', $mediaContainerIds),
+            'caption' => $text,
         ]));
 
         if ($carouselContainer->hasError()) {
@@ -248,7 +279,7 @@ trait ManagesInstagramResources
             }
         } while ($inProgress === true);
 
-        if (!$responseContainer->status_code) {
+        if (! $responseContainer->status_code) {
             return $this->response(SocialProviderResponseStatus::ERROR, $responseContainer->context());
         }
 
@@ -267,7 +298,7 @@ trait ManagesInstagramResources
 
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->post("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/media_publish", [
-                'creation_id' => $itemContainerId
+                'creation_id' => $itemContainerId,
             ]);
 
         return $this->buildResponse($response);
@@ -277,7 +308,7 @@ trait ManagesInstagramResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/$containerId", [
             'access_token' => $this->getAccessToken()['access_token'],
-            'fields' => 'status,status_code'
+            'fields' => 'status,status_code',
         ]);
 
         return $this->buildResponse($response);
@@ -286,7 +317,7 @@ trait ManagesInstagramResources
     public function getContentPublishLimit(): SocialProviderResponse
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}/content_publishing_limit", [
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response);
@@ -296,7 +327,7 @@ trait ManagesInstagramResources
     {
         $response = Http::get("$this->apiUrl/$this->apiVersion/{$this->values['provider_id']}", [
             'fields' => 'followers_count,follows_count,media_count',
-            'access_token' => $this->getAccessToken()['access_token']
+            'access_token' => $this->getAccessToken()['access_token'],
         ]);
 
         return $this->buildResponse($response);
@@ -337,7 +368,7 @@ trait ManagesInstagramResources
     {
         $response = $this->getHttpClient()::withToken($this->getAccessToken()['access_token'])
             ->get("$this->apiUrl/$this->apiVersion/$mediaId", [
-                'fields' => $fields
+                'fields' => $fields,
             ]);
 
         return $this->buildResponse($response);
@@ -350,7 +381,7 @@ trait ManagesInstagramResources
             'since' => Carbon::now('UTC')->subYear()->toDateString(),
             'until' => Carbon::today('UTC')->toDateString(),
             'limit' => 100,
-            'fields' => 'id,caption,comments_count,is_comment_enabled,is_shared_to_feed,like_count,media_product_type,media_type,media_url,permalink,shortcode,thumbnail_url,timestamp,username'
+            'fields' => 'id,caption,comments_count,is_comment_enabled,is_shared_to_feed,like_count,media_product_type,media_type,media_url,permalink,shortcode,thumbnail_url,timestamp,username',
         ];
 
         if ($paginationAfter) {
@@ -369,5 +400,23 @@ trait ManagesInstagramResources
         ]);
 
         return $this->buildResponse($response);
+    }
+
+    protected function waitForContainerCompletion(SocialProviderResponse $response): void
+    {
+        $result = Util::performTaskWithDelay(function () use ($response) {
+            $container = $this->getContainer($response->id());
+
+            if ($container->status_code == 'IN_PROGRESS') {
+                // Return null to continue checking
+                return null;
+            }
+
+            return $container;
+        }, 30);
+
+        if ($result->status_code != 'FINISHED') {
+            throw new RuntimeException(json_encode($result->context()));
+        }
     }
 }

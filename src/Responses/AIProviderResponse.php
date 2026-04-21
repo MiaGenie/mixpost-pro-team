@@ -8,16 +8,18 @@ use Inovector\Mixpost\Enums\AIProviderResponseStatus;
 final class AIProviderResponse
 {
     public array $context = [];
+
     public array $choices;
+
     public array $usage = [];
+
     public int $retryAfter = 0;
+
     public bool $rateLimitAboutToBeExceeded = false;
 
     public function __construct(
         public readonly AIProviderResponseStatus $status
-    )
-    {
-    }
+    ) {}
 
     public static function withStatus(AIProviderResponseStatus $status): self
     {
@@ -66,7 +68,7 @@ final class AIProviderResponse
 
     public function hasError(): bool
     {
-        return !$this->isOk();
+        return ! $this->isOk();
     }
 
     public function isUnauthorized(): bool

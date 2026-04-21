@@ -14,15 +14,15 @@ use Inovector\Mixpost\Contracts\QueueWorkspaceAware;
 use Inovector\Mixpost\Models\Account;
 use Inovector\Mixpost\Models\Post;
 
-class AccountPublishPostJob implements ShouldQueue, QueueWorkspaceAware
+class AccountPublishPostJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
     use HasSocialProviderJobRateLimit;
 
     public $deleteWhenMissingModels = true;
 
     public Account $account;
+
     public Post $post;
 
     public function __construct(Account $account, Post $post)
@@ -48,8 +48,9 @@ class AccountPublishPostJob implements ShouldQueue, QueueWorkspaceAware
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             $this->post->insertErrors($this->account, ['service_disabled']);
+
             return;
         }
 

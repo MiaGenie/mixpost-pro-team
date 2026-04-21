@@ -2,17 +2,19 @@
 
 namespace Inovector\Mixpost\Concerns\Model\Media;
 
-use Intervention\Image\Facades\Image;
+use Inovector\Mixpost\Concerns\UsesImageManager;
 
 trait HasImageData
 {
+    use UsesImageManager;
+
     public function imageHeight()
     {
         if (isset($this->data['height'])) {
             return $this->data['height'];
         }
 
-        $height = Image::make($this->getFullPath())->height();
+        $height = $this->imageManager()->read($this->getFullPath())->height();
         $this->saveImageHeight($height);
 
         return $height;
@@ -24,7 +26,7 @@ trait HasImageData
             return $this->data['width'];
         }
 
-        return Image::make($this->getFullPath())->width();
+        return $this->imageManager()->read($this->getFullPath())->width();
     }
 
     public function saveImageHeight(int $height): void

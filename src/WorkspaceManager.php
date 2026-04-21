@@ -2,12 +2,12 @@
 
 namespace Inovector\Mixpost;
 
+use Closure;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\Rules\Exists;
 use Illuminate\Validation\Rules\Unique;
 use Inovector\Mixpost\Concerns\UsesWorkspaceModel;
 use Inovector\Mixpost\Models\Workspace;
-use Closure;
 
 class WorkspaceManager
 {
@@ -27,22 +27,22 @@ class WorkspaceManager
         $this->workspace = null;
     }
 
-    public function current(): Workspace|null
+    public function current(): ?Workspace
     {
         return $this->workspace;
     }
 
-    public function findById(int $id): Workspace|null
+    public function findById(int $id): ?Workspace
     {
         return self::getWorkspaceModelClass()::find($id);
     }
 
-    public function findByUuid(string $uuid): Workspace|null
+    public function findByUuid(string $uuid): ?Workspace
     {
         return self::getWorkspaceModelClass()::findByUuid($uuid);
     }
 
-    public function all(Closure $callback = null): Collection|array
+    public function all(?Closure $callback = null): Collection|array
     {
         $query = self::getWorkspaceModelClass()::query();
 
@@ -57,7 +57,7 @@ class WorkspaceManager
     {
         $workspace = $this->findById($id);
 
-        if (!$workspace) {
+        if (! $workspace) {
             return false;
         }
 
@@ -70,7 +70,7 @@ class WorkspaceManager
     {
         $workspace = $this->findByUuid($uuid);
 
-        if (!$workspace) {
+        if (! $workspace) {
             return false;
         }
 

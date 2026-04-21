@@ -11,7 +11,7 @@ class AIGenerateTextController extends Controller
     public function __invoke(AIGenerateText $generateText): JsonResponse
     {
         return response()->json([
-            'text' => $generateText->handle()
+            'text' => $generateText->handle(),
         ]);
     }
 }

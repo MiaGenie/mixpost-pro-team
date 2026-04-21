@@ -8,8 +8,9 @@ use Inovector\Mixpost\Support\MediaConversionData;
 
 class MediaImageResizerConversion extends MediaConversion
 {
-    protected float|null $width;
-    protected float|null $height = null;
+    protected ?float $width;
+
+    protected ?float $height = null;
 
     public function getEngineName(): string
     {
@@ -18,7 +19,7 @@ class MediaImageResizerConversion extends MediaConversion
 
     public function canPerform(): bool
     {
-        return $this->isImage() && !$this->isGifImage();
+        return $this->isImage() && ! $this->isGifImage();
     }
 
     public function getPath(): string
@@ -26,21 +27,21 @@ class MediaImageResizerConversion extends MediaConversion
         return $this->getFilePathWithSuffix();
     }
 
-    public function width(float|null $value = null): static
+    public function width(?float $value = null): static
     {
         $this->width = $value;
 
         return $this;
     }
 
-    public function height(float|null $value = null): static
+    public function height(?float $value = null): static
     {
         $this->height = $value;
 
         return $this;
     }
 
-    public function handle(): MediaConversionData|null
+    public function handle(): ?MediaConversionData
     {
         $content = $this->filesystem($this->getFromDisk())->get($this->getFilepath());
 

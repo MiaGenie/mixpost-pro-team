@@ -35,11 +35,13 @@
         "account_entities": "Entidades de cuenta",
         "select_the_social_entities": "Seleccione las entidades sociales que desea conectar",
         "connected": "Conectado",
-        "choose": "Elija",
         "access_token_expired": "El token de acceso ha caducado. Vuelva a conectar su cuenta.",
         "unauthorized": "Sin autorización",
         "add_social_account": "Si no tienes una cuenta social, añade al menos una.",
-        "no_accounts_found": "No se han encontrado cuentas"
+        "no_accounts_found": "No se han encontrado cuentas",
+        "finish_connection": "Conexión de acabado",
+        "open_account_page": "Abrir cuenta",
+        "view_profile": "Ver perfil"
     },
     "ai": {
         "tell_ai": "Dile a la IA sobre qué escribir",
@@ -329,7 +331,8 @@
         "generate_new": "Generar nuevo",
         "search_jump": "Buscar o saltar a",
         "replace": "Sustituir",
-        "retry": "Reintentar"
+        "retry": "Reintentar",
+        "general": "General"
     },
     "hashtag": {
         "hashtag_name": "Hashtag Nombre del grupo",
@@ -372,7 +375,36 @@
         "aspect_ratio_range": "La relación de aspecto debe estar entre {min} y {max}.",
         "resolution_range": "La resolución debe ser como mínimo de {min} x {max} px. Se recomienda {recommended_min} x {recommended_max} px.",
         "duration_range": "La duración debe estar comprendida entre {min} y {max} segundos.",
-        "frame_rate_range": "La frecuencia de imagen debe estar entre {min} y {max} imágenes por segundo."
+        "frame_rate_range": "La frecuencia de imagen debe estar entre {min} y {max} imágenes por segundo.",
+        "edit_alt_text": "Editar texto alternativo",
+        "write_alt_text": "Escribir un texto alternativo",
+        "add_alt_text_for": "Añade un texto alternativo para {platforms}.",
+        "add_video_thumb": "Añadir miniatura de vídeo",
+        "change_video_thumb": "Cambiar la miniatura del vídeo",
+        "view_video_thumb": "Ver vídeo en miniatura",
+        "video_thumb": "Miniatura del vídeo",
+        "video_thumb_providers": "La miniatura del vídeo está disponible a través de: {providers}.",
+        "custom_size": "Tamaño personalizado",
+        "width": "Anchura",
+        "height": "Altura",
+        "unit": "Unidad",
+        "px": "píxeles",
+        "inch": "pulgadas",
+        "mm": "milímetros",
+        "create_design": "Crear diseño",
+        "create_adobe_express": "Crear con Adobe Express",
+        "new_design": "Nuevo diseño",
+        "saved": "Medios guardados correctamente.",
+        "fb_post": "Publicación en Facebook",
+        "fb_story": "Historia de Facebook",
+        "ig_portrait_post": "Retrato en Instagram",
+        "ig_square_post": "Instagram post cuadrado",
+        "ig_story": "Historia de Instagram",
+        "linkedin_post": "LinkedIn post",
+        "x_post": "X puesto",
+        "pinterest_post": "Pinterest post",
+        "media": "Medios de comunicación",
+        "create_for_adobe_express": "Crear para Adobe Express"
     },
     "page": {
         "pages": "Páginas",
@@ -438,7 +470,7 @@
         "accounts": "Cuentas",
         "author": "Autor",
         "no_posts_found": "No se han encontrado publicaciones",
-        "delete_posts": "Borrar mensajes",
+        "delete_posts": "Borrar mensajes|Borrar mensajes",
         "your_post": "Su publicación",
         "confirmation_delete_post": "¿Está seguro de que desea eliminar los mensajes seleccionados?",
         "posts_history_not_edited": "Los mensajes del historial no se pueden editar.",
@@ -500,7 +532,16 @@
         "approval_required": "Los mensajes deben ser aprobados antes de ser publicados.",
         "needs_approval": "Necesita aprobación",
         "approve": "Aprobar",
-        "view": "Ver el post"
+        "view": "Ver el post",
+        "posts_deleted_from_social_platforms": "Publicaciones seleccionadas eliminadas de las plataformas sociales",
+        "does_not_support_deleting": "{provider} no permite borrar {types}",
+        "confirmation_delete_posts_from": "¿De dónde quieres borrar este mensaje? ¿De dónde quieres borrar los mensajes seleccionados?",
+        "delete_post_from": {
+            "app_only": "Sólo desde la aplicación",
+            "app_and_social": "Desde aplicaciones y plataformas sociales",
+            "social_only": "Sólo desde plataformas sociales"
+        },
+        "post_deleted_from_social_platforms": "Publicación eliminada de las plataformas sociales"
     },
     "post_activity": {
         "activity": "Actividad",
@@ -528,7 +569,8 @@
         "watch": "Ver",
         "notify_all_activity": "Notificarme toda la actividad de esta tarea.",
         "unwatch": "Unwatch",
-        "notify_mentions_only": "Notificarme sólo las menciones."
+        "notify_mentions_only": "Notificarme sólo las menciones.",
+        "post_deleted_from_social_platforms": "Publicación eliminada de las plataformas sociales"
     },
     "posting_schedule": {
         "everyday": "Todos los días",
@@ -655,7 +697,10 @@
                 "number_website_clicks": "Número total de pulsaciones sobre el enlace del sitio web en el perfil",
                 "website_clicks": "Clics en el sitio web"
             },
-            "select_video_image": "Selecciona un vídeo o una imagen para esta cuenta de Instagram."
+            "select_video_image": "Selecciona un vídeo o una imagen para esta cuenta de Instagram.",
+            "post": "Publicar en",
+            "reel": "Carrete",
+            "story": "Historia"
         },
         "linkedin": {
             "connect_page": "Conectar una nueva página de LinkedIn",
@@ -663,7 +708,6 @@
             "visibility": "Visibilidad",
             "public": "Público",
             "connections": "Conexiones",
-            "not_support_accounts": "Lamentablemente, la API de LinkedIn no permite mostrar análisis de cuentas personales de LinkedIn.",
             "insights": "Perspectivas",
             "job_title": "Su cargo",
             "send": "Enviar"
@@ -696,8 +740,8 @@
             "your_brand_desc": "Te estás promocionando a ti mismo o a tu propio negocio. Este vídeo se clasificará como Brand Organic.",
             "your_brand_accept_terms": "Al publicar, aceptas la <a href=\"{href}\" target=\"_blank\" class=\"link\">Confirmación de uso de música<\/a> de TikTok.",
             "accept_terms": "Al publicar, aceptas la <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Política de contenido de marca<\/a> y la <a href=\"{href_music}\" target=\"_blank\" class=\"link\">Confirmación de uso de música<\/a> de TikTok.",
-            "partner_video_alert": "Su vídeo se etiquetará como \"Colaboración de pago\".",
-            "visibility_branded_content": "La visibilidad del contenido de marca no puede ser privada. Selecciona la visibilidad \"Todos\/Amigos\" para activar esta opción.",
+            "partner_video_alert": "Su vídeo se etiquetará como \"Asociación de pago",
+            "visibility_branded_content": "El contenido de marca sólo puede configurarse con visibilidad como seguidores\/amigos.",
             "allow_users": "Permitir a los usuarios",
             "comment": "Comentario",
             "duet": "Dúo",
@@ -742,7 +786,6 @@
             "public": "Público",
             "private": "Privado",
             "unlisted": "Sin clasificar",
-            "analytics_under_development": "El análisis de YouTube está en fase de desarrollo.",
             "select_video": "Selecciona un vídeo para esta cuenta de YouTube.",
             "privacy_config": "Configuración de privacidad",
             "title": "Vídeo o título corto"
@@ -770,7 +813,47 @@
             "connect_profile": "Conectar un nuevo perfil Bluesky",
             "service": "Servicio",
             "server_address": "Dirección del servidor"
-        }
+        },
+        "gbp": {
+            "post": "Publicar en",
+            "offer": "Oferta",
+            "event": "Evento",
+            "event_title": "Título del evento",
+            "add_time": "Añadir tiempo",
+            "offer_title": "Título de la oferta",
+            "start_date": "Fecha de inicio",
+            "end_date": "Fecha final",
+            "button": "Botón",
+            "none": "Ninguno",
+            "book": "Reserve",
+            "order_online": "Pedidos en línea",
+            "buy": "Comprar",
+            "learn_more": "Más información",
+            "sign_up": "Inscribirse",
+            "button_link": "Botón de enlace",
+            "add_more_details": "Añadir más detalles",
+            "coupon_code": "Código de cupón",
+            "offer_link": "Ofrecer enlace",
+            "tos": "Condiciones generales",
+            "start_time": "Hora de inicio",
+            "end_time": "Fin de los tiempos",
+            "call_now": "Llama ahora",
+            "redeem_online": "Canjear en línea",
+            "show_code": "Mostrar este código en la tienda",
+            "offer_valid": "Válido {start_date} - {end_date}",
+            "connect_profile": "Conectar una nueva cuenta de perfil de Google Business"
+        },
+        "stock_photo": {
+            "search": "Buscar {source}",
+            "can_use_external_photos": "Con {provider} puede utilizar fotos de archivo externas directamente en Mixpost."
+        },
+        "facebook_page": {
+            "post": "Publicar en",
+            "reel": "Carrete",
+            "story": "Historia"
+        },
+        "story": "Historia",
+        "generate_api_key": "Generar clave API"
     },
     "system": {
         "system": "Sistema",
@@ -806,7 +889,9 @@
         "copied_clipboard": "Copiado al portapapeles.",
         "failed_copied_clipboard": "No se ha podido copiar en el portapapeles.",
         "usage_api": "Uso en API",
-        "stored_safely": "Lo he guardado a buen recaudo"
+        "stored_safely": "Lo he guardado a buen recaudo",
+        "copy_id": "Copiar ID",
+        "copy_uuid": "Copiar UUID"
     },
     "tag": {
         "change_label_color": "Cambiar el color de la etiqueta",
@@ -873,6 +958,10 @@
         "upload_favicon": "Subir favicon",
         "theme_color": "Color del tema",
         "rebrand_company": "Cambie la marca de su empresa"
+    },
+    "url_shortener": {
+        "on": "Acortamiento de URL: En",
+        "off": "Acortamiento de URL: Off"
     },
     "user": {
         "create_user": "Crear usuario",

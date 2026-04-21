@@ -8,10 +8,7 @@ use Illuminate\Support\Str;
 
 class LoginRateLimiter
 {
-    public function __construct(protected readonly RateLimiter $limiter)
-    {
-
-    }
+    public function __construct(protected readonly RateLimiter $limiter) {}
 
     public function attempts(Request $request)
     {
@@ -40,6 +37,6 @@ class LoginRateLimiter
 
     protected function throttleKey(Request $request): string
     {
-        return Str::transliterate(Str::lower($request->input('email')) . '|' . $request->ip());
+        return Str::transliterate(Str::lower($request->input('email')).'|'.$request->ip());
     }
 }

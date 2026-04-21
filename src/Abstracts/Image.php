@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This class is responsible for handling image.
  *
@@ -17,17 +18,18 @@ abstract class Image
     use Makeable;
 
     const LARGE_WIDTH = 1080;
+
     const LARGE_HEIGHT = 1080;
 
     const MEDIUM_WIDTH = 430;
+
     const MEDIUM_HEIGHT = 430;
 
     const THUMBNAIL_WIDTH = 200;
+
     const THUMBNAIL_HEIGHT = 200;
 
-    public function __construct(protected readonly UploadedFile|Media|string $file)
-    {
-    }
+    public function __construct(protected readonly UploadedFile|Media|string $file) {}
 
     protected function getFileData(): string
     {

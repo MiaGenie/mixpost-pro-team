@@ -18,12 +18,11 @@ use Inovector\Mixpost\Http\Base\Controllers\Workspace\MediaFetchUploadsControlle
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\MediaUploadFileController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\AddPostToQueueController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\ApprovePostController;
-use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\DeletePostsController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\DuplicatePostController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostActivitiesController;
+use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostCommentChildrenController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostCommentsController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostsController;
-use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\PostCommentChildrenController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\ReactPostCommentController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\RestorePostController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Post\SchedulePostController;
@@ -38,6 +37,7 @@ use Inovector\Mixpost\Http\Base\Controllers\Workspace\TagsController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\TemplatesApiController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\TemplatesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\UpdateAccountSuffixController;
+use Inovector\Mixpost\Http\Base\Controllers\Workspace\UrlShortenerController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\VariablesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\DeleteWebhooksController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\ResendWebhookController;
@@ -45,6 +45,7 @@ use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\UpdateWebhookSecre
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\WebhookDeliveriesController;
 use Inovector\Mixpost\Http\Base\Controllers\Workspace\Webhook\WebhooksController;
 use Inovector\Mixpost\Http\Base\Middleware\CheckAIConfiguration;
+use Inovector\Mixpost\Http\Base\Middleware\CheckUrlShortenerEnabled;
 use Inovector\Mixpost\Http\Base\Middleware\CheckWorkspaceUser;
 use Inovector\Mixpost\Http\Base\Middleware\EnsurePasswordConfirmed;
 use Inovector\Mixpost\Http\Base\Middleware\HandleInertiaRequests;
@@ -53,12 +54,12 @@ use Inovector\Mixpost\Mixpost;
 
 Route::middleware(array_merge([
     IdentifyWorkspace::class,
-    CheckWorkspaceUser::class
+    CheckWorkspaceUser::class,
 ], Mixpost::getWorkspaceMiddlewares()))
     ->prefix('{workspace}')
     ->group(function () {
-        $adminMiddleware = CheckWorkspaceUser::class . ':' . WorkspaceUserRole::ADMIN->name;
-        $editorMiddleware = CheckWorkspaceUser::class . ':' . WorkspaceUserRole::ADMIN->name . '|' . WorkspaceUserRole::MEMBER->name;
+        $adminMiddleware = CheckWorkspaceUser::class.':'.WorkspaceUserRole::ADMIN->name;
+        $editorMiddleware = CheckWorkspaceUser::class.':'.WorkspaceUserRole::ADMIN->name.'|'.WorkspaceUserRole::MEMBER->name;
 
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::post('switch', SwitchWorkspaceController::class)->name('switchWorkspace');
@@ -104,7 +105,7 @@ Route::middleware(array_merge([
                 });
             });
 
-        Route::prefix('posts')->name('posts.')->middleware($editorMiddleware)->group(function () use($editorMiddleware) {
+        Route::prefix('posts')->name('posts.')->middleware($editorMiddleware)->group(function () use ($editorMiddleware) {
             Route::get('/', [PostsController::class, 'index'])->name('index')->withoutMiddleware($editorMiddleware);
             Route::get('create/{schedule_at?}', [PostsController::class, 'create'])
                 ->name('create')
@@ -112,14 +113,13 @@ Route::middleware(array_merge([
             Route::post('store', [PostsController::class, 'store'])->name('store');
             Route::get('{post}', [PostsController::class, 'edit'])->name('edit')->withoutMiddleware($editorMiddleware);
             Route::put('{post}', [PostsController::class, 'update'])->name('update');
-            Route::delete('{post}', [PostsController::class, 'destroy'])->name('delete');
+            Route::delete('/', [PostsController::class, 'destroy'])->name('delete');
 
             Route::post('schedule/{post}', SchedulePostController::class)->name('schedule');
             Route::post('add-to-queue/{post}', AddPostToQueueController::class)->name('addToQueue');
             Route::post('approve/{post}', ApprovePostController::class)->name('approve')->withoutMiddleware($editorMiddleware);
             Route::post('duplicate/{post}', DuplicatePostController::class)->name('duplicate');
             Route::post('restore/{post}', RestorePostController::class)->name('restore');
-            Route::delete('/', DeletePostsController::class)->name('deleteMultiple');
 
             Route::prefix('activities')->name('activities.')->withoutMiddleware($editorMiddleware)->group(function () {
                 Route::get('{post}', PostActivitiesController::class)->name('index');
@@ -143,8 +143,9 @@ Route::middleware(array_merge([
             ->where('date', '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$')
             ->where('type', '^(?:month|week)$');
 
-        Route::prefix('media')->name('media.')->group(function () use($editorMiddleware) {
+        Route::prefix('media')->name('media.')->group(function () use ($editorMiddleware) {
             Route::get('/', [MediaController::class, 'index'])->name('index');
+            Route::put('{item}', [MediaController::class, 'update'])->middleware($editorMiddleware)->name('update');
             Route::delete('/', [MediaController::class, 'destroy'])->middleware($editorMiddleware)->name('delete');
             Route::get('fetch/uploaded', MediaFetchUploadsController::class)->name('fetchUploads');
             Route::get('fetch/stock', MediaFetchStockController::class)->name('fetchStock');
@@ -199,9 +200,11 @@ Route::middleware(array_merge([
             Route::get('users', UsersController::class)->name('users');
         });
 
-        Route::prefix('provider')->name('provider.')->group(function () use($editorMiddleware) {
+        Route::prefix('provider')->name('provider.')->group(function () use ($editorMiddleware) {
             Route::prefix('pinterest')->name('pinterest.')->middleware($editorMiddleware)->group(function () {
                 Route::post('store-board', StorePinterestBorderController::class)->name('storeBoard');
             });
         });
+
+        Route::post('url-shortener', [UrlShortenerController::class, 'shortenUrls'])->middleware(CheckUrlShortenerEnabled::class)->name('url-shortener');
     });

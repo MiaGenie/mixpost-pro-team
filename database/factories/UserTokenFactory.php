@@ -3,7 +3,6 @@
 namespace Inovector\Mixpost\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
 use Illuminate\Support\Str;
 use Inovector\Mixpost\Models\User;
 use Inovector\Mixpost\Models\UserToken;

@@ -35,11 +35,13 @@
         "account_entities": "Entitats del compte",
         "select_the_social_entities": "Seleccioneu les entitats socials que voleu connectar",
         "connected": "Connectat",
-        "choose": "Tria",
         "access_token_expired": "El testimoni d'accés ha caducat. Torneu a connectar el vostre compte.",
         "unauthorized": "No autoritzat",
         "add_social_account": "No teniu cap compte social, afegiu-ne almenys un.",
-        "no_accounts_found": "No s'han trobat comptes"
+        "no_accounts_found": "No s'han trobat comptes",
+        "finish_connection": "Acabar la connexió",
+        "open_account_page": "Obre la pàgina del compte",
+        "view_profile": "Veure perfil"
     },
     "ai": {
         "tell_ai": "Digues a AI què ha d'escriure",
@@ -329,7 +331,8 @@
         "generate_new": "Generar nous",
         "search_jump": "Cerca o salta a",
         "replace": "Substitueix",
-        "retry": "Torna-ho a provar"
+        "retry": "Torna-ho a provar",
+        "general": "General"
     },
     "hashtag": {
         "hashtag_name": "Nom del grup hashtag",
@@ -372,7 +375,36 @@
         "aspect_ratio_range": "La relació d'aspecte ha d'estar entre {min} i {max}.",
         "resolution_range": "La resolució ha de ser mínima de {min} x {max} px. Es recomana {recommended_min} x {recommended_max} px.",
         "duration_range": "La durada ha d'estar entre {min} i {max} segons.",
-        "frame_rate_range": "La velocitat de fotogrames ha d'estar entre {min} i {max} fotogrames per segon."
+        "frame_rate_range": "La velocitat de fotogrames ha d'estar entre {min} i {max} fotogrames per segon.",
+        "edit_alt_text": "Edita el text alternatiu",
+        "write_alt_text": "Escriu un text alternatiu",
+        "add_alt_text_for": "Afegiu un text alternatiu per a {platforms}.",
+        "add_video_thumb": "Afegeix una miniatura del vídeo",
+        "change_video_thumb": "Canvia la miniatura del vídeo",
+        "view_video_thumb": "Visualitza la miniatura del vídeo",
+        "video_thumb": "Miniatura del vídeo",
+        "video_thumb_providers": "La miniatura del vídeo està disponible a: {providers}.",
+        "custom_size": "Mida personalitzada",
+        "width": "Amplada",
+        "height": "Alçada",
+        "unit": "Unitat",
+        "px": "píxels",
+        "inch": "polzades",
+        "mm": "mil·límetres",
+        "create_design": "Crea un disseny",
+        "create_adobe_express": "Crea amb Adobe Express",
+        "new_design": "Nou disseny",
+        "saved": "El contingut multimèdia s'ha desat correctament.",
+        "fb_post": "Publicació de Facebook",
+        "fb_story": "Història de Facebook",
+        "ig_portrait_post": "Publicació de retrat d'Instagram",
+        "ig_square_post": "Publicació quadrada d'Instagram",
+        "ig_story": "Història d'Instagram",
+        "linkedin_post": "Publicació de LinkedIn",
+        "x_post": "Publicació X",
+        "pinterest_post": "Publicació de Pinterest",
+        "media": "Mitjans de comunicació",
+        "create_for_adobe_express": "Crea per a Adobe Express"
     },
     "page": {
         "pages": "Pàgines",
@@ -438,7 +470,7 @@
         "accounts": "Comptes",
         "author": "Autor",
         "no_posts_found": "No s'han trobat publicacions.",
-        "delete_posts": "Suprimeix les publicacions",
+        "delete_posts": "Suprimeix publicacions",
         "your_post": "La teva publicació",
         "confirmation_delete_post": "Esteu segur que voleu suprimir les publicacions seleccionades?",
         "posts_history_not_edited": "Les publicacions de l'historial no es poden editar.",
@@ -500,7 +532,16 @@
         "approval_required": "La publicació s'ha d'aprovar abans de poder publicar-la.",
         "needs_approval": "Necessita aprovació",
         "approve": "Aprovar",
-        "view": "Veure publicació"
+        "view": "Veure publicació",
+        "posts_deleted_from_social_platforms": "Publicacions seleccionades eliminades de les plataformes socials",
+        "does_not_support_deleting": "{provider} no permet suprimir {types}",
+        "confirmation_delete_posts_from": "D'on vols suprimir aquesta publicació? | D'on vols suprimir les publicacions seleccionades?",
+        "delete_post_from": {
+            "app_only": "Només des de l'aplicació",
+            "app_and_social": "Des de l'aplicació i les plataformes socials",
+            "social_only": "Només des de plataformes socials"
+        },
+        "post_deleted_from_social_platforms": "Publicació eliminada de les plataformes socials"
     },
     "post_activity": {
         "activity": "Activitat",
@@ -528,7 +569,8 @@
         "watch": "Mira",
         "notify_all_activity": "Notifica'm sobre totes les activitats d'aquesta tasca.",
         "unwatch": "Deixa de mirar",
-        "notify_mentions_only": "Aviseu-me només en mencions."
+        "notify_mentions_only": "Aviseu-me només en mencions.",
+        "post_deleted_from_social_platforms": "Publicació eliminada de les plataformes socials"
     },
     "posting_schedule": {
         "everyday": "Cada dia",
@@ -655,7 +697,10 @@
                 "number_website_clicks": "Nombre total de tocs a l'enllaç del lloc web del perfil",
                 "website_clicks": "Clics al lloc web"
             },
-            "select_video_image": "Seleccioneu un vídeo o una imatge per a aquest compte d'Instagram."
+            "select_video_image": "Seleccioneu un vídeo o una imatge per a aquest compte d'Instagram.",
+            "post": "Publicació",
+            "reel": "Bobina",
+            "story": "Història"
         },
         "linkedin": {
             "connect_page": "Connecteu una nova pàgina de LinkedIn",
@@ -663,7 +708,6 @@
             "visibility": "Visibilitat",
             "public": "Públic",
             "connections": "Connexions",
-            "not_support_accounts": "Malauradament, l'API de LinkedIn no admet mostrar analítiques per als comptes personals de LinkedIn.",
             "insights": "Insights",
             "job_title": "El teu títol de treball",
             "send": "Enviar"
@@ -691,13 +735,13 @@
             },
             "video_limit": "Només es permet un vídeo per publicació.",
             "disclose_desc": "Activa per revelar que aquest vídeo promociona béns o serveis a canvi d'alguna cosa de valor. El teu vídeo podria promocionar-te tu mateix, un tercer o tots dos.",
-            "promo_video_alert": "El vostre vídeo tindrà l'etiqueta \"Contingut promocional\".",
+            "promo_video_alert": "El vostre vídeo estarà etiquetat com a \"Contingut promocional\".",
             "branded_content_desc": "Esteu promocionant una altra marca o un tercer. Aquest vídeo es classificarà com a contingut de marca.",
             "your_brand_desc": "Estàs promocionant tu mateix o el teu propi negoci. Aquest vídeo es classificarà com a orgànic de marca.",
             "your_brand_accept_terms": "En publicar, acceptes la <a href=\"{href}\" target=\"_blank\" class=\"link\">Confirmació de l'ús de la música<\/a> de TikTok.",
             "accept_terms": "En publicar, acceptes la <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Política de contingut de marca<\/a> i la <a href=\"{href_music}\" target=\"_blank\" de TikTok =\"link\">Confirmació de l'ús de la música<\/a>.",
-            "partner_video_alert": "El teu vídeo portarà l'etiqueta \"Associació de pagament\".",
-            "visibility_branded_content": "La visibilitat del contingut de marca no pot ser privada. Seleccioneu la visibilitat \"Tots\/Amics\" per activar aquesta opció.",
+            "partner_video_alert": "El vostre vídeo estarà etiquetat com a \"Col·laboració de pagament\"",
+            "visibility_branded_content": "El contingut de marca només es pot configurar amb visibilitat com a seguidors\/amics.",
             "allow_users": "Permetre als usuaris",
             "comment": "Comenta",
             "duet": "Duet",
@@ -742,7 +786,6 @@
             "public": "Públic",
             "private": "Privat",
             "unlisted": "No cotitzades",
-            "analytics_under_development": "L'anàlisi de YouTube està en desenvolupament.",
             "select_video": "Seleccioneu un vídeo per a aquest compte de YouTube.",
             "privacy_config": "Configuració de privadesa",
             "title": "Vídeo o títol breu"
@@ -770,7 +813,47 @@
             "connect_profile": "Connecteu un nou perfil de Bluesky",
             "service": "Servei",
             "server_address": "Adreça del servidor"
-        }
+        },
+        "gbp": {
+            "post": "Publicació",
+            "offer": "Oferta",
+            "event": "Esdeveniment",
+            "event_title": "Títol de l'esdeveniment",
+            "add_time": "Afegeix temps",
+            "offer_title": "Títol de l'oferta",
+            "start_date": "Data d'inici",
+            "end_date": "Data de finalització",
+            "button": "Botó",
+            "none": "Cap",
+            "book": "Llibre",
+            "order_online": "Comanda en línia",
+            "buy": "Comprar",
+            "learn_more": "Més informació",
+            "sign_up": "Registra't",
+            "button_link": "Enllaç de botó",
+            "add_more_details": "Afegeix més detalls",
+            "coupon_code": "Codi de cupó",
+            "offer_link": "Enllaç d'oferta",
+            "tos": "Termes i condicions",
+            "start_time": "Hora d'inici",
+            "end_time": "Hora de finalització",
+            "call_now": "Truca ara",
+            "redeem_online": "Bescanvia en línia",
+            "show_code": "Mostra aquest codi a la botiga",
+            "offer_valid": "Vàlid {start_date} - {end_date}",
+            "connect_profile": "Connecta un nou compte de perfil d'empresa de Google"
+        },
+        "stock_photo": {
+            "search": "Cerca {source}",
+            "can_use_external_photos": "Amb {provider} pots utilitzar fotos de stock externes directament a Mixpost."
+        },
+        "facebook_page": {
+            "post": "Publicació",
+            "reel": "Bobina",
+            "story": "Història"
+        },
+        "story": "Història",
+        "generate_api_key": "Generar clau API"
     },
     "system": {
         "system": "Sistema",
@@ -806,7 +889,9 @@
         "copied_clipboard": "S'ha copiat al porta-retalls!",
         "failed_copied_clipboard": "No s'ha pogut copiar al porta-retalls!",
         "usage_api": "Ús a l'API",
-        "stored_safely": "L'he guardat amb seguretat"
+        "stored_safely": "L'he guardat amb seguretat",
+        "copy_id": "Còpia del document d'identitat",
+        "copy_uuid": "Copia l'UUID"
     },
     "tag": {
         "change_label_color": "Canvia el color de l'etiqueta",
@@ -873,6 +958,10 @@
         "upload_favicon": "Carregueu favicon",
         "theme_color": "Color del tema",
         "rebrand_company": "Remarca la teva empresa"
+    },
+    "url_shortener": {
+        "on": "Escurçament d'URL: Activat",
+        "off": "Escurçament d'URL: Desactivat"
     },
     "user": {
         "create_user": "Crear usuari",

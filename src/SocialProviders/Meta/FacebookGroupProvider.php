@@ -10,8 +10,8 @@ use Inovector\Mixpost\SocialProviders\Meta\Concerns\ManagesFacebookOAuth;
 // We will remove this feature soon
 class FacebookGroupProvider extends MetaProvider
 {
-    use ManagesFacebookOAuth;
     use ManagesFacebookGroupResources;
+    use ManagesFacebookOAuth;
 
     public bool $onlyUserAccount = false;
 
@@ -28,5 +28,10 @@ class FacebookGroupProvider extends MetaProvider
     public static function externalPostUrl(AccountResource $accountResource): string
     {
         return "https://www.facebook.com/{$accountResource->pivot->provider_post_id}";
+    }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.facebook.com/groups/$accountResource->provider_id";
     }
 }

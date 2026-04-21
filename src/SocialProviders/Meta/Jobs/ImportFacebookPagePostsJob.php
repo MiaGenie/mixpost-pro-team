@@ -20,16 +20,17 @@ use Inovector\Mixpost\Models\ImportedPost;
 use Inovector\Mixpost\SocialProviders\Meta\FacebookPageProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
-class ImportFacebookPagePostsJob implements ShouldQueue, QueueWorkspaceAware
+class ImportFacebookPagePostsJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
+
     public Account $account;
+
     public array $params;
 
     public function __construct(Account $account, array $params = [])
@@ -52,6 +53,7 @@ class ImportFacebookPagePostsJob implements ShouldQueue, QueueWorkspaceAware
 
         /**
          * @see FacebookPageProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->getPosts();
@@ -98,10 +100,10 @@ class ImportFacebookPagePostsJob implements ShouldQueue, QueueWorkspaceAware
                     'text' => $item['message'],
                 ]),
                 'metrics' => json_encode([
-//                    'like_count' => $item['like_count'],
-//                    'comments_count' => $item['comments_count'],
+                    //                    'like_count' => $item['like_count'],
+                    //                    'comments_count' => $item['comments_count'],
                 ]),
-                'created_at' => Carbon::parse($item['created_time'], 'UTC')->toDateTimeString()
+                'created_at' => Carbon::parse($item['created_time'], 'UTC')->toDateTimeString(),
             ];
         });
 
