@@ -2,7 +2,7 @@
 
 namespace Inovector\Mixpost\Support;
 
-use Illuminate\Http\Client\ConnectionException;
+use Exception;
 use Illuminate\Support\Facades\Http;
 use DOMDocument;
 use DOMXPath;
@@ -40,7 +40,7 @@ class FetchUrlCard
                 'image' => $this->getAttributeContent($xpath, 'name', 'twitter:image'),
             ];
 
-        } catch (ConnectionException $e) {
+        } catch (Exception $e) {
             $twitterData = $data;
         }
 

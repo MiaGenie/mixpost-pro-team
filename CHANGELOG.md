@@ -2,6 +2,12 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.5.3 - 2025-02-22
+
+**Fixes**
+
+- Fixed Bluesky URL counted in post length
+
 ## 3.5.2 - 2025-02-21
 
 **Fixes**

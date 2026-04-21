@@ -37,6 +37,7 @@ import Input from "../../../Components/Form/Input.vue";
 import AlertUnconfiguredService from "../../../Components/Util/AlertUnconfiguredService.vue";
 import Alert from "../../../Components/Util/Alert.vue";
 import Flex from "../../../Components/Layout/Flex.vue";
+import useRequestErrorsHandler from "../../../Composables/useRequestErrorsHandler.js";
 
 const {t: $t} = useI18n()
 
@@ -133,18 +134,7 @@ const updateSuffix = () => {
     );
 };
 
-const errors = computed(() => {
-    return usePage().props.errors;
-});
-
-watch(
-    () => errors.value,
-    () => {
-        if (!isEmpty(errors.value)) {
-            notify("error", toRaw(errors.value));
-        }
-    }
-);
+useRequestErrorsHandler();
 </script>
 <template>
     <Head :title="title"/>
