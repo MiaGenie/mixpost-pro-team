@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'Счета не найдены',
   'finish_connection' => 'Финишное соединение',
+  'open_account_page' => 'Страница открытия счета',
 ];

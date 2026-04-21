@@ -39,7 +39,8 @@
         "unauthorized": "No autoritzat",
         "add_social_account": "No teniu cap compte social, afegiu-ne almenys un.",
         "no_accounts_found": "No s'han trobat comptes",
-        "finish_connection": "Acabar la connexió"
+        "finish_connection": "Acabar la connexió",
+        "open_account_page": "Obre la pàgina del compte"
     },
     "ai": {
         "tell_ai": "Digues a AI què ha d'escriure",

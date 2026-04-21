@@ -112,6 +112,11 @@ class MetaProvider extends SocialProvider
         return '#';
     }
 
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return '';
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {

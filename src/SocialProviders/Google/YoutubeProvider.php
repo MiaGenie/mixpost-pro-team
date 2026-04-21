@@ -56,6 +56,11 @@ class YoutubeProvider extends SocialProvider
         return "https://www.youtube.com/watch?v={$accountResource->pivot->provider_post_id}";
     }
 
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.youtube.com/@$accountResource->username";
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {

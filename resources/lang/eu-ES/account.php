@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'Ez da konturik aurkitu',
   'finish_connection' => 'Amaitu konexioa',
+  'open_account_page' => 'Ireki kontu orria',
 ];

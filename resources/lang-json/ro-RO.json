@@ -39,7 +39,8 @@
         "unauthorized": "Neautorizat",
         "add_social_account": "Nu aveți un cont social, vă rugăm să adăugați cel puțin unul.",
         "no_accounts_found": "Nu s-au găsit conturi",
-        "finish_connection": "Terminare conexiune"
+        "finish_connection": "Terminare conexiune",
+        "open_account_page": "Pagina de deschidere a contului"
     },
     "ai": {
         "tell_ai": "Spuneți-i IA despre ce să scrie",

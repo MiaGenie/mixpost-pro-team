@@ -38,4 +38,5 @@ return [
   ],
   'no_accounts_found' => 'لم يتم العثور على حسابات',
   'finish_connection' => 'إنهاء الاتصال',
+  'open_account_page' => 'صفحة فتح الحساب',
 ];

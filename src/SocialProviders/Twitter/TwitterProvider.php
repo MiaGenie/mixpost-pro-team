@@ -67,6 +67,11 @@ class TwitterProvider extends SocialProvider
         return "https://twitter.com/$accountResource->username/status/{$accountResource->pivot->provider_post_id}";
     }
 
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://x.com/$accountResource->username";
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {

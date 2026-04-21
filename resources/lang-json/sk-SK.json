@@ -39,7 +39,8 @@
         "unauthorized": "Neoprávnené",
         "add_social_account": "Nemáte účet na sociálnej sieti, pridajte si aspoň jeden.",
         "no_accounts_found": "Nenašli sa žiadne účty",
-        "finish_connection": "Dokončenie pripojenia"
+        "finish_connection": "Dokončenie pripojenia",
+        "open_account_page": "Stránka s otvoreným účtom"
     },
     "ai": {
         "tell_ai": "Povedzte AI, o čom má písať",

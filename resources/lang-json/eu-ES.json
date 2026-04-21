@@ -39,7 +39,8 @@
         "unauthorized": "Baimenik gabe",
         "add_social_account": "Ez duzu kontu sozialik, gehitu gutxienez bat.",
         "no_accounts_found": "Ez da konturik aurkitu",
-        "finish_connection": "Amaitu konexioa"
+        "finish_connection": "Amaitu konexioa",
+        "open_account_page": "Ireki kontu orria"
     },
     "ai": {
         "tell_ai": "Esan AA-ri zertaz idatzi behar duen",

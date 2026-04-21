@@ -39,7 +39,8 @@
         "unauthorized": "Sin autorización",
         "add_social_account": "No tienes una cuenta, añade al menos una.",
         "no_accounts_found": "No se han encontrado cuentas",
-        "finish_connection": "Conexión de acabado"
+        "finish_connection": "Conexión de acabado",
+        "open_account_page": "Abrir cuenta"
     },
     "ai": {
         "tell_ai": "Dile a la IA sobre qué escribir",

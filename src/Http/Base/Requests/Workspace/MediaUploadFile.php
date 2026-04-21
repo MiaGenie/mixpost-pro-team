@@ -21,11 +21,12 @@ class MediaUploadFile extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', File::types($this->allowedTypes())->max($this->max())]
+            'file' => ['required', File::types($this->allowedTypes())->max($this->max())],
+            'alt_text' => ['string', 'max:255', 'nullable']
         ];
     }
 
-    private function max()
+    private function max(): int
     {
         $max = 0;
 
@@ -45,7 +46,7 @@ class MediaUploadFile extends FormRequest
             $max = config('mixpost.max_file_size.video');
         }
 
-        return $max;
+        return (int)$max;
     }
 
     private function isImage(): bool
@@ -78,6 +79,7 @@ class MediaUploadFile extends FormRequest
                 MediaImageResizerConversion::name('thumb')->width(Image::MEDIUM_WIDTH)->height(Image::MEDIUM_HEIGHT),
                 MediaVideoThumbConversion::name('thumb')->atSecond(5)
             ])
+            ->data($this->has('alt_text') ? ['alt_text' => $this->get('alt_text')] : [])
             ->uploadAndInsert();
     }
 

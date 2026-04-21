@@ -72,4 +72,9 @@ class InstagramProvider extends MetaProvider
 
         return "https://www.instagram.com/p/$shortcode/";
     }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.instagram.com/$accountResource->username";
+    }
 }

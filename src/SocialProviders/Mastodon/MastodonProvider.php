@@ -60,9 +60,24 @@ class MastodonProvider extends SocialProvider
 
     public static function externalPostUrl(AccountResource $accountResource): string
     {
-        $server = $accountResource->data['server'] ?? 'undefined';
+        $server = $accountResource->data['server'] ?? null;
+
+        if (!$server) {
+            return '';
+        }
 
         return "https://$server/@$accountResource->username/{$accountResource->pivot->provider_post_id}";
+    }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        $server = $accountResource->data['server'] ?? null;
+
+        if (!$server) {
+            return '';
+        }
+
+        return "https://" . $server . '/@' . $accountResource->username;
     }
 
     public static function mapErrorMessage(string $key): string

@@ -29,4 +29,9 @@ class FacebookGroupProvider extends MetaProvider
     {
         return "https://www.facebook.com/{$accountResource->pivot->provider_post_id}";
     }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.facebook.com/groups/$accountResource->provider_id";
+    }
 }

@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'Nu s-au găsit conturi',
   'finish_connection' => 'Terminare conexiune',
+  'open_account_page' => 'Pagina de deschidere a contului',
 ];

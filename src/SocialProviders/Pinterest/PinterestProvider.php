@@ -63,6 +63,11 @@ class PinterestProvider extends SocialProvider
         return "https://www.pinterest.com/pin/{$accountResource->pivot->provider_post_id}/";
     }
 
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.pinterest.com/$accountResource->provider_id";
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {

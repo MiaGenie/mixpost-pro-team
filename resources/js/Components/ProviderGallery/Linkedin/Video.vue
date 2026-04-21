@@ -14,7 +14,7 @@ defineProps({
 <template>
     <div class="h-0 w-full block relative bg-black" :style="{ paddingTop: '125%'}">
         <div class="top-0 left-0 w-full h-full absolute block">
-            <div class="blur-md w-full h-full absolute" :style="{ backgroundImage: `url(${media.thumb_url})` }"/>
+            <div class="blur-md w-full h-full absolute" :style="{ backgroundImage: `url(${media.video_custom_thumb_url || media.thumb_url})` }"/>
             <div class="w-full h-full">
                 <div class="w-full h-full inset-0 relative">
                     <div class="w-full h-full absolute flex items-center justify-center">
@@ -26,8 +26,8 @@ defineProps({
                         </template>
                     </div>
 
-                    <template v-if="media.thumb_url">
-                        <img v-if="!isOpen" :src="media.thumb_url" draggable="false" class="h-full mx-auto"
+                    <template v-if="!isOpen && (media.video_custom_thumb_url || media.thumb_url)">
+                        <img :src="media.video_custom_thumb_url || media.thumb_url" draggable="false" class="h-full mx-auto"
                              alt="Image"/>
                     </template>
 

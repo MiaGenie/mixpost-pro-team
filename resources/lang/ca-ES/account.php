@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'No s\'han trobat comptes',
   'finish_connection' => 'Acabar la connexió',
+  'open_account_page' => 'Obre la pàgina del compte',
 ];

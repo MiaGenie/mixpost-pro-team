@@ -42,7 +42,10 @@ const mainContent = computed(() => {
 <template>
     <Panel class="relative">
         <div v-if="mainContent.media.length" class="relative overflow-hidden rounded-xl">
-            <VideoPlayer :src="mainContent.media[0].url"/>
+            <VideoPlayer :src="mainContent.media[0].url"
+                         :customThumbSrc="mainContent.media[0].video_custom_thumb_url"
+                         :key="mainContent.media[0].video_custom_thumb_url"
+            />
 
             <div class="absolute top-md right-md">
                 <div class="flex items-center space-x-lg text-white">

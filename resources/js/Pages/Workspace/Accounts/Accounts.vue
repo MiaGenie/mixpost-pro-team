@@ -37,6 +37,7 @@ import AlertUnconfiguredService from "../../../Components/Util/AlertUnconfigured
 import Alert from "../../../Components/Util/Alert.vue";
 import Flex from "../../../Components/Layout/Flex.vue";
 import useRequestErrorsHandler from "../../../Composables/useRequestErrorsHandler.js";
+import ArrowTopRightOnSquare from "@/Icons/ArrowTopRightOnSquare.vue";
 
 const {t: $t} = useI18n()
 
@@ -209,14 +210,24 @@ useRequestErrorsHandler();
                         </div>
 
                         <div class="absolute top-0 right-0 mt-sm mr-sm">
-                            <Dropdown>
+                            <Dropdown widthClasses="56">
                                 <template #trigger>
                                     <PureButton>
                                         <EllipsisVerticalIcon/>
                                     </PureButton>
                                 </template>
-
                                 <template #content>
+                                    <DropdownItem
+                                        v-if="account.external_account_url"
+                                        as="a"
+                                        :href="account.external_account_url"
+                                        target="_blank"
+                                    >
+                                        <template #icon>
+                                            <ArrowTopRightOnSquare/>
+                                        </template>
+                                        {{ $t('account.open_account_page') }}
+                                    </DropdownItem>
                                     <DropdownItem
                                         @click="updateAccount(account.uuid)"
                                         as="button"

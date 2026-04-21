@@ -39,7 +39,8 @@
         "unauthorized": "Non autorisé",
         "add_social_account": "Vous n'avez pas de compte social, veuillez en ajouter au moins un.",
         "no_accounts_found": "Aucun compte trouvé",
-        "finish_connection": "Finition Connexion"
+        "finish_connection": "Finition Connexion",
+        "open_account_page": "Page d'ouverture de compte"
     },
     "ai": {
         "tell_ai": "Indiquez à l'IA sur quel sujet écrire.",

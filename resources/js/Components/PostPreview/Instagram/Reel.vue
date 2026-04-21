@@ -19,7 +19,10 @@ const data = inject('instagramCtx');
                         <div class="absolute inset-0">
                             <div class="relative w-full h-full flex items-center">
                                 <div class="w-full h-full">
-                                    <VideoPlayer :src="data.content[0].media[0].url"/>
+                                    <VideoPlayer :src="data.content[0].media[0].url"
+                                                 :customThumbSrc="data.content[0].media[0].video_custom_thumb_url"
+                                                 :key="data.content[0].media[0].video_custom_thumb_url"
+                                    />
 
                                     <div class="absolute top-md w-full flex justify-between items-center px-md">
                                         <div class="text-white font-medium text-md">Reels</div>

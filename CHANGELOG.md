@@ -2,6 +2,16 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 3.7.0 - 2025-05-24
+
+**Fixes**
+
+- Fixed background opacity for comment/thread items.
+
+**Changes**
+
+- Upgraded LinkedIn Marketing API from legacy(unversioned) to versioned
+
 ## 3.6.0 - 2025-05-19
 
 **New features**

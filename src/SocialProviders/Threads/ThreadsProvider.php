@@ -35,4 +35,9 @@ class ThreadsProvider extends SocialProvider
 
         return Arr::get($data, 'permalink', '');
     }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return "https://www.threads.com/@$accountResource->username";
+    }
 }

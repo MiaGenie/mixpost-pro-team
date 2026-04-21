@@ -199,7 +199,7 @@ class Util
 
         return file_exists($ffmpegPath) &&
             file_exists($ffprobePath) &&
-            str_ends_with($ffmpegPath, 'ffmpeg') &&
-            str_ends_with($ffprobePath, 'ffprobe');
+            basename($ffmpegPath) == 'ffmpeg' &&
+            basename($ffprobePath) == 'ffprobe';
     }
 }

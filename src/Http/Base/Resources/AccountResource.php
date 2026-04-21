@@ -28,6 +28,7 @@ class AccountResource extends JsonResource implements AccountResourceContract
             'authorized' => $this->authorized,
             'created_at' => $this->created_at->diffForHumans(),
             'content_type' => $this->contentType(),
+            'external_account_url' => $this->getExternalAccountUrl(),
             'external_url' => $this->whenPivotLoaded('mixpost_post_accounts', function () {
                 if (!$this->pivot->provider_post_id) {
                     return null;
@@ -65,11 +66,24 @@ class AccountResource extends JsonResource implements AccountResourceContract
 
     protected function getExternalPostUrl(): ?string
     {
-        if ($provider = $this->resource->getProviderClass()) {
-            return $provider::externalPostUrl($this);
+        $provider = $this->resource->getProviderClass();
+
+        if (!($provider && method_exists($provider, 'externalPostUrl'))) {
+            return '';
         }
 
-        return '#';
+        return $provider::externalPostUrl($this);
+    }
+
+    protected function getExternalAccountUrl(): string
+    {
+        $provider = $this->resource->getProviderClass();
+
+        if (!($provider && method_exists($provider, 'externalAccountUrl'))) {
+            return '';
+        }
+
+        return $provider::externalAccountUrl($this);
     }
 
     protected function contentType(): SocialProviderContentType

@@ -6,6 +6,10 @@ const props = defineProps({
     src: {
         required: true,
         type: String,
+    },
+    customThumbSrc: {
+        default: '',
+        type: String,
     }
 });
 
@@ -63,7 +67,7 @@ onBeforeUnmount(() => {
             </button>
         </div>
 
-        <video ref="player" aria-label="video-player" class="w-full h-full object-cover">
+        <video ref="player" aria-label="video-player" class="w-full h-full object-cover" :poster="customThumbSrc">
             <source :src="src"/>
         </video>
 

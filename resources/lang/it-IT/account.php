@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'Nessun conto trovato',
   'finish_connection' => 'Connessione di finitura',
+  'open_account_page' => 'Pagina di apertura del conto',
 ];

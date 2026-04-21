@@ -15,11 +15,11 @@ const limitedMedia = computed(() => props.media.slice(0, 3));
     <div v-if="media.length" class="w-full">
         <!-- Display a single image -->
         <div v-if="media.length === 1" class="w-full">
-            <template v-if="media.thumb_url">
+            <template v-if="media[0].thumb_url">
                 <img :src="media[0].thumb_url" alt="Gallery Image" class="w-full rounded-md object-cover object-left"/>
             </template>
 
-            <template v-if="!media.thumb_url">
+            <template v-if="!media[0].thumb_url">
                 <Placeholder widthClass="w-full" type="video"/>
             </template>
         </div>

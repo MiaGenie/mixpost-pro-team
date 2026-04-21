@@ -47,4 +47,11 @@ class FacebookPageProvider extends MetaProvider
 
         return "$domain/{$accountResource->pivot->provider_post_id}";
     }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        $identifier = $accountResource->username ?: $accountResource->provider_id;
+
+        return "https://www.facebook.com/$identifier";
+    }
 }

@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'No accounts found',
   'finish_connection' => 'Finish Connection',
+  'open_account_page' => 'Open account page',
 ];

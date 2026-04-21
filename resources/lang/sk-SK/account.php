@@ -37,4 +37,5 @@ return [
   ],
   'no_accounts_found' => 'Nenašli sa žiadne účty',
   'finish_connection' => 'Dokončenie pripojenia',
+  'open_account_page' => 'Stránka s otvoreným účtom',
 ];

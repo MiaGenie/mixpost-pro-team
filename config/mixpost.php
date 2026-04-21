@@ -82,9 +82,9 @@ return [
      * Adding a larger file will result in an exception.
      */
     'max_file_size' => [
-        'image' => 1024 * 15, // 15MB
-        'gif' => 1024 * 15, // 15MB
-        'video' => 1024 * 200 // 200MB
+        'image' => env('MIXPOST_MAX_IMAGE_FILE_SIZE', 1024 * 15), // 15MB
+        'gif' => env('MIXPOST_MAX_GIF_FILE_SIZE', 1024 * 15), // 15MB
+        'video' => env('MIXPOST_MAX_VIDEO_FILE_SIZE', 1024 * 200), // 200MB
     ],
 
     /*
