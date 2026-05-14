@@ -2,11 +2,11 @@
 
 namespace Inovector\Mixpost;
 
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Inovector\Mixpost\Jobs\WorkspaceArtisanJob;
 use Inovector\Mixpost\Models\WebhookDelivery;
 use Inovector\Mixpost\Models\Workspace;
-use Closure;
 
 class Schedule
 {
@@ -22,7 +22,7 @@ class Schedule
 
         $query
             ->each(function (Workspace $workspace) use ($schedule, $customCommands): void {
-                if (!$workspace->valid()) {
+                if (! $workspace->valid()) {
                     return;
                 }
 

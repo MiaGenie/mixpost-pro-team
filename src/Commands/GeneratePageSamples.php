@@ -16,15 +16,17 @@ class GeneratePageSamples extends Command
     public $signature = 'mixpost:generate-page-samples {--force} {--destroy} {--brand_name=} {--email=mail@example.com} {--logo_url=#} {--register_url=}';
 
     public $description = 'Generate page samples (About, Terms of Use, Privacy Policy)';
+
     const PRIVACY_SLUG = 'privacy';
+
     const TERMS_SLUG = 'terms';
 
     public function handle(): int
     {
         $force = boolval($this->option('force'));
 
-        if (!$force) {
-            if (!$this->confirm('Are you sure you want to generate sample pages?')) {
+        if (! $force) {
+            if (! $this->confirm('Are you sure you want to generate sample pages?')) {
                 return self::FAILURE;
             }
         }
@@ -53,19 +55,19 @@ class GeneratePageSamples extends Command
     {
         $exists = Page::where('slug', $slug)->exists();
 
-        $slug = $exists ? $slug . '-' . Str::random() : $slug;
+        $slug = $exists ? $slug.'-'.Str::random() : $slug;
 
         DB::transaction(function () use ($name, $slug, $blocks) {
             $page = Page::create([
                 'name' => $name,
                 'slug' => $slug,
                 'layout' => 'medium',
-                'status' => ResourceStatus::ENABLED
+                'status' => ResourceStatus::ENABLED,
             ]);
 
             foreach ($blocks as $index => $block) {
                 $page->blocks()->attach($block, [
-                    'sort_order' => $index
+                    'sort_order' => $index,
                 ]);
             }
         });
@@ -74,48 +76,48 @@ class GeneratePageSamples extends Command
     protected function storeBlocks(): array
     {
         $header = Block::create([
-            'name' => Block::where('name', 'Header')->exists() ? 'Header - ' . Str::random() : 'Header',
+            'name' => Block::where('name', 'Header')->exists() ? 'Header - '.Str::random() : 'Header',
             'module' => 'Editor',
             'status' => ResourceStatus::ENABLED,
             'content' => [
-                'body' => $this->getStub('header')
-            ]
+                'body' => $this->getStub('header'),
+            ],
         ]);
 
         $footer = Block::create([
-            'name' => Block::where('name', 'Footer')->exists() ? 'Footer - ' . Str::random() : 'Footer',
+            'name' => Block::where('name', 'Footer')->exists() ? 'Footer - '.Str::random() : 'Footer',
             'module' => 'Editor',
             'status' => ResourceStatus::ENABLED,
             'content' => [
-                'body' => $this->getStub('footer')
-            ]
+                'body' => $this->getStub('footer'),
+            ],
         ]);
 
         $about = Block::create([
-            'name' => Block::where('name', 'About')->exists() ? 'About - ' . Str::random() : 'About',
+            'name' => Block::where('name', 'About')->exists() ? 'About - '.Str::random() : 'About',
             'module' => 'Editor',
             'status' => ResourceStatus::ENABLED,
             'content' => [
-                'body' => $this->getStub('about')
-            ]
+                'body' => $this->getStub('about'),
+            ],
         ]);
 
         $privacyPolicy = Block::create([
-            'name' => Block::where('name', 'Privacy Policy')->exists() ? 'Privacy Policy - ' . Str::random() : 'Privacy Policy',
+            'name' => Block::where('name', 'Privacy Policy')->exists() ? 'Privacy Policy - '.Str::random() : 'Privacy Policy',
             'module' => 'Editor',
             'status' => ResourceStatus::ENABLED,
             'content' => [
-                'body' => $this->getStub('privacy')
-            ]
+                'body' => $this->getStub('privacy'),
+            ],
         ]);
 
         $terms = Block::create([
-            'name' => Block::where('name', 'Terms of Use')->exists() ? 'Terms of Use - ' . Str::random() : 'Terms of Use',
+            'name' => Block::where('name', 'Terms of Use')->exists() ? 'Terms of Use - '.Str::random() : 'Terms of Use',
             'module' => 'Editor',
             'status' => ResourceStatus::ENABLED,
             'content' => [
-                'body' => $this->getStub('terms')
-            ]
+                'body' => $this->getStub('terms'),
+            ],
         ]);
 
         return [
@@ -123,13 +125,13 @@ class GeneratePageSamples extends Command
             'footer' => $footer->id,
             'about_us' => $about->id,
             'privacy' => $privacyPolicy->id,
-            'terms' => $terms->id
+            'terms' => $terms->id,
         ];
     }
 
     protected function getStub($name): array|bool|string
     {
-        $content = file_get_contents(__DIR__ . "/../../stubs/Blocks/{$name}.stub");
+        $content = file_get_contents(__DIR__."/../../stubs/Blocks/{$name}.stub");
 
         return str_replace(
             [
@@ -147,8 +149,8 @@ class GeneratePageSamples extends Command
                 $this->option('logo_url'),
                 $this->option('register_url') ?: url(Util::corePath()),
                 $this->getUrl(),
-                $this->getUrl('/' . self::PRIVACY_SLUG),
-                $this->getUrl('/' . self::TERMS_SLUG),
+                $this->getUrl('/'.self::PRIVACY_SLUG),
+                $this->getUrl('/'.self::TERMS_SLUG),
             ],
             $content
         );
@@ -158,10 +160,10 @@ class GeneratePageSamples extends Command
     {
         $prefix = Util::config('public_pages_prefix');
 
-        if (!$prefix) {
+        if (! $prefix) {
             return url($path);
         }
 
-        return url('/' . $prefix . $path);
+        return url('/'.$prefix.$path);
     }
 }

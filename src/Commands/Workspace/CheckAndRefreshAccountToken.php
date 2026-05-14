@@ -18,6 +18,7 @@ class CheckAndRefreshAccountToken extends Command
     {
         return [
             'youtube',
+            'gbp',
             'linkedin',
             'pinterest',
             'tiktok',

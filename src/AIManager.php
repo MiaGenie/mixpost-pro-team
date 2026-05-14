@@ -2,8 +2,8 @@
 
 namespace Inovector\Mixpost;
 
-use Inovector\Mixpost\AIProviders\OpenAI\OpenAIProvider;
 use Inovector\Mixpost\Abstracts\AIManager as AIManagerAbstract;
+use Inovector\Mixpost\AIProviders\OpenAI\OpenAIProvider;
 
 class AIManager extends AIManagerAbstract
 {
@@ -12,13 +12,13 @@ class AIManager extends AIManagerAbstract
     public function registeredProviders(): array
     {
         return [
-            OpenAIProvider::class
+            OpenAIProvider::class,
         ];
     }
 
     public function providers(): array
     {
-        if (!empty($this->cacheProviders)) {
+        if (! empty($this->cacheProviders)) {
             return $this->cacheProviders;
         }
 

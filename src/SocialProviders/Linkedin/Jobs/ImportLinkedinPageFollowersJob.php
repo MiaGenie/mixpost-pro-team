@@ -2,13 +2,13 @@
 
 namespace Inovector\Mixpost\SocialProviders\Linkedin\Jobs;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 use Inovector\Mixpost\Concerns\Job\HasSocialProviderJobRateLimit;
 use Inovector\Mixpost\Concerns\Job\SocialProviderException;
 use Inovector\Mixpost\Concerns\UsesSocialProviderManager;
@@ -18,13 +18,12 @@ use Inovector\Mixpost\Models\Audience;
 use Inovector\Mixpost\SocialProviders\Linkedin\LinkedinPageProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
-class ImportLinkedinPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
+class ImportLinkedinPageFollowersJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
 
@@ -41,7 +40,7 @@ class ImportLinkedinPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             return;
         }
 
@@ -53,6 +52,7 @@ class ImportLinkedinPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         /**
          * @see LinkedinPageProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->getFollowerCount();
@@ -83,9 +83,9 @@ class ImportLinkedinPageFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         Audience::updateOrCreate([
             'account_id' => $this->account->id,
-            'date' => Carbon::now()->utc()->toDateString()
+            'date' => Carbon::now()->utc()->toDateString(),
         ], [
-            'total' => $response->count ?? 0
+            'total' => $response->count ?? 0,
         ]);
     }
 }

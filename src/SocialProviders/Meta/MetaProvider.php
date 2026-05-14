@@ -16,14 +16,16 @@ use Inovector\Mixpost\Util;
 class MetaProvider extends SocialProvider
 {
     use ManagesConfig;
+    use ManagesMetaResources;
     use ManagesRateLimit;
     use MetaOauth;
-    use ManagesMetaResources;
 
     public array $callbackResponseKeys = ['code'];
 
     protected string $apiVersion;
+
     protected string $apiUrl = 'https://graph.facebook.com';
+
     protected string $scope;
 
     public function __construct(Request $request, string $clientId, string $clientSecret, string $redirectUrl, array $values = [])
@@ -112,6 +114,11 @@ class MetaProvider extends SocialProvider
         return '#';
     }
 
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        return '';
+    }
+
     public static function mapErrorMessage(string $key): string
     {
         return match ($key) {
@@ -133,5 +140,10 @@ class MetaProvider extends SocialProvider
             'unknown_error' => __('mixpost::error.unknown_error'),
             default => $key,
         };
+    }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return false;
     }
 }

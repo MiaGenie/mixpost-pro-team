@@ -2,11 +2,11 @@
 
 namespace Inovector\Mixpost\Support;
 
-use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Support\Facades\Http;
+use Closure;
 use DOMDocument;
 use DOMXPath;
-use Closure;
+use Exception;
+use Illuminate\Support\Facades\Http;
 
 class FetchUrlCard
 {
@@ -16,13 +16,13 @@ class FetchUrlCard
             'url' => $url,
             'title' => '',
             'description' => '',
-            'image' => ''
+            'image' => '',
         ];
 
         try {
             $response = Http::timeout(10)->get($url);
 
-            $doc = new DOMDocument();
+            $doc = new DOMDocument;
             @$doc->loadHTML($response->body());
 
             $xpath = new DOMXPath($doc);
@@ -40,19 +40,19 @@ class FetchUrlCard
                 'image' => $this->getAttributeContent($xpath, 'name', 'twitter:image'),
             ];
 
-        } catch (ConnectionException $e) {
+        } catch (Exception $e) {
             $twitterData = $data;
         }
 
         return [
             'default' => $data,
-            'twitter' => $twitterData
+            'twitter' => $twitterData,
         ];
     }
 
     private function getAttributeContent($xpath, $attribute, $attributeValue, Closure|string $fallbackQuery = '')
     {
-        $node = $xpath->query('//meta[@' . $attribute . '="' . $attributeValue . '"]')->item(0);
+        $node = $xpath->query('//meta[@'.$attribute.'="'.$attributeValue.'"]')->item(0);
 
         if ($node) {
             return $node->getAttribute('content');
@@ -62,6 +62,7 @@ class FetchUrlCard
             }
 
             $fallbackNode = $xpath->query($fallbackQuery)->item(0);
+
             return $fallbackNode ? $fallbackNode->getAttribute('content') : '';
         }
 

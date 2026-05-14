@@ -2,12 +2,13 @@
 
 namespace Inovector\Mixpost\SocialProviders\Mastodon\Support;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
-use Inovector\Mixpost\Contracts\SocialProviderPostOptions;
+use Inovector\Mixpost\Support\SocialProviderPostOptions;
 
-class MastodonPostOptions implements SocialProviderPostOptions
+class MastodonPostOptions extends SocialProviderPostOptions
 {
-    public function rules(): array
+    public function rules(FormRequest $request): array
     {
         return [
             'sensitive' => ['sometimes', 'boolean'],
@@ -17,7 +18,7 @@ class MastodonPostOptions implements SocialProviderPostOptions
     public function map(array $options = []): array
     {
         return [
-            'sensitive' => (bool)Arr::get($options, 'sensitive', false)
+            'sensitive' => (bool) Arr::get($options, 'sensitive', false),
         ];
     }
 }

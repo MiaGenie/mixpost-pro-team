@@ -18,19 +18,16 @@ use Inovector\Mixpost\Models\Audience;
 use Inovector\Mixpost\SocialProviders\Bluesky\BlueskyProvider;
 use Inovector\Mixpost\Support\SocialProviderResponse;
 
-class ImportAccountFollowersJob implements ShouldQueue, QueueWorkspaceAware
+class ImportAccountFollowersJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    use UsesSocialProviderManager;
     use HasSocialProviderJobRateLimit;
     use SocialProviderException;
+    use UsesSocialProviderManager;
 
     public $deleteWhenMissingModels = true;
 
-    public function __construct(public readonly Account $account)
-    {
-    }
+    public function __construct(public readonly Account $account) {}
 
     public function handle(): void
     {
@@ -38,7 +35,7 @@ class ImportAccountFollowersJob implements ShouldQueue, QueueWorkspaceAware
             return;
         }
 
-        if (!$this->account->isServiceActive()) {
+        if (! $this->account->isServiceActive()) {
             return;
         }
 
@@ -50,6 +47,7 @@ class ImportAccountFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         /**
          * @see BlueskyProvider
+         *
          * @var SocialProviderResponse $response
          */
         $response = $this->connectProvider($this->account)->getAccountMetrics();
@@ -80,9 +78,9 @@ class ImportAccountFollowersJob implements ShouldQueue, QueueWorkspaceAware
 
         Audience::updateOrCreate([
             'account_id' => $this->account->id,
-            'date' => Carbon::today('UTC')
+            'date' => Carbon::today('UTC'),
         ], [
-            'total' => $response->followers ?? 0
+            'total' => $response->followers ?? 0,
         ]);
     }
 }

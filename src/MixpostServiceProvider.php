@@ -14,8 +14,8 @@ use Inovector\Mixpost\Commands\ClearSettingsCache;
 use Inovector\Mixpost\Commands\ConvertLangJson;
 use Inovector\Mixpost\Commands\CreateAdmin;
 use Inovector\Mixpost\Commands\CreateMastodonApp;
-use Inovector\Mixpost\Commands\GeneratePageSamples;
 use Inovector\Mixpost\Commands\GenerateBlueskyPrivateKey;
+use Inovector\Mixpost\Commands\GeneratePageSamples;
 use Inovector\Mixpost\Commands\PruneTemporaryDirectory;
 use Inovector\Mixpost\Commands\PublishAssetsCommand;
 use Inovector\Mixpost\Commands\RunWorkspaceCommand;
@@ -31,6 +31,7 @@ use Inovector\Mixpost\Events\Account\AccountAdded;
 use Inovector\Mixpost\Events\Account\AccountUnauthorized;
 use Inovector\Mixpost\Events\Post\PostActivityCreated;
 use Inovector\Mixpost\Events\Post\PostCreated;
+use Inovector\Mixpost\Events\Post\PostDeleteFromSocialPlatforms;
 use Inovector\Mixpost\Events\Post\PostPublished;
 use Inovector\Mixpost\Events\Post\PostPublishedFailed;
 use Inovector\Mixpost\Events\Post\PostScheduleAtUpdated;
@@ -44,6 +45,7 @@ use Inovector\Mixpost\Listeners\Account\SendAccountUnauthorizedNotification;
 use Inovector\Mixpost\Listeners\HandleSystemWebhookEvent;
 use Inovector\Mixpost\Listeners\HandleWorkspaceWebhookEvent;
 use Inovector\Mixpost\Listeners\Post\HandlePostActivityCreatedEvent;
+use Inovector\Mixpost\Listeners\Post\HandlePostDeleteFromSocialPlatformsEvent;
 use Inovector\Mixpost\Listeners\Post\LogPostCreatedActivity;
 use Inovector\Mixpost\Listeners\Post\LogPostPublishedActivity;
 use Inovector\Mixpost\Listeners\Post\LogPostPublishedFailedActivity;
@@ -76,7 +78,7 @@ class MixpostServiceProvider extends PackageServiceProvider
             ->hasRoute('broadcast/channels')
             ->hasTranslations()
             ->hasMigrations([
-                'create_mixpost_tables'
+                'create_mixpost_tables',
             ])
             ->hasCommands([
                 PublishAssetsCommand::class,
@@ -100,8 +102,8 @@ class MixpostServiceProvider extends PackageServiceProvider
                     ->startWith(function (InstallCommand $command) {
                         $this->writeSeparationLine($command);
                         $command->line('Mixpost Installation. Self-hosted social media management software.');
-                        $command->line('Laravel version: ' . app()->version());
-                        $command->line('PHP version: ' . trim(phpversion()));
+                        $command->line('Laravel version: '.app()->version());
+                        $command->line('PHP version: '.trim(phpversion()));
                         $command->line(' ');
                         $command->line('Website: https://mixpost.app');
                         $this->writeSeparationLine($command);
@@ -115,7 +117,7 @@ class MixpostServiceProvider extends PackageServiceProvider
                     ->endWith(function (InstallCommand $command) {
                         $hasUsers = self::getUserClass()::exists();
 
-                        if (!$hasUsers) {
+                        if (! $hasUsers) {
                             $appUrl = config('app.url');
                             $corePath = config('mixpost.core_path', 'mixpost');
 
@@ -139,11 +141,11 @@ class MixpostServiceProvider extends PackageServiceProvider
         ]);
 
         $this->app->singleton('MixpostHooksManager', function () {
-            return new HooksManager();
+            return new HooksManager;
         });
 
         $this->app->singleton('MixpostWorkspaceManager', function () {
-            return new WorkspaceManager();
+            return new WorkspaceManager;
         });
 
         $this->app->singleton('MixpostSocialProviderManager', function ($app) {
@@ -151,7 +153,11 @@ class MixpostServiceProvider extends PackageServiceProvider
         });
 
         $this->app->singleton('MixpostAIManager', function () {
-            return new AIManager();
+            return new AIManager;
+        });
+
+        $this->app->singleton('MixpostUrlShortenerManager', function () {
+            return new UrlShortenerManager;
         });
 
         $this->app->singleton('MixpostSettings', function ($app) {
@@ -191,6 +197,8 @@ class MixpostServiceProvider extends PackageServiceProvider
         Event::listen(WebhookManager::systemEvents(), HandleSystemWebhookEvent::class);
         Event::listen(WebhookManager::workspaceEvents(), HandleWorkspaceWebhookEvent::class);
 
+        Event::listen(PostDeleteFromSocialPlatforms::class, HandlePostDeleteFromSocialPlatformsEvent::class);
+
         Event::listen(AccountAdded::class, HandleAccountImports::class);
         Event::listen(AccountUnauthorized::class, SendAccountUnauthorizedNotification::class);
         Event::listen(PostActivityCreated::class, HandlePostActivityCreatedEvent::class);
@@ -208,7 +216,7 @@ class MixpostServiceProvider extends PackageServiceProvider
     {
         $userModel = $this->app->make(config('mixpost.user_model'));
 
-        if (!$userModel instanceof UserAbstract) {
+        if (! $userModel instanceof UserAbstract) {
             throw new \Exception('The user model must be an instance of Inovector\Mixpost\Abstracts\User');
         }
     }

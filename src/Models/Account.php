@@ -5,6 +5,7 @@ namespace Inovector\Mixpost\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Inovector\Mixpost\Casts\AccountMediaCast;
@@ -35,18 +36,18 @@ class Account extends Model
         'provider_id',
         'data',
         'authorized',
-        'access_token'
+        'access_token',
     ];
 
     protected $casts = [
         'media' => AccountMediaCast::class,
         'data' => 'array',
         'authorized' => 'boolean',
-        'access_token' => EncryptArrayObject::class
+        'access_token' => EncryptArrayObject::class,
     ];
 
     protected $hidden = [
-        'access_token'
+        'access_token',
     ];
 
     protected ?string $providerClass = null;
@@ -64,6 +65,11 @@ class Account extends Model
                 Storage::disk($account->media['disk'])->delete($account->media['path']);
             }
         });
+    }
+
+    public function posts(): BelongsToMany
+    {
+        return $this->belongsToMany(Post::class, 'mixpost_post_accounts', 'account_id', 'post_id');
     }
 
     public function scopeProvider(Builder $query, string|SocialProvider $provider): void
@@ -93,7 +99,7 @@ class Account extends Model
             'provider' => $this->provider,
             'name' => $this->name,
             'username' => $this->username,
-            'data' => $this->data
+            'data' => $this->data,
         ];
     }
 
@@ -113,7 +119,7 @@ class Account extends Model
 
     public function providerName(): string
     {
-        if (!$provider = $this->getProviderClass()) {
+        if (! $provider = $this->getProviderClass()) {
             return $this->provider;
         }
 
@@ -122,7 +128,7 @@ class Account extends Model
 
     public function postConfigs(): array
     {
-        if (!$provider = $this->getProviderClass()) {
+        if (! $provider = $this->getProviderClass()) {
             return SocialProviderPostConfigs::make()->jsonSerialize();
         }
 
@@ -131,7 +137,7 @@ class Account extends Model
 
     public function isServiceActive(): bool
     {
-        if (!$this->getProviderClass()) {
+        if (! $this->getProviderClass()) {
             return false;
         }
 
@@ -149,7 +155,7 @@ class Account extends Model
 
     public function isUnauthorized(): bool
     {
-        return !$this->authorized;
+        return ! $this->authorized;
     }
 
     public function setUnauthorized(bool $dispatchEvent = true): void
@@ -173,5 +179,20 @@ class Account extends Model
         $this->access_token = $data;
 
         $this->save();
+    }
+
+    public function providerSupportsDeletion(): bool|array
+    {
+        // TODO: Check if the provider supports post deletion for the post type.
+        // For example, if the post was created on Facebook story type, we should not try
+        // to delete it, as Facebook does not support story deletion via API.
+        $value = $this->getProviderClass()::supportPostDeletion();
+
+        if (is_array($value)) {
+            // At least one key has true
+            return in_array(true, $value, true);
+        }
+
+        return $value;
     }
 }

@@ -11,15 +11,13 @@ use Inovector\Mixpost\Concerns\Mail;
 use Inovector\Mixpost\Contracts\QueueWorkspaceAware;
 use Inovector\Mixpost\Models\Account;
 
-class AccountUnauthorized extends Notification implements ShouldQueue, QueueWorkspaceAware
+class AccountUnauthorized extends Notification implements QueueWorkspaceAware, ShouldQueue
 {
-    use Queueable, SerializesModels, Mail;
+    use Mail, Queueable, SerializesModels;
 
     public $deleteWhenMissingModels = true;
 
-    public function __construct(public readonly Account $account)
-    {
-    }
+    public function __construct(public readonly Account $account) {}
 
     public function shouldSend(object $notifiable, string $channel): bool
     {

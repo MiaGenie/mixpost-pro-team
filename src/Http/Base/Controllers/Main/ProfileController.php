@@ -19,10 +19,10 @@ class ProfileController extends Controller
         return Inertia::render('Main/Profile', [
             'settings' => Settings::all(),
             'locales' => Util::config('locales'),
-            'timezone_list' => (new TimezoneList())->splitGroup()->list(),
-            'user_has_two_factor_auth_enabled' => Auth::user()->hasTwoFactorAuthEnabled(),
+            'timezoneList' => (new TimezoneList)->splitGroup()->list(),
+            'userHasTwoFactorAuthEnabled' => Auth::user()->hasTwoFactorAuthEnabled(),
             'is_two_factor_auth_enabled' => Features::isTwoFactorAuthEnabled(),
-            'is_delete_account_enabled' => Features::isDeleteAccountEnabled(),
+            'isDeleteAccountEnabled' => Features::isDeleteAccountEnabled(),
             'delete_account_url' => Mixpost::getDeleteAccountRoute() ? route(Mixpost::getDeleteAccountRoute()) : null,
         ]);
     }

@@ -8,4 +8,5 @@ enum ServiceGroup: string
     case SOCIAL = 'social';
     case AI = 'ai';
     case MEDIA = 'media';
+    case URL_SHORTENER = 'url_shortener';
 }

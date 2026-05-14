@@ -32,6 +32,8 @@ class SocialProviderPostConfigs implements JsonSerializable
 
     private array $allowMixingMediaTypes = ['default' => false];
 
+    private array $enableVideoThumb = ['default' => false];
+
     private array $mediaTextRequirementOperator = ['default' => 'or']; // or, and
 
     public function simultaneousPosting(bool $value): SocialProviderPostConfigs
@@ -41,56 +43,56 @@ class SocialProviderPostConfigs implements JsonSerializable
         return $this;
     }
 
-    public function minTextChar(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function minTextChar(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->minTextChar, $value, $type);
 
         return $this;
     }
 
-    public function maxTextChar(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function maxTextChar(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->maxTextChar, $value, $type);
 
         return $this;
     }
 
-    public function minPhotos(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function minPhotos(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->minPhotos, $value, $type);
 
         return $this;
     }
 
-    public function maxPhotos(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function maxPhotos(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->maxPhotos, $value, $type);
 
         return $this;
     }
 
-    public function minVideos(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function minVideos(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->minVideos, $value, $type);
 
         return $this;
     }
 
-    public function maxVideos(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function maxVideos(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->maxVideos, $value, $type);
 
         return $this;
     }
 
-    public function minGifs(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function minGifs(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->minGifs, $value, $type);
 
         return $this;
     }
 
-    public function maxGifs(int $value = null, string $type = 'default'): SocialProviderPostConfigs
+    public function maxGifs(?int $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->maxGifs, $value, $type);
 
@@ -100,6 +102,13 @@ class SocialProviderPostConfigs implements JsonSerializable
     public function allowMixingMediaTypes(?bool $value = null, string $type = 'default'): SocialProviderPostConfigs
     {
         $this->setConfigArrayValue($this->allowMixingMediaTypes, $value, $type);
+
+        return $this;
+    }
+
+    public function enableVideoThumb(?bool $value = null, string $type = 'default'): SocialProviderPostConfigs
+    {
+        $this->setConfigArrayValue($this->enableVideoThumb, $value, $type);
 
         return $this;
     }
@@ -137,6 +146,7 @@ class SocialProviderPostConfigs implements JsonSerializable
                     'allow_mixing' => $this->allowMixingMediaTypes,
                 ],
             ],
+            'enable_video_thumb' => $this->enableVideoThumb,
             'media_text_requirement_operator' => $this->mediaTextRequirementOperator,
         ];
     }

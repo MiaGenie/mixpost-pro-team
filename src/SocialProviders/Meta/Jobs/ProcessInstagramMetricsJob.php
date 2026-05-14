@@ -15,7 +15,7 @@ use Inovector\Mixpost\Models\Account;
 use Inovector\Mixpost\Models\ImportedPost;
 use Inovector\Mixpost\Models\Metric;
 
-class ProcessInstagramMetricsJob implements ShouldQueue, QueueWorkspaceAware
+class ProcessInstagramMetricsJob implements QueueWorkspaceAware, ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -45,8 +45,8 @@ class ProcessInstagramMetricsJob implements ShouldQueue, QueueWorkspaceAware
                 'date' => $item->date,
                 'data' => json_encode([
                     'likes' => $item->likes,
-                    'comments' => $item->comments
-                ])
+                    'comments' => $item->comments,
+                ]),
             ];
         });
 

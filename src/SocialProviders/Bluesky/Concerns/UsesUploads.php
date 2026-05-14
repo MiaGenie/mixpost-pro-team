@@ -4,8 +4,8 @@ namespace Inovector\Mixpost\SocialProviders\Bluesky\Concerns;
 
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\Support\SocialProviderResponse;
-use Inovector\Mixpost\Util;
 use Inovector\Mixpost\Support\TemporaryFile;
+use Inovector\Mixpost\Util;
 
 trait UsesUploads
 {
@@ -29,7 +29,7 @@ trait UsesUploads
 
         $response = $this->http()
             ->withBody($readStream['stream'], $mimeType)
-            ->post("com.atproto.repo.uploadBlob");
+            ->post('com.atproto.repo.uploadBlob');
 
         Util::closeAndDeleteStreamResource($readStream);
 

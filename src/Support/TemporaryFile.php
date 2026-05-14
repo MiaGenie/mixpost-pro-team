@@ -4,15 +4,16 @@ namespace Inovector\Mixpost\Support;
 
 use Illuminate\Support\Facades\File as FileFacade;
 use Inovector\Mixpost\Concerns\Makeable;
-use Spatie\TemporaryDirectory\TemporaryDirectory;
 use LogicException;
 use RuntimeException;
+use Spatie\TemporaryDirectory\TemporaryDirectory;
 
 final class TemporaryFile
 {
     use Makeable;
 
     private TemporaryDirectory $directory;
+
     private string $path;
 
     public function __construct()
@@ -24,14 +25,14 @@ final class TemporaryFile
     {
         $response = File::fetchUrl($url);
 
-        if (!$response->successful()) {
-            throw new RuntimeException('Failed to download file from URL: ' . $url);
+        if (! $response->successful()) {
+            throw new RuntimeException('Failed to download file from URL: '.$url);
         }
 
         $fileNameFromResponse = File::getFilenameFromHttpResponse($response);
         $extension = pathinfo($fileNameFromResponse, PATHINFO_EXTENSION);
 
-        $this->path = $this->directory->path($customFilename ? $customFilename . '.' . $extension : $fileNameFromResponse);
+        $this->path = $this->directory->path($customFilename ? $customFilename.'.'.$extension : $fileNameFromResponse);
 
         FileFacade::put($this->path, $response->body());
 
@@ -115,7 +116,7 @@ final class TemporaryFile
 
     private function ensureFilePathExists(): void
     {
-        if (!$this->path) {
+        if (! $this->path) {
             throw new LogicException('No file path set.');
         }
     }

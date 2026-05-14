@@ -7,12 +7,12 @@ use Illuminate\Support\Str;
 
 class Broadcast
 {
-    static public function driver()
+    public static function driver()
     {
         return Config::get('broadcasting.default');
     }
 
-    static public function echoOptions(): ?array
+    public static function echoOptions(): ?array
     {
         return match (self::driver()) {
             'reverb' => self::reverbEchoOptions(),
@@ -21,7 +21,7 @@ class Broadcast
         };
     }
 
-    static private function reverbEchoOptions(): array
+    private static function reverbEchoOptions(): array
     {
         return [
             'broadcaster' => 'reverb',
@@ -36,7 +36,7 @@ class Broadcast
         ];
     }
 
-    static private function pusherEchoOptions(): array
+    private static function pusherEchoOptions(): array
     {
         $key = Config::get('broadcasting.connections.pusher.key');
         $host = Config::get('broadcasting.connections.pusher.options.host');
@@ -53,7 +53,7 @@ class Broadcast
         ];
 
         // Add custom host and port if set
-        if (!Str::of($host)->endsWith('.pusher.com') && $port) {
+        if (! Str::of($host)->endsWith('.pusher.com') && $port) {
             $options['wsHost'] = $host;
             $options['wsPort'] = $port;
             $options['wssPort'] = $port;
@@ -66,8 +66,8 @@ class Broadcast
         return $options;
     }
 
-    static function routes(): void
+    public static function routes(): void
     {
-        require __DIR__ . '/../routes/broadcast/channels.php';
+        require __DIR__.'/../routes/broadcast/channels.php';
     }
 }

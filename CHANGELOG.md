@@ -2,6 +2,108 @@
 
 All notable changes to `Mixpost Pro` will be documented in this file.
 
+## 4.1.1 - 2025-08-15
+
+**Fixes**
+
+- Fixed image quality issues when resizing uploads
+
+## 4.1.0 - 2025-08-15
+
+**Fixes**
+
+- Fixed delete post handling errors for Threads and Facebook
+- Fixed selected media not clearing after attaching to a post
+- Fixed Adobe Express SDK loading issues on slow internet connections
+
+**Changes**
+
+- Replaced /me/ with connected account ID for Threads
+- Aligned Adobe Express integration with their guidelines
+- Added /ping endpoint for the API
+- Added items limit per page for post and media pagination
+- Added ability to copy ID & UUID for accounts, tags, and posts for API use
+- Installed code quality tools: ESLint, Prettier, Pinia, and Larastan
+- Reformatted all files after installing code quality tools
+
+## 4.0.0 - 2025-08-03
+
+**New features**
+
+- Integrated Pexels
+- Integrated Adobe Express
+- Shortener URL (Default Providers: Bitly, Yourls, Shlink)
+- Integrated Google Business Profile
+- Delete post from social platforms
+
+**Changes**
+
+- Added `nl-NL` language
+- Upgraded Intervention Image package from version `v2` to `v3`
+
+## 3.8.1 - 2025-07-26
+
+**Changed**
+
+- Changed LinkedIn API version from `202407` to `202507`
+
+## 3.8.0 - 2025-06-06
+
+**New Features**
+
+- Added support for adding Alt text when uploading an image through API
+- Implemented custom video thumbnail in the post preview
+- Added link to the account page on the social platform
+
+**Miscellaneous**
+
+- Added support for Facebook Graph API v23.0
+- Added environment variables to configure maximum file size
+
+## 3.7.0 - 2025-05-24
+
+**Fixes**
+
+- Fixed background opacity for comment/thread items.
+
+**Changes**
+
+- Upgraded LinkedIn Marketing API from legacy(unversioned) to versioned
+
+## 3.6.0 - 2025-05-19
+
+**New features**
+
+- Custom video thumbnail
+- Image supports alt text
+
+**Changes**
+
+- Show the status of FFmpeg on the status page.
+
+**Miscellaneous**
+
+- Upload video without FFmpeg
+- Support Laravel 12
+- Upgraded to Tailwind CSS 4
+
+## 3.5.4 - 2025-03-08
+
+**Fixes**
+
+- Fixed display errors when adding new account
+- Bluesky FetchUrlCard fixed Exception
+
+**Changes**
+
+- Upgraded `bacon/bacon-qr-code` to v3.0
+
+## 3.5.3 - 2025-02-22
+
+**Fixes**
+
+- Fixed Bluesky URL counted in post length
+
 ## 3.5.2 - 2025-02-21
 
 **Fixes**

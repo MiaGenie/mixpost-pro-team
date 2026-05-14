@@ -14,7 +14,9 @@ class SchedulingPost
     use Dispatchable, SerializesModels;
 
     public ?Workspace $workspace;
+
     public Post $post;
+
     public Request $request;
 
     public function __construct(Post $post, Request $request)

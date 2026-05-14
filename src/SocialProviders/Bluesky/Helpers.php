@@ -15,11 +15,11 @@ class Helpers
                 'handle' => $mention['handle'],
             ]);
 
-            if (!$response->successful()) {
+            if (! $response->successful()) {
                 continue;
             }
 
-            if (!$did = $response->json('did')) {
+            if (! $did = $response->json('did')) {
                 continue;
             }
 

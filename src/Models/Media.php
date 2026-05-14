@@ -19,9 +19,9 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 class Media extends Model
 {
     use HasFactory;
+    use HasImageData;
     use HasUuid;
     use OwnedByWorkspace;
-    use HasImageData;
 
     public $table = 'mixpost_media';
 
@@ -31,29 +31,50 @@ class Media extends Model
         'disk',
         'path',
         'data',
+        'data->alt_text',
+        'data->adobe_express_doc_id',
         'size',
         'size_total',
-        'conversions'
+        'conversions',
     ];
 
     protected $casts = [
         'id' => 'string',
         'data' => 'array',
-        'conversions' => 'array'
+        'conversions' => 'array',
     ];
 
     protected function source(): Attribute
     {
         return Attribute::make(
-            get: fn(mixed $value, array $attributes) => json_decode($attributes['data'], true)['source'] ?? null,
+            get: fn (mixed $value, array $attributes) => json_decode($attributes['data'], true)['source'] ?? null,
         );
     }
 
     protected function author(): Attribute
     {
         return Attribute::make(
-            get: fn(mixed $value, array $attributes) => json_decode($attributes['data'], true)['author'] ?? null,
+            get: fn (mixed $value, array $attributes) => json_decode($attributes['data'], true)['author'] ?? null,
         );
+    }
+
+    protected function altText(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => json_decode($attributes['data'], true)['alt_text'] ?? null,
+        );
+    }
+
+    protected function adobeExpressDocId(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => json_decode($attributes['data'], true)['adobe_express_doc_id'] ?? null,
+        );
+    }
+
+    public function mimeType(): string
+    {
+        return $this->mime_type;
     }
 
     public function getFullPath(): string
@@ -114,7 +135,7 @@ class Media extends Model
         }
 
         // Download from external adapter (s3...etc.) and read the stream
-        if (!$this->isLocalAdapter()) {
+        if (! $this->isLocalAdapter()) {
             $temporaryFile = TemporaryFile::make()->fromDisk(
                 sourceDisk: $disk,
                 sourceFilepath: $path

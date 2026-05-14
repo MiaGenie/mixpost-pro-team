@@ -41,10 +41,26 @@ class FacebookPageProvider extends MetaProvider
             return "$domain/stories/$path?view_single=1";
         }
 
-        if (Arr::get($data, 'story') && !Arr::get($data, 'path')) {
+        if (Arr::get($data, 'story') && ! Arr::get($data, 'path')) {
             return "$domain/$accountResource->provider_id";
         }
 
         return "$domain/{$accountResource->pivot->provider_post_id}";
+    }
+
+    public static function externalAccountUrl(AccountResource $accountResource): string
+    {
+        $identifier = $accountResource->username ?: $accountResource->provider_id;
+
+        return "https://www.facebook.com/$identifier";
+    }
+
+    public static function supportPostDeletion(): bool|array
+    {
+        return [
+            'post' => true,
+            'reel' => true,
+            'story' => false,
+        ];
     }
 }

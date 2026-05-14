@@ -35,11 +35,13 @@
         "account_entities": "Účetní jednotky",
         "select_the_social_entities": "Vyberte sociální účty, které chcete připojit",
         "connected": "Připojeno",
-        "choose": "Vyberte si",
         "access_token_expired": "Platnost přístupového tokenu vypršela. Znovu připojte svůj účet.",
         "unauthorized": "Neoprávněný",
         "add_social_account": "Nemáte účet na sociální síti, přidejte si alespoň jeden.",
-        "no_accounts_found": "Nebyly nalezeny žádné účty"
+        "no_accounts_found": "Nebyly nalezeny žádné účty",
+        "finish_connection": "Dokončení připojení",
+        "open_account_page": "Stránka s otevřeným účtem",
+        "view_profile": "Zobrazit profil"
     },
     "ai": {
         "tell_ai": "Řekněte AI, o čem má psát",
@@ -329,7 +331,8 @@
         "generate_new": "Vygenerovat nové",
         "search_jump": "Vyhledat nebo přejít na",
         "replace": "Nahradit",
-        "retry": "Opakovat"
+        "retry": "Opakovat",
+        "general": "Obecné"
     },
     "hashtag": {
         "hashtag_name": "Název skupiny hashtagů",
@@ -372,7 +375,36 @@
         "aspect_ratio_range": "Poměr stran musí být mezi {min} a {max}.",
         "resolution_range": "Rozlišení musí být minimálně {min} x {max} px. Doporučené rozlišení je {recommended_min} x {recommended_max} px.",
         "duration_range": "Doba trvání musí být mezi {min} a {max} sekundami.",
-        "frame_rate_range": "Snímková frekvence musí být mezi {min} a {max} snímků za sekundu."
+        "frame_rate_range": "Snímková frekvence musí být mezi {min} a {max} snímků za sekundu.",
+        "edit_alt_text": "Úprava textu alt",
+        "write_alt_text": "Napište text alt",
+        "add_alt_text_for": "Přidejte text alt pro {platforms}.",
+        "add_video_thumb": "Přidání miniatury videa",
+        "change_video_thumb": "Změna miniatury videa",
+        "view_video_thumb": "Zobrazit miniaturu videa",
+        "video_thumb": "Miniatura videa",
+        "video_thumb_providers": "Miniatura videa je k dispozici napříč: {providers}.",
+        "custom_size": "Vlastní velikost",
+        "width": "Šířka",
+        "height": "Výška",
+        "unit": "Jednotka",
+        "px": "pixely",
+        "inch": "palce",
+        "mm": "milimetry",
+        "create_design": "Vytvořit design",
+        "create_adobe_express": "Vytváření pomocí aplikace Adobe Express",
+        "new_design": "Nový design",
+        "saved": "Média byla úspěšně uložena.",
+        "fb_post": "Příspěvek na Facebooku",
+        "fb_story": "Příběh na Facebooku",
+        "ig_portrait_post": "Portrétní příspěvek na Instagramu",
+        "ig_square_post": "Čtvercový příspěvek na Instagramu",
+        "ig_story": "Příběh na Instagramu",
+        "linkedin_post": "Příspěvek na LinkedIn",
+        "x_post": "X příspěvek",
+        "pinterest_post": "Příspěvek na Pinterestu",
+        "media": "Média",
+        "create_for_adobe_express": "Vytvořit pro Adobe Express"
     },
     "page": {
         "pages": "Stránky",
@@ -438,7 +470,7 @@
         "accounts": "Účty",
         "author": "Autor",
         "no_posts_found": "Nebyly nalezeny žádné příspěvky.",
-        "delete_posts": "Smazat příspěvky",
+        "delete_posts": "Smazat příspěvky|Smazat příspěvky",
         "your_post": "Váš příspěvek",
         "confirmation_delete_post": "Opravdu chcete smazat vybrané příspěvky?",
         "posts_history_not_edited": "Příspěvky v historii nelze upravovat.",
@@ -500,7 +532,16 @@
         "approval_required": "Příspěvek musí být před zveřejněním schválen.",
         "needs_approval": "Potřebuje schválení",
         "approve": "Schválit",
-        "view": "Zobrazit příspěvek"
+        "view": "Zobrazit příspěvek",
+        "posts_deleted_from_social_platforms": "Vybrané příspěvky odstraněné ze sociálních platforem",
+        "does_not_support_deleting": "{provider} nepodporuje mazání {types}",
+        "confirmation_delete_posts_from": "Odkud chcete odstranit tento příspěvek?|Kde chcete odstranit vybrané příspěvky?",
+        "delete_post_from": {
+            "app_only": "Pouze z aplikace",
+            "app_and_social": "Z aplikací a sociálních platforem",
+            "social_only": "Pouze ze sociálních platforem"
+        },
+        "post_deleted_from_social_platforms": "Smazání příspěvku ze sociálních platforem"
     },
     "post_activity": {
         "activity": "Aktivita",
@@ -528,7 +569,8 @@
         "watch": "Sledujte",
         "notify_all_activity": "Informujte mě o všech aktivitách týkajících se tohoto úkolu.",
         "unwatch": "Zrušit sledování",
-        "notify_mentions_only": "Upozorněte mě pouze na zmínky."
+        "notify_mentions_only": "Upozorněte mě pouze na zmínky.",
+        "post_deleted_from_social_platforms": "Smazání příspěvku ze sociálních platforem"
     },
     "posting_schedule": {
         "everyday": "Každý den",
@@ -655,7 +697,10 @@
                 "number_website_clicks": "Celkový počet klepnutí na odkaz na webové stránky ve vašem profilu",
                 "website_clicks": "Kliknutí na webové stránky"
             },
-            "select_video_image": "Vyberte video nebo obrázek pro tento účet Instagram."
+            "select_video_image": "Vyberte video nebo obrázek pro tento účet Instagram.",
+            "post": "Příspěvek",
+            "reel": "Reel",
+            "story": "Story"
         },
         "linkedin": {
             "connect_page": "Připojení nové stránky LinkedIn",
@@ -663,7 +708,6 @@
             "visibility": "Viditelnost",
             "public": "Veřejnost",
             "connections": "Spojení",
-            "not_support_accounts": "Rozhraní API služby LinkedIn bohužel nepodporuje zobrazování analytických údajů pro osobní účty LinkedIn.",
             "insights": "Insights",
             "job_title": "Vaše pracovní pozice",
             "send": "Odeslat"
@@ -697,7 +741,7 @@
             "your_brand_accept_terms": "Odesláním příspěvku souhlasíte s <a href=\"{href}\" target=\"_blank\" class=\"link\">Potvrzením o používání hudby<\/a> společnosti TikTok.",
             "accept_terms": "Odesláním příspěvku souhlasíte se <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Zásadami používání značkového obsahu<\/a> a <a href=\"{href_music}\" target=\"_blank\" class=\"link\">Potvrzením o používání hudby<\/a> společnosti TikTok.",
             "partner_video_alert": "Vaše video bude označeno jako \"Placené partnerství\".",
-            "visibility_branded_content": "Viditelnost značkového obsahu nemůže být soukromá. Chcete-li tuto možnost povolit, vyberte možnost Viditelnost pro všechny\/přátele.",
+            "visibility_branded_content": "Značkový obsah může být nakonfigurován pouze s viditelností jako sledující\/přátelé.",
             "allow_users": "Umožnit uživatelům",
             "comment": "Komentář",
             "duet": "Duet",
@@ -742,7 +786,6 @@
             "public": "Veřejné",
             "private": "Soukromé",
             "unlisted": "Neuvedeno",
-            "analytics_under_development": "Analytika YouTube je ve vývoji.",
             "select_video": "Vyberte video pro tento účet YouTube.",
             "privacy_config": "Konfigurace ochrany osobních údajů",
             "title": "Video nebo krátký název"
@@ -770,7 +813,47 @@
             "connect_profile": "Připojení nového profilu Bluesky",
             "service": "Služba",
             "server_address": "Adresa serveru"
-        }
+        },
+        "gbp": {
+            "post": "Příspěvek",
+            "offer": "Nabídka",
+            "event": "Událost",
+            "event_title": "Název události",
+            "add_time": "Přidat čas",
+            "offer_title": "Název nabídky",
+            "start_date": "Datum zahájení",
+            "end_date": "Datum ukončení",
+            "button": "Tlačítko",
+            "none": "Žádné",
+            "book": "Kniha",
+            "order_online": "Objednat online",
+            "buy": "Koupit",
+            "learn_more": "Zjistěte více",
+            "sign_up": "Zaregistrujte se",
+            "button_link": "Odkaz na tlačítko",
+            "add_more_details": "Přidat další podrobnosti",
+            "coupon_code": "Kód kupónu",
+            "offer_link": "Odkaz na nabídku",
+            "tos": "Podmínky a pravidla",
+            "start_time": "Čas zahájení",
+            "end_time": "Čas konce",
+            "call_now": "Zavolejte nyní",
+            "redeem_online": "Uplatnit online",
+            "show_code": "Ukažte tento kód v obchodě",
+            "offer_valid": "Platí {start_date} - {end_date}",
+            "connect_profile": "Připojení nového firemního profilu Google"
+        },
+        "stock_photo": {
+            "search": "Hledání {source}",
+            "can_use_external_photos": "Pomocí {provider} můžete používat externí fotografie přímo v aplikaci Mixpost."
+        },
+        "facebook_page": {
+            "post": "Příspěvek",
+            "reel": "Reel",
+            "story": "Story"
+        },
+        "story": "Story",
+        "generate_api_key": "Generování klíče API"
     },
     "system": {
         "system": "Systém",
@@ -806,7 +889,9 @@
         "copied_clipboard": "Zkopírováno do schránky!",
         "failed_copied_clipboard": "Nepodařilo se zkopírovat do schránky!",
         "usage_api": "Použití v rozhraní API",
-        "stored_safely": "Bezpečně uloženo"
+        "stored_safely": "Bezpečně uloženo",
+        "copy_id": "Kopírovat ID",
+        "copy_uuid": "Kopírování UUID"
     },
     "tag": {
         "change_label_color": "Změna barvy štítku",
@@ -873,6 +958,10 @@
         "upload_favicon": "Nahrát favicon",
         "theme_color": "Barva tématu",
         "rebrand_company": "Změna brandu vaší společnosti"
+    },
+    "url_shortener": {
+        "on": "Zkrácení adresy URL: Na",
+        "off": "Zkrácení adresy URL: Vypnuto"
     },
     "user": {
         "create_user": "Vytvořit uživatele",

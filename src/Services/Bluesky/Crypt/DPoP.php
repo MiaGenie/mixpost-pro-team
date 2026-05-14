@@ -29,11 +29,10 @@ final class DPoP
 
     public static function authProof(
         JsonWebKey $jwk,
-        string     $url,
-        ?string    $nonce = '',
-        string     $method = 'POST',
-    ): string
-    {
+        string $url,
+        ?string $nonce = '',
+        string $method = 'POST',
+    ): string {
         $head = [
             'typ' => self::TYP,
             'alg' => PrivateKey::ALG,
@@ -54,13 +53,12 @@ final class DPoP
 
     public static function apiProof(
         JsonWebKey $jwk,
-        string     $iss,
-        string     $url,
-        string     $token,
-        ?string    $nonce = '',
-        string     $method = 'POST',
-    ): string
-    {
+        string $iss,
+        string $url,
+        string $token,
+        ?string $nonce = '',
+        string $method = 'POST',
+    ): string {
         $head = [
             'typ' => self::TYP,
             'alg' => PrivateKey::ALG,

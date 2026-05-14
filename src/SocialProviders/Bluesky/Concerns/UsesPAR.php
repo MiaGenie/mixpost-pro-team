@@ -11,10 +11,10 @@ use Psr\Http\Message\ResponseInterface;
 
 trait UsesPAR
 {
-    use UsesScopes;
-    use UsesOAuthSession;
-    use UsesOAuthDPoPSession;
     use UsesOAuthCodeChallenge;
+    use UsesOAuthDPoPSession;
+    use UsesOAuthSession;
+    use UsesScopes;
 
     protected function getParRequestUrl(): string
     {
@@ -60,7 +60,7 @@ trait UsesPAR
 
         $dpopProof = DPoP::authProof(
             jwk: DPoP::load($this->getDPoPKeySession($this->request)),
-            url: (string)$request->getUri(),
+            url: (string) $request->getUri(),
             nonce: $dpopNonce,
         );
 
@@ -69,7 +69,7 @@ trait UsesPAR
 
     protected function parResponseMiddleware(ResponseInterface $response): ResponseInterface
     {
-        $dpopNonce = (string)collect($response->getHeader('DPoP-Nonce'))->first();
+        $dpopNonce = (string) collect($response->getHeader('DPoP-Nonce'))->first();
 
         $this->getOAuthSession()->put(DPoP::AUTH_NONCE, $dpopNonce);
 

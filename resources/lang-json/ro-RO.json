@@ -35,11 +35,13 @@
         "account_entities": "Entități ale contului",
         "select_the_social_entities": "Selectați entitățile sociale pe care doriți să le conectați",
         "connected": "Conectat",
-        "choose": "Alegeți",
         "access_token_expired": "Indicatorul de acces a expirat. Reconectați-vă contul.",
         "unauthorized": "Neautorizat",
         "add_social_account": "Nu aveți un cont social, vă rugăm să adăugați cel puțin unul.",
-        "no_accounts_found": "Nu s-au găsit conturi"
+        "no_accounts_found": "Nu s-au găsit conturi",
+        "finish_connection": "Terminare conexiune",
+        "open_account_page": "Pagina de deschidere a contului",
+        "view_profile": "Vezi profilul"
     },
     "ai": {
         "tell_ai": "Spuneți-i IA despre ce să scrie",
@@ -329,7 +331,8 @@
         "generate_new": "Generați un nou",
         "search_jump": "Căutare sau salt la",
         "replace": "Înlocuiți",
-        "retry": "Reîncercare"
+        "retry": "Reîncercare",
+        "general": "Generalități"
     },
     "hashtag": {
         "hashtag_name": "Numele grupului Hashtag",
@@ -372,7 +375,36 @@
         "aspect_ratio_range": "Raportul de aspect trebuie să fie între {min} și {max}.",
         "resolution_range": "Rezoluția trebuie să fie de minimum {min} x {max} px. Recomandată este {recommended_min} x {recommended_max} px.",
         "duration_range": "Durata trebuie să fie cuprinsă între {min} și {max} secunde.",
-        "frame_rate_range": "Rata de cadre trebuie să fie între {min} și {max} cadre pe secundă."
+        "frame_rate_range": "Rata de cadre trebuie să fie între {min} și {max} cadre pe secundă.",
+        "edit_alt_text": "Editarea textului alt",
+        "write_alt_text": "Scrieți un text alt",
+        "add_alt_text_for": "Adăugați un text alt pentru {platforms}.",
+        "add_video_thumb": "Adăugați thumbnail video",
+        "change_video_thumb": "Schimbare miniatură video",
+        "view_video_thumb": "Vizualizați miniatura videoclipului",
+        "video_thumb": "Miniatură video",
+        "video_thumb_providers": "Miniatura video este disponibilă peste: {providers}.",
+        "custom_size": "Dimensiune personalizată",
+        "width": "Lățime",
+        "height": "Înălțime",
+        "unit": "Unitate",
+        "px": "pixeli",
+        "inch": "centimetri",
+        "mm": "milimetri",
+        "create_design": "Crearea designului",
+        "create_adobe_express": "Creați cu Adobe Express",
+        "new_design": "Design nou",
+        "saved": "Media salvată cu succes.",
+        "fb_post": "Mesaj pe Facebook",
+        "fb_story": "Povestea Facebook",
+        "ig_portrait_post": "Instagram portret post",
+        "ig_square_post": "Instagram post pătrat",
+        "ig_story": "Povestea Instagram",
+        "linkedin_post": "Post pe LinkedIn",
+        "x_post": "X post",
+        "pinterest_post": "Pinterest post",
+        "media": "Media",
+        "create_for_adobe_express": "Creați pentru Adobe Express"
     },
     "page": {
         "pages": "Pagini",
@@ -438,7 +470,7 @@
         "accounts": "Conturi",
         "author": "Autor",
         "no_posts_found": "Nu s-au găsit posturi.",
-        "delete_posts": "Ștergeți posturile",
+        "delete_posts": "Ștergeți postările|Ștergeți postările",
         "your_post": "Postul tau",
         "confirmation_delete_post": "Sunteți sigur că doriți să ștergeți mesajele selectate?",
         "posts_history_not_edited": "Postările din istorie nu pot fi editate.",
@@ -500,7 +532,16 @@
         "approval_required": "Mesajul trebuie să fie aprobat înainte de a fi publicat.",
         "needs_approval": "Necesită aprobare",
         "approve": "Aprobă",
-        "view": "Vezi mesajele"
+        "view": "Vezi mesajele",
+        "posts_deleted_from_social_platforms": "Postări selectate șterse de pe platformele sociale",
+        "does_not_support_deleting": "{provider} nu acceptă ștergerea {types}",
+        "confirmation_delete_posts_from": "De unde doriți să ștergeți această postare?|De unde doriți să ștergeți postările selectate?",
+        "delete_post_from": {
+            "app_only": "Numai din aplicație",
+            "app_and_social": "Din aplicații și platforme sociale",
+            "social_only": "Numai de pe platformele sociale"
+        },
+        "post_deleted_from_social_platforms": "Mesaj șters de pe platformele sociale"
     },
     "post_activity": {
         "activity": "Activitate",
@@ -528,7 +569,8 @@
         "watch": "Ceas",
         "notify_all_activity": "Anunțați-mă cu privire la toate activitățile pentru această sarcină.",
         "unwatch": "Nu urmăriți",
-        "notify_mentions_only": "Anunțați-mă numai cu privire la mențiuni."
+        "notify_mentions_only": "Anunțați-mă numai cu privire la mențiuni.",
+        "post_deleted_from_social_platforms": "Mesaj șters de pe platformele sociale"
     },
     "posting_schedule": {
         "everyday": "În fiecare zi",
@@ -655,7 +697,10 @@
                 "number_website_clicks": "Numărul total de atingeri pe linkul site-ului din profil",
                 "website_clicks": "clicuri pe site"
             },
-            "select_video_image": "Selectați un videoclip sau o imagine pentru acest cont de Instagram."
+            "select_video_image": "Selectați un videoclip sau o imagine pentru acest cont de Instagram.",
+            "post": "Post",
+            "reel": "Reel",
+            "story": "Poveste"
         },
         "linkedin": {
             "connect_page": "Conectați o nouă pagină LinkedIn",
@@ -663,7 +708,6 @@
             "visibility": "Vizibilitate",
             "public": "Public",
             "connections": "Conexiuni",
-            "not_support_accounts": "Din păcate, API-ul LinkedIn nu acceptă afișarea analizelor pentru conturile personale LinkedIn.",
             "insights": "Perspective",
             "job_title": "Titlul postului tău",
             "send": "Trimite"
@@ -696,8 +740,8 @@
             "your_brand_desc": "Vă promovați pe dvs. sau propria afacere. Acest videoclip va fi clasificat drept Brand Organic.",
             "your_brand_accept_terms": "Prin postare, sunteți de acord cu <a href=\"{href}\" target=\"_blank\" class=\"link\">Confirmarea de utilizare a muzicii<\/a> de la TikTok.",
             "accept_terms": "Prin postare, sunteți de acord cu <a href=\"{href_brand}\" target=\"_blank\" class=\"link\">Politica de conținut de marcă<\/a> și <a href=\"{href_music}\" target=\"_blank\" class=\"link\">Confirmarea utilizării muzicii<\/a> de la TikTok.",
-            "partner_video_alert": "Videoclipul dvs. va fi etichetat \"Parteneriat plătit\".",
-            "visibility_branded_content": "Vizibilitatea pentru conținutul de marcă nu poate fi privată. Selectați vizibilitatea \"Everyone\/Friends\" (Toată lumea\/Amicii) pentru a activa această opțiune.",
+            "partner_video_alert": "Videoclipul dvs. va fi etichetat ca \"Parteneriat plătit",
+            "visibility_branded_content": "Conținutul de marcă poate fi configurat numai cu vizibilitate ca urmăritori\/prieteni.",
             "allow_users": "Permiteți utilizatorilor să",
             "comment": "Comentariu",
             "duet": "Duet",
@@ -742,7 +786,6 @@
             "public": "Public",
             "private": "Privat",
             "unlisted": "Nelistate",
-            "analytics_under_development": "Analizele YouTube sunt în curs de dezvoltare.",
             "select_video": "Selectați un videoclip pentru acest cont YouTube.",
             "privacy_config": "Configurație de confidențialitate",
             "title": "Video sau titlu scurt"
@@ -770,7 +813,47 @@
             "connect_profile": "Conectați un nou profil Bluesky",
             "service": "Service",
             "server_address": "Adresa serverului"
-        }
+        },
+        "gbp": {
+            "post": "Post",
+            "offer": "Ofertă",
+            "event": "Eveniment",
+            "event_title": "Titlul evenimentului",
+            "add_time": "Adaugă timp",
+            "offer_title": "Titlul ofertei",
+            "start_date": "Data de începere",
+            "end_date": "Data de încheiere",
+            "button": "Buton",
+            "none": "Niciuna",
+            "book": "Carte",
+            "order_online": "Comandă online",
+            "buy": "Cumpărați",
+            "learn_more": "Aflați mai multe",
+            "sign_up": "Înscriere",
+            "button_link": "Buton de legătură",
+            "add_more_details": "Adaugă mai multe detalii",
+            "coupon_code": "Cod cupon",
+            "offer_link": "Link ofertă",
+            "tos": "Termeni și condiții",
+            "start_time": "Ora de începere",
+            "end_time": "Timpul final",
+            "call_now": "Sunați acum",
+            "redeem_online": "Răscumpărare online",
+            "show_code": "Afișați acest cod la magazin",
+            "offer_valid": "Valabil {start_date} - {end_date}",
+            "connect_profile": "Conectați un nou cont Google Business Profile"
+        },
+        "stock_photo": {
+            "search": "Căutare {source}",
+            "can_use_external_photos": "Cu {provider} puteți utiliza fotografii de stoc externe direct în Mixpost."
+        },
+        "facebook_page": {
+            "post": "Post",
+            "reel": "Reel",
+            "story": "Poveste"
+        },
+        "story": "Poveste",
+        "generate_api_key": "Generarea cheii API"
     },
     "system": {
         "system": "Sistem",
@@ -806,7 +889,9 @@
         "copied_clipboard": "Copiat în clipboard!",
         "failed_copied_clipboard": "Nu s-a reușit copierea în clipboard!",
         "usage_api": "Utilizare în API",
-        "stored_safely": "Am păstrat-o în siguranță."
+        "stored_safely": "Am păstrat-o în siguranță.",
+        "copy_id": "Copiere ID",
+        "copy_uuid": "Copiere UUID"
     },
     "tag": {
         "change_label_color": "Schimbați culoarea etichetei",
@@ -873,6 +958,10 @@
         "upload_favicon": "Încărcați favicon",
         "theme_color": "Culoarea temei",
         "rebrand_company": "Rebrandingul companiei dvs."
+    },
+    "url_shortener": {
+        "on": "Scurtarea URL-urilor: Pe",
+        "off": "Scurtarea URL: Oprit"
     },
     "user": {
         "create_user": "Creaza utilizator",

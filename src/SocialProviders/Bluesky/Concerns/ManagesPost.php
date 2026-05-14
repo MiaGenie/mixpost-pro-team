@@ -4,6 +4,7 @@ namespace Inovector\Mixpost\SocialProviders\Bluesky\Concerns;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Inovector\Mixpost\Enums\SocialProviderResponseStatus;
 use Inovector\Mixpost\Models\Media;
 use Inovector\Mixpost\SocialProviders\Bluesky\Helpers;
@@ -14,10 +15,10 @@ use RuntimeException;
 
 trait ManagesPost
 {
-    use UsesValues;
-    use UsesOAuthAgent;
     use UsesAuthServer;
+    use UsesOAuthAgent;
     use UsesUploads;
+    use UsesValues;
 
     public function publishPost(string $text, Collection $media, array $params = []): SocialProviderResponse
     {
@@ -33,19 +34,19 @@ trait ManagesPost
 
             $this->embedUrlCard($media, $params, $postParams);
 
-            if ($video = $media->first(fn($media) => $media->isVideo())) {
+            if ($video = $media->first(fn ($media) => $media->isVideo())) {
                 $this->embedVideo($video, $postParams);
             } else {
-                $this->embedImages($media->filter(fn($media) => $media->isImage()), $postParams);
+                $this->embedImages($media->filter(fn ($media) => $media->isImage()), $postParams);
             }
         } catch (RuntimeException $e) {
             return $this->response(SocialProviderResponseStatus::ERROR, json_decode($e->getMessage(), true));
         }
 
-        $response = $this->http()->post("com.atproto.repo.createRecord", [
+        $response = $this->http()->post('com.atproto.repo.createRecord', [
             'repo' => $this->getDid(),
             'collection' => 'app.bsky.feed.post',
-            'record' => $postParams
+            'record' => $postParams,
         ]);
 
         return $this->buildResponse($response, function ($data) {
@@ -53,14 +54,20 @@ trait ManagesPost
                 'id' => $data['cid'],
                 'data' => [
                     'uri' => $data['uri'],
-                ]
+                ],
             ];
         });
     }
 
-    public function deletePost($id): SocialProviderResponse
+    public function deletePost(string $id, array $params = []): SocialProviderResponse
     {
-        return $this->response(SocialProviderResponseStatus::OK, []);
+        $response = $this->http()->post('com.atproto.repo.deleteRecord', [
+            'repo' => $this->getDid(),
+            'collection' => 'app.bsky.feed.post',
+            'rkey' => Str::afterLast($params['uri'], '/'),
+        ]);
+
+        return $this->buildResponse($response);
     }
 
     private function handleReplies(array $params, array &$postParams): void
@@ -80,21 +87,28 @@ trait ManagesPost
                 'parent' => [
                     'uri' => $parent->data['uri'],
                     'cid' => $parent->id(),
-                ]
+                ],
             ];
         }
     }
 
     private function embedImages(Collection $images, array &$postParams): void
     {
-        $blobs = $images->map(function ($media) use (&$blobs) {
+        $blobs = $images->map(function ($media) {
             $response = $this->uploadBlob($media);
 
             if ($response->hasError()) {
                 throw new RuntimeException(json_encode($response->context()));
             }
 
-            return $response->blob;
+            if (! $response->blob) {
+                return null;
+            }
+
+            return [
+                'image' => $response->blob,
+                'alt' => $media->alt_text ?? '',
+            ];
         })->filter();
 
         if ($blobs->isEmpty()) {
@@ -103,12 +117,7 @@ trait ManagesPost
 
         $postParams['embed'] = [
             '$type' => 'app.bsky.embed.images',
-            'images' => $blobs->map(function ($blob) {
-                return [
-                    'image' => $blob,
-                    'alt' => '',
-                ];
-            })->toArray(),
+            'images' => $blobs->toArray(),
         ];
     }
 
@@ -132,11 +141,11 @@ trait ManagesPost
             return;
         }
 
-        if (!$url = $params['url'] ?? '') {
+        if (! $url = $params['url'] ?? '') {
             return;
         }
 
-        $card = (new FetchUrlCard())($url);
+        $card = (new FetchUrlCard)($url);
 
         $postParams['embed'] = [
             '$type' => 'app.bsky.embed.external',
@@ -144,7 +153,7 @@ trait ManagesPost
                 'uri' => $url,
                 'title' => $card['default']['title'],
                 'description' => $card['default']['description'],
-            ]
+            ],
         ];
 
         if ($card['default']['image']) {
@@ -154,7 +163,7 @@ trait ManagesPost
                 $file = TemporaryFile::make()->fromUrl($card['default']['image']);
                 $response = $this->uploadBlob($file);
 
-                if (!$response->hasError()) {
+                if (! $response->hasError()) {
                     $postParams['embed']['external']['thumb'] = $response->blob;
                 }
             } finally {
