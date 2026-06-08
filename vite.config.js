@@ -10,12 +10,13 @@ import { homedir } from 'os'
 export default defineConfig(({ _command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   let serverConfig = {}
-  env.APP_URL = env.APP_URL || 'http://localhost'
-  serverConfig = {
-    port: 5174
-  }
 
   if (mode === 'development') {
+    env.APP_URL = env.APP_URL || 'http://localhost'
+    serverConfig = {
+      port: 5174
+    }
+
     if (!env.APP_URL) {
       console.error('[vite] APP_URL is required in your .env file.')
       return
