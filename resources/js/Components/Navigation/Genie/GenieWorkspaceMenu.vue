@@ -20,50 +20,51 @@ const { user } = useAuth()
   </MenuGroupHeader>
   <MenuGroupBody>
     <MenuItem
-      :url="route('genie.strategies.index', { workspace: workspaceCtx.id })"
-      :active="$page.component === 'Genie/Workspace/Strategies/Index'"
+      :url="route('genie.strategies.overview', { workspace: workspaceCtx.id })"
+      :active="$page.component === 'Genie/Workspace/Strategies/Overview'"
     >
       <template #icon>
         <StrategyIcon />
       </template>
       {{ $t('genie.strategy') }}
     </MenuItem>
-    <MenuItem
-      :url="route('genie.strategies.list', { workspace: workspaceCtx.id })"
-      :active="$page.component === 'Genie/Workspace/Strategies/List'"
-      :hidden="!user.is_admin"
-    >
-      <template #icon>
-        <StrategyIcon />
-      </template>
-      {{ $t('genie.strategies') }}
-    </MenuItem>
-    <MenuItem
-      :url="route('genie.ideas.index', { workspace: workspaceCtx.id })"
-      :active="$page.component === 'Genie/Workspace/Ideas/Index'"
-    >
-      <template #icon>
-        <LampIcon />
-      </template>
-      {{ $t('genie.ideas') }}
-    </MenuItem>
-    <MenuItem
-      :url="route('genie.drafts.index', { workspace: workspaceCtx.id })"
-      :active="$page.component === 'Genie/Workspace/Drafts/Index'"
-    >
-      <template #icon>
-        <DraftIcon />
-      </template>
-      {{ $t('genie.drafts') }}
-    </MenuItem>
-    <MenuItem
-      :url="route('genie.config.config', { workspace: workspaceCtx.id })"
-      :active="$page.component === 'Genie/Workspace/Config'"
-    >
-      <template #icon>
-        <CogIcon />
-      </template>
-      {{ $t('genie.setup') }}
-    </MenuItem>
+    <!--        <MenuItem :url="route('genie.strategies.index', {workspace: workspaceCtx.id})"
+                      :active="$page.component === 'Genie/Workspace/Strategies/Index'">
+                <template #icon>
+                    <StrategyIcon/>
+                </template>
+                {{ $t('genie.strategy') }}
+            </MenuItem>
+
+            <MenuItem :url="route('genie.strategies.list', {workspace: workspaceCtx.id})"
+                      :active="$page.component === 'Genie/Workspace/Strategies/List'"
+                      :hidden="!user.is_admin"
+                >
+                <template #icon>
+                    <StrategyIcon/>
+                </template>
+                {{ $t('genie.strategies') }}
+            </MenuItem>
+            <MenuItem :url="route('genie.ideas.index', {workspace: workspaceCtx.id})"
+                      :active="$page.component === 'Genie/Workspace/Ideas/Index'">
+                <template #icon>
+                    <LampIcon/>
+                </template>
+                {{ $t('genie.ideas') }}
+            </MenuItem>
+            <MenuItem :url="route('genie.drafts.index', {workspace: workspaceCtx.id})"
+                      :active="$page.component === 'Genie/Workspace/Drafts/Index'">
+                <template #icon>
+                    <DraftIcon/>
+                </template>
+                {{ $t('genie.drafts') }}
+            </MenuItem>
+            <MenuItem :url="route('genie.config.config', {workspace: workspaceCtx.id})"
+                      :active="$page.component === 'Genie/Workspace/Config'">
+                <template #icon>
+                    <CogIcon/>
+                </template>
+                {{ $t('genie.setup') }}
+            </MenuItem>-->
   </MenuGroupBody>
 </template>
