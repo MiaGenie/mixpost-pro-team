@@ -13,8 +13,8 @@
 
 @theme {
   --font-sans:
-    Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
   --color-primary-50: var(--color-primary-50);
   --color-primary-100: var(--color-primary-100);
@@ -72,6 +72,17 @@
   --color-cyan-800: #0b818e;
   --color-cyan-900: #064047;
 
+  --color-miagenie-50: #f7f5fd;
+  --color-miagenie-100: #eeebfb;
+  --color-miagenie-200: #cdc4f2;
+  --color-miagenie-300: #bcb1ed;
+  --color-miagenie-400: #ac9de9;
+  --color-miagenie-500: #9b89e5;
+  --color-miagenie-600: #8a76e0;
+  --color-miagenie-700: #7962dc;
+  --color-miagenie-800: #694fd7;
+  --color-miagenie-900: #583bd3;
+
   --color-facebook: #1877f2;
   --color-instagram: #e4405f;
   --color-threads: #000000;
@@ -94,7 +105,6 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --spacing-2xl: 2.5rem;
-
 
   --grid-template-columns-week-time-sm: 48px repeat(7, 1fr);
   --grid-template-columns-week-time: 70px repeat(7, 1fr);
@@ -123,9 +133,8 @@
     border-color: var(--color-gray-200, currentColor);
   }
 
-    button:not(:disabled),
-    [role="button"]:not(:disabled) {
-        cursor: pointer;
-    }
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
 }
-

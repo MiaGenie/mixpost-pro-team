@@ -25,7 +25,7 @@
         "bacon/bacon-qr-code": "^3.0",
         "firebase/php-jwt": "^6.10",
         "guzzlehttp/guzzle": "^7.8",
-        "illuminate/contracts": "^10.47|^11.0|^12.0",
+        "illuminate/contracts": "^13.0",
         "inertiajs/inertia-laravel": "^2.0",
         "inovector/twitteroauth": "^7.1",
         "intervention/image": "^3.11",
